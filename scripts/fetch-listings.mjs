@@ -2,8 +2,8 @@
  * scripts/fetch-listings.mjs
  *
  * Finds real, current JDM listings for sale in the US using the Claude API's
- * server-side web search tool, then merges them into public/listings.json —
- * the static data file the app fetches at runtime. Runs on a schedule via
+ * web search tool, then merges them into app/public/listings.json — the
+ * static data file the app fetches at runtime. Runs on a schedule via
  * .github/workflows/refresh-listings.yml; each run commits the updated file,
  * which redeploys the site.
  *
@@ -16,8 +16,8 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const OUT = path.resolve("app/public/listings.json");
 const MODEL = "claude-opus-4-8";
-const MAX_SEARCHES = 8;
-const MAX_AGE_DAYS = 14;
+const MAX_SEARCHES = 10;
+const MAX_AGE_DAYS = 21;
 const MAX_LISTINGS = 80;
 
 if (!process.env.ANTHROPIC_API_KEY) {
@@ -38,27 +38,68 @@ const existing = (() => {
 
 const excludeTitles = existing.map((l) => l.title).slice(0, 40);
 
-const prompt = `Search the web for JDM (Japanese domestic market) enthusiast cars currently for sale in the United States right now. Cover a mix of sources: Bring a Trailer, Cars & Bids, Hemmings, classic.com, AutoTrader classics, Duncan Imports, Toprank Importers, JDM Sport Classics, Garage Defined, JDM Buy & Sell. Find 10-12 real, currently-active listings across a spread of models and price points (Skyline GT-R, Supra, RX-7, NSX, Silvia, Type R Hondas, Lancer Evolution, Impreza STI, Land Cruiser, Delica, Pajero Evolution, kei cars like the AZ-1/Beat/Cappuccino).
+const prompt = `You are gathering a feed of Japanese domestic market (JDM) cars currently FOR SALE in the United States. Use web search to find real, currently-active listings.
+
+Search these sources (run several targeted searches):
+- bringatrailer.com (search "JDM", "Skyline GT-R", "Supra", "RX-7", "NSX", "Land Cruiser", "Evolution")
+- carsandbids.com JDM auctions
+- hemmings.com Japanese classifieds
+- classic.com Japanese listings
+- JDM importer inventory pages (Toprank Importers, Duncan Imports, JDM Sport Classics, Garage Defined, Wolfreign Motors)
+
+Aim for 10-14 listings across a spread of models and prices: Skyline GT-R (R32/R33/R34), Supra, RX-7, NSX, Silvia/180SX, Integra/Civic Type R, Lancer Evolution, Impreza WRX STI, Land Cruiser, Delica, Pajero, kei cars (AZ-1, Beat, Cappuccino).
 
 Skip these already-known listings: ${excludeTitles.join("; ") || "none"}.
 
-Respond with ONLY a raw JSON array — no markdown fences, no prose. Each element:
-{"title":"1995 Nissan Skyline GT-R","year":1995,"make":"Nissan","model":"Skyline GT-R","chassis":"BCNR33","trim":"V-Spec","price":74000,"mileage":52000,"transmission":"5-speed manual","engine":"2.6L RB26DETT","drivetrain":"AWD","location":"Austin, TX","source":"Bring a Trailer","source_url":"https://...","image_url":"https://...","description":"one sentence","paint":"Midnight Purple"}
+STRICT RULES:
+- source_url MUST be a direct link to an individual car's listing or auction page (e.g. bringatrailer.com/listing/..., carsandbids.com/auctions/..., hemmings.com/classifieds/...) or an importer's specific vehicle page. Do NOT use news articles, blog posts, magazine coverage, or homepage/category URLs.
+- Only include a car if you actually saw its listing page in the search results. It is better to return 6 solid, verifiable listings than 14 shaky ones. Never invent a URL, price, or image.
+- image_url: the direct URL to the listing's lead photo (og:image or gallery hero) if you can see one in the results; otherwise "".
 
-Rules:
-- price = number in USD (current bid if auction, 0 if unknown)
-- source_url must be a real listing URL taken from your search results — never invent one
-- image_url = a direct URL to the single best, highest-resolution photo of the car from that listing (the lead/gallery hero image or og:image). It must end in an image file or be a CDN image URL. If you cannot find a real image URL, use ""
-- If you cannot verify a listing is real and current, leave it out.`;
+After your searches, output your FINAL answer as ONLY a raw JSON array — no prose, no markdown fences, nothing before the "[" or after the "]". Each element exactly:
+{"title":"1995 Nissan Skyline GT-R","year":1995,"make":"Nissan","model":"Skyline GT-R","chassis":"BCNR33","trim":"V-Spec","price":74000,"mileage":52000,"transmission":"5-speed manual","engine":"2.6L RB26DETT","drivetrain":"AWD","location":"Austin, TX","source":"Bring a Trailer","source_url":"https://...","image_url":"https://...","description":"one factual sentence","paint":"Midnight Purple"}
+
+Unknown numbers → 0. Unknown strings → "".`;
 
 const client = new Anthropic();
+
+/**
+ * Pull the JSON array of listings out of the model's text, tolerating any
+ * prose the model wraps around it. Scans every "[" as a candidate start,
+ * extracts a bracket-balanced span (ignoring brackets inside strings), and
+ * returns the first span that parses to an array of listing-shaped objects.
+ */
+function extractListings(text) {
+  for (let s = text.indexOf("["); s !== -1; s = text.indexOf("[", s + 1)) {
+    let depth = 0, inStr = false, esc = false;
+    for (let i = s; i < text.length; i++) {
+      const c = text[i];
+      if (esc) { esc = false; continue; }
+      if (c === "\\") { esc = true; continue; }
+      if (c === '"') { inStr = !inStr; continue; }
+      if (inStr) continue;
+      if (c === "[") depth++;
+      else if (c === "]" && --depth === 0) {
+        try {
+          const arr = JSON.parse(text.slice(s, i + 1));
+          if (Array.isArray(arr) && arr.some((it) => it && it.title && it.source_url)) {
+            return arr;
+          }
+        } catch { /* not this span — keep scanning */ }
+        break;
+      }
+    }
+  }
+  return null;
+}
 
 const response = await client.messages.create({
   model: MODEL,
   max_tokens: 8000,
   thinking: { type: "adaptive" },
   messages: [{ role: "user", content: prompt }],
-  tools: [{ type: "web_search_20260209", name: "web_search", max_uses: MAX_SEARCHES }],
+  // Basic web search: predictable, no heavy dynamic-filtering code execution.
+  tools: [{ type: "web_search_20250305", name: "web_search", max_uses: MAX_SEARCHES }],
 });
 
 const text = response.content
@@ -66,24 +107,18 @@ const text = response.content
   .map((b) => b.text)
   .join("\n");
 
-const start = text.indexOf("[");
-const end = text.lastIndexOf("]");
-if (start === -1 || end <= start) {
-  console.error("No JSON array found in model output. Raw text:\n" + text.slice(0, 2000));
+const items = extractListings(text);
+if (!items) {
+  console.error("No parseable listings array in model output. Raw text:\n" + text.slice(0, 2500));
   process.exit(1);
 }
 
-let items;
-try {
-  items = JSON.parse(text.slice(start, end + 1));
-} catch (err) {
-  console.error("Failed to parse listings JSON: " + err.message);
-  process.exit(1);
-}
+const isRealListingUrl = (u) =>
+  typeof u === "string" && /^https?:\/\//.test(u) && !/\.(pdf)(\?|$)/i.test(u);
 
 const now = new Date().toISOString();
-const fresh = (Array.isArray(items) ? items : [])
-  .filter((it) => it && it.title && it.source_url)
+const fresh = items
+  .filter((it) => it && it.title && isRealListingUrl(it.source_url))
   .map((it, i) => ({
     id: `live-${Date.now()}-${i}`,
     title: String(it.title),
