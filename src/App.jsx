@@ -124,6 +124,7 @@ const SEED = [
 
 const LS_SWIPED = "touge.swiped.v1";
 const LS_LIVE = "touge.live.v1";
+const LS_USER = "touge.user.v1";
 
 const loadJSON = (key, fallback) => {
   try {
@@ -154,6 +155,32 @@ async function fetchLiveListings() {
   const items = Array.isArray(data) ? data : data?.listings || [];
   return items.map((it, i) => normalize(it, i, true));
 }
+
+/* ---------------- auth (Google Identity Services) ---------------- */
+
+const GOOGLE_CLIENT_ID = "588469885844-t6l3d20opq64nhah8nbolf3rf1i660s5.apps.googleusercontent.com";
+
+let gisPromise = null;
+const loadGis = () => {
+  if (window.google?.accounts?.id) return Promise.resolve();
+  if (!gisPromise) {
+    gisPromise = new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = "https://accounts.google.com/gsi/client";
+      s.async = true;
+      s.onload = resolve;
+      s.onerror = () => { gisPromise = null; reject(new Error("Could not load Google sign-in")); };
+      document.head.appendChild(s);
+    });
+  }
+  return gisPromise;
+};
+
+/* The GIS credential is a JWT; the profile lives in its payload. */
+const profileFromCredential = (credential) => {
+  const payload = JSON.parse(atob(credential.split(".")[1].replace(/-/g, "+").replace(/_/g, "/")));
+  return { sub: payload.sub, name: payload.name || "", email: payload.email || "", picture: payload.picture || "" };
+};
 
 /* ---------------- shared glass surface ---------------- */
 
@@ -423,6 +450,74 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
   );
 }
 
+/* ---------------- account sheet ---------------- */
+
+function AccountSheet({ open, onClose, user, onSignedIn, onSignOut, savedCount }) {
+  const btnRef = useRef(null);
+  const [authError, setAuthError] = useState(null);
+
+  useEffect(() => {
+    if (!open || user) return;
+    let cancelled = false;
+    setAuthError(null);
+    loadGis()
+      .then(() => {
+        if (cancelled || !btnRef.current) return;
+        window.google.accounts.id.initialize({
+          client_id: GOOGLE_CLIENT_ID,
+          callback: (resp) => {
+            try {
+              onSignedIn(profileFromCredential(resp.credential));
+            } catch {
+              setAuthError("Sign-in response could not be read — try again.");
+            }
+          },
+        });
+        window.google.accounts.id.renderButton(btnRef.current, {
+          theme: "filled_black", size: "large", shape: "pill", text: "continue_with", width: 280,
+        });
+      })
+      .catch((err) => { if (!cancelled) setAuthError(err.message); });
+    return () => { cancelled = true; };
+  }, [open, user, onSignedIn]);
+
+  if (!open) return null;
+  return (
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 60, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(6px)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
+      <Glass onClick={(e) => e.stopPropagation()} radius={28} style={{ width: "min(560px,100%)", margin: "0 8px", padding: "22px 22px 30px", animation: "riseIn 0.3s ease both", background: "rgba(14,16,23,0.85)", textAlign: "center" }}>
+        <div style={{ width: 40, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.22)", margin: "0 auto 20px" }} />
+        {user ? (
+          <>
+            {user.picture ? (
+              <img src={user.picture} alt="" referrerPolicy="no-referrer" style={{ width: 64, height: 64, borderRadius: 32, border: `2px solid ${T.glassBrd}`, marginBottom: 12 }} />
+            ) : null}
+            <div style={{ ...display(800), fontSize: 20, color: T.ink }}>{user.name || user.email}</div>
+            {user.email ? <div style={{ ...body, fontSize: 13, color: T.dim, marginTop: 4 }}>{user.email}</div> : null}
+            <div style={{ ...mono, fontSize: 11.5, letterSpacing: "0.12em", color: T.faint, margin: "14px 0 20px" }}>
+              {savedCount} CAR{savedCount === 1 ? "" : "S"} IN THE GARAGE
+            </div>
+            <button onClick={onSignOut} style={{
+              padding: "13px 26px", borderRadius: 16, cursor: "pointer", ...display(800), fontSize: 14,
+              color: T.ink, background: "rgba(255,255,255,0.08)", border: `1px solid ${T.glassBrd}`, boxShadow: T.glassHi,
+            }}>
+              Sign out
+            </button>
+          </>
+        ) : (
+          <>
+            <h3 style={{ ...display(900), fontSize: 20, color: T.ink, margin: "0 0 8px" }}>Your garage, everywhere</h3>
+            <p style={{ ...body, fontSize: 13.5, color: T.dim, maxWidth: 320, margin: "0 auto 20px", lineHeight: 1.6 }}>
+              Sign in to keep your saved cars tied to your profile on this device. Cars you've already saved come with you.
+            </p>
+            <div ref={btnRef} style={{ display: "flex", justifyContent: "center", minHeight: 44 }} />
+            {authError ? <div style={{ ...body, fontSize: 12.5, color: T.pass, marginTop: 12 }}>{authError}</div> : null}
+          </>
+        )}
+      </Glass>
+    </div>
+  );
+}
+
 /* ---------------- filter sheet ---------------- */
 
 const ERAS = [1980, 1990, 2000];
@@ -548,7 +643,11 @@ export default function App() {
   const [liveListings, setLiveListings] = useState(() =>
     loadJSON(LS_LIVE, []).map((r) => normalize(r, 0, true))
   );
-  const [swiped, setSwiped] = useState(() => loadJSON(LS_SWIPED, {}));
+  const [user, setUser] = useState(() => loadJSON(LS_USER, null));
+  const [accountOpen, setAccountOpen] = useState(false);
+  const [swiped, setSwiped] = useState(() =>
+    loadJSON(user?.sub ? `${LS_SWIPED}.${user.sub}` : LS_SWIPED, {})
+  );
   const [tab, setTab] = useState("feed");
   const [detail, setDetail] = useState(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -561,7 +660,9 @@ export default function App() {
 
   const listings = useMemo(() => [...liveListings, ...SEED], [liveListings]);
 
-  useEffect(() => saveJSON(LS_SWIPED, swiped), [swiped]);
+  useEffect(() => {
+    saveJSON(user?.sub ? `${LS_SWIPED}.${user.sub}` : LS_SWIPED, swiped);
+  }, [swiped, user]);
   useEffect(() => {
     saveJSON(LS_LIVE, liveListings.map(({ paint, ...rest }) => rest));
   }, [liveListings]);
@@ -637,6 +738,27 @@ export default function App() {
 
   const resetDeck = () => { setSwiped((s) => Object.fromEntries(Object.entries(s).filter(([, d]) => d === "right"))); };
 
+  const handleSignedIn = useCallback((profile) => {
+    // Carry anonymous saves into the account on first sign-in.
+    const anon = loadJSON(LS_SWIPED, {});
+    const own = loadJSON(`${LS_SWIPED}.${profile.sub}`, {});
+    setSwiped({ ...anon, ...own });
+    setUser(profile);
+    saveJSON(LS_USER, profile);
+    setAccountOpen(false);
+    showToast(`Signed in as ${profile.name || profile.email}`, T.save);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSignOut = () => {
+    try { window.google?.accounts?.id?.disableAutoSelect(); } catch { /* not loaded */ }
+    try { localStorage.removeItem(LS_USER); } catch { /* blocked */ }
+    setUser(null);
+    setSwiped(loadJSON(LS_SWIPED, {}));
+    setAccountOpen(false);
+    showToast("Signed out", T.dim);
+  };
+
   /* Keyboard: ← pass · → save · ↑/Enter details · Z/Backspace undo · Esc close */
   useEffect(() => {
     const onKey = (e) => {
@@ -677,6 +799,15 @@ export default function App() {
             </IconBtn>
             <IconBtn label="Filters" size={40} onClick={() => setFiltersOpen(true)}>
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 7h16M7 12h10M10 17h4" /></svg>
+            </IconBtn>
+            <IconBtn label={user ? "Account" : "Sign in"} size={40} onClick={() => setAccountOpen(true)}
+              style={user?.picture ? { padding: 0, overflow: "hidden" } : undefined}>
+              {user?.picture ? (
+                <img src={user.picture} alt="" referrerPolicy="no-referrer"
+                  style={{ width: 40, height: 40, borderRadius: 20, objectFit: "cover" }} />
+              ) : (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" /></svg>
+              )}
             </IconBtn>
           </div>
         </header>
@@ -772,6 +903,8 @@ export default function App() {
 
       <DetailSheet listing={detail} onClose={() => setDetail(null)}
         saved={detail ? swiped[detail.id] === "right" : false} onToggleSave={toggleSave} />
+      <AccountSheet open={accountOpen} onClose={() => setAccountOpen(false)} user={user}
+        onSignedIn={handleSignedIn} onSignOut={handleSignOut} savedCount={saved.length} />
       <FilterSheet open={filtersOpen} onClose={() => setFiltersOpen(false)}
         filters={filters} setFilters={setFilters}
         matchCount={listings.filter((l) => !swiped[l.id] && passesFilters(l)).length} />
