@@ -14,10 +14,19 @@
 const UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 
-const JDM_MAKES =
+// A car qualifies as JDM only if it has BOTH a Japanese make AND a model or
+// chassis code from the JDM canon — this drops US-market trucks (Tacoma),
+// non-Japanese false positives ("Continental Mark II"), and, together with
+// the moto filter, motorcycles.
+const JAPANESE_MAKE =
   /\b(Nissan|Toyota|Mazda|Honda|Mitsubishi|Subaru|Suzuki|Daihatsu|Isuzu|Autozam|Eunos|Datsun|Infiniti|Lexus|Acura)\b/i;
-const JDM_KEYWORDS =
-  /\b(Skyline|GT-?R|Silvia|180SX|240SX|300ZX|350Z|Fairlady|Supra|RX-?7|RX-?8|Cosmo|NSX|Type[ -]?R|Integra|Civic|Lancer|Evolution|Evo|Pajero|Montero|Delica|Land Cruiser|WRX|STI|Impreza|Cappuccino|Jimny|AZ-1|Beat|MR2|AE86|Levin|Trueno|Chaser|Mark II|Soarer|Cressida|Hakosuka|Kenmeri|2000GT|Kei)\b/i;
+
+const JDM_CANON =
+  /\b(GT-?R|Skyline|Silvia|180SX|200SX|240SX|300ZX|350Z|370Z|Fairlady|Z32|Z33|Pulsar|Figaro|Pao|Stagea|Cedric|Gloria|Laurel|Cima|President|Supra|MR2|MR-?S|Celica|AE86|Trueno|Levin|Chaser|Cresta|Mark ?II|Soarer|Aristo|Century|Crown|Land ?Cruiser|Starlet|Sera|2000GT|240Z|260Z|280Z|Fairlady|510|Roadster|RX-?7|RX-?8|RX-?3|RX-?2|Cosmo|Savanna|Miata|MX-?5|NSX|S2000|S600|S800|Civic|Integra|Prelude|CRX|Beat|Del ?Sol|Acty|3000GT|GTO|Lancer|Evolution|Evo|Starion|Pajero|Montero|Delica|FTO|Galant|Impreza|WRX|STI|Legacy|BRZ|SVX|Sambar|Cappuccino|Jimny|Samurai|Cara|Copen|Charade|Hijet|AZ-?1|Piazza|VehiCROSS|Bellett|Hakosuka|Kenmeri|FD3S|FC3S|JZA80|JZA70|JZX9\d|JZX1\d\d|S13|S14|S15|R3[234]|BNR32|BCNR33|BNR34|EK9|EG6|DC[25]|GC8|GD[AB]|GRB|CT9A|C[PEN]9A|SW20|ZN6)\b/i;
+
+// Motorcycles / scooters / ATVs — BaT lists many; keep them out of a car feed.
+const MOTO =
+  /\b(CB\d|CBR|GSX|GSX-?R|Ninja|YZF|MT-?\d|Katana|Hayabusa|Grom|TS\d|DR\d|DRZ|KLR|KLX|KX\d|RM\d|RMZ|XR\d|XL\d|CRF|XT\d|DT\d|SR400|SR500|W650|W800|Vespa|scooter|motorcycle|mini-?bike|moped|ATV|dirt-?bike|Cub)\b/i;
 
 const MAKES = [
   "Nissan", "Toyota", "Mazda", "Honda", "Mitsubishi", "Subaru", "Suzuki",
@@ -31,7 +40,8 @@ const decode = (s) =>
     .replace(/&#8217;|&rsquo;/g, "’").replace(/&#8211;|&ndash;/g, "–")
     .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\s+/g, " ").trim();
 
-const isJDM = (title) => JDM_MAKES.test(title) || JDM_KEYWORDS.test(title);
+const isJDM = (title) =>
+  JAPANESE_MAKE.test(title) && JDM_CANON.test(title) && !MOTO.test(title);
 
 function parseTitle(title) {
   const t = decode(title);
