@@ -1,0 +1,12 @@
+{
+  "name": "TOUGE — JDM Feed",
+  "short_name": "TOUGE",
+  "description": "Swipe through JDM cars for sale across the United States.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07080D",
+  "theme_color": "#07080D",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1B1033"/>
+      <stop offset="0.55" stop-color="#3D2A6E"/>
+      <stop offset="1" stop-color="#145C5B"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="url(#g)"/>
+  <rect width="128" height="128" rx="30" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+  <text x="64" y="86" font-family="-apple-system, 'Hiragino Sans', sans-serif" font-size="62" font-weight="800" fill="#F4F5F7" text-anchor="middle">峠</text>
+</svg>
