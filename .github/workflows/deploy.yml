@@ -25,6 +25,15 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - name: Force Pages source to GitHub Actions (not branch)
+        run: |
+          echo "Current Pages config:"
+          gh api "repos/${{ github.repository }}/pages" --jq '{build_type, source, cname}' || true
+          gh api -X PUT "repos/${{ github.repository }}/pages" -f build_type=workflow \
+            && echo "Pages build_type set to workflow" \
+            || echo "WARNING: could not update Pages config — set Source to 'GitHub Actions' in Settings → Pages"
+        env:
+          GH_TOKEN: ${{ github.token }}
       - uses: actions/configure-pages@v5
         with:
           enablement: true
