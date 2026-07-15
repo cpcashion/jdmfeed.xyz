@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, useMemo, useCallback } from "react"
 /* ============================================================
    TOUGE 峠 — jdmfeed.xyz
    ------------------------------------------------------------
-   • Data layer: POST /api/sync (serverless, key stays server-side)
+   • Data layer: static listings.json, refreshed by a scheduled GitHub Action
    • Persistence: localStorage (swipes + live listings survive reloads)
    • Gestures: Pointer Events → identical on touch and mouse
    • PWA-ready shell → installable today, Capacitor/RN later
@@ -99,6 +99,7 @@ const normalize = (raw, i, live = false) => ({
   location: raw.location || "United States",
   source: raw.source || (live ? "Web" : "Demo data"),
   source_url: raw.source_url || "",
+  image: raw.image_url || raw.image || "",
   description: raw.description || "",
   paintName: raw.paintName || raw.paint || "",
   paint: paintFor(raw.paintName || raw.paint, raw.title || ""),
@@ -142,15 +143,16 @@ const saveJSON = (key, value) => {
 
 /* ---------------- data layer ---------------- */
 
-async function fetchLiveListings(excludeTitles) {
-  const res = await fetch("/api/sync", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ exclude: excludeTitles.slice(0, 15) }),
+/* Live listings are published as a static file by the scheduled
+   refresh-listings GitHub Action — no server needed on GitHub Pages. */
+async function fetchLiveListings() {
+  const res = await fetch(`${import.meta.env.BASE_URL}listings.json?_=${Date.now()}`, {
+    cache: "no-store",
   });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || `Sync failed (${res.status})`);
-  return (data.listings || []).map((it, i) => normalize(it, i, true));
+  if (!res.ok) throw new Error("No live listings published yet");
+  const data = await res.json().catch(() => null);
+  const items = Array.isArray(data) ? data : data?.listings || [];
+  return items.map((it, i) => normalize(it, i, true));
 }
 
 /* ---------------- shared glass surface ---------------- */
@@ -208,14 +210,19 @@ const HeartIcon = ({ s = 22, filled }) => (
 
 const THRESH = 96;
 
+const buzz = (ms) => { try { navigator.vibrate?.(ms); } catch { /* unsupported */ } };
+
 function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
   const [drag, setDrag] = useState({ x: 0, y: 0, active: false });
   const [exit, setExit] = useState(null);
+  const [imgOk, setImgOk] = useState(true);
   const start = useRef({ x: 0, y: 0, t: 0, moved: false });
   const p = listing.paint;
+  const showPhoto = Boolean(listing.image) && imgOk;
 
   const fly = useCallback((dir) => {
     setExit(dir);
+    buzz(12);
     setTimeout(() => onSwipe(listing.id, dir), 300);
   }, [listing.id, onSwipe]);
 
@@ -233,7 +240,7 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
   const onMove = (e) => {
     if (!drag.active || exit) return;
     const dx = e.clientX - start.current.x, dy = e.clientY - start.current.y;
-    if (Math.abs(dx) + Math.abs(dy) > 6) start.current.moved = true;
+    if (Math.abs(dx) + Math.abs(dy) > 10) start.current.moved = true;
     setDrag({ x: dx, y: dy * 0.5, active: true });
   };
   const onUp = () => {
@@ -242,9 +249,18 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
     if (drag.x > THRESH || (drag.x > 40 && vel > 0.55)) fly("right");
     else if (drag.x < -THRESH || (drag.x < -40 && vel > 0.55)) fly("left");
     else {
+      const vertical = Math.abs(drag.y) > 55 && Math.abs(drag.x) < 50;
       setDrag({ x: 0, y: 0, active: false });
-      if (!start.current.moved) onOpen(listing);
+      // Tap or a deliberate vertical swipe opens the detail sheet.
+      if (!start.current.moved || vertical) {
+        buzz(6);
+        onOpen(listing);
+      }
     }
+  };
+  const onCancel = () => {
+    if (!drag.active || exit) return;
+    setDrag({ x: 0, y: 0, active: false });
   };
 
   const x = exit ? (exit === "right" ? 640 : -640) : drag.x;
@@ -257,7 +273,7 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
 
   return (
     <div
-      onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}
+      onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onCancel}
       style={{
         position: "absolute", inset: 0, touchAction: "none",
         transform: `translate(${x}px, ${y + behind * 12}px) rotate(${rot}deg) scale(${1 - behind * 0.045})`,
@@ -288,6 +304,27 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
             {listing.make.toUpperCase()} · {String(listing.year)} · 日本製
           </div>
         </div>
+
+        {showPhoto && (
+          <>
+            {/* The photo fades in from the top, so the giant chassis type sits
+                partially BEHIND the car — the depth effect. */}
+            <img
+              src={listing.image} alt={listing.title} draggable={false}
+              loading={isTop ? "eager" : "lazy"}
+              onError={() => setImgOk(false)}
+              style={{
+                position: "absolute", inset: 0, width: "100%", height: "100%",
+                objectFit: "cover", objectPosition: "center 62%", userSelect: "none",
+                WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.30) 13%, rgba(0,0,0,0.88) 28%, #000 40%)",
+                maskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.30) 13%, rgba(0,0,0,0.88) 28%, #000 40%)",
+              }}
+            />
+            {/* Scrims keep the stamps and the info glass legible over any photo. */}
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, transparent 30%, transparent 55%, rgba(0,0,0,0.62) 100%)" }} />
+            <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay" }} />
+          </>
+        )}
 
         <div style={{ position: "absolute", top: 26, left: 22, opacity: saveOp, transform: `rotate(-9deg) scale(${0.9 + saveOp * 0.15})`, ...display(900), fontSize: 30, color: T.save, border: `3px solid ${T.save}`, borderRadius: 12, padding: "4px 14px", background: "rgba(0,0,0,0.25)", backdropFilter: "blur(6px)" }}>
           SAVE <span style={{ ...mono, fontSize: 13, fontWeight: 500 }}>保存</span>
@@ -341,6 +378,13 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
     <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 60, background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
       <Glass onClick={(e) => e.stopPropagation()} radius={28} style={{ width: "min(560px, 100%)", maxHeight: "88%", overflowY: "auto", margin: "0 8px", padding: "22px 22px 26px", animation: "riseIn 0.32s cubic-bezier(0.2,0.9,0.3,1) both", background: "rgba(14,16,23,0.82)" }}>
         <div style={{ width: 40, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.22)", margin: "0 auto 18px" }} />
+        {listing.image ? (
+          <img
+            src={listing.image} alt={listing.title}
+            onError={(e) => { e.currentTarget.style.display = "none"; }}
+            style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 18, marginBottom: 16, border: `1px solid ${T.glassBrd}` }}
+          />
+        ) : null}
         <div style={{ height: 6, borderRadius: 3, marginBottom: 18, background: `linear-gradient(90deg, ${p.stops[0]}, ${p.stops[1]}, ${p.stops[2]})` }} />
         <div style={{ ...mono, fontSize: 11, letterSpacing: "0.3em", color: T.faint }}>{listing.chassis} · {listing.make.toUpperCase()}</div>
         <h2 style={{ ...display(900), fontSize: 30, color: T.ink, margin: "6px 0 2px", lineHeight: 1.05 }}>
@@ -471,12 +515,12 @@ function Garage({ saved, onRemove, onOpen }) {
       {rows.map((l) => (
         <Glass key={l.id} radius={20} style={{ padding: 14, marginBottom: 10, display: "flex", gap: 14, alignItems: "center", animation: "riseIn 0.3s ease both", cursor: "pointer" }} onClick={() => onOpen(l)}>
           <div style={{
-            width: 58, height: 58, borderRadius: 15, flexShrink: 0, display: "grid", placeItems: "center",
-            background: `linear-gradient(150deg, ${l.paint.stops[0]}, ${l.paint.stops[1]}, ${l.paint.stops[2]})`,
+            width: 58, height: 58, borderRadius: 15, flexShrink: 0, display: "grid", placeItems: "center", overflow: "hidden",
+            background: `${l.image ? `url(${JSON.stringify(l.image)}) center/cover no-repeat, ` : ""}linear-gradient(150deg, ${l.paint.stops[0]}, ${l.paint.stops[1]}, ${l.paint.stops[2]})`,
             border: "1px solid rgba(255,255,255,0.14)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.2)",
             ...display(900), fontSize: 13, color: l.paint.darkInk ? "#14161C" : T.ink, letterSpacing: "-0.02em",
           }}>
-            {l.chassis.slice(0, 5)}
+            {l.image ? "" : l.chassis.slice(0, 5)}
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ ...display(800), fontSize: 15, color: T.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
@@ -510,6 +554,7 @@ export default function App() {
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [filters, setFilters] = useState({ maxPrice: 200000, eras: new Set(), gearbox: "Any" });
   const [forced, setForced] = useState({ dir: null, n: 0 });
+  const [swipeHistory, setSwipeHistory] = useState([]);
   const [sync, setSync] = useState("idle");
   const [toast, setToast] = useState(null);
   const toastTimer = useRef(null);
@@ -538,10 +583,22 @@ export default function App() {
 
   const handleSwipe = useCallback((id, dir) => {
     setSwiped((s) => ({ ...s, [id]: dir }));
+    setSwipeHistory((h) => [...h.slice(-30), id]);
     if (dir === "right") {
       const l = listings.find((x) => x.id === id);
       showToast(`${l ? l.chassis : "Car"} parked in the garage`, T.save);
     }
+  }, [listings]);
+
+  const undoSwipe = useCallback(() => {
+    setSwipeHistory((h) => {
+      if (!h.length) return h;
+      const id = h[h.length - 1];
+      setSwiped((s) => { const n = { ...s }; delete n[id]; return n; });
+      const l = listings.find((x) => x.id === id);
+      showToast(`${l ? l.chassis : "Card"} is back on top`, T.dim);
+      return h.slice(0, -1);
+    });
   }, [listings]);
 
   const toggleSave = (l) => {
@@ -554,23 +611,45 @@ export default function App() {
     setDetail(null);
   };
 
-  const doSync = async () => {
-    if (sync === "loading") return;
+  const refresh = useCallback(async (manual) => {
     setSync("loading");
     try {
-      const fresh = await fetchLiveListings(listings.map((l) => l.title));
-      const known = new Set(listings.map((l) => (l.title + l.price).toLowerCase()));
-      const add = fresh.filter((l) => !known.has((l.title + l.price).toLowerCase()));
-      setLiveListings((prev) => [...add, ...prev].slice(0, 60));
+      const fresh = await fetchLiveListings();
+      setLiveListings((prev) => {
+        if (manual) {
+          const known = new Set(prev.map((l) => (l.title + l.price).toLowerCase()));
+          const add = fresh.filter((l) => !known.has((l.title + l.price).toLowerCase())).length;
+          showToast(add ? `${add} new live listing${add > 1 ? "s" : ""} in the feed` : `Feed is current — ${fresh.length} live listings`, add ? T.save : T.dim);
+        }
+        return fresh;
+      });
       setSync("done");
-      showToast(add.length ? `${add.length} live listing${add.length > 1 ? "s" : ""} pulled from the web` : "No new listings this pass — try again", add.length ? T.save : T.dim);
-    } catch (err) {
+    } catch {
       setSync("error");
-      showToast(err.message || "Sync failed — try again", T.pass);
+      if (manual) showToast("Live listings aren't published yet — showing the demo deck", T.pass);
     }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => { refresh(false); }, [refresh]);
+
+  const doSync = () => { if (sync !== "loading") refresh(true); };
 
   const resetDeck = () => { setSwiped((s) => Object.fromEntries(Object.entries(s).filter(([, d]) => d === "right"))); };
+
+  /* Keyboard: ← pass · → save · ↑/Enter details · Z/Backspace undo · Esc close */
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") { setDetail(null); setFiltersOpen(false); return; }
+      if (detail || filtersOpen || tab !== "feed") return;
+      if (e.key === "ArrowLeft") setForced((f) => ({ dir: "left", n: f.n + 1 }));
+      else if (e.key === "ArrowRight") setForced((f) => ({ dir: "right", n: f.n + 1 }));
+      else if ((e.key === "ArrowUp" || e.key === "Enter") && deck[0]) setDetail(deck[0]);
+      else if (e.key === "z" || e.key === "Backspace") undoSwipe();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [detail, filtersOpen, tab, deck, undoSwipe]);
 
   return (
     <div style={{ height: "100dvh", background: T.bg, color: T.ink, overflow: "hidden", position: "relative", ...body }}>
@@ -648,7 +727,12 @@ export default function App() {
           }}>FEED</button>
 
           {tab === "feed" && deck.length > 0 ? (
-            <div style={{ display: "flex", gap: 14 }}>
+            <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
+              {swipeHistory.length > 0 && (
+                <IconBtn label="Undo last swipe" size={42} color={T.dim} onClick={undoSwipe}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 14L4 9l5-5" /><path d="M4 9h10a6 6 0 0 1 0 12h-3" /></svg>
+                </IconBtn>
+              )}
               <IconBtn label="Pass on this car" color={T.pass} border="rgba(255,90,72,0.4)"
                 onClick={() => setForced((f) => ({ dir: "left", n: f.n + 1 }))}><XIcon /></IconBtn>
               <IconBtn label="Save this car" color={T.save} border="rgba(57,217,138,0.4)"
