@@ -325,7 +325,7 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
         <div style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay" }} />
 
         <div aria-hidden style={{
-          position: "absolute", top: "27%", left: -8, right: 0, ...display(900),
+          position: "absolute", top: "19%", left: -8, right: 0, ...display(900),
           fontSize: "clamp(88px, 27vw, 156px)", lineHeight: 0.84, color: ink,
           opacity: p.darkInk ? 0.92 : 0.96, letterSpacing: "-0.04em", whiteSpace: "nowrap",
           textShadow: p.darkInk ? "none" : "0 6px 40px rgba(0,0,0,0.35)", paddingLeft: 22,
@@ -338,22 +338,25 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
 
         {showCutout && (
           <>
-            {/* Soft ground shadow so the floating car feels planted on the card. */}
+            {/* Soft ground shadow so the floating car feels planted on the card.
+                Sits just above the info glass so the car reads as floating
+                clear of the panel rather than tucked behind it. */}
             <div aria-hidden style={{
-              position: "absolute", left: "16%", right: "16%", bottom: "16.5%", height: 30,
+              position: "absolute", left: "16%", right: "16%", bottom: "26%", height: 28,
               background: "radial-gradient(60% 100% at 50% 50%, rgba(0,0,0,0.6), transparent 70%)",
               filter: "blur(11px)",
             }} />
             {/* The cut-out car floats over its own chassis type — its roofline
                 rises into the letters so the type reads BEHIND the car, the
-                editorial poster depth the design is going for. */}
+                editorial poster depth the design is going for. It's lifted to
+                clear the info glass so the car is never hidden behind it. */}
             <img
               src={`${import.meta.env.BASE_URL}${listing.cutout}`} alt={listing.title} draggable={false}
               loading={isTop ? "eager" : "lazy"}
               onError={() => setCutOk(false)}
               style={{
-                position: "absolute", left: "1%", right: "1%", bottom: "14.5%", width: "98%",
-                maxHeight: "64%", objectFit: "contain", objectPosition: "bottom center",
+                position: "absolute", left: "1%", right: "1%", bottom: "24%", width: "98%",
+                maxHeight: "56%", objectFit: "contain", objectPosition: "bottom center",
                 userSelect: "none", filter: "drop-shadow(0 26px 28px rgba(0,0,0,0.6))",
               }}
             />
@@ -390,7 +393,10 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
 
         <Glass radius={22} style={{ position: "absolute", left: 14, right: 14, bottom: 14, padding: "16px 18px 14px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
-            <div style={{ ...display(800), fontSize: 21, color: T.ink, lineHeight: 1.1 }}>
+            <div style={{
+              ...display(800), fontSize: 21, color: T.ink, lineHeight: 1.1,
+              display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden",
+            }}>
               {listing.year} {listing.model}
               {listing.trim ? <span style={{ ...body, fontWeight: 500, fontSize: 14, color: T.dim }}>  {listing.trim}</span> : null}
             </div>
@@ -421,6 +427,33 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
 /* ---------------- detail sheet ---------------- */
 
 function DetailSheet({ listing, onClose, saved, onToggleSave }) {
+  const [dy, setDy] = useState(0); // live drag offset while pulling the sheet down
+  const [closing, setClosing] = useState(false);
+  const drag = useRef(null); // { startY } while a pull is in progress
+
+  // Reset drag state whenever a new listing opens the sheet.
+  useEffect(() => { setDy(0); setClosing(false); drag.current = null; }, [listing]);
+
+  const dismiss = useCallback(() => {
+    setClosing(true);
+    setTimeout(onClose, 240); // let the slide-out finish before unmounting
+  }, [onClose]);
+
+  const onHandleDown = (e) => {
+    drag.current = { startY: e.clientY };
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+  };
+  const onHandleMove = (e) => {
+    if (!drag.current) return;
+    setDy(Math.max(0, e.clientY - drag.current.startY)); // only downward
+  };
+  const onHandleUp = () => {
+    if (!drag.current) return;
+    drag.current = null;
+    if (dy > 130) dismiss(); // pulled far enough → close
+    else setDy(0); // spring back
+  };
+
   if (!listing) return null;
   const p = listing.paint;
   const specs = [
@@ -429,10 +462,25 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
     ["Chassis", listing.chassis], ["Paint", p.name],
     ["Location", listing.location], ["Source", listing.source],
   ];
+  const dragging = drag.current != null;
   return (
-    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 60, background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
-      <Glass onClick={(e) => e.stopPropagation()} radius={28} style={{ width: "min(560px, 100%)", maxHeight: "88%", overflowY: "auto", margin: "0 8px", padding: "22px 22px 26px", animation: "riseIn 0.32s cubic-bezier(0.2,0.9,0.3,1) both", background: "rgba(14,16,23,0.82)" }}>
-        <div style={{ width: 40, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.22)", margin: "0 auto 18px" }} />
+    <div onClick={dismiss} style={{ position: "fixed", inset: 0, zIndex: 60, background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)", display: "flex", alignItems: "flex-end", justifyContent: "center", opacity: closing ? 0 : 1, transition: "opacity 0.24s ease" }}>
+      <Glass onClick={(e) => e.stopPropagation()} radius={28} style={{
+        width: "min(560px, 100%)", maxHeight: "88%", overflowY: "auto", margin: "0 8px", padding: "22px 22px 26px",
+        background: "rgba(14,16,23,0.82)",
+        transform: closing ? "translateY(110%)" : `translateY(${dy}px)`,
+        animation: closing ? "none" : "riseIn 0.32s cubic-bezier(0.2,0.9,0.3,1) both",
+        transition: closing ? "transform 0.24s cubic-bezier(0.4,0,1,1)" : (dragging ? "none" : "transform 0.28s cubic-bezier(0.2,0.9,0.3,1)"),
+      }}>
+        {/* Grab handle — pull down to dismiss. touchAction:none so the browser
+            hands the vertical gesture to us instead of scrolling the sheet. */}
+        <div
+          onPointerDown={onHandleDown} onPointerMove={onHandleMove}
+          onPointerUp={onHandleUp} onPointerCancel={onHandleUp}
+          style={{ padding: "2px 0 14px", margin: "-4px 0 6px", cursor: "grab", touchAction: "none" }}
+        >
+          <div style={{ width: 40, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.22)", margin: "0 auto" }} />
+        </div>
         {listing.image ? (
           <img
             src={listing.image} alt={listing.title}
