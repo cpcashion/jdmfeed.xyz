@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -25,13 +25,37 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - name: Force Pages source to GitHub Actions (not branch)
+      - name: Try to force Pages source to GitHub Actions
         run: |
           echo "Current Pages config:"
           gh api "repos/${{ github.repository }}/pages" --jq '{build_type, source, cname}' || true
           gh api -X PUT "repos/${{ github.repository }}/pages" -f build_type=workflow \
             && echo "Pages build_type set to workflow" \
-            || echo "WARNING: could not update Pages config — set Source to 'GitHub Actions' in Settings → Pages"
+            || echo "Note: config unchanged (admin-only) — branch publishing fallback below covers it"
+        env:
+          GH_TOKEN: ${{ github.token }}
+      # Fallback that makes the site work even when Pages is set to
+      # "Deploy from a branch": commit the BUILT app to the repo root, so the
+      # branch publisher serves compiled code instead of raw source.
+      - name: Publish built site to branch root
+        run: |
+          rm -rf assets
+          cp -r app/dist/. .
+          touch .nojekyll
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Built site unchanged."
+          else
+            git commit -m "Publish built site to branch root [skip ci]"
+            git push
+            # Bot pushes don't reliably trigger the branch publisher — ask for
+            # a Pages build explicitly (no-op when Pages is in workflow mode).
+            gh api -X POST "repos/${{ github.repository }}/pages/builds" \
+              && echo "Requested branch Pages build" \
+              || echo "Could not request branch Pages build"
+          fi
         env:
           GH_TOKEN: ${{ github.token }}
       - uses: actions/configure-pages@v5
@@ -39,7 +63,7 @@ jobs:
           enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: app/dist
 
   deploy:
     needs: build

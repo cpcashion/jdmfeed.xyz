@@ -14,7 +14,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 
-const OUT = path.resolve("public/listings.json");
+const OUT = path.resolve("app/public/listings.json");
 const MODEL = "claude-opus-4-8";
 const MAX_SEARCHES = 8;
 const MAX_AGE_DAYS = 14;
