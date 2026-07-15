@@ -325,7 +325,7 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
         <div style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay" }} />
 
         <div aria-hidden style={{
-          position: "absolute", top: "20%", left: -8, right: 0, ...display(900),
+          position: "absolute", top: "27%", left: -8, right: 0, ...display(900),
           fontSize: "clamp(88px, 27vw, 156px)", lineHeight: 0.84, color: ink,
           opacity: p.darkInk ? 0.92 : 0.96, letterSpacing: "-0.04em", whiteSpace: "nowrap",
           textShadow: p.darkInk ? "none" : "0 6px 40px rgba(0,0,0,0.35)", paddingLeft: 22,
@@ -352,8 +352,8 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
               loading={isTop ? "eager" : "lazy"}
               onError={() => setCutOk(false)}
               style={{
-                position: "absolute", left: "1%", right: "1%", bottom: "15%", width: "98%",
-                maxHeight: "70%", objectFit: "contain", objectPosition: "bottom center",
+                position: "absolute", left: "1%", right: "1%", bottom: "14.5%", width: "98%",
+                maxHeight: "64%", objectFit: "contain", objectPosition: "bottom center",
                 userSelect: "none", filter: "drop-shadow(0 26px 28px rgba(0,0,0,0.6))",
               }}
             />
