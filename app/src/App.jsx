@@ -100,6 +100,7 @@ const normalize = (raw, i, live = false) => ({
   source: raw.source || (live ? "Web" : "Demo data"),
   source_url: raw.source_url || "",
   image: raw.image_url || raw.image || "",
+  cutout: raw.cutout || "",
   description: raw.description || "",
   paintName: raw.paintName || raw.paint || "",
   paint: paintFor(raw.paintName || raw.paint, raw.title || ""),
@@ -243,9 +244,12 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
   const [drag, setDrag] = useState({ x: 0, y: 0, active: false });
   const [exit, setExit] = useState(null);
   const [imgOk, setImgOk] = useState(true);
+  const [cutOk, setCutOk] = useState(true);
   const start = useRef({ x: 0, y: 0, t: 0, moved: false });
   const p = listing.paint;
-  const showPhoto = Boolean(listing.image) && imgOk;
+  const showCutout = Boolean(listing.cutout) && cutOk;
+  // The masked full photo is the fallback when no cutout exists yet.
+  const showPhoto = !showCutout && Boolean(listing.image) && imgOk;
 
   const fly = useCallback((dir) => {
     setExit(dir);
@@ -321,21 +325,45 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
         <div style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay" }} />
 
         <div aria-hidden style={{
-          position: "absolute", top: "9%", left: -8, right: 0, ...display(900),
-          fontSize: "clamp(88px, 26vw, 148px)", lineHeight: 0.86, color: ink,
-          opacity: p.darkInk ? 0.9 : 0.94, letterSpacing: "-0.04em", whiteSpace: "nowrap",
+          position: "absolute", top: "20%", left: -8, right: 0, ...display(900),
+          fontSize: "clamp(88px, 27vw, 156px)", lineHeight: 0.84, color: ink,
+          opacity: p.darkInk ? 0.92 : 0.96, letterSpacing: "-0.04em", whiteSpace: "nowrap",
           textShadow: p.darkInk ? "none" : "0 6px 40px rgba(0,0,0,0.35)", paddingLeft: 22,
         }}>
-          {listing.chassis}
-          <div style={{ ...mono, fontSize: 12, letterSpacing: "0.34em", opacity: 0.75, marginTop: 14, fontWeight: 500 }}>
+          <div style={{ ...mono, fontSize: 12, letterSpacing: "0.34em", opacity: 0.75, marginBottom: 12, fontWeight: 500 }}>
             {listing.make.toUpperCase()} · {String(listing.year)} · 日本製
           </div>
+          {listing.chassis}
         </div>
+
+        {showCutout && (
+          <>
+            {/* Soft ground shadow so the floating car feels planted on the card. */}
+            <div aria-hidden style={{
+              position: "absolute", left: "16%", right: "16%", bottom: "16.5%", height: 30,
+              background: "radial-gradient(60% 100% at 50% 50%, rgba(0,0,0,0.6), transparent 70%)",
+              filter: "blur(11px)",
+            }} />
+            {/* The cut-out car floats over its own chassis type — its roofline
+                rises into the letters so the type reads BEHIND the car, the
+                editorial poster depth the design is going for. */}
+            <img
+              src={`${import.meta.env.BASE_URL}${listing.cutout}`} alt={listing.title} draggable={false}
+              loading={isTop ? "eager" : "lazy"}
+              onError={() => setCutOk(false)}
+              style={{
+                position: "absolute", left: "1%", right: "1%", bottom: "15%", width: "98%",
+                maxHeight: "70%", objectFit: "contain", objectPosition: "bottom center",
+                userSelect: "none", filter: "drop-shadow(0 26px 28px rgba(0,0,0,0.6))",
+              }}
+            />
+          </>
+        )}
 
         {showPhoto && (
           <>
-            {/* The photo fades in from the top, so the giant chassis type sits
-                partially BEHIND the car — the depth effect. */}
+            {/* Fallback: the photo fades in from the top, so the giant chassis
+                type sits partially BEHIND the car — the depth effect. */}
             <img
               src={listing.image} alt={listing.title} draggable={false}
               loading={isTop ? "eager" : "lazy"}

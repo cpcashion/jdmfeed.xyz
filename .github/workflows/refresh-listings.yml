@@ -25,18 +25,33 @@ jobs:
       - run: npm ci
       - name: Fetch live listings from sources (Bring a Trailer, …)
         run: node scripts/fetch-listings.mjs
-      - name: Publish updated listings to source and site root
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Cache background-removal model
+        uses: actions/cache@v4
+        with:
+          path: ~/.u2net
+          key: u2net-model-v1
+      - name: Install rembg
+        run: pip install rembg onnxruntime pillow
+      - name: Cut out cars (transparent background)
+        run: python scripts/process-cutouts.py
+      - name: Publish updated listings + cut-outs to source and site root
         run: |
           # Also copy to the repo root so the branch-mode Pages publisher
           # serves it immediately (same pattern as the built site).
           cp app/public/listings.json listings.json
+          rm -rf cutouts && mkdir -p cutouts
+          cp -f app/public/cutouts/*.webp cutouts/ 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add app/public/listings.json listings.json
+          git add -A app/public/listings.json app/public/cutouts listings.json cutouts
           if git diff --cached --quiet; then
             echo "No listing changes this run."
           else
-            git commit -m "Refresh live listings [skip ci]"
+            git commit -m "Refresh live listings + cut-outs [skip ci]"
             git push
             gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
           fi
