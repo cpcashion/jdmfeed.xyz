@@ -15,8 +15,9 @@
 
 import { decode, isJDM, parseTitle } from "./jdm.mjs";
 
-const CLIENT_ID = process.env.EBAY_CLIENT_ID || "ChrisCas-JDMFeed-PRD-662558e1b-d9772e1c";
-const CERT_ID = process.env.EBAY_CERT_ID || "";
+// trim(): a stray newline/space in a pasted repo secret corrupts Basic auth.
+const CLIENT_ID = (process.env.EBAY_CLIENT_ID || "ChrisCas-JDMFeed-PRD-662558e1b-d9772e1c").trim();
+const CERT_ID = (process.env.EBAY_CERT_ID || "").trim();
 
 const TOKEN_URL = "https://api.ebay.com/identity/v1/oauth2/token";
 const SEARCH_URL = "https://api.ebay.com/buy/browse/v1/item_summary/search";
@@ -39,6 +40,11 @@ const QUERIES = [
 
 async function getAppToken() {
   if (!CERT_ID) throw new Error("EBAY_CERT_ID secret is not set — add the keyset's Cert ID as a GitHub repo secret");
+  // Safe diagnostics: identifies a mis-pasted secret without revealing it.
+  console.log(
+    `  eBay auth: client ${CLIENT_ID.slice(0, 18)}… (len ${CLIENT_ID.length}), ` +
+    `cert len ${CERT_ID.length}${CERT_ID.startsWith("PRD-") ? "" : " — does NOT start with PRD-, likely the wrong value"}`,
+  );
   const basic = Buffer.from(`${CLIENT_ID}:${CERT_ID}`).toString("base64");
   const res = await fetch(TOKEN_URL, {
     method: "POST",
@@ -49,7 +55,12 @@ async function getAppToken() {
     body: "grant_type=client_credentials&scope=" + encodeURIComponent("https://api.ebay.com/oauth/api_scope"),
   });
   const body = await res.text();
-  if (!res.ok) throw new Error(`eBay token HTTP ${res.status}: ${body.slice(0, 300)}`);
+  if (!res.ok) {
+    const hint = res.status === 401
+      ? " (either the Cert ID doesn't match this App ID, or the keyset is deactivated — a keyset marked 'Non Compliant' for Marketplace Account Deletion is disabled by eBay until compliance/exemption is set)"
+      : "";
+    throw new Error(`eBay token HTTP ${res.status}: ${body.slice(0, 300)}${hint}`);
+  }
   const token = JSON.parse(body).access_token;
   if (!token) throw new Error("eBay token response had no access_token");
   return token;
