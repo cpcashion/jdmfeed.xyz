@@ -185,8 +185,9 @@ const profileFromCredential = (credential) => {
 
 /* ---------------- shared glass surface ---------------- */
 
-const Glass = ({ children, style, radius = 22, ...rest }) => (
+const Glass = React.forwardRef(({ children, style, radius = 22, ...rest }, ref) => (
   <div
+    ref={ref}
     {...rest}
     style={{
       background: T.glassBg,
@@ -200,7 +201,7 @@ const Glass = ({ children, style, radius = 22, ...rest }) => (
   >
     {children}
   </div>
-);
+));
 
 const IconBtn = ({ label, onClick, size = 56, color = T.ink, border, children, style }) => (
   <button
@@ -237,80 +238,144 @@ const HeartIcon = ({ s = 22, filled }) => (
 /* ---------------- swipe card ---------------- */
 
 const THRESH = 96;
+const clamp01 = (v) => Math.min(Math.max(v, 0), 1);
 
 const buzz = (ms) => { try { navigator.vibrate?.(ms); } catch { /* unsupported */ } };
 
-function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
-  const [drag, setDrag] = useState({ x: 0, y: 0, active: false });
-  const [exit, setExit] = useState(null);
+/* Release velocity from a ~110ms window of trailing samples, the way native
+   velocity trackers do it — a single stationary event at release (or a
+   finger micro-pause) must not zero out a genuine flick. */
+const trackSample = (d, x, y) => {
+  const t = performance.now();
+  d.samples.push({ t, x, y });
+  if (d.samples.length > 8) d.samples.shift();
+  return t;
+};
+const releaseVelocity = (d) => {
+  const s = d.samples;
+  if (!s || s.length < 2) return { vx: 0, vy: 0 };
+  const last = s[s.length - 1];
+  let first = s[0];
+  for (const p of s) if (last.t - p.t <= 110) { first = p; break; }
+  const dt = Math.max(last.t - first.t, 1);
+  return { vx: (last.x - first.x) / dt, vy: (last.y - first.y) / dt };
+};
+
+function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, onSwipeCommit, onOpen }) {
+  const rootRef = useRef(null);
+  const saveRef = useRef(null);
+  const passRef = useRef(null);
+  const drag = useRef(null); // live gesture: offsets + smoothed velocity
+  const gone = useRef(false); // fly-out started — this card is done taking input
   const [imgOk, setImgOk] = useState(true);
   const [cutOk, setCutOk] = useState(true);
-  const start = useRef({ x: 0, y: 0, t: 0, moved: false });
   const p = listing.paint;
   const showCutout = Boolean(listing.cutout) && cutOk;
   // The masked full photo is the fallback when no cutout exists yet.
   const showPhoto = !showCutout && Boolean(listing.image) && imgOk;
 
-  const fly = useCallback((dir) => {
-    setExit(dir);
+  /* The drag paints straight to the DOM in a rAF (no React re-render per
+     pointermove), so the card tracks the finger at native frame rate even
+     over the heavy imagery. */
+  const paint = () => {
+    const d = drag.current;
+    if (!d || !rootRef.current) return;
+    d.raf = 0;
+    rootRef.current.style.transform = `translate3d(${d.dx}px, ${d.dy * 0.5}px, 0) rotate(${d.dx * 0.05}deg)`;
+    const so = clamp01(d.dx / THRESH), po = clamp01(-d.dx / THRESH);
+    if (saveRef.current) { saveRef.current.style.opacity = so; saveRef.current.style.transform = `rotate(-9deg) scale(${0.9 + so * 0.15})`; }
+    if (passRef.current) { passRef.current.style.opacity = po; passRef.current.style.transform = `rotate(9deg) scale(${0.9 + po * 0.15})`; }
+  };
+
+  const flyOut = useCallback((dir, vx = 0, vy = 0) => {
+    if (gone.current) return;
+    gone.current = true;
     buzz(12);
-    setTimeout(() => onSwipe(listing.id, dir), 300);
-  }, [listing.id, onSwipe]);
+    const d = drag.current || { dx: 0, dy: 0, raf: 0 };
+    if (d.raf) cancelAnimationFrame(d.raf);
+    drag.current = null;
+    const sign = dir === "right" ? 1 : -1;
+    const distX = (window.innerWidth || 420) * 1.15 + 120;
+    // The card leaves at the finger's speed — a hard flick exits faster —
+    // and stays fully visible while it flies clear off-screen (no fade).
+    const speed = Math.max(Math.abs(vx), 0.9);
+    const ms = Math.round(Math.min(Math.max((distX - Math.abs(d.dx)) / speed, 200), 420));
+    const el = rootRef.current;
+    if (el) {
+      el.style.transition = `transform ${ms}ms cubic-bezier(0.3, 0.7, 0.4, 1)`;
+      el.style.transform = `translate3d(${sign * distX}px, ${d.dy * 0.5 + vy * ms * 0.4 - 20}px, 0) rotate(${sign * 24}deg)`;
+    }
+    const stamp = dir === "right" ? saveRef.current : passRef.current;
+    if (stamp) stamp.style.opacity = 1;
+    onSwipeStart(listing.id, dir); // promote the next card immediately — no dead gap
+    setTimeout(() => onSwipeCommit(listing.id, dir), ms + 40);
+  }, [listing.id, onSwipeStart, onSwipeCommit]);
 
   useEffect(() => {
-    if (isTop && forced && forced.n > 0) fly(forced.dir);
+    if (isTop && forced && forced.n > 0) flyOut(forced.dir, 1.5, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [forced && forced.n]);
 
-  const onDown = (e) => {
-    if (!isTop || exit) return;
-    e.currentTarget.setPointerCapture(e.pointerId);
-    start.current = { x: e.clientX, y: e.clientY, t: Date.now(), moved: false };
-    setDrag({ x: 0, y: 0, active: true });
-  };
-  const onMove = (e) => {
-    if (!drag.active || exit) return;
-    const dx = e.clientX - start.current.x, dy = e.clientY - start.current.y;
-    if (Math.abs(dx) + Math.abs(dy) > 10) start.current.moved = true;
-    setDrag({ x: dx, y: dy * 0.5, active: true });
-  };
-  const onUp = () => {
-    if (!drag.active || exit) return;
-    const vel = Math.abs(drag.x) / Math.max(Date.now() - start.current.t, 1);
-    if (drag.x > THRESH || (drag.x > 40 && vel > 0.55)) fly("right");
-    else if (drag.x < -THRESH || (drag.x < -40 && vel > 0.55)) fly("left");
-    else {
-      const vertical = Math.abs(drag.y) > 55 && Math.abs(drag.x) < 50;
-      setDrag({ x: 0, y: 0, active: false });
-      // Tap or a deliberate vertical swipe opens the detail sheet.
-      if (!start.current.moved || vertical) {
-        buzz(6);
-        onOpen(listing);
-      }
+  const settle = () => {
+    const el = rootRef.current;
+    if (el) {
+      el.style.transition = "transform 0.5s cubic-bezier(0.22, 1.2, 0.36, 1)"; // slight overshoot
+      el.style.transform = "translate3d(0px, 0px, 0) rotate(0deg)";
     }
-  };
-  const onCancel = () => {
-    if (!drag.active || exit) return;
-    setDrag({ x: 0, y: 0, active: false });
+    for (const r of [saveRef, passRef]) if (r.current) r.current.style.opacity = 0;
   };
 
-  const x = exit ? (exit === "right" ? 640 : -640) : drag.x;
-  const y = exit ? drag.y - 60 : drag.y;
-  const rot = x * 0.055;
-  const saveOp = Math.min(Math.max(x / THRESH, 0), 1);
-  const passOp = Math.min(Math.max(-x / THRESH, 0), 1);
-  const behind = isTop ? 0 : stackIndex;
+  const onDown = (e) => {
+    if (!isTop || gone.current) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    if (rootRef.current) rootRef.current.style.transition = "none";
+    drag.current = { dx: 0, dy: 0, x0: e.clientX, y0: e.clientY, moved: false, raf: 0, samples: [{ t: performance.now(), x: 0, y: 0 }] };
+  };
+  const onMove = (e) => {
+    const d = drag.current;
+    if (!d || gone.current) return;
+    d.dx = e.clientX - d.x0;
+    d.dy = e.clientY - d.y0;
+    trackSample(d, d.dx, d.dy);
+    if (Math.abs(d.dx) + Math.abs(d.dy) > 10) d.moved = true;
+    if (!d.raf) d.raf = requestAnimationFrame(paint);
+  };
+  const onUp = () => {
+    const d = drag.current;
+    if (!d || gone.current) return;
+    if (d.raf) cancelAnimationFrame(d.raf);
+    const { vx, vy } = releaseVelocity(d);
+    const fling = Math.abs(vx) > 0.4 && Math.abs(d.dx) > 28;
+    if (d.dx > THRESH || (fling && d.dx > 0)) return flyOut("right", vx, vy);
+    if (d.dx < -THRESH || (fling && d.dx < 0)) return flyOut("left", vx, vy);
+    drag.current = null;
+    settle();
+    // Tap or a deliberate vertical swipe opens the detail sheet.
+    const vertical = Math.abs(d.dy) > 55 && Math.abs(d.dx) < 50;
+    if (!d.moved || vertical) { buzz(6); onOpen(listing); }
+  };
+  const onCancel = () => {
+    const d = drag.current;
+    if (!d) return;
+    if (d.raf) cancelAnimationFrame(d.raf);
+    drag.current = null;
+    settle();
+  };
+
+  const behind = isTop || exiting ? 0 : stackIndex;
   const ink = p.darkInk ? "#14161C" : T.ink;
 
   return (
     <div
+      ref={rootRef}
       onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onCancel}
       style={{
         position: "absolute", inset: 0, touchAction: "none",
-        transform: `translate(${x}px, ${y + behind * 12}px) rotate(${rot}deg) scale(${1 - behind * 0.045})`,
-        transition: drag.active ? "none" : "transform 0.32s cubic-bezier(0.2, 0.9, 0.3, 1.05), opacity 0.3s ease",
-        opacity: exit ? 0 : 1 - behind * 0.18,
-        zIndex: 10 - behind,
+        transform: `translate3d(0px, ${behind * 12}px, 0) rotate(0deg) scale(${1 - behind * 0.045})`,
+        transition: "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease",
+        opacity: 1 - behind * 0.18,
+        zIndex: exiting ? 30 : 10 - behind,
+        willChange: isTop || exiting ? "transform" : "auto",
         cursor: isTop ? "grab" : "default",
       }}
     >
@@ -384,10 +449,10 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
           </>
         )}
 
-        <div style={{ position: "absolute", top: 26, left: 22, opacity: saveOp, transform: `rotate(-9deg) scale(${0.9 + saveOp * 0.15})`, ...display(900), fontSize: 30, color: T.save, border: `3px solid ${T.save}`, borderRadius: 12, padding: "4px 14px", background: "rgba(0,0,0,0.25)", backdropFilter: "blur(6px)" }}>
+        <div ref={saveRef} style={{ position: "absolute", top: 26, left: 22, opacity: 0, transform: "rotate(-9deg) scale(0.9)", ...display(900), fontSize: 30, color: T.save, border: `3px solid ${T.save}`, borderRadius: 12, padding: "4px 14px", background: "rgba(0,0,0,0.25)", backdropFilter: "blur(6px)" }}>
           SAVE <span style={{ ...mono, fontSize: 13, fontWeight: 500 }}>保存</span>
         </div>
-        <div style={{ position: "absolute", top: 26, right: 22, opacity: passOp, transform: `rotate(9deg) scale(${0.9 + passOp * 0.15})`, ...display(900), fontSize: 30, color: T.pass, border: `3px solid ${T.pass}`, borderRadius: 12, padding: "4px 14px", background: "rgba(0,0,0,0.25)", backdropFilter: "blur(6px)" }}>
+        <div ref={passRef} style={{ position: "absolute", top: 26, right: 22, opacity: 0, transform: "rotate(9deg) scale(0.9)", ...display(900), fontSize: 30, color: T.pass, border: `3px solid ${T.pass}`, borderRadius: 12, padding: "4px 14px", background: "rgba(0,0,0,0.25)", backdropFilter: "blur(6px)" }}>
           PASS <span style={{ ...mono, fontSize: 13, fontWeight: 500 }}>パス</span>
         </div>
 
@@ -427,31 +492,105 @@ function SwipeCard({ listing, isTop, stackIndex, forced, onSwipe, onOpen }) {
 /* ---------------- detail sheet ---------------- */
 
 function DetailSheet({ listing, onClose, saved, onToggleSave }) {
-  const [dy, setDy] = useState(0); // live drag offset while pulling the sheet down
-  const [closing, setClosing] = useState(false);
-  const drag = useRef(null); // { startY } while a pull is in progress
+  const sheetRef = useRef(null);
+  const backRef = useRef(null);
+  const drag = useRef(null); // live gesture: offset + smoothed velocity
+  const closingRef = useRef(false);
+  const [shown, setShown] = useState(false); // false = parked below the viewport
 
-  // Reset drag state whenever a new listing opens the sheet.
-  useEffect(() => { setDy(0); setClosing(false); drag.current = null; }, [listing]);
+  /* The sheet slides in via a transition on the SAME transform the drag
+     writes to — a keyframe animation here would override the drag and the
+     sheet would ignore the finger. */
+  useEffect(() => {
+    closingRef.current = false;
+    drag.current = null;
+    setShown(false);
+    if (!listing) return undefined;
+    const raf = requestAnimationFrame(() => requestAnimationFrame(() => setShown(true)));
+    return () => cancelAnimationFrame(raf);
+  }, [listing]);
 
-  const dismiss = useCallback(() => {
-    setClosing(true);
-    setTimeout(onClose, 240); // let the slide-out finish before unmounting
+  const dismiss = useCallback((vy = 0) => {
+    if (closingRef.current) return;
+    closingRef.current = true;
+    const el = sheetRef.current, back = backRef.current;
+    if (!el) { onClose(); return; }
+    // Keep the finger's momentum: a hard flick exits faster.
+    const ms = Math.round(Math.min(Math.max(320 - vy * 120, 150), 300));
+    el.style.transition = `transform ${ms}ms cubic-bezier(0.4, 0.2, 0.7, 1)`;
+    el.style.transform = "translate3d(0, 105%, 0)";
+    if (back) { back.style.transition = `opacity ${ms}ms ease`; back.style.opacity = "0"; }
+    setTimeout(onClose, ms + 30);
   }, [onClose]);
 
-  const onHandleDown = (e) => {
-    drag.current = { startY: e.clientY };
-    e.currentTarget.setPointerCapture?.(e.pointerId);
+  // Once a pull is committed, stop the browser from scrolling underneath it.
+  useEffect(() => {
+    const el = sheetRef.current;
+    if (!el) return undefined;
+    const block = (e) => { if (drag.current?.committed) e.preventDefault(); };
+    el.addEventListener("touchmove", block, { passive: false });
+    return () => el.removeEventListener("touchmove", block);
+  }, [listing]);
+
+  const paint = () => {
+    const d = drag.current;
+    if (!d) return;
+    d.raf = 0;
+    const dy = d.dy < 0 ? d.dy * 0.12 : d.dy; // rubber-band upward pulls
+    if (sheetRef.current) sheetRef.current.style.transform = `translate3d(0, ${dy}px, 0)`;
+    if (backRef.current) backRef.current.style.opacity = String(1 - clamp01(Math.max(dy, 0) / 700));
   };
-  const onHandleMove = (e) => {
-    if (!drag.current) return;
-    setDy(Math.max(0, e.clientY - drag.current.startY)); // only downward
+
+  const onDown = (e) => {
+    if (closingRef.current) return;
+    const el = sheetRef.current;
+    if (!el) return;
+    drag.current = {
+      dy: 0, dx: 0, y0: e.clientY, x0: e.clientX,
+      committed: false, raf: 0, pid: e.pointerId,
+      samples: [{ t: performance.now(), x: 0, y: 0 }],
+      // The handle zone always drags; the body drags by touch from the top of the scroll.
+      fromHandle: e.clientY - el.getBoundingClientRect().top < 56,
+      touch: e.pointerType !== "mouse",
+    };
   };
-  const onHandleUp = () => {
-    if (!drag.current) return;
+  const onMove = (e) => {
+    const d = drag.current;
+    if (!d || closingRef.current) return;
+    const el = sheetRef.current;
+    if (!el) return;
+    const dy = e.clientY - d.y0, dx = e.clientX - d.x0;
+    d.dy = dy; d.dx = dx;
+    trackSample(d, dx, dy);
+    if (!d.committed) {
+      const pull = d.fromHandle
+        ? Math.abs(dy) > 3
+        : d.touch && dy > 8 && Math.abs(dy) > Math.abs(dx) * 1.2 && el.scrollTop <= 0;
+      if (pull) {
+        d.committed = true;
+        el.setPointerCapture?.(d.pid);
+        el.style.transition = "none";
+        if (backRef.current) backRef.current.style.transition = "none";
+      } else if (dy < -8 || Math.abs(dx) > 16 || el.scrollTop > 0) {
+        drag.current = null; // it's a scroll or horizontal gesture — the browser's
+        return;
+      } else return;
+    }
+    if (!d.raf) d.raf = requestAnimationFrame(paint);
+  };
+  const onUp = () => {
+    const d = drag.current;
+    if (!d) return;
+    if (d.raf) cancelAnimationFrame(d.raf);
     drag.current = null;
-    if (dy > 130) dismiss(); // pulled far enough → close
-    else setDy(0); // spring back
+    if (!d.committed) return; // plain tap — buttons/links handle themselves
+    const el = sheetRef.current, back = backRef.current;
+    const h = el ? el.getBoundingClientRect().height : 600;
+    const { vy } = releaseVelocity(d);
+    if (d.dy > h * 0.22 || (d.dy > 40 && vy > 0.35)) { dismiss(Math.max(vy, 0)); return; }
+    // Not far enough — spring back into place.
+    if (el) { el.style.transition = "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)"; el.style.transform = "translate3d(0, 0, 0)"; }
+    if (back) { back.style.transition = "opacity 0.3s ease"; back.style.opacity = "1"; }
   };
 
   if (!listing) return null;
@@ -462,24 +601,24 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
     ["Chassis", listing.chassis], ["Paint", p.name],
     ["Location", listing.location], ["Source", listing.source],
   ];
-  const dragging = drag.current != null;
   return (
-    <div onClick={dismiss} style={{ position: "fixed", inset: 0, zIndex: 60, background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)", display: "flex", alignItems: "flex-end", justifyContent: "center", opacity: closing ? 0 : 1, transition: "opacity 0.24s ease" }}>
-      <Glass onClick={(e) => e.stopPropagation()} radius={28} style={{
-        width: "min(560px, 100%)", maxHeight: "88%", overflowY: "auto", margin: "0 8px", padding: "22px 22px 26px",
-        background: "rgba(14,16,23,0.82)",
-        transform: closing ? "translateY(110%)" : `translateY(${dy}px)`,
-        animation: closing ? "none" : "riseIn 0.32s cubic-bezier(0.2,0.9,0.3,1) both",
-        transition: closing ? "transform 0.24s cubic-bezier(0.4,0,1,1)" : (dragging ? "none" : "transform 0.28s cubic-bezier(0.2,0.9,0.3,1)"),
-      }}>
-        {/* Grab handle — pull down to dismiss. touchAction:none so the browser
-            hands the vertical gesture to us instead of scrolling the sheet. */}
-        <div
-          onPointerDown={onHandleDown} onPointerMove={onHandleMove}
-          onPointerUp={onHandleUp} onPointerCancel={onHandleUp}
-          style={{ padding: "2px 0 14px", margin: "-4px 0 6px", cursor: "grab", touchAction: "none" }}
-        >
-          <div style={{ width: 40, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.22)", margin: "0 auto" }} />
+    <div ref={backRef} onClick={() => dismiss()} style={{ position: "fixed", inset: 0, zIndex: 60, background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)", display: "flex", alignItems: "flex-end", justifyContent: "center", opacity: shown ? 1 : 0, transition: "opacity 0.34s ease" }}>
+      <Glass
+        ref={sheetRef}
+        onClick={(e) => e.stopPropagation()}
+        onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}
+        radius={28}
+        style={{
+          width: "min(560px, 100%)", maxHeight: "88%", overflowY: "auto", margin: "0 8px", padding: "22px 22px 26px",
+          background: "rgba(14,16,23,0.82)", overscrollBehavior: "contain",
+          transform: shown ? "translate3d(0, 0, 0)" : "translate3d(0, 100%, 0)",
+          transition: "transform 0.42s cubic-bezier(0.22, 1, 0.36, 1)",
+          willChange: "transform",
+        }}
+      >
+        {/* Grab handle — its zone always drags, even where the sheet scrolls. */}
+        <div style={{ padding: "2px 0 14px", margin: "-4px 0 6px", cursor: "grab", touchAction: "none", userSelect: "none" }}>
+          <div style={{ width: 40, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.28)", margin: "0 auto" }} />
         </div>
         {listing.image ? (
           <img
@@ -767,6 +906,29 @@ export default function App() {
     }
   }, [listings]);
 
+  /* Two-phase swipe: the card announces its fly-out immediately (the next
+     card promotes with zero dead time), then commits once it's off-screen. */
+  const [exiting, setExiting] = useState([]); // [{ id, dir }] cards mid-flight
+  const beginSwipe = useCallback((id, dir) => {
+    setExiting((ex) => [...ex, { id, dir }]);
+    setForced(null); // consumed — a promoted card must not replay it
+  }, []);
+  const commitSwipe = useCallback((id, dir) => {
+    setExiting((ex) => ex.filter((e) => e.id !== id));
+    handleSwipe(id, dir);
+  }, [handleSwipe]);
+
+  // Cards on screen: any still flying off, then the next three waiting.
+  const stack = useMemo(() => {
+    const exIds = new Set(exiting.map((e) => e.id));
+    const flying = exiting.map((e) => deck.find((l) => l.id === e.id)).filter(Boolean);
+    return [...flying, ...deck.filter((l) => !exIds.has(l.id)).slice(0, 3)];
+  }, [deck, exiting]);
+  const topListing = useMemo(
+    () => stack.find((l) => !exiting.some((e) => e.id === l.id)) || deck[0] || null,
+    [stack, exiting, deck],
+  );
+
   const undoSwipe = useCallback(() => {
     setSwipeHistory((h) => {
       if (!h.length) return h;
@@ -840,14 +1002,14 @@ export default function App() {
     const onKey = (e) => {
       if (e.key === "Escape") { setDetail(null); setFiltersOpen(false); return; }
       if (detail || filtersOpen || tab !== "feed") return;
-      if (e.key === "ArrowLeft") setForced((f) => ({ dir: "left", n: f.n + 1 }));
-      else if (e.key === "ArrowRight") setForced((f) => ({ dir: "right", n: f.n + 1 }));
-      else if ((e.key === "ArrowUp" || e.key === "Enter") && deck[0]) setDetail(deck[0]);
+      if (e.key === "ArrowLeft") setForced((f) => ({ dir: "left", n: (f?.n || 0) + 1 }));
+      else if (e.key === "ArrowRight") setForced((f) => ({ dir: "right", n: (f?.n || 0) + 1 }));
+      else if ((e.key === "ArrowUp" || e.key === "Enter") && topListing) setDetail(topListing);
       else if (e.key === "z" || e.key === "Backspace") undoSwipe();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [detail, filtersOpen, tab, deck, undoSwipe]);
+  }, [detail, filtersOpen, tab, topListing, undoSwipe]);
 
   return (
     <div style={{ height: "100dvh", background: T.bg, color: T.ink, overflow: "hidden", position: "relative", ...body }}>
@@ -910,10 +1072,15 @@ export default function App() {
                   </div>
                 </Glass>
               ) : (
-                deck.slice(0, 3).map((l, i) => (
-                  <SwipeCard key={l.id} listing={l} isTop={i === 0} stackIndex={i}
-                    forced={i === 0 ? forced : null} onSwipe={handleSwipe} onOpen={setDetail} />
-                )).reverse()
+                stack.map((l, i) => {
+                  const ex = exiting.find((e) => e.id === l.id);
+                  const idx = ex ? 0 : i - exiting.length;
+                  return (
+                    <SwipeCard key={l.id} listing={l} isTop={!ex && idx === 0} stackIndex={ex ? 0 : idx}
+                      exiting={ex ? ex.dir : null} forced={!ex && idx === 0 ? forced : null}
+                      onSwipeStart={beginSwipe} onSwipeCommit={commitSwipe} onOpen={setDetail} />
+                  );
+                }).reverse()
               )}
             </div>
           ) : (
@@ -941,9 +1108,9 @@ export default function App() {
                 </IconBtn>
               )}
               <IconBtn label="Pass on this car" color={T.pass} border="rgba(255,90,72,0.4)"
-                onClick={() => setForced((f) => ({ dir: "left", n: f.n + 1 }))}><XIcon /></IconBtn>
+                onClick={() => setForced((f) => ({ dir: "left", n: (f?.n || 0) + 1 }))}><XIcon /></IconBtn>
               <IconBtn label="Save this car" color={T.save} border="rgba(57,217,138,0.4)"
-                onClick={() => setForced((f) => ({ dir: "right", n: f.n + 1 }))}><HeartIcon /></IconBtn>
+                onClick={() => setForced((f) => ({ dir: "right", n: (f?.n || 0) + 1 }))}><HeartIcon /></IconBtn>
             </div>
           ) : (
             <div style={{ ...mono, fontSize: 10.5, letterSpacing: "0.22em", color: T.faint }}>
