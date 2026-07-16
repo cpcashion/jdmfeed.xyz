@@ -33,17 +33,29 @@ for (const [name, fn] of SOURCES) {
   }
 }
 
-// Dedupe by listing URL, keep only well-formed rows, cap.
+// Dedupe by listing URL, keep only well-formed rows.
 const seen = new Set();
-const listings = all
-  .filter((l) => {
-    if (!l.source_url || !l.title) return false;
-    const k = l.source_url.toLowerCase();
-    if (seen.has(k)) return false;
-    seen.add(k);
-    return true;
-  })
-  .slice(0, MAX_LISTINGS);
+const deduped = all.filter((l) => {
+  if (!l.source_url || !l.title) return false;
+  const k = l.source_url.toLowerCase();
+  if (seen.has(k)) return false;
+  seen.add(k);
+  return true;
+});
+
+// Interleave sources round-robin so the deck mixes them — otherwise the
+// feed would show every card from the first source before any other.
+const bySource = new Map();
+for (const l of deduped) {
+  if (!bySource.has(l.source)) bySource.set(l.source, []);
+  bySource.get(l.source).push(l);
+}
+const queues = [...bySource.values()];
+const listings = [];
+for (let i = 0; listings.length < Math.min(deduped.length, MAX_LISTINGS); i++) {
+  const q = queues[i % queues.length];
+  if (q.length) listings.push(q.shift());
+}
 
 // Never overwrite a good file with nothing — if every source failed, keep the
 // last-known-good listings.json and fail the run so it's visible.
