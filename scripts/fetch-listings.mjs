@@ -12,13 +12,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fetchBringATrailer } from "./sources/bringatrailer.mjs";
+import { fetchEbayMotors } from "./sources/ebay.mjs";
 
 const OUT = path.resolve("app/public/listings.json");
-const MAX_LISTINGS = 200;
+const MAX_LISTINGS = 600;
 
 const SOURCES = [
   ["Bring a Trailer", fetchBringATrailer],
-  // Add more here, e.g. ["eBay Motors", fetchEbayMotors],
+  ["eBay Motors", fetchEbayMotors],
 ];
 
 const all = [];
