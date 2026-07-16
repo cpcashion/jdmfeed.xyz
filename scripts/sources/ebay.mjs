@@ -13,7 +13,8 @@
  * shared JDM canon, and map to the app's listing shape.
  */
 
-import { decode, isJDM, parseTitle } from "./jdm.mjs";
+import fs from "node:fs";
+import { decode, isJDM, parseTitle, specsFromText } from "./jdm.mjs";
 
 // eBay keyset values never contain whitespace, so strip ALL whitespace and
 // invisible characters — phone copy/paste loves to smuggle one into the
@@ -115,6 +116,7 @@ export async function fetchEbayMotors() {
       if (!year || !make) continue; // no year+make in a vehicle title → junk row
       const price = Number(it.price?.value ?? it.currentBidPrice?.value) || 0;
       const loc = [it.itemLocation?.city, it.itemLocation?.stateOrProvince].filter(Boolean).join(", ");
+      const specs = specsFromText(title); // titles often carry "5-Speed" etc.
       byId.set(it.itemId, {
         title,
         year,
@@ -123,10 +125,11 @@ export async function fetchEbayMotors() {
         chassis: "",
         trim: "",
         price,
-        mileage: 0,
-        transmission: "",
-        engine: "",
-        drivetrain: "",
+        mileage: specs.mileage || 0,
+        transmission: specs.transmission || "",
+        engine: specs.engine || "",
+        drivetrain: specs.drivetrain || "",
+        color: specs.color || "",
         location: loc || "United States",
         source: "eBay Motors",
         source_url: it.itemWebUrl || "",
@@ -139,5 +142,74 @@ export async function fetchEbayMotors() {
       });
     }
   }
+
+  await enrichAll(token, byId);
   return [...byId.values()];
+}
+
+/* ---- item-detail enrichment: real mileage/transmission/engine/color ----
+
+   The search response has no vehicle aspects, so each NEW listing gets one
+   GET /buy/browse/v1/item/{id} call. Rows already enriched in the previous
+   listings.json are reused, so steady-state runs only pay for the delta. */
+
+const ITEM_URL = "https://api.ebay.com/buy/browse/v1/item/";
+
+async function enrichOne(token, l, itemId) {
+  const res = await fetch(ITEM_URL + encodeURIComponent(itemId), {
+    headers: { Authorization: `Bearer ${token}`, "X-EBAY-C-MARKETPLACE-ID": "EBAY_US" },
+  });
+  if (!res.ok) throw new Error(`item ${itemId} HTTP ${res.status}`);
+  const it = JSON.parse(await res.text());
+  const aspects = {};
+  for (const a of it.localizedAspects || []) aspects[String(a.name).toLowerCase()] = String(a.value);
+  const pick = (...names) => { for (const n of names) if (aspects[n]) return aspects[n]; return ""; };
+
+  const mil = parseInt(pick("mileage", "vehicle mileage").replace(/[^0-9]/g, ""), 10);
+  if (mil > 0 && mil < 2e6) l.mileage = mil;
+  l.transmission = pick("transmission") || l.transmission;
+  l.engine = pick("engine", "engine size", "engine type") || l.engine;
+  l.drivetrain = pick("drive type", "drivetrain") || l.drivetrain;
+  l.color = pick("exterior color", "color") || l.color;
+  const yr = parseInt(pick("model year", "year"), 10);
+  if (yr >= 1950 && yr <= 2027) l.year = yr; // seller aspects beat title parsing
+  if (!l.description && it.shortDescription) l.description = decode(it.shortDescription);
+  l.enriched = true; // don't re-fetch this listing on future runs
+}
+
+async function enrichAll(token, byId) {
+  // Reuse enrichment from the previous run's listings.json.
+  const prev = new Map();
+  try {
+    const old = JSON.parse(fs.readFileSync("app/public/listings.json", "utf8"));
+    for (const l of old.listings || []) {
+      if (l.source === "eBay Motors" && l.enriched) prev.set(l.source_url, l);
+    }
+  } catch { /* first run */ }
+
+  let cached = 0;
+  for (const l of byId.values()) {
+    const c = prev.get(l.source_url);
+    if (!c) continue;
+    l.mileage = c.mileage || l.mileage;
+    l.transmission = c.transmission || l.transmission;
+    l.engine = c.engine || l.engine;
+    l.drivetrain = c.drivetrain || l.drivetrain;
+    l.color = c.color || l.color;
+    l.description = l.description || c.description || "";
+    l.year = c.year || l.year;
+    l.enriched = true;
+    cached++;
+  }
+
+  const todo = [...byId.entries()].filter(([, l]) => !l.enriched);
+  let done = 0, failed = 0;
+  // Small worker pool: hundreds of detail calls without hammering the API.
+  await Promise.all(Array.from({ length: 8 }, async () => {
+    while (todo.length) {
+      const [id, l] = todo.shift();
+      try { await enrichOne(token, l, id); done++; } catch { failed++; }
+    }
+  }));
+  console.log(`  eBay enrichment: ${done} fetched, ${cached} cached, ${failed} failed`);
 }

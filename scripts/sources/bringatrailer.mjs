@@ -11,7 +11,7 @@
  * never appear — which is exactly the "for sale, not sold" requirement.
  */
 
-import { UA, decode, isJDM, parseTitle } from "./jdm.mjs";
+import { UA, decode, isJDM, parseTitle, specsFromText } from "./jdm.mjs";
 
 /** Pull the balanced {...} that follows `auctionsCurrentInitialData =`. */
 function extractInitialData(html) {
@@ -52,6 +52,8 @@ export async function fetchBringATrailer() {
     if ((it.country_code || "US") !== "US") continue; // for sale in the US
     if (!isJDM(it.title)) continue;
     const { year, make, model } = parseTitle(it.title);
+    // Mileage/gearbox/engine/color live in BaT's prose — mine them out.
+    const specs = specsFromText(`${decode(it.title)}. ${decode(it.excerpt)}`);
     out.push({
       title: decode(it.title),
       year,
@@ -60,10 +62,11 @@ export async function fetchBringATrailer() {
       chassis: "",
       trim: "",
       price: Number(it.current_bid) || 0,
-      mileage: 0,
-      transmission: "",
-      engine: "",
-      drivetrain: "",
+      mileage: specs.mileage || 0,
+      transmission: specs.transmission || "",
+      engine: specs.engine || "",
+      drivetrain: specs.drivetrain || "",
+      color: specs.color || "",
       location: it.country || "United States",
       source: "Bring a Trailer",
       source_url: it.url,
