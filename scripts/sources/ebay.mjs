@@ -15,9 +15,12 @@
 
 import { decode, isJDM, parseTitle } from "./jdm.mjs";
 
-// trim(): a stray newline/space in a pasted repo secret corrupts Basic auth.
-const CLIENT_ID = (process.env.EBAY_CLIENT_ID || "ChrisCas-JDMFeed-PRD-662558e1b-d9772e1c").trim();
-const CERT_ID = (process.env.EBAY_CERT_ID || "").trim();
+// eBay keyset values never contain whitespace, so strip ALL whitespace and
+// invisible characters — phone copy/paste loves to smuggle one into the
+// middle of a repo secret, which corrupts Basic auth.
+const clean = (s) => String(s || "").replace(/[\s\u00A0\u200B-\u200D\uFEFF]+/g, "");
+const CLIENT_ID = clean(process.env.EBAY_CLIENT_ID) || "ChrisCas-JDMFeed-PRD-662558e1b-d9772e1c";
+const CERT_ID = clean(process.env.EBAY_CERT_ID);
 
 const TOKEN_URL = "https://api.ebay.com/identity/v1/oauth2/token";
 const SEARCH_URL = "https://api.ebay.com/buy/browse/v1/item_summary/search";
