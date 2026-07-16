@@ -23,8 +23,11 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - name: Fetch live listings from sources (Bring a Trailer, …)
+      - name: Fetch live listings from sources (Bring a Trailer, eBay Motors, …)
         run: node scripts/fetch-listings.mjs
+        env:
+          EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
+          EBAY_CERT_ID: ${{ secrets.EBAY_CERT_ID }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
