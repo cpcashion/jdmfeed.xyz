@@ -54,7 +54,13 @@ jobs:
             echo "No listing changes this run."
           else
             git commit -m "Refresh live listings + cut-outs [skip ci]"
-            git push
+            # main can move while cut-outs process (site deploys race this
+            # job) — rebase our data commit on top and retry the push.
+            for i in 1 2 3; do
+              git push && break
+              git fetch origin main
+              git rebase origin/main
+            done
             gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
           fi
         env:
