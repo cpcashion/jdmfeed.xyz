@@ -50,3 +50,41 @@ export function parseTitle(title) {
   }
   return { year, make, model };
 }
+
+/* ---- spec extraction from listing prose (titles, excerpts) ---- */
+
+export function specsFromText(text) {
+  const t = String(text || "");
+  const out = {};
+
+  // "41k-Mile", "34,000 miles", "shows 90k miles"
+  const mi = t.match(/(\d{1,3}(?:,\d{3})+|\d{1,3}k|\d{3,6})[- ]?miles?\b/i);
+  if (mi) {
+    const raw = mi[1].toLowerCase();
+    out.mileage = raw.endsWith("k") ? parseInt(raw, 10) * 1000 : parseInt(raw.replace(/,/g, ""), 10);
+  }
+
+  if (/\bautomatic\b|\bauto\b(?!crosser)/i.test(t)) out.transmission = "Automatic";
+  else {
+    const sp = t.match(/(\d)-speed/i);
+    if (sp) out.transmission = `${sp[1]}-speed manual`;
+    else if (/\bmanual\b/i.test(t)) out.transmission = "Manual";
+  }
+
+  // "powered by a 2.8-liter L28 inline-six linked to..."
+  // Dots are allowed inside ("2.8-liter") — the phrase ends at a comma, a
+  // sentence break, or a joining verb.
+  const eng = t.match(/(?:powered by|equipped with) (?:an? )?(.{6,60}?)(?=,| (?:linked|paired|mated|backed|and)\b|\.(?:\s|$))/i);
+  if (eng) out.engine = eng[1].trim();
+
+  if (/\b(4wd|4x4|four-wheel)/i.test(t)) out.drivetrain = "4WD";
+  else if (/\b(awd|all-wheel)/i.test(t)) out.drivetrain = "AWD";
+  else if (/\b(rwd|rear-wheel)/i.test(t)) out.drivetrain = "RWD";
+  else if (/\b(fwd|front-wheel)/i.test(t)) out.drivetrain = "FWD";
+
+  // BaT convention: "Finished in Midnight Purple over black upholstery"
+  const col = t.match(/finished in ([A-Za-z0-9 \-]{3,32}?) (?:over|with|and)\b/i);
+  if (col) out.color = col[1].trim();
+
+  return out;
+}

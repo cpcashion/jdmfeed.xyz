@@ -93,9 +93,11 @@ const normalize = (raw, i, live = false) => ({
   trim: raw.trim || "",
   price: typeof raw.price === "number" ? raw.price : Number(String(raw.price).replace(/[^0-9.]/g, "")) || 0,
   mileage: Number(raw.mileage) || 0,
-  transmission: raw.transmission || "Manual",
-  engine: raw.engine || "—",
-  drivetrain: raw.drivetrain || "—",
+  // Unknown stays empty (and hidden in the UI) — never a made-up default.
+  transmission: raw.transmission || "",
+  engine: raw.engine === "—" ? "" : raw.engine || "",
+  drivetrain: raw.drivetrain === "—" ? "" : raw.drivetrain || "",
+  color: raw.color || "",
   location: raw.location || "United States",
   source: raw.source || (live ? "Web" : "Demo data"),
   source_url: raw.source_url || "",
@@ -390,7 +392,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
         <div style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay" }} />
 
         <div aria-hidden style={{
-          position: "absolute", top: "19%", left: -8, right: 0, ...display(900),
+          position: "absolute", top: "12%", left: -8, right: 0, ...display(900),
           fontSize: "clamp(88px, 27vw, 156px)", lineHeight: 0.84, color: ink,
           opacity: p.darkInk ? 0.92 : 0.96, letterSpacing: "-0.04em", whiteSpace: "nowrap",
           textShadow: p.darkInk ? "none" : "0 6px 40px rgba(0,0,0,0.35)", paddingLeft: 22,
@@ -407,7 +409,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
                 Sits just above the info glass so the car reads as floating
                 clear of the panel rather than tucked behind it. */}
             <div aria-hidden style={{
-              position: "absolute", left: "16%", right: "16%", bottom: "26%", height: 28,
+              position: "absolute", left: "16%", right: "16%", bottom: "31%", height: 28,
               background: "radial-gradient(60% 100% at 50% 50%, rgba(0,0,0,0.6), transparent 70%)",
               filter: "blur(11px)",
             }} />
@@ -420,8 +422,8 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
               loading={isTop ? "eager" : "lazy"}
               onError={() => setCutOk(false)}
               style={{
-                position: "absolute", left: "1%", right: "1%", bottom: "24%", width: "98%",
-                maxHeight: "56%", objectFit: "contain", objectPosition: "bottom center",
+                position: "absolute", left: "1%", right: "1%", bottom: "29%", width: "98%",
+                maxHeight: "52%", objectFit: "contain", objectPosition: "bottom center",
                 userSelect: "none", filter: "drop-shadow(0 26px 28px rgba(0,0,0,0.6))",
               }}
             />
@@ -467,11 +469,18 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
             </div>
             <div style={{ ...display(900), fontSize: 22, color: T.ink, whiteSpace: "nowrap" }}>{fmtPrice(listing.price)}</div>
           </div>
-          <div style={{ ...mono, fontSize: 12, color: T.dim, marginTop: 8, display: "flex", flexWrap: "wrap", gap: "4px 14px" }}>
-            <span>{fmtMiles(listing.mileage)}</span>
-            <span>{listing.transmission}</span>
-            <span>{listing.drivetrain}</span>
-          </div>
+          {(() => {
+            // Only the specs the source actually knows — no "—" placeholders.
+            const quick = [
+              listing.mileage > 0 ? fmtMiles(listing.mileage) : "",
+              listing.transmission, listing.drivetrain,
+            ].filter(Boolean);
+            return quick.length ? (
+              <div style={{ ...mono, fontSize: 12, color: T.dim, marginTop: 8, display: "flex", flexWrap: "wrap", gap: "4px 14px" }}>
+                {quick.map((s) => <span key={s}>{s}</span>)}
+              </div>
+            ) : null;
+          })()}
           <div style={{ marginTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span style={{ ...body, fontSize: 12.5, color: T.faint }}>{listing.location}</span>
             <span style={{
@@ -489,9 +498,12 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
   );
 }
 
-/* ---------------- detail sheet ---------------- */
+/* ---------------- shared bottom sheet (drag-to-dismiss) ---------------- */
 
-function DetailSheet({ listing, onClose, saved, onToggleSave }) {
+/* Every sheet in the app — detail, account, filters — uses this. The grab
+   handle (and, by touch, the body when scrolled to the top) rides the
+   finger 1:1 and dismisses past a distance or velocity threshold. */
+function BottomSheet({ onClose, style, children }) {
   const sheetRef = useRef(null);
   const backRef = useRef(null);
   const drag = useRef(null); // live gesture: offset + smoothed velocity
@@ -502,13 +514,9 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
      writes to — a keyframe animation here would override the drag and the
      sheet would ignore the finger. */
   useEffect(() => {
-    closingRef.current = false;
-    drag.current = null;
-    setShown(false);
-    if (!listing) return undefined;
     const raf = requestAnimationFrame(() => requestAnimationFrame(() => setShown(true)));
     return () => cancelAnimationFrame(raf);
-  }, [listing]);
+  }, []);
 
   const dismiss = useCallback((vy = 0) => {
     if (closingRef.current) return;
@@ -530,7 +538,7 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
     const block = (e) => { if (drag.current?.committed) e.preventDefault(); };
     el.addEventListener("touchmove", block, { passive: false });
     return () => el.removeEventListener("touchmove", block);
-  }, [listing]);
+  }, []);
 
   const paint = () => {
     const d = drag.current;
@@ -593,14 +601,6 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
     if (back) { back.style.transition = "opacity 0.3s ease"; back.style.opacity = "1"; }
   };
 
-  if (!listing) return null;
-  const p = listing.paint;
-  const specs = [
-    ["Engine", listing.engine], ["Drivetrain", listing.drivetrain],
-    ["Transmission", listing.transmission], ["Mileage", fmtMiles(listing.mileage)],
-    ["Chassis", listing.chassis], ["Paint", p.name],
-    ["Location", listing.location], ["Source", listing.source],
-  ];
   return (
     <div ref={backRef} onClick={() => dismiss()} style={{ position: "fixed", inset: 0, zIndex: 60, background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)", display: "flex", alignItems: "flex-end", justifyContent: "center", opacity: shown ? 1 : 0, transition: "opacity 0.34s ease" }}>
       <Glass
@@ -614,12 +614,33 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
           transform: shown ? "translate3d(0, 0, 0)" : "translate3d(0, 100%, 0)",
           transition: "transform 0.42s cubic-bezier(0.22, 1, 0.36, 1)",
           willChange: "transform",
+          ...style,
         }}
       >
         {/* Grab handle — its zone always drags, even where the sheet scrolls. */}
         <div style={{ padding: "2px 0 14px", margin: "-4px 0 6px", cursor: "grab", touchAction: "none", userSelect: "none" }}>
           <div style={{ width: 40, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.28)", margin: "0 auto" }} />
         </div>
+        {children}
+      </Glass>
+    </div>
+  );
+}
+
+/* ---------------- detail sheet ---------------- */
+
+function DetailSheet({ listing, onClose, saved, onToggleSave }) {
+  if (!listing) return null;
+  const p = listing.paint;
+  // Only show spec tiles the sources actually know — no blank "—" cells.
+  const specs = [
+    ["Engine", listing.engine], ["Drivetrain", listing.drivetrain],
+    ["Transmission", listing.transmission], ["Mileage", listing.mileage > 0 ? fmtMiles(listing.mileage) : ""],
+    ["Chassis", listing.chassis], ["Exterior", listing.color],
+    ["Location", listing.location], ["Source", listing.source],
+  ].filter(([, v]) => v && String(v).trim() && v !== "—");
+  return (
+    <BottomSheet key={listing.id} onClose={onClose}>
         {listing.image ? (
           <img
             src={listing.image} alt={listing.title}
@@ -660,8 +681,7 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
             </a>
           ) : null}
         </div>
-      </Glass>
-    </div>
+    </BottomSheet>
   );
 }
 
@@ -698,9 +718,7 @@ function AccountSheet({ open, onClose, user, onSignedIn, onSignOut, savedCount }
 
   if (!open) return null;
   return (
-    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 60, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(6px)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
-      <Glass onClick={(e) => e.stopPropagation()} radius={28} style={{ width: "min(560px,100%)", margin: "0 8px", padding: "22px 22px 30px", animation: "riseIn 0.3s ease both", background: "rgba(14,16,23,0.85)", textAlign: "center" }}>
-        <div style={{ width: 40, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.22)", margin: "0 auto 20px" }} />
+    <BottomSheet onClose={onClose} style={{ padding: "22px 22px 30px", textAlign: "center" }}>
         {user ? (
           <>
             {user.picture ? (
@@ -728,15 +746,49 @@ function AccountSheet({ open, onClose, user, onSignedIn, onSignOut, savedCount }
             {authError ? <div style={{ ...body, fontSize: 12.5, color: T.pass, marginTop: 12 }}>{authError}</div> : null}
           </>
         )}
-      </Glass>
-    </div>
+    </BottomSheet>
   );
 }
 
 /* ---------------- filter sheet ---------------- */
 
+/* Nameplate families — the filter speaks the same language as the cards'
+   giant chassis type. Each entry: [label, URL slug, title matcher]. The
+   slug makes filters shareable: jdmfeed.xyz/#land-cruiser opens the feed
+   pre-tuned to Land Cruisers. */
+const NAMEPLATES = [
+  ["Skyline / GT-R", "skyline", /GT-?R|Skyline/i],
+  ["Supra", "supra", /Supra/i],
+  ["Land Cruiser", "land-cruiser", /Land ?Cruiser|FJ\d\d|HJ\d\d|HDJ\d\d|BJ\d\d/i],
+  ["Z cars", "z-cars", /2[468]0Z|300ZX|3[57]0Z|Fairlady/i],
+  ["Rotary", "rotary", /RX-?[2378]|Cosmo/i],
+  ["NSX", "nsx", /NSX/i],
+  ["S2000", "s2000", /S2000/i],
+  ["Silvia / 240SX", "silvia", /Silvia|180SX|200SX|240SX/i],
+  ["Miata", "miata", /Miata|MX-?5/i],
+  ["Civic / Integra", "civic", /Civic|Integra|CRX|Prelude|Type ?R/i],
+  ["Evo / Lancer", "evo", /Evolution|Lancer|\bEvo\b/i],
+  ["WRX / STI", "wrx", /WRX|STI\b|Impreza/i],
+  ["AE86 / MR2", "toyota-sport", /AE86|Trueno|Levin|MR-?2|MR-?S|Celica|Starlet/i],
+  ["Kei cars", "kei", /Cappuccino|AZ-?1|\bBeat\b|Sambar|Hijet|Acty|Jimny|Copen|Cara\b/i],
+  ["4×4 / vans", "4x4", /Delica|Pajero|Montero|VehiCROSS|Samurai|Chaser|Crown|Century/i],
+];
+const plateMatches = (l, slugs) => {
+  if (!slugs.size) return true;
+  const hay = `${l.title} ${l.model} ${l.chassis}`;
+  return NAMEPLATES.some(([, slug, re]) => slugs.has(slug) && re.test(hay));
+};
+const platesFromHash = () => {
+  try {
+    const raw = decodeURIComponent(window.location.hash.slice(1));
+    const valid = new Set(NAMEPLATES.map(([, slug]) => slug));
+    return new Set(raw.split(",").map((s) => s.trim()).filter((s) => valid.has(s)));
+  } catch { return new Set(); }
+};
+
 const ERAS = [1980, 1990, 2000];
-function FilterSheet({ open, onClose, filters, setFilters, matchCount }) {
+function FilterSheet({ open, onClose, filters, setFilters, matchCount, listings }) {
+  const [copied, setCopied] = useState(false);
   if (!open) return null;
   const chip = (active) => ({
     padding: "9px 16px", borderRadius: 20, cursor: "pointer", ...body, fontSize: 13.5, fontWeight: 600,
@@ -747,13 +799,44 @@ function FilterSheet({ open, onClose, filters, setFilters, matchCount }) {
     const eras = new Set(f.eras); eras.has(d) ? eras.delete(d) : eras.add(d);
     return { ...f, eras };
   });
+  const togglePlate = (slug) => setFilters((f) => {
+    const plates = new Set(f.plates); plates.has(slug) ? plates.delete(slug) : plates.add(slug);
+    return { ...f, plates };
+  });
+  const plateCount = (re) => listings.reduce((n, l) => n + (re.test(`${l.title} ${l.model} ${l.chassis}`) ? 1 : 0), 0);
+  const shareFilter = async () => {
+    const url = `${window.location.origin}${window.location.pathname}#${[...filters.plates].join(",")}`;
+    try { await navigator.clipboard.writeText(url); } catch { /* http fallback below */ }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
   return (
-    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 60, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(6px)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
-      <Glass onClick={(e) => e.stopPropagation()} radius={28} style={{ width: "min(560px,100%)", margin: "0 8px", padding: "22px 22px 28px", animation: "riseIn 0.3s ease both", background: "rgba(14,16,23,0.85)" }}>
-        <div style={{ width: 40, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.22)", margin: "0 auto 20px" }} />
+    <BottomSheet onClose={onClose} style={{ padding: "22px 22px 28px" }}>
         <h3 style={{ ...display(900), fontSize: 20, color: T.ink, margin: "0 0 20px" }}>Tune the feed</h3>
 
-        <div style={{ ...mono, fontSize: 10.5, letterSpacing: "0.2em", color: T.faint, marginBottom: 10 }}>BUDGET CEILING</div>
+        <div style={{ ...mono, fontSize: 10.5, letterSpacing: "0.2em", color: T.faint, marginBottom: 10 }}>NAMEPLATE</div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+          {NAMEPLATES.map(([label, slug, re]) => {
+            const n = plateCount(re);
+            if (!n && !filters.plates.has(slug)) return null;
+            return (
+              <button key={slug} style={chip(filters.plates.has(slug))} onClick={() => togglePlate(slug)}>
+                {label} <span style={{ ...mono, fontSize: 10.5, opacity: 0.55 }}>{n}</span>
+              </button>
+            );
+          })}
+        </div>
+        {filters.plates.size > 0 && (
+          <button onClick={shareFilter} style={{
+            marginTop: 12, padding: "10px 16px", borderRadius: 14, cursor: "pointer", ...mono, fontSize: 11.5,
+            letterSpacing: "0.08em", color: copied ? T.save : T.dim, background: "rgba(255,255,255,0.05)",
+            border: `1px solid ${copied ? "rgba(57,217,138,0.45)" : T.glassBrd}`,
+          }}>
+            {copied ? "LINK COPIED — TEXT IT TO A FRIEND ✓" : "⇪ SHARE THIS FEED"}
+          </button>
+        )}
+
+        <div style={{ ...mono, fontSize: 10.5, letterSpacing: "0.2em", color: T.faint, margin: "24px 0 10px" }}>BUDGET CEILING</div>
         <div style={{ ...display(800), fontSize: 24, color: T.ink, marginBottom: 10 }}>
           {filters.maxPrice >= 200000 ? "No limit" : "$" + filters.maxPrice.toLocaleString()}
         </div>
@@ -781,8 +864,7 @@ function FilterSheet({ open, onClose, filters, setFilters, matchCount }) {
         }}>
           Show {matchCount} car{matchCount === 1 ? "" : "s"}
         </button>
-      </Glass>
-    </div>
+    </BottomSheet>
   );
 }
 
@@ -866,7 +948,15 @@ export default function App() {
   const [tab, setTab] = useState("feed");
   const [detail, setDetail] = useState(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [filters, setFilters] = useState({ maxPrice: 200000, eras: new Set(), gearbox: "Any" });
+  // plates seeds from the URL hash, so a shared jdmfeed.xyz/#land-cruiser
+  // link opens the feed already tuned to that nameplate.
+  const [filters, setFilters] = useState(() => ({ maxPrice: 200000, eras: new Set(), gearbox: "Any", plates: platesFromHash() }));
+
+  // Keep the URL shareable: the hash always mirrors the nameplate filter.
+  useEffect(() => {
+    const hash = [...filters.plates].join(",");
+    try { window.history.replaceState(null, "", hash ? `#${hash}` : window.location.pathname + window.location.search); } catch { /* sandboxed */ }
+  }, [filters.plates]);
   const [forced, setForced] = useState({ dir: null, n: 0 });
   const [swipeHistory, setSwipeHistory] = useState([]);
   const [sync, setSync] = useState("idle");
@@ -885,7 +975,8 @@ export default function App() {
   const passesFilters = useCallback((l) =>
     (filters.maxPrice >= 200000 || l.price <= filters.maxPrice || l.price === 0) &&
     (filters.eras.size === 0 || filters.eras.has(decadeOf(l.year))) &&
-    (filters.gearbox === "Any" || /manual/i.test(l.transmission)),
+    (filters.gearbox === "Any" || /manual/i.test(l.transmission)) &&
+    plateMatches(l, filters.plates),
   [filters]);
 
   const deck = useMemo(() => listings.filter((l) => !swiped[l.id] && passesFilters(l)), [listings, swiped, passesFilters]);
@@ -1148,7 +1239,7 @@ export default function App() {
         saved={detail ? swiped[detail.id] === "right" : false} onToggleSave={toggleSave} />
       <AccountSheet open={accountOpen} onClose={() => setAccountOpen(false)} user={user}
         onSignedIn={handleSignedIn} onSignOut={handleSignOut} savedCount={saved.length} />
-      <FilterSheet open={filtersOpen} onClose={() => setFiltersOpen(false)}
+      <FilterSheet open={filtersOpen} onClose={() => setFiltersOpen(false)} listings={listings}
         filters={filters} setFilters={setFilters}
         matchCount={listings.filter((l) => !swiped[l.id] && passesFilters(l)).length} />
     </div>

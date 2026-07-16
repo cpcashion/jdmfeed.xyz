@@ -24,12 +24,17 @@ import os
 import sys
 import urllib.request
 
+import numpy as np
 from PIL import Image
+from scipy import ndimage
 
 LISTINGS = os.path.join("app", "public", "listings.json")
 CUT_DIR = os.path.join("app", "public", "cutouts")
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 MAX_W = 900  # cap cut-out width; keeps WebP small
+
+# Bump to invalidate every cached cut-out (feeds the filename hash).
+CUT_VERSION = "v2"
 
 os.makedirs(CUT_DIR, exist_ok=True)
 
@@ -40,11 +45,37 @@ listings = data.get("listings", [])
 # Lazy import so a rembg install problem is a clear, single failure.
 from rembg import new_session, remove  # noqa: E402
 
-session = new_session("u2net")
+# isnet-general-use segments object edges noticeably tighter than u2net —
+# fewer background slivers around mirrors, spoilers, and wheel arches.
+session = new_session("isnet-general-use")
 
 
 def key_for(url: str) -> str:
-    return hashlib.md5(url.encode("utf-8")).hexdigest()[:16]
+    return hashlib.md5(f"{CUT_VERSION}|{url}".encode("utf-8")).hexdigest()[:16]
+
+
+def clean_alpha(im: Image.Image) -> Image.Image:
+    """Kill halos and detached background blobs so ONLY the car remains.
+
+    - Faint alpha (<40) is halo noise, not car — zero it.
+    - The segmenter often keeps disconnected fragments (poles, foliage,
+      pavement corners). Keep the largest connected region plus anything at
+      least 10% of its area (protects two-car photos and towed trailers that
+      belong to the listing) and drop the rest.
+    """
+    a = np.asarray(im, dtype=np.uint8).copy()
+    alpha = a[:, :, 3]
+    alpha[alpha < 40] = 0
+    mask = alpha > 0
+    if mask.any():
+        labels, n = ndimage.label(mask)
+        if n > 1:
+            sizes = ndimage.sum_labels(mask, labels, index=range(1, n + 1))
+            keep = {i + 1 for i, s in enumerate(sizes) if s >= 0.10 * sizes.max()}
+            drop = ~np.isin(labels, list(keep))
+            alpha[drop] = 0
+    a[:, :, 3] = alpha
+    return Image.fromarray(a, "RGBA")
 
 
 def fetch(url: str) -> bytes:
@@ -74,8 +105,10 @@ for l in listings:
         continue
 
     try:
-        cut = remove(fetch(url), session=session)  # PNG bytes with alpha
-        im = Image.open(io.BytesIO(cut)).convert("RGBA")
+        # post_process_mask smooths the mask morphologically (fast, no
+        # pymatting); clean_alpha then removes halos + detached blobs.
+        cut = remove(fetch(url), session=session, post_process_mask=True)
+        im = clean_alpha(Image.open(io.BytesIO(cut)).convert("RGBA"))
         bbox = im.getbbox()  # trim transparent margins → car fills the frame
         if bbox:
             im = im.crop(bbox)

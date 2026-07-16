@@ -35,7 +35,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.u2net
-          key: u2net-model-v1
+          key: rembg-models-v2 # isnet-general-use
       - name: Install rembg
         run: pip install rembg onnxruntime pillow
       - name: Cut out cars (transparent background)
