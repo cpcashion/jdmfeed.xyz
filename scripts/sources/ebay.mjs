@@ -174,6 +174,10 @@ async function enrichOne(token, l, itemId) {
   const yr = parseInt(pick("model year", "year"), 10);
   if (yr >= 1950 && yr <= 2027) l.year = yr; // seller aspects beat title parsing
   if (!l.description && it.shortDescription) l.description = decode(it.shortDescription);
+  // Full photo gallery for the detail sheet's slider.
+  const gallery = [it.image?.imageUrl, ...(it.additionalImages || []).map((a) => a?.imageUrl)]
+    .filter(Boolean).map(hiRes);
+  l.images = [...new Set(gallery)].slice(0, 14);
   l.enriched = true; // don't re-fetch this listing on future runs
 }
 
@@ -190,7 +194,9 @@ async function enrichAll(token, byId) {
   let cached = 0;
   for (const l of byId.values()) {
     const c = prev.get(l.source_url);
-    if (!c) continue;
+    // Rows enriched before the gallery existed lack images — re-fetch those
+    // once so the slider gets photos.
+    if (!c || !Array.isArray(c.images) || c.images.length === 0) continue;
     l.mileage = c.mileage || l.mileage;
     l.transmission = c.transmission || l.transmission;
     l.engine = c.engine || l.engine;
@@ -198,6 +204,7 @@ async function enrichAll(token, byId) {
     l.color = c.color || l.color;
     l.description = l.description || c.description || "";
     l.year = c.year || l.year;
+    l.images = c.images;
     l.enriched = true;
     cached++;
   }

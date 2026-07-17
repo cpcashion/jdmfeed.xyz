@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
 
 /* ============================================================
-   TOUGE 峠 — jdmfeed.xyz
+   PopJDM — jdmfeed.xyz
    ------------------------------------------------------------
    • Data layer: static listings.json, refreshed by a scheduled GitHub Action
    • Persistence: localStorage (swipes + live listings survive reloads)
@@ -33,6 +33,7 @@ input[type=range]{ -webkit-appearance:none; appearance:none; height:3px; border-
 input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:22px; height:22px; border-radius:50%;
   background:rgba(255,255,255,0.92); border:1px solid rgba(255,255,255,0.4);
   box-shadow:0 2px 10px rgba(0,0,0,0.5); cursor:pointer; }
+.photostrip::-webkit-scrollbar { display: none; }
 @keyframes riseIn { from { opacity:0; transform:translateY(14px) scale(0.985);} to { opacity:1; transform:none;} }
 @keyframes pillIn { from { opacity:0; transform:translate(-50%, 10px);} to { opacity:1; transform:translate(-50%, 0);} }
 @keyframes spinDash { to { transform: rotate(360deg); } }
@@ -102,6 +103,9 @@ const normalize = (raw, i, live = false) => ({
   source: raw.source || (live ? "Web" : "Demo data"),
   source_url: raw.source_url || "",
   image: raw.image_url || raw.image || "",
+  images: Array.isArray(raw.images) && raw.images.length
+    ? raw.images
+    : (raw.image_url || raw.image ? [raw.image_url || raw.image] : []),
   cutout: raw.cutout || "",
   description: raw.description || "",
   paintName: raw.paintName || raw.paint || "",
@@ -399,7 +403,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
           textShadow: p.darkInk ? "none" : "0 6px 40px rgba(0,0,0,0.35)", paddingLeft: 22,
         }}>
           <div style={{ ...mono, fontSize: 12, letterSpacing: "0.34em", opacity: 0.75, marginBottom: 12, fontWeight: 500 }}>
-            {listing.make.toUpperCase()} · {String(listing.year)} · 日本製
+            {listing.make.toUpperCase()} · {String(listing.year)}
           </div>
           {listing.chassis}
         </div>
@@ -453,10 +457,10 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
         )}
 
         <div ref={saveRef} style={{ position: "absolute", top: 26, left: 22, opacity: 0, transform: "rotate(-9deg) scale(0.9)", ...display(900), fontSize: 30, color: T.save, border: `3px solid ${T.save}`, borderRadius: 12, padding: "4px 14px", background: "rgba(0,0,0,0.25)", backdropFilter: "blur(6px)" }}>
-          SAVE <span style={{ ...mono, fontSize: 13, fontWeight: 500 }}>保存</span>
+          SAVE
         </div>
         <div ref={passRef} style={{ position: "absolute", top: 26, right: 22, opacity: 0, transform: "rotate(9deg) scale(0.9)", ...display(900), fontSize: 30, color: T.pass, border: `3px solid ${T.pass}`, borderRadius: 12, padding: "4px 14px", background: "rgba(0,0,0,0.25)", backdropFilter: "blur(6px)" }}>
-          PASS <span style={{ ...mono, fontSize: 13, fontWeight: 500 }}>パス</span>
+          PASS
         </div>
 
         <Glass radius={22} style={{ position: "absolute", left: 14, right: 14, bottom: 14, padding: "16px 18px 14px" }}>
@@ -513,7 +517,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
               boxShadow: T.glassHi, display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
             }}
           >
-            DETAILS · 詳細
+            DETAILS
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M18 15l-6-6-6 6" /></svg>
           </button>
         </Glass>
@@ -654,8 +658,15 @@ function BottomSheet({ onClose, style, children }) {
 /* ---------------- detail sheet ---------------- */
 
 function DetailSheet({ listing, onClose, saved, onToggleSave }) {
+  const [photo, setPhoto] = useState(0);
+  const stripRef = useRef(null);
+  useEffect(() => {
+    setPhoto(0);
+    stripRef.current?.scrollTo?.({ left: 0 });
+  }, [listing?.id]);
   if (!listing) return null;
   const p = listing.paint;
+  const imgs = listing.images?.length ? listing.images : (listing.image ? [listing.image] : []);
   // Only show spec tiles the sources actually know — no blank "—" cells.
   const specs = [
     ["Engine", listing.engine], ["Drivetrain", listing.drivetrain],
@@ -665,13 +676,52 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
   ].filter(([, v]) => v && String(v).trim() && v !== "—");
   return (
     <BottomSheet key={listing.id} onClose={onClose}>
-        {listing.image ? (
-          <img
-            src={listing.image} alt={listing.title}
-            onError={(e) => { e.currentTarget.style.display = "none"; }}
-            style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 18, marginBottom: 16, border: `1px solid ${T.glassBrd}` }}
-          />
-        ) : null}
+        {imgs.length > 0 && (
+          <div style={{ position: "relative", marginBottom: 16 }}>
+            {/* Native scroll-snap photo slider — momentum + snapping for free.
+                touchAction pan-x keeps horizontal swipes here; vertical pulls
+                still fall through to the sheet's drag-to-dismiss. */}
+            <div
+              ref={stripRef}
+              className="photostrip"
+              onScroll={(e) => {
+                const el = e.currentTarget;
+                setPhoto(Math.min(imgs.length - 1, Math.max(0, Math.round(el.scrollLeft / el.clientWidth))));
+              }}
+              style={{
+                display: "flex", overflowX: "auto", scrollSnapType: "x mandatory",
+                borderRadius: 18, border: `1px solid ${T.glassBrd}`,
+                WebkitOverflowScrolling: "touch", overscrollBehaviorX: "contain",
+                touchAction: "pan-x", scrollbarWidth: "none",
+              }}
+            >
+              {imgs.map((src, i) => (
+                <img
+                  key={src} src={src} alt={`${listing.title} — photo ${i + 1}`}
+                  loading={i < 2 ? "eager" : "lazy"} draggable={false}
+                  onError={(e) => { e.currentTarget.style.display = "none"; }}
+                  style={{ width: "100%", height: 260, objectFit: "cover", flexShrink: 0, scrollSnapAlign: "center", userSelect: "none" }}
+                />
+              ))}
+            </div>
+            {imgs.length > 1 && (
+              <>
+                <div style={{ position: "absolute", bottom: 10, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 5, pointerEvents: "none" }}>
+                  {imgs.map((_, i) => (
+                    <div key={i} style={{
+                      width: i === photo ? 16 : 5, height: 5, borderRadius: 3,
+                      background: i === photo ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.45)",
+                      transition: "all 0.25s ease", boxShadow: "0 1px 4px rgba(0,0,0,0.5)",
+                    }} />
+                  ))}
+                </div>
+                <div style={{ position: "absolute", top: 10, right: 10, ...mono, fontSize: 10.5, padding: "3px 9px", borderRadius: 12, background: "rgba(0,0,0,0.55)", color: T.ink, pointerEvents: "none" }}>
+                  {photo + 1}/{imgs.length}
+                </div>
+              </>
+            )}
+          </div>
+        )}
         <div style={{ height: 6, borderRadius: 3, marginBottom: 18, background: `linear-gradient(90deg, ${p.stops[0]}, ${p.stops[1]}, ${p.stops[2]})` }} />
         <div style={{ ...mono, fontSize: 11, letterSpacing: "0.3em", color: T.faint }}>{listing.chassis} · {listing.make.toUpperCase()}</div>
         <h2 style={{ ...display(900), fontSize: 30, color: T.ink, margin: "6px 0 2px", lineHeight: 1.05 }}>
@@ -908,7 +958,7 @@ function Garage({ saved, onRemove, onOpen }) {
     return (
       <div style={{ height: "100%", display: "grid", placeItems: "center", padding: 32, textAlign: "center" }}>
         <div>
-          <div style={{ ...display(900), fontSize: 64, color: "rgba(255,255,255,0.08)", lineHeight: 1 }}>車庫</div>
+          <div style={{ ...display(900), fontSize: 64, color: "rgba(255,255,255,0.08)", lineHeight: 1 }}>GARAGE</div>
           <div style={{ ...display(800), fontSize: 18, color: T.ink, marginTop: 14 }}>The garage is empty</div>
           <p style={{ ...body, fontSize: 13.5, color: T.dim, maxWidth: 260, margin: "8px auto 0", lineHeight: 1.6 }}>
             Swipe right on a car in the feed and it parks here.
@@ -1137,9 +1187,7 @@ export default function App() {
 
         <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "calc(14px + env(safe-area-inset-top)) 18px 12px" }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-            <span style={{ ...display(900), fontSize: 22, letterSpacing: "0.02em" }}>TOUGE</span>
-            <span style={{ fontSize: 17, opacity: 0.85 }}>峠</span>
-            <span style={{ ...mono, fontSize: 9.5, letterSpacing: "0.28em", color: T.faint }}>JDM FEED · USA</span>
+            <span style={{ ...display(900), fontSize: 22, letterSpacing: "0.02em" }}>PopJDM</span>
           </div>
           <div style={{ display: "flex", gap: 8 }}>
             <IconBtn label="Sync live listings from the web" size={40} onClick={doSync}
@@ -1171,7 +1219,7 @@ export default function App() {
               {deck.length === 0 ? (
                 <Glass radius={30} style={{ height: "100%", display: "grid", placeItems: "center", textAlign: "center", padding: 28 }}>
                   <div>
-                    <div style={{ ...display(900), fontSize: 56, color: "rgba(255,255,255,0.08)", lineHeight: 1 }}>完売</div>
+                    <div style={{ ...display(900), fontSize: 56, color: "rgba(255,255,255,0.08)", lineHeight: 1 }}>EMPTY</div>
                     <div style={{ ...display(800), fontSize: 18, marginTop: 14 }}>Deck's empty</div>
                     <p style={{ ...body, fontSize: 13.5, color: T.dim, maxWidth: 280, margin: "8px auto 18px", lineHeight: 1.6 }}>
                       Sync live listings from the web, loosen your filters, or bring back the cars you passed on.
