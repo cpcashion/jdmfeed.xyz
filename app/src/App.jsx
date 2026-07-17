@@ -269,6 +269,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
   const passRef = useRef(null);
   const drag = useRef(null); // live gesture: offsets + smoothed velocity
   const gone = useRef(false); // fly-out started — this card is done taking input
+  const btnDown = useRef(null); // where the DETAILS press started (drift check)
   const [imgOk, setImgOk] = useState(true);
   const [cutOk, setCutOk] = useState(true);
   const p = listing.paint;
@@ -339,7 +340,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
     d.dx = e.clientX - d.x0;
     d.dy = e.clientY - d.y0;
     trackSample(d, d.dx, d.dy);
-    if (Math.abs(d.dx) + Math.abs(d.dy) > 10) d.moved = true;
+    if (Math.abs(d.dx) + Math.abs(d.dy) > 14) d.moved = true; // forgiving tap slop
     if (!d.raf) d.raf = requestAnimationFrame(paint);
   };
   const onUp = () => {
@@ -409,7 +410,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
                 Sits just above the info glass so the car reads as floating
                 clear of the panel rather than tucked behind it. */}
             <div aria-hidden style={{
-              position: "absolute", left: "16%", right: "16%", bottom: "31%", height: 28,
+              position: "absolute", left: "16%", right: "16%", bottom: "37%", height: 28,
               background: "radial-gradient(60% 100% at 50% 50%, rgba(0,0,0,0.6), transparent 70%)",
               filter: "blur(11px)",
             }} />
@@ -422,8 +423,8 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
               loading={isTop ? "eager" : "lazy"}
               onError={() => setCutOk(false)}
               style={{
-                position: "absolute", left: "1%", right: "1%", bottom: "29%", width: "98%",
-                maxHeight: "52%", objectFit: "contain", objectPosition: "bottom center",
+                position: "absolute", left: "1%", right: "1%", bottom: "35%", width: "98%",
+                maxHeight: "47%", objectFit: "contain", objectPosition: "bottom center",
                 userSelect: "none", filter: "drop-shadow(0 26px 28px rgba(0,0,0,0.6))",
               }}
             />
@@ -492,6 +493,29 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
               {listing.live ? "● LIVE · " : ""}{listing.source.toUpperCase()}
             </span>
           </div>
+          {/* Guaranteed tap target for the detail sheet. stopPropagation on
+              pointerdown keeps the card's swipe engine from ever capturing
+              this pointer, so the button works on every device regardless
+              of how the platform routes the tap gesture. */}
+          <button
+            onPointerDown={(e) => { e.stopPropagation(); btnDown.current = { x: e.clientX, y: e.clientY }; }}
+            onClick={(e) => {
+              e.stopPropagation();
+              const s = btnDown.current;
+              if (s && Math.hypot(e.clientX - s.x, e.clientY - s.y) > 12) return; // a drag, not a tap
+              buzz(6);
+              onOpen(listing);
+            }}
+            style={{
+              width: "100%", marginTop: 12, padding: "12px 0", borderRadius: 14, cursor: "pointer",
+              ...mono, fontSize: 11, letterSpacing: "0.22em", color: T.ink,
+              background: "rgba(255,255,255,0.07)", border: `1px solid ${T.glassBrd}`,
+              boxShadow: T.glassHi, display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+            }}
+          >
+            DETAILS · 詳細
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M18 15l-6-6-6 6" /></svg>
+          </button>
         </Glass>
       </div>
     </div>
