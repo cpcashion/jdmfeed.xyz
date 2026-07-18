@@ -11,7 +11,69 @@
  * never appear — which is exactly the "for sale, not sold" requirement.
  */
 
+import fs from "node:fs";
 import { UA, decode, isJDM, parseTitle, specsFromText } from "./jdm.mjs";
+
+/* ---- per-auction photo galleries ----
+
+   The auctions blob only carries one thumbnail, but each listing page
+   embeds its full gallery as bringatrailer.com/wp-content/uploads URLs
+   (each photo in several -WxH size variants). Pull the page, dedupe
+   variants down to one URL per photo (preferring ~1200px wide), and cap
+   at 14 for the detail sheet's slider. Galleries from the previous run
+   are reused, so steady-state refreshes only fetch pages for NEW cars. */
+
+const VARIANT = /-(\d+)x(\d+)(?=\.\w+$)/;
+
+async function fetchGallery(pageUrl) {
+  const res = await fetch(pageUrl, { headers: { "User-Agent": UA, "Accept-Language": "en-US,en;q=0.9" } });
+  if (!res.ok) throw new Error(`gallery HTTP ${res.status}`);
+  // Embedded JSON escapes slashes — normalize before matching.
+  const html = (await res.text()).replace(/\\\//g, "/");
+  const byBase = new Map(); // photo base -> { url, w }
+  const re = /https:\/\/bringatrailer\.com\/wp-content\/uploads\/\d{4}\/\d{2}\/[^\s"'<>\\]+?\.(?:jpe?g|png|webp)/gi;
+  for (const m of html.matchAll(re)) {
+    const url = m[0];
+    const base = url.replace(VARIANT, "").replace(/-scaled(?=\.\w+$)/, "");
+    const w = Number(url.match(VARIANT)?.[1]) || 9999; // un-suffixed = original (huge)
+    const cur = byBase.get(base);
+    // Prefer the variant closest to ~1200px wide — sharp but not 8MB.
+    if (!cur || Math.abs(w - 1200) < Math.abs(cur.w - 1200)) byBase.set(base, { url, w });
+  }
+  return [...byBase.values()].map((v) => v.url).slice(0, 14);
+}
+
+async function addGalleries(listings) {
+  const prev = new Map();
+  try {
+    const old = JSON.parse(fs.readFileSync("app/public/listings.json", "utf8"));
+    for (const l of old.listings || []) {
+      if (l.source === "Bring a Trailer" && Array.isArray(l.images) && l.images.length > 1) prev.set(l.source_url, l.images);
+    }
+  } catch { /* first run */ }
+
+  let fetched = 0, cached = 0, failed = 0;
+  const todo = [];
+  for (const l of listings) {
+    const c = prev.get(l.source_url);
+    if (c) { l.images = c; cached++; } else todo.push(l);
+  }
+  // Small pool: ~50 pages on a fresh cache, a handful on normal runs.
+  await Promise.all(Array.from({ length: 5 }, async () => {
+    while (todo.length) {
+      const l = todo.shift();
+      try {
+        const imgs = await fetchGallery(l.source_url);
+        l.images = imgs.length > 1 ? imgs : [l.image_url].filter(Boolean);
+        fetched++;
+      } catch {
+        l.images = [l.image_url].filter(Boolean);
+        failed++;
+      }
+    }
+  }));
+  console.log(`  BaT galleries: ${fetched} fetched, ${cached} cached, ${failed} failed`);
+}
 
 /** Pull the balanced {...} that follows `auctionsCurrentInitialData =`. */
 function extractInitialData(html) {
@@ -78,5 +140,6 @@ export async function fetchBringATrailer() {
       scraped_date: now,
     });
   }
+  await addGalleries(out);
   return out;
 }
