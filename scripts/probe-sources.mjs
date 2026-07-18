@@ -1,26 +1,35 @@
 /**
  * scripts/probe-sources.mjs — throwaway reconnaissance.
  *
- * Hits candidate endpoints on each listing source from the GitHub runner and
- * prints status + a response snippet, so we can see real JSON shapes and
- * whether datacenter IPs get blocked (Cloudflare 403 etc.). Not part of the
- * app; removed once the real fetchers are built.
+ * RHD-dealer sweep: hits candidate inventory endpoints for US importers
+ * whose whole stock is RHD JDM, plus JDM classifieds/auction sites, and
+ * prints status + shape hints so we know exactly which adapters to build.
+ * Shopify storefronts expose /products.json — one request per dealer.
  */
 
 const UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 
 const targets = [
-  // Cars & Bids — internal API candidates + HTML
-  ["C&B live JSON", "https://carsandbids.com/v2/search/listings?sort=ending_soon", "json"],
-  ["C&B listings", "https://carsandbids.com/v2/listings", "json"],
-  ["C&B auctions html", "https://carsandbids.com/auctions", "html"],
-  // Bring a Trailer — WP REST + auctions html
-  ["BaT wp auctions", "https://bringatrailer.com/wp-json/bringatrailer/1.0/data/keyword-data", "json"],
-  ["BaT auctions html", "https://bringatrailer.com/auctions/", "html"],
-  ["BaT models JDM", "https://bringatrailer.com/nissan/skyline/", "html"],
-  // Hemmings
-  ["Hemmings JDM html", "https://www.hemmings.com/classifieds/cars-for-sale/nissan/skyline", "html"],
+  // --- RHD importer dealers: Shopify JSON candidates ---
+  ["JapaneseClassics shopify", "https://www.japaneseclassics.com/products.json?limit=250", "json"],
+  ["JapaneseClassics collections", "https://www.japaneseclassics.com/collections/all/products.json?limit=250", "json"],
+  ["Montu shopify", "https://www.montumotors.com/products.json?limit=250", "json"],
+  ["PacificCoastJDM shopify", "https://pacificcoastjdm.com/products.json?limit=250", "json"],
+  ["JDMSportClassics shopify", "https://www.jdmsportclassics.com/products.json?limit=250", "json"],
+  ["BoostAutoImports shopify", "https://www.boostautoimports.com/products.json?limit=250", "json"],
+  ["JDMCarMotorcycle shopify", "https://jdmcarandmotorcycle.com/products.json?limit=250", "json"],
+  // --- RHD importer dealers: HTML inventory pages ---
+  ["Duncan inventory html", "https://www.duncanimports.com/newandusedcars?clearall=1", "html"],
+  ["Duncan alt html", "https://www.duncanimports.com/cars-for-sale", "html"],
+  ["Toprank inventory html", "https://importavehicle.com/vehicles", "html"],
+  ["Toprank alt html", "https://importavehicle.com/collections/all", "html"],
+  ["JapaneseClassics html", "https://www.japaneseclassics.com/collections/inventory", "html"],
+  // --- JDM classifieds / auctions ---
+  ["JDMBuySell html", "https://www.jdmbuysell.com/browse-ads/", "html"],
+  ["CarsAndBids v2", "https://carsandbids.com/v2/autos/auctions?limit=50", "json"],
+  ["ClassicCars search", "https://classiccars.com/listings/find?query=right%20hand%20drive", "html"],
+  ["Hemmings RHD search", "https://www.hemmings.com/classifieds/cars-for-sale?q=right%20hand%20drive", "html"],
 ];
 
 async function probe(name, url, kind) {
@@ -36,21 +45,35 @@ async function probe(name, url, kind) {
     const body = await res.text();
     console.log(`\n=== ${name} [${res.status}] ${url}`);
     console.log(`    content-type: ${res.headers.get("content-type")}  bytes: ${body.length}`);
-    if (kind === "html") {
-      // Surface embedded JSON hints (Next data, window vars, og:image, price)
+    if (kind === "json" || (res.headers.get("content-type") || "").includes("json")) {
+      try {
+        const j = JSON.parse(body);
+        const prods = j.products || j.auctions || j.items || j.listings;
+        if (Array.isArray(prods)) {
+          console.log(`    JSON OK — ${prods.length} entries; first keys: ${Object.keys(prods[0] || {}).slice(0, 12).join(",")}`);
+          if (prods[0]?.title) console.log(`    sample titles: ${prods.slice(0, 4).map((p) => String(p.title).slice(0, 46)).join(" | ")}`);
+          if (prods[0]?.images) console.log(`    first images count: ${prods[0].images.length}`);
+          if (prods[0]?.variants?.[0]?.price) console.log(`    first price: ${prods[0].variants[0].price}`);
+        } else {
+          console.log(`    JSON parsed but no obvious array — top keys: ${Object.keys(j).slice(0, 12).join(",")}`);
+        }
+      } catch {
+        console.log("    NOT JSON. snippet:", body.slice(0, 250).replace(/\s+/g, " "));
+      }
+    } else {
       for (const re of [
-        /__NEXT_DATA__/,
-        /window\.__[A-Z_]+__\s*=/,
-        /application\/(ld\+json|json)/,
-        /"currentBid"|"current_bid"|"price"|"sold_price"|"soldPrice"/,
-        /og:image/,
-        /data-listing|auction-item|listing-card/,
+        /__NEXT_DATA__/, /window\.__[A-Z_]+__\s*=/, /application\/ld\+json/,
+        /"price"|"currentBid"/, /inventory-|vehicle-card|listing-card|srp-|hit-content/,
+        /right[- ]hand[- ]drive|RHD/i, /algolia|typesense|meilisearch/i, /shopify/i,
+        /wp-json|wp-content/,
       ]) {
         const m = body.match(re);
-        if (m) console.log(`    hint: ${re} @${m.index}`);
+        if (m) console.log(`    hint: ${re} @${m.index} → "${body.slice(m.index, m.index + 60).replace(/\s+/g, " ")}"`);
       }
+      const links = new Set([...body.matchAll(/href="([^"]*(?:vehicle|inventory|listing|cars-for-sale|product)[^"]*)"/gi)].map((m) => m[1]));
+      console.log(`    vehicle-ish links: ${links.size}; sample: ${[...links].slice(0, 3).join(" , ")}`);
+      console.log("    snippet:", body.slice(0, 300).replace(/\s+/g, " "));
     }
-    console.log("    snippet:", body.slice(0, 700).replace(/\s+/g, " "));
   } catch (err) {
     console.log(`\n=== ${name} ERROR ${url}`);
     console.log("    " + err.message);
