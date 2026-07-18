@@ -97,11 +97,16 @@ const STATES = {
   UT: "Utah", VT: "Vermont", VA: "Virginia", WA: "Washington", WV: "West Virginia",
   WI: "Wisconsin", WY: "Wyoming", DC: "Washington DC",
 };
+const STATE_NAMES = new Map(Object.values(STATES).map((n) => [n.toLowerCase(), n]));
 const stateOf = (loc) => {
   const s = String(loc || "").trim();
   const m = s.match(/,\s*([A-Za-z]{2})\.?$/);
   if (m && STATES[m[1].toUpperCase()]) return STATES[m[1].toUpperCase()];
   if (STATES[s.toUpperCase()]) return STATES[s.toUpperCase()];
+  if (STATE_NAMES.has(s.toLowerCase())) return STATE_NAMES.get(s.toLowerCase());
+  // "Fort Lauderdale, Florida" — take the trailing full state name.
+  const tail = s.match(/,\s*([A-Za-z .]+?)$/)?.[1]?.trim().toLowerCase();
+  if (tail && STATE_NAMES.has(tail)) return STATE_NAMES.get(tail);
   return s || "United States";
 };
 
