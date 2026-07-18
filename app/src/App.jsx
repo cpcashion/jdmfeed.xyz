@@ -18,9 +18,9 @@ const T = {
   faint: "rgba(244,245,247,0.32)",
   save: "#39D98A",
   pass: "#FF5A48",
-  glassBg: "rgba(18,20,28,0.55)",
-  glassBrd: "rgba(255,255,255,0.10)",
-  glassHi: "inset 0 1px 0 rgba(255,255,255,0.14)",
+  glassBg: "rgba(20,22,32,0.47)",
+  glassBrd: "rgba(255,255,255,0.15)",
+  glassHi: "inset 0 1px 0 rgba(255,255,255,0.24), inset 0 -1px 0 rgba(255,255,255,0.06)",
 };
 
 const FONT = `
@@ -197,8 +197,8 @@ const Glass = React.forwardRef(({ children, style, radius = 22, ...rest }, ref) 
     {...rest}
     style={{
       background: T.glassBg,
-      backdropFilter: "blur(22px) saturate(1.6)",
-      WebkitBackdropFilter: "blur(22px) saturate(1.6)",
+      backdropFilter: "blur(28px) saturate(1.85)",
+      WebkitBackdropFilter: "blur(28px) saturate(1.85)",
       border: `1px solid ${T.glassBrd}`,
       boxShadow: `${T.glassHi}, 0 12px 40px rgba(0,0,0,0.45)`,
       borderRadius: radius,
@@ -243,7 +243,7 @@ const HeartIcon = ({ s = 22, filled }) => (
 
 /* ---------------- swipe card ---------------- */
 
-const THRESH = 96;
+const THRESH = 80;
 const clamp01 = (v) => Math.min(Math.max(v, 0), 1);
 
 const buzz = (ms) => { try { navigator.vibrate?.(ms); } catch { /* unsupported */ } };
@@ -281,14 +281,17 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
   // The masked full photo is the fallback when no cutout exists yet.
   const showPhoto = !showCutout && Boolean(listing.image) && imgOk;
 
-  /* The drag paints straight to the DOM in a rAF (no React re-render per
-     pointermove), so the card tracks the finger at native frame rate even
-     over the heavy imagery. */
+  /* The drag paints straight to the DOM inside the pointermove handler —
+     browsers already coalesce moves to display cadence, so skipping the
+     extra rAF hop removes a frame of lag and the card feels glued to the
+     finger. Rotation direction follows the grab point (grab the top half
+     and the nose leads; grab the bottom and it trails), the way physical
+     cards behave. */
   const paint = () => {
     const d = drag.current;
     if (!d || !rootRef.current) return;
-    d.raf = 0;
-    rootRef.current.style.transform = `translate3d(${d.dx}px, ${d.dy * 0.5}px, 0) rotate(${d.dx * 0.05}deg)`;
+    const rot = Math.max(-15, Math.min(15, d.dx * 0.06)) * d.rotDir;
+    rootRef.current.style.transform = `translate3d(${d.dx}px, ${d.dy * 0.9}px, 0) rotate(${rot}deg)`;
     const so = clamp01(d.dx / THRESH), po = clamp01(-d.dx / THRESH);
     if (saveRef.current) { saveRef.current.style.opacity = so; saveRef.current.style.transform = `rotate(-9deg) scale(${0.9 + so * 0.15})`; }
     if (passRef.current) { passRef.current.style.opacity = po; passRef.current.style.transform = `rotate(9deg) scale(${0.9 + po * 0.15})`; }
@@ -298,19 +301,18 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
     if (gone.current) return;
     gone.current = true;
     buzz(12);
-    const d = drag.current || { dx: 0, dy: 0, raf: 0 };
-    if (d.raf) cancelAnimationFrame(d.raf);
+    const d = drag.current || { dx: 0, dy: 0, rotDir: 1 };
     drag.current = null;
     const sign = dir === "right" ? 1 : -1;
     const distX = (window.innerWidth || 420) * 1.15 + 120;
     // The card leaves at the finger's speed — a hard flick exits faster —
     // and stays fully visible while it flies clear off-screen (no fade).
-    const speed = Math.max(Math.abs(vx), 0.9);
-    const ms = Math.round(Math.min(Math.max((distX - Math.abs(d.dx)) / speed, 200), 420));
+    const speed = Math.max(Math.abs(vx), 1.1);
+    const ms = Math.round(Math.min(Math.max((distX - Math.abs(d.dx)) / speed, 180), 380));
     const el = rootRef.current;
     if (el) {
-      el.style.transition = `transform ${ms}ms cubic-bezier(0.3, 0.7, 0.4, 1)`;
-      el.style.transform = `translate3d(${sign * distX}px, ${d.dy * 0.5 + vy * ms * 0.4 - 20}px, 0) rotate(${sign * 24}deg)`;
+      el.style.transition = `transform ${ms}ms cubic-bezier(0.32, 0.72, 0.46, 1)`;
+      el.style.transform = `translate3d(${sign * distX}px, ${d.dy * 0.9 + vy * ms * 0.35}px, 0) rotate(${sign * 22 * (d.rotDir || 1)}deg)`;
     }
     const stamp = dir === "right" ? saveRef.current : passRef.current;
     if (stamp) stamp.style.opacity = 1;
@@ -326,7 +328,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
   const settle = () => {
     const el = rootRef.current;
     if (el) {
-      el.style.transition = "transform 0.5s cubic-bezier(0.22, 1.2, 0.36, 1)"; // slight overshoot
+      el.style.transition = "transform 0.45s cubic-bezier(0.2, 1.25, 0.35, 1)"; // springy return
       el.style.transform = "translate3d(0px, 0px, 0) rotate(0deg)";
     }
     for (const r of [saveRef, passRef]) if (r.current) r.current.style.opacity = 0;
@@ -336,7 +338,12 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
     if (!isTop || gone.current) return;
     e.currentTarget.setPointerCapture(e.pointerId);
     if (rootRef.current) rootRef.current.style.transition = "none";
-    drag.current = { dx: 0, dy: 0, x0: e.clientX, y0: e.clientY, moved: false, raf: 0, samples: [{ t: performance.now(), x: 0, y: 0 }] };
+    const r = e.currentTarget.getBoundingClientRect();
+    drag.current = {
+      dx: 0, dy: 0, x0: e.clientX, y0: e.clientY, moved: false,
+      rotDir: e.clientY < r.top + r.height / 2 ? 1 : -1, // grab point sets the pivot feel
+      samples: [{ t: performance.now(), x: 0, y: 0 }],
+    };
   };
   const onMove = (e) => {
     const d = drag.current;
@@ -345,26 +352,25 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
     d.dy = e.clientY - d.y0;
     trackSample(d, d.dx, d.dy);
     if (Math.abs(d.dx) + Math.abs(d.dy) > 14) d.moved = true; // forgiving tap slop
-    if (!d.raf) d.raf = requestAnimationFrame(paint);
+    paint();
   };
   const onUp = () => {
     const d = drag.current;
     if (!d || gone.current) return;
-    if (d.raf) cancelAnimationFrame(d.raf);
     const { vx, vy } = releaseVelocity(d);
-    const fling = Math.abs(vx) > 0.4 && Math.abs(d.dx) > 28;
-    if (d.dx > THRESH || (fling && d.dx > 0)) return flyOut("right", vx, vy);
-    if (d.dx < -THRESH || (fling && d.dx < 0)) return flyOut("left", vx, vy);
+    // Decide on the PROJECTED landing point (position + velocity carry),
+    // the way native swipe UIs do — no dead zone between "far enough" and
+    // "fast enough": a slow far drag and a quick short flick both commit.
+    const proj = d.dx + vx * 200;
+    if (proj > THRESH && d.dx > 20) return flyOut("right", vx, vy);
+    if (proj < -THRESH && d.dx < -20) return flyOut("left", vx, vy);
     drag.current = null;
     settle();
-    // Tap or a deliberate vertical swipe opens the detail sheet.
-    const vertical = Math.abs(d.dy) > 55 && Math.abs(d.dx) < 50;
-    if (!d.moved || vertical) { buzz(6); onOpen(listing); }
+    // A clean tap anywhere on the card opens the details.
+    if (!d.moved) { buzz(6); onOpen(listing); }
   };
   const onCancel = () => {
-    const d = drag.current;
-    if (!d) return;
-    if (d.raf) cancelAnimationFrame(d.raf);
+    if (!drag.current) return;
     drag.current = null;
     settle();
   };
@@ -387,17 +393,17 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
       }}
     >
       <div style={{
-        position: "relative", width: "100%", height: "100%", borderRadius: 30, overflow: "hidden",
+        position: "relative", width: "100%", height: "100%", borderRadius: 34, overflow: "hidden",
         background: `linear-gradient(158deg, ${p.stops[0]} 0%, ${p.stops[1]} 52%, ${p.stops[2]} 100%)`,
-        border: "1px solid rgba(255,255,255,0.12)",
-        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.18), 0 24px 70px rgba(0,0,0,0.6)",
+        border: "1px solid rgba(255,255,255,0.16)",
+        boxShadow: "inset 0 1.5px 0 rgba(255,255,255,0.24), inset 0 -1px 0 rgba(255,255,255,0.05), 0 24px 70px rgba(0,0,0,0.6)",
       }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(90% 70% at 78% 8%, ${p.glow}55, transparent 60%)` }} />
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(120% 90% at 20% 110%, rgba(0,0,0,0.55), transparent 55%)" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay" }} />
 
         <div aria-hidden style={{
-          position: "absolute", top: "12%", left: -8, right: 0, ...display(900),
+          position: "absolute", top: "8%", left: -8, right: 0, ...display(900),
           fontSize: "clamp(88px, 27vw, 156px)", lineHeight: 0.84, color: ink,
           opacity: p.darkInk ? 0.92 : 0.96, letterSpacing: "-0.04em", whiteSpace: "nowrap",
           textShadow: p.darkInk ? "none" : "0 6px 40px rgba(0,0,0,0.35)", paddingLeft: 22,
@@ -414,7 +420,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
                 Sits just above the info glass so the car reads as floating
                 clear of the panel rather than tucked behind it. */}
             <div aria-hidden style={{
-              position: "absolute", left: "16%", right: "16%", bottom: "37%", height: 28,
+              position: "absolute", left: "16%", right: "16%", bottom: "40%", height: 28,
               background: "radial-gradient(60% 100% at 50% 50%, rgba(0,0,0,0.6), transparent 70%)",
               filter: "blur(11px)",
             }} />
@@ -427,7 +433,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
               loading={isTop ? "eager" : "lazy"}
               onError={() => setCutOk(false)}
               style={{
-                position: "absolute", left: "1%", right: "1%", bottom: "35%", width: "98%",
+                position: "absolute", left: "1%", right: "1%", bottom: "38%", width: "98%",
                 maxHeight: "47%", objectFit: "contain", objectPosition: "bottom center",
                 userSelect: "none", filter: "drop-shadow(0 26px 28px rgba(0,0,0,0.6))",
               }}
@@ -463,7 +469,20 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
           PASS
         </div>
 
-        <Glass radius={22} style={{ position: "absolute", left: 14, right: 14, bottom: 14, padding: "16px 18px 14px" }}>
+        <Glass
+          radius={24}
+          role="button"
+          aria-label="Open car details"
+          onPointerDown={(e) => { e.stopPropagation(); btnDown.current = { x: e.clientX, y: e.clientY }; }}
+          onClick={(e) => {
+            e.stopPropagation();
+            const s = btnDown.current;
+            if (s && Math.hypot(e.clientX - s.x, e.clientY - s.y) > 12) return; // a drag, not a tap
+            buzz(6);
+            onOpen(listing);
+          }}
+          style={{ position: "absolute", left: 14, right: 14, bottom: 14, padding: "16px 18px 14px", cursor: "pointer" }}
+        >
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
             <div style={{
               ...display(800), fontSize: 21, color: T.ink, lineHeight: 1.1,
@@ -944,66 +963,94 @@ function FilterSheet({ open, onClose, filters, setFilters, matchCount, listings 
 
 /* ---------------- saved (garage) view ---------------- */
 
-function Garage({ saved, onRemove, onOpen }) {
+function Garage({ saved, passed, onRemove, onOpen }) {
+  const [bucket, setBucket] = useState("saved"); // "saved" | "passed"
   const [sort, setSort] = useState("recent");
+  const source = bucket === "saved" ? saved : passed;
   const rows = useMemo(() => {
-    const arr = [...saved];
+    const arr = [...source];
     if (sort === "price↑") arr.sort((a, b) => a.price - b.price);
     if (sort === "price↓") arr.sort((a, b) => b.price - a.price);
     if (sort === "year") arr.sort((a, b) => a.year - b.year);
     return arr;
-  }, [saved, sort]);
+  }, [source, sort]);
 
-  if (!saved.length) {
-    return (
-      <div style={{ height: "100%", display: "grid", placeItems: "center", padding: 32, textAlign: "center" }}>
-        <div>
-          <div style={{ ...display(900), fontSize: 64, color: "rgba(255,255,255,0.08)", lineHeight: 1 }}>GARAGE</div>
-          <div style={{ ...display(800), fontSize: 18, color: T.ink, marginTop: 14 }}>The garage is empty</div>
-          <p style={{ ...body, fontSize: 13.5, color: T.dim, maxWidth: 260, margin: "8px auto 0", lineHeight: 1.6 }}>
-            Swipe right on a car in the feed and it parks here.
-          </p>
-        </div>
-      </div>
-    );
-  }
+  const seg = (active) => ({
+    flex: 1, padding: "10px 0", borderRadius: 14, cursor: "pointer", ...display(800), fontSize: 13,
+    letterSpacing: "0.04em", color: active ? T.bg : T.dim, background: active ? T.ink : "transparent",
+    border: "none", transition: "all 0.2s ease",
+  });
+
   return (
     <div style={{ height: "100%", overflowY: "auto", padding: "8px 16px 140px" }}>
-      <div style={{ display: "flex", gap: 8, margin: "6px 0 14px" }}>
-        {["recent", "price↑", "price↓", "year"].map((s) => (
-          <button key={s} onClick={() => setSort(s)} style={{
-            ...mono, fontSize: 11, letterSpacing: "0.06em", padding: "7px 12px", borderRadius: 16, cursor: "pointer",
-            color: sort === s ? T.bg : T.dim, background: sort === s ? T.ink : "rgba(255,255,255,0.05)",
-            border: `1px solid ${sort === s ? T.ink : T.glassBrd}`,
-          }}>{s}</button>
-        ))}
-      </div>
-      {rows.map((l) => (
-        <Glass key={l.id} radius={20} style={{ padding: 14, marginBottom: 10, display: "flex", gap: 14, alignItems: "center", animation: "riseIn 0.3s ease both", cursor: "pointer" }} onClick={() => onOpen(l)}>
-          <div style={{
-            width: 58, height: 58, borderRadius: 15, flexShrink: 0, display: "grid", placeItems: "center", overflow: "hidden",
-            background: `${l.image ? `url(${JSON.stringify(l.image)}) center/cover no-repeat, ` : ""}linear-gradient(150deg, ${l.paint.stops[0]}, ${l.paint.stops[1]}, ${l.paint.stops[2]})`,
-            border: "1px solid rgba(255,255,255,0.14)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.2)",
-            ...display(900), fontSize: 13, color: l.paint.darkInk ? "#14161C" : T.ink, letterSpacing: "-0.02em",
-          }}>
-            {l.image ? "" : l.chassis.slice(0, 5)}
-          </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ ...display(800), fontSize: 15, color: T.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-              {l.year} {l.model}
+      {/* Saved / Passed buckets — left-swipes aren't gone, they're parked here. */}
+      <Glass radius={18} style={{ display: "flex", padding: 4, gap: 4, margin: "4px 0 12px" }}>
+        <button style={seg(bucket === "saved")} onClick={() => setBucket("saved")}>Garage {saved.length ? `· ${saved.length}` : ""}</button>
+        <button style={seg(bucket === "passed")} onClick={() => setBucket("passed")}>Passed {passed.length ? `· ${passed.length}` : ""}</button>
+      </Glass>
+
+      {rows.length === 0 ? (
+        <div style={{ display: "grid", placeItems: "center", padding: "80px 24px", textAlign: "center" }}>
+          <div>
+            <div style={{ ...display(900), fontSize: 56, color: "rgba(255,255,255,0.08)", lineHeight: 1 }}>
+              {bucket === "saved" ? "GARAGE" : "PASSED"}
             </div>
-            <div style={{ ...mono, fontSize: 11, color: T.dim, marginTop: 3 }}>
-              {fmtPrice(l.price)} · {fmtMiles(l.mileage)}
+            <div style={{ ...display(800), fontSize: 18, color: T.ink, marginTop: 14 }}>
+              {bucket === "saved" ? "The garage is empty" : "No passed cars yet"}
             </div>
+            <p style={{ ...body, fontSize: 13.5, color: T.dim, maxWidth: 270, margin: "8px auto 0", lineHeight: 1.6 }}>
+              {bucket === "saved"
+                ? "Swipe right on a car in the feed and it parks here."
+                : "Cars you swipe left land here, in case you change your mind later."}
+            </p>
           </div>
-          <button aria-label={`Remove ${l.title} from garage`} onClick={(e) => { e.stopPropagation(); onRemove(l.id); }} style={{
-            width: 34, height: 34, borderRadius: 17, display: "grid", placeItems: "center", cursor: "pointer",
-            color: T.faint, background: "rgba(255,255,255,0.05)", border: `1px solid ${T.glassBrd}`,
-          }}>
-            <XIcon s={14} />
-          </button>
-        </Glass>
-      ))}
+        </div>
+      ) : (
+        <>
+          <div style={{ display: "flex", gap: 8, margin: "2px 0 14px" }}>
+            {["recent", "price↑", "price↓", "year"].map((s) => (
+              <button key={s} onClick={() => setSort(s)} style={{
+                ...mono, fontSize: 11, letterSpacing: "0.06em", padding: "7px 12px", borderRadius: 16, cursor: "pointer",
+                color: sort === s ? T.bg : T.dim, background: sort === s ? T.ink : "rgba(255,255,255,0.05)",
+                border: `1px solid ${sort === s ? T.ink : T.glassBrd}`,
+              }}>{s}</button>
+            ))}
+          </div>
+          {rows.map((l) => (
+            <Glass key={l.id} radius={20} style={{ padding: 14, marginBottom: 10, display: "flex", gap: 14, alignItems: "center", animation: "riseIn 0.3s ease both", cursor: "pointer" }} onClick={() => onOpen(l)}>
+              <div style={{
+                width: 58, height: 58, borderRadius: 15, flexShrink: 0, display: "grid", placeItems: "center", overflow: "hidden",
+                background: `${l.image ? `url(${JSON.stringify(l.image)}) center/cover no-repeat, ` : ""}linear-gradient(150deg, ${l.paint.stops[0]}, ${l.paint.stops[1]}, ${l.paint.stops[2]})`,
+                border: "1px solid rgba(255,255,255,0.14)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.2)",
+                ...display(900), fontSize: 13, color: l.paint.darkInk ? "#14161C" : T.ink, letterSpacing: "-0.02em",
+              }}>
+                {l.image ? "" : l.chassis.slice(0, 5)}
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ ...display(800), fontSize: 15, color: T.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  {l.year} {l.model}
+                </div>
+                <div style={{ ...mono, fontSize: 11, color: T.dim, marginTop: 3 }}>
+                  {fmtPrice(l.price)} · {fmtMiles(l.mileage)}
+                </div>
+              </div>
+              {/* One action either way: put the car back in the feed. */}
+              <button
+                aria-label={`Return ${l.title} to the feed`}
+                onClick={(e) => { e.stopPropagation(); onRemove(l.id); }}
+                style={{
+                  width: 34, height: 34, borderRadius: 17, display: "grid", placeItems: "center", cursor: "pointer",
+                  color: T.faint, background: "rgba(255,255,255,0.05)", border: `1px solid ${T.glassBrd}`,
+                }}
+              >
+                {bucket === "saved" ? <XIcon s={14} /> : (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 14L4 9l5-5" /><path d="M4 9h10a6 6 0 0 1 0 12h-3" /></svg>
+                )}
+              </button>
+            </Glass>
+          ))}
+        </>
+      )}
     </div>
   );
 }
@@ -1055,6 +1102,7 @@ export default function App() {
 
   const deck = useMemo(() => listings.filter((l) => !swiped[l.id] && passesFilters(l)), [listings, swiped, passesFilters]);
   const saved = useMemo(() => listings.filter((l) => swiped[l.id] === "right"), [listings, swiped]);
+  const passed = useMemo(() => listings.filter((l) => swiped[l.id] === "left"), [listings, swiped]);
 
   const showToast = (msg, color) => {
     clearTimeout(toastTimer.current);
@@ -1247,7 +1295,7 @@ export default function App() {
               )}
             </div>
           ) : (
-            <Garage saved={saved} onOpen={setDetail}
+            <Garage saved={saved} passed={passed} onOpen={setDetail}
               onRemove={(id) => setSwiped((s) => { const n = { ...s }; delete n[id]; return n; })} />
           )}
         </main>
@@ -1265,11 +1313,6 @@ export default function App() {
 
           {tab === "feed" && deck.length > 0 ? (
             <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
-              {swipeHistory.length > 0 && (
-                <IconBtn label="Undo last swipe" size={42} color={T.dim} onClick={undoSwipe}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 14L4 9l5-5" /><path d="M4 9h10a6 6 0 0 1 0 12h-3" /></svg>
-                </IconBtn>
-              )}
               <IconBtn label="Pass on this car" color={T.pass} border="rgba(255,90,72,0.4)"
                 onClick={() => setForced((f) => ({ dir: "left", n: (f?.n || 0) + 1 }))}><XIcon /></IconBtn>
               <IconBtn label="Save this car" color={T.save} border="rgba(57,217,138,0.4)"
