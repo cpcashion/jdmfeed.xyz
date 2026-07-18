@@ -43,19 +43,23 @@ const deduped = all.filter((l) => {
   return true;
 });
 
-// Interleave sources round-robin so the deck mixes them — otherwise the
-// feed would show every card from the first source before any other.
-const bySource = new Map();
+// Newest classifieds first. Recency = the source's own listing-creation
+// date when it has one (eBay), else the first time OUR pipeline saw the
+// listing (persisted across runs) — which also mixes sources naturally.
+const prevSeen = new Map();
+try {
+  const old = JSON.parse(fs.readFileSync(OUT, "utf8"));
+  for (const l of old.listings || []) {
+    if (l.source_url && l.first_seen) prevSeen.set(l.source_url.toLowerCase(), l.first_seen);
+  }
+} catch { /* first run */ }
+
+const nowIso = new Date().toISOString();
 for (const l of deduped) {
-  if (!bySource.has(l.source)) bySource.set(l.source, []);
-  bySource.get(l.source).push(l);
+  l.first_seen = prevSeen.get(l.source_url.toLowerCase()) || l.listed_at || nowIso;
 }
-const queues = [...bySource.values()];
-const listings = [];
-for (let i = 0; listings.length < Math.min(deduped.length, MAX_LISTINGS); i++) {
-  const q = queues[i % queues.length];
-  if (q.length) listings.push(q.shift());
-}
+const recency = (l) => Date.parse(l.listed_at || l.first_seen) || 0;
+const listings = deduped.sort((a, b) => recency(b) - recency(a)).slice(0, MAX_LISTINGS);
 
 // Never overwrite a good file with nothing — if every source failed, keep the
 // last-known-good listings.json and fail the run so it's visible.

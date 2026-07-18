@@ -182,7 +182,9 @@ async function enrichOne(token, l, itemId) {
   // city/state lives here.
   const city = it.itemLocation?.city, st = it.itemLocation?.stateOrProvince;
   if (city || st) l.location = [city, st].filter(Boolean).join(", ");
-  l.enriched = 2; // enrichment generation — bump to re-fetch all rows once
+  // When the seller actually listed the car — drives newest-first ordering.
+  if (it.itemCreationDate) l.listed_at = it.itemCreationDate;
+  l.enriched = 3; // enrichment generation — bump to re-fetch all rows once
 }
 
 async function enrichAll(token, byId) {
@@ -200,7 +202,7 @@ async function enrichAll(token, byId) {
     const c = prev.get(l.source_url);
     // Older generations lack the gallery and/or real location — re-fetch
     // those once.
-    if (!c || !(c.enriched >= 2)) continue;
+    if (!c || !(c.enriched >= 3)) continue;
     l.mileage = c.mileage || l.mileage;
     l.transmission = c.transmission || l.transmission;
     l.engine = c.engine || l.engine;
@@ -210,7 +212,8 @@ async function enrichAll(token, byId) {
     l.year = c.year || l.year;
     l.images = c.images || [];
     l.location = c.location || l.location;
-    l.enriched = 2;
+    l.listed_at = c.listed_at || "";
+    l.enriched = 3;
     cached++;
   }
 

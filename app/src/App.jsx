@@ -215,6 +215,100 @@ const profileFromCredential = (credential) => {
   return { sub: payload.sub, name: payload.name || "", email: payload.email || "", picture: payload.picture || "" };
 };
 
+/* Lightweight analytics — no-ops unless the GA loader in index.html ran. */
+const track = (name, params) => { try { window.gtag?.("event", name, params); } catch { /* blocked */ } };
+
+/* ---------------- garage sync (Google Drive appDataFolder) ----------------
+
+   Saves live in localStorage per device; signing in with Google turns on
+   cross-device sync by mirroring the swipe map into a private file in the
+   USER'S OWN Google Drive app-data folder — no server, no database, free,
+   and invisible in their Drive UI. Entries are timestamped ({ d, t }) and
+   merged last-writer-wins per car, with "none" tombstones so removing a
+   car from the garage on one device removes it everywhere. */
+
+const DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.appdata";
+const DRIVE_FILE = "popjdm-garage.json";
+
+const dirOf = (e) => {
+  const d = typeof e === "string" ? e : e?.d; // legacy entries were bare strings
+  return d === "left" || d === "right" ? d : null;
+};
+const mark = (d) => ({ d, t: Date.now() });
+const entryTime = (e) => (typeof e === "object" && e ? e.t || 0 : 0);
+/* Per-key last-writer-wins; ties go to `b` (call with local second). */
+const mergeSwiped = (a, b) => {
+  const out = { ...a };
+  for (const [k, v] of Object.entries(b || {})) {
+    if (!(k in out) || entryTime(v) >= entryTime(out[k])) out[k] = v;
+  }
+  return out;
+};
+
+let driveTokenClient = null;
+let driveToken = null;
+let driveTokenExp = 0;
+const resetDriveAuth = () => { driveToken = null; driveTokenExp = 0; };
+
+const getDriveToken = (interactive) => new Promise((resolve) => {
+  if (driveToken && Date.now() < driveTokenExp - 60000) return resolve(driveToken);
+  loadGis()
+    .then(() => {
+      if (!driveTokenClient) {
+        driveTokenClient = window.google.accounts.oauth2.initTokenClient({
+          client_id: GOOGLE_CLIENT_ID, scope: DRIVE_SCOPE, callback: () => {},
+        });
+      }
+      driveTokenClient.callback = (resp) => {
+        if (resp?.access_token) {
+          driveToken = resp.access_token;
+          driveTokenExp = Date.now() + (Number(resp.expires_in) || 3600) * 1000;
+          resolve(driveToken);
+        } else resolve(null);
+      };
+      try {
+        driveTokenClient.requestAccessToken({ prompt: interactive ? "" : "none" });
+      } catch { resolve(null); }
+    })
+    .catch(() => resolve(null));
+});
+
+const driveHeaders = (tok) => ({ Authorization: `Bearer ${tok}` });
+
+const driveFindFile = async (tok) => {
+  const q = encodeURIComponent(`name='${DRIVE_FILE}'`);
+  const r = await fetch(`https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=files(id,name)&q=${q}`, { headers: driveHeaders(tok) });
+  if (!r.ok) throw new Error(`drive list ${r.status}`);
+  return (await r.json()).files?.[0]?.id || null;
+};
+
+const driveRead = async (tok, id) => {
+  const r = await fetch(`https://www.googleapis.com/drive/v3/files/${id}?alt=media`, { headers: driveHeaders(tok) });
+  if (!r.ok) throw new Error(`drive read ${r.status}`);
+  return r.json();
+};
+
+const driveWrite = async (tok, id, data) => {
+  if (id) {
+    const r = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${id}?uploadType=media`, {
+      method: "PATCH", headers: { ...driveHeaders(tok), "Content-Type": "application/json" }, body: JSON.stringify(data),
+    });
+    if (!r.ok) throw new Error(`drive update ${r.status}`);
+    return id;
+  }
+  const boundary = "popjdm" + Date.now();
+  const body =
+    `--${boundary}\r\nContent-Type: application/json\r\n\r\n` +
+    JSON.stringify({ name: DRIVE_FILE, parents: ["appDataFolder"] }) +
+    `\r\n--${boundary}\r\nContent-Type: application/json\r\n\r\n` +
+    JSON.stringify(data) + `\r\n--${boundary}--`;
+  const r = await fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
+    method: "POST", headers: { ...driveHeaders(tok), "Content-Type": `multipart/related; boundary=${boundary}` }, body,
+  });
+  if (!r.ok) throw new Error(`drive create ${r.status}`);
+  return (await r.json()).id;
+};
+
 /* ---------------- shared glass surface ---------------- */
 
 const Glass = React.forwardRef(({ children, style, radius = 22, ...rest }, ref) => (
@@ -805,7 +899,7 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
 
 /* ---------------- account sheet ---------------- */
 
-function AccountSheet({ open, onClose, user, onSignedIn, onSignOut, savedCount }) {
+function AccountSheet({ open, onClose, user, onSignedIn, onSignOut, savedCount, garageSync, onSyncNow }) {
   const btnRef = useRef(null);
   const [authError, setAuthError] = useState(null);
 
@@ -844,9 +938,18 @@ function AccountSheet({ open, onClose, user, onSignedIn, onSignOut, savedCount }
             ) : null}
             <div style={{ ...display(800), fontSize: 20, color: T.ink }}>{user.name || user.email}</div>
             {user.email ? <div style={{ ...body, fontSize: 13, color: T.dim, marginTop: 4 }}>{user.email}</div> : null}
-            <div style={{ ...mono, fontSize: 11.5, letterSpacing: "0.12em", color: T.faint, margin: "14px 0 20px" }}>
+            <div style={{ ...mono, fontSize: 11.5, letterSpacing: "0.12em", color: T.faint, margin: "14px 0 8px" }}>
               {savedCount} CAR{savedCount === 1 ? "" : "S"} IN THE GARAGE
             </div>
+            <button onClick={onSyncNow} style={{
+              ...mono, fontSize: 10.5, letterSpacing: "0.12em", padding: "7px 14px", borderRadius: 14,
+              cursor: "pointer", margin: "0 0 18px",
+              color: garageSync === "on" ? T.save : garageSync === "error" ? T.pass : T.dim,
+              background: "rgba(255,255,255,0.05)",
+              border: `1px solid ${garageSync === "on" ? "rgba(57,217,138,0.4)" : T.glassBrd}`,
+            }}>
+              {garageSync === "on" ? "● SYNCED ACROSS DEVICES" : garageSync === "error" ? "SYNC OFF — TAP TO ENABLE" : "TAP TO SYNC ACROSS DEVICES"}
+            </button>
             <button onClick={onSignOut} style={{
               padding: "13px 26px", borderRadius: 16, cursor: "pointer", ...display(800), fontSize: 14,
               color: T.ink, background: "rgba(255,255,255,0.08)", border: `1px solid ${T.glassBrd}`, boxShadow: T.glassHi,
@@ -925,6 +1028,7 @@ function FilterSheet({ open, onClose, filters, setFilters, matchCount, listings 
   const shareFilter = async () => {
     const url = `${window.location.origin}${window.location.pathname}#${[...filters.plates].join(",")}`;
     try { await navigator.clipboard.writeText(url); } catch { /* http fallback below */ }
+    track("share_feed");
     setCopied(true);
     setTimeout(() => setCopied(false), 1800);
   };
@@ -1125,9 +1229,9 @@ export default function App() {
     plateMatches(l, filters.plates),
   [filters]);
 
-  const deck = useMemo(() => listings.filter((l) => !swiped[l.id] && passesFilters(l)), [listings, swiped, passesFilters]);
-  const saved = useMemo(() => listings.filter((l) => swiped[l.id] === "right"), [listings, swiped]);
-  const passed = useMemo(() => listings.filter((l) => swiped[l.id] === "left"), [listings, swiped]);
+  const deck = useMemo(() => listings.filter((l) => !dirOf(swiped[l.id]) && passesFilters(l)), [listings, swiped, passesFilters]);
+  const saved = useMemo(() => listings.filter((l) => dirOf(swiped[l.id]) === "right"), [listings, swiped]);
+  const passed = useMemo(() => listings.filter((l) => dirOf(swiped[l.id]) === "left"), [listings, swiped]);
 
   const showToast = (msg, color) => {
     clearTimeout(toastTimer.current);
@@ -1135,8 +1239,11 @@ export default function App() {
     toastTimer.current = setTimeout(() => setToast(null), 2200);
   };
 
+  const openDetail = useCallback((l) => { setDetail(l); track("view_details"); }, []);
+
   const handleSwipe = useCallback((id, dir) => {
-    setSwiped((s) => ({ ...s, [id]: dir }));
+    setSwiped((s) => ({ ...s, [id]: mark(dir) }));
+    track(dir === "right" ? "save_car" : "pass_car");
     setSwipeHistory((h) => [...h.slice(-30), id]);
     if (dir === "right") {
       const l = listings.find((x) => x.id === id);
@@ -1171,7 +1278,7 @@ export default function App() {
     setSwipeHistory((h) => {
       if (!h.length) return h;
       const id = h[h.length - 1];
-      setSwiped((s) => { const n = { ...s }; delete n[id]; return n; });
+      setSwiped((s) => ({ ...s, [id]: mark("none") }));
       const l = listings.find((x) => x.id === id);
       showToast(`${l ? l.chassis : "Card"} is back on top`, T.dim);
       return h.slice(0, -1);
@@ -1179,12 +1286,7 @@ export default function App() {
   }, [listings]);
 
   const toggleSave = (l) => {
-    setSwiped((s) => {
-      const next = { ...s };
-      if (next[l.id] === "right") delete next[l.id];
-      else next[l.id] = "right";
-      return next;
-    });
+    setSwiped((s) => ({ ...s, [l.id]: mark(dirOf(s[l.id]) === "right" ? "none" : "right") }));
     setDetail(null);
   };
 
@@ -1212,21 +1314,77 @@ export default function App() {
 
   const doSync = () => { if (sync !== "loading") refresh(true); };
 
-  const resetDeck = () => { setSwiped((s) => Object.fromEntries(Object.entries(s).filter(([, d]) => d === "right"))); };
+  const resetDeck = () => { setSwiped((s) => Object.fromEntries(Object.entries(s).map(([k, v]) => [k, dirOf(v) === "right" ? v : mark("none")]))); };
+
+  /* ---- garage sync wiring ---- */
+  const [garageSync, setGarageSync] = useState("off"); // off | on | error
+  const driveFileId = useRef(null);
+  const pushTimer = useRef(null);
+  const syncedOnce = useRef(false);
+
+  const syncFromDrive = useCallback(async (interactive) => {
+    const tok = await getDriveToken(interactive);
+    if (!tok) { setGarageSync("error"); return; }
+    try {
+      if (!driveFileId.current) driveFileId.current = await driveFindFile(tok);
+      if (driveFileId.current) {
+        const remote = await driveRead(tok, driveFileId.current);
+        // Local wins ties; otherwise last writer (by timestamp) wins per car.
+        setSwiped((local) => mergeSwiped(remote?.swiped || {}, local));
+      }
+      setGarageSync("on");
+      if (!syncedOnce.current) { syncedOnce.current = true; showToast("Garage synced with your Google account", T.save); }
+    } catch {
+      setGarageSync("error");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Already signed in from a previous visit → try a silent sync on load.
+  useEffect(() => {
+    if (user) syncFromDrive(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Returning to the tab → pick up swipes made on other devices.
+  useEffect(() => {
+    const onVis = () => { if (!document.hidden && user && garageSync === "on") syncFromDrive(false); };
+    document.addEventListener("visibilitychange", onVis);
+    return () => document.removeEventListener("visibilitychange", onVis);
+  }, [user, garageSync, syncFromDrive]);
+
+  // Every swipe-map change pushes to Drive (debounced) while sync is on.
+  useEffect(() => {
+    if (!user || garageSync !== "on") return undefined;
+    clearTimeout(pushTimer.current);
+    pushTimer.current = setTimeout(async () => {
+      const tok = await getDriveToken(false);
+      if (!tok) return;
+      try {
+        driveFileId.current = await driveWrite(tok, driveFileId.current, { swiped, updated: Date.now() });
+      } catch { /* transient — next change retries */ }
+    }, 1500);
+    return () => clearTimeout(pushTimer.current);
+  }, [swiped, user, garageSync]);
 
   const handleSignedIn = useCallback((profile) => {
     // Carry anonymous saves into the account on first sign-in.
     const anon = loadJSON(LS_SWIPED, {});
     const own = loadJSON(`${LS_SWIPED}.${profile.sub}`, {});
-    setSwiped({ ...anon, ...own });
+    setSwiped(mergeSwiped(anon, own));
     setUser(profile);
     saveJSON(LS_USER, profile);
     setAccountOpen(false);
     showToast(`Signed in as ${profile.name || profile.email}`, T.save);
+    track("login");
+    syncFromDrive(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSignOut = () => {
+    resetDriveAuth();
+    setGarageSync("off");
+    driveFileId.current = null;
     try { window.google?.accounts?.id?.disableAutoSelect(); } catch { /* not loaded */ }
     try { localStorage.removeItem(LS_USER); } catch { /* blocked */ }
     setUser(null);
@@ -1314,14 +1472,14 @@ export default function App() {
                   return (
                     <SwipeCard key={l.id} listing={l} isTop={!ex && idx === 0} stackIndex={ex ? 0 : idx}
                       exiting={ex ? ex.dir : null} forced={!ex && idx === 0 ? forced : null}
-                      onSwipeStart={beginSwipe} onSwipeCommit={commitSwipe} onOpen={setDetail} />
+                      onSwipeStart={beginSwipe} onSwipeCommit={commitSwipe} onOpen={openDetail} />
                   );
                 }).reverse()
               )}
             </div>
           ) : (
-            <Garage saved={saved} passed={passed} onOpen={setDetail}
-              onRemove={(id) => setSwiped((s) => { const n = { ...s }; delete n[id]; return n; })} />
+            <Garage saved={saved} passed={passed} onOpen={openDetail}
+              onRemove={(id) => setSwiped((s) => ({ ...s, [id]: mark("none") }))} />
           )}
         </main>
 
@@ -1380,10 +1538,11 @@ export default function App() {
       <DetailSheet listing={detail} onClose={() => setDetail(null)}
         saved={detail ? swiped[detail.id] === "right" : false} onToggleSave={toggleSave} />
       <AccountSheet open={accountOpen} onClose={() => setAccountOpen(false)} user={user}
-        onSignedIn={handleSignedIn} onSignOut={handleSignOut} savedCount={saved.length} />
+        onSignedIn={handleSignedIn} onSignOut={handleSignOut} savedCount={saved.length}
+        garageSync={garageSync} onSyncNow={() => syncFromDrive(true)} />
       <FilterSheet open={filtersOpen} onClose={() => setFiltersOpen(false)} listings={listings}
         filters={filters} setFilters={setFilters}
-        matchCount={listings.filter((l) => !swiped[l.id] && passesFilters(l)).length} />
+        matchCount={listings.filter((l) => !dirOf(swiped[l.id]) && passesFilters(l)).length} />
     </div>
   );
 }

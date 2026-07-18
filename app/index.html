@@ -11,6 +11,21 @@
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <title>PopJDM · JDM cars for sale</title>
+    <script>
+      // Google Analytics (GA4). Paste the property's Measurement ID here —
+      // the loader only activates once a real G- id is present.
+      window.GA_ID = "G-XXXXXXXXXX";
+      if (/^G-[A-Z0-9]+$/.test(window.GA_ID) && !window.GA_ID.includes("XXXX")) {
+        var gs = document.createElement("script");
+        gs.async = true;
+        gs.src = "https://www.googletagmanager.com/gtag/js?id=" + window.GA_ID;
+        document.head.appendChild(gs);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag("js", new Date());
+        gtag("config", window.GA_ID);
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
