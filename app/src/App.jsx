@@ -495,20 +495,11 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
           PASS
         </div>
 
-        <Glass
-          radius={24}
-          role="button"
-          aria-label="Open car details"
-          onPointerDown={(e) => { e.stopPropagation(); btnDown.current = { x: e.clientX, y: e.clientY }; }}
-          onClick={(e) => {
-            e.stopPropagation();
-            const s = btnDown.current;
-            if (s && Math.hypot(e.clientX - s.x, e.clientY - s.y) > 12) return; // a drag, not a tap
-            buzz(6);
-            onOpen(listing);
-          }}
-          style={{ position: "absolute", left: 14, right: 14, bottom: 14, padding: "16px 18px 14px", cursor: "pointer" }}
-        >
+        {/* The panel is passive on purpose: the card's gesture engine owns
+            every pointer, so a swipe that STARTS here still swipes, and a
+            clean tap here opens the details (the card-level tap path). Only
+            the DETAILS button intercepts its own presses. */}
+        <Glass radius={24} style={{ position: "absolute", left: 14, right: 14, bottom: 14, padding: "16px 18px 14px", cursor: "pointer" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
             <div style={{
               ...display(800), fontSize: 21, color: T.ink, lineHeight: 1.1,
@@ -581,6 +572,7 @@ function BottomSheet({ onClose, style, children }) {
   const backRef = useRef(null);
   const drag = useRef(null); // live gesture: offset + smoothed velocity
   const closingRef = useRef(false);
+  const born = useRef(performance.now()); // ghost-click guard timestamp
   const [shown, setShown] = useState(false); // false = parked below the viewport
 
   /* The sheet slides in via a transition on the SAME transform the drag
@@ -675,7 +667,14 @@ function BottomSheet({ onClose, style, children }) {
   };
 
   return (
-    <div ref={backRef} onClick={() => dismiss()} style={{ position: "fixed", inset: 0, zIndex: 60, background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)", display: "flex", alignItems: "flex-end", justifyContent: "center", opacity: shown ? 1 : 0, transition: "opacity 0.34s ease" }}>
+    <div
+      ref={backRef}
+      // Ghost-click guard: the tap that OPENED the sheet fires a trailing
+      // click that can land on this brand-new backdrop and instantly close
+      // it — ignore backdrop clicks for the first 400ms.
+      onClick={() => { if (performance.now() - born.current > 400) dismiss(); }}
+      style={{ position: "fixed", inset: 0, zIndex: 60, background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)", display: "flex", alignItems: "flex-end", justifyContent: "center", opacity: shown ? 1 : 0, transition: "opacity 0.34s ease" }}
+    >
       <Glass
         ref={sheetRef}
         onClick={(e) => e.stopPropagation()}
