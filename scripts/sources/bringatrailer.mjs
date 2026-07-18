@@ -115,7 +115,8 @@ export async function fetchBringATrailer() {
     if (!isJDM(it.title)) continue;
     const { year, make, model } = parseTitle(it.title);
     // Mileage/gearbox/engine/color live in BaT's prose — mine them out.
-    const specs = specsFromText(`${decode(it.title)}. ${decode(it.excerpt)}`);
+    const text = `${decode(it.title)}. ${decode(it.excerpt)}`;
+    const specs = specsFromText(text);
     out.push({
       title: decode(it.title),
       year,
@@ -129,6 +130,7 @@ export async function fetchBringATrailer() {
       engine: specs.engine || "",
       drivetrain: specs.drivetrain || "",
       color: specs.color || "",
+      rhd: /right[- ]hand[- ]drive|\bRHD\b|JDM/i.test(text),
       location: it.country || "United States",
       source: "Bring a Trailer",
       source_url: it.url,

@@ -125,6 +125,7 @@ const normalize = (raw, i, live = false) => ({
   engine: raw.engine === "—" ? "" : raw.engine || "",
   drivetrain: raw.drivetrain === "—" ? "" : raw.drivetrain || "",
   color: raw.color || "",
+  rhd: !!raw.rhd,
   location: raw.location || "United States",
   source: raw.source || (live ? "Web" : "Demo data"),
   source_url: raw.source_url || "",
@@ -617,7 +618,10 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
             ) : null;
           })()}
           <div style={{ marginTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <span style={{ ...body, fontSize: 12.5, color: T.faint }}>{stateOf(listing.location)}</span>
+            <span style={{ ...body, fontSize: 12.5, color: T.faint }}>
+              {listing.rhd ? <span style={{ ...mono, fontSize: 10, letterSpacing: "0.1em", color: T.dim, marginRight: 8, padding: "2px 6px", borderRadius: 8, border: `1px solid ${T.glassBrd}` }}>RHD</span> : null}
+              {stateOf(listing.location)}
+            </span>
             <span style={{
               ...mono, fontSize: 10.5, letterSpacing: "0.08em", padding: "4px 9px", borderRadius: 20,
               border: `1px solid ${listing.live ? "rgba(57,217,138,0.45)" : T.glassBrd}`,
@@ -1080,6 +1084,12 @@ function FilterSheet({ open, onClose, filters, setFilters, matchCount, listings 
           ))}
         </div>
 
+        <div style={{ ...mono, fontSize: 10.5, letterSpacing: "0.2em", color: T.faint, margin: "24px 0 10px" }}>STEERING</div>
+        <div style={{ display: "flex", gap: 8 }}>
+          <button style={chip(!filters.rhdOnly)} onClick={() => setFilters((f) => ({ ...f, rhdOnly: false }))}>Any</button>
+          <button style={chip(filters.rhdOnly)} onClick={() => setFilters((f) => ({ ...f, rhdOnly: true }))}>RHD only</button>
+        </div>
+
         <button onClick={onClose} style={{
           width: "100%", marginTop: 26, padding: "15px 0", borderRadius: 16, cursor: "pointer",
           ...display(800), fontSize: 15, color: T.bg, background: T.ink, border: "none",
@@ -1200,7 +1210,7 @@ export default function App() {
   const [filtersOpen, setFiltersOpen] = useState(false);
   // plates seeds from the URL hash, so a shared jdmfeed.xyz/#land-cruiser
   // link opens the feed already tuned to that nameplate.
-  const [filters, setFilters] = useState(() => ({ maxPrice: 200000, eras: new Set(), gearbox: "Any", plates: platesFromHash() }));
+  const [filters, setFilters] = useState(() => ({ maxPrice: 200000, eras: new Set(), gearbox: "Any", rhdOnly: false, plates: platesFromHash() }));
 
   // Keep the URL shareable: the hash always mirrors the nameplate filter.
   useEffect(() => {
@@ -1226,6 +1236,7 @@ export default function App() {
     (filters.maxPrice >= 200000 || l.price <= filters.maxPrice || l.price === 0) &&
     (filters.eras.size === 0 || filters.eras.has(decadeOf(l.year))) &&
     (filters.gearbox === "Any" || /manual/i.test(l.transmission)) &&
+    (!filters.rhdOnly || l.rhd) &&
     plateMatches(l, filters.plates),
   [filters]);
 
