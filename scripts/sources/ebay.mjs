@@ -178,7 +178,11 @@ async function enrichOne(token, l, itemId) {
   const gallery = [it.image?.imageUrl, ...(it.additionalImages || []).map((a) => a?.imageUrl)]
     .filter(Boolean).map(hiRes);
   l.images = [...new Set(gallery)].slice(0, 14);
-  l.enriched = true; // don't re-fetch this listing on future runs
+  // The search response only says "United States" — the item's real
+  // city/state lives here.
+  const city = it.itemLocation?.city, st = it.itemLocation?.stateOrProvince;
+  if (city || st) l.location = [city, st].filter(Boolean).join(", ");
+  l.enriched = 2; // enrichment generation — bump to re-fetch all rows once
 }
 
 async function enrichAll(token, byId) {
@@ -194,9 +198,9 @@ async function enrichAll(token, byId) {
   let cached = 0;
   for (const l of byId.values()) {
     const c = prev.get(l.source_url);
-    // Rows enriched before the gallery existed lack images — re-fetch those
-    // once so the slider gets photos.
-    if (!c || !Array.isArray(c.images) || c.images.length === 0) continue;
+    // Older generations lack the gallery and/or real location — re-fetch
+    // those once.
+    if (!c || !(c.enriched >= 2)) continue;
     l.mileage = c.mileage || l.mileage;
     l.transmission = c.transmission || l.transmission;
     l.engine = c.engine || l.engine;
@@ -204,8 +208,9 @@ async function enrichAll(token, byId) {
     l.color = c.color || l.color;
     l.description = l.description || c.description || "";
     l.year = c.year || l.year;
-    l.images = c.images;
-    l.enriched = true;
+    l.images = c.images || [];
+    l.location = c.location || l.location;
+    l.enriched = 2;
     cached++;
   }
 
