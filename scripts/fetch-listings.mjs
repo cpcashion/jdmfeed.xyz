@@ -13,13 +13,17 @@ import fs from "node:fs";
 import path from "node:path";
 import { fetchBringATrailer } from "./sources/bringatrailer.mjs";
 import { fetchEbayMotors } from "./sources/ebay.mjs";
+import { fetchJdmBuySell, fetchMontu, fetchJdmSportClassics } from "./sources/dealers.mjs";
 
 const OUT = path.resolve("app/public/listings.json");
-const MAX_LISTINGS = 600;
+const MAX_LISTINGS = 1000;
 
 const SOURCES = [
   ["Bring a Trailer", fetchBringATrailer],
   ["eBay Motors", fetchEbayMotors],
+  ["JDM Buy & Sell", fetchJdmBuySell],
+  ["Montu Motors", fetchMontu],
+  ["JDM Sport Classics", fetchJdmSportClassics],
 ];
 
 const all = [];

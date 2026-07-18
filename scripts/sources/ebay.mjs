@@ -184,6 +184,9 @@ async function enrichOne(token, l, itemId) {
   if (city || st) l.location = [city, st].filter(Boolean).join(", ");
   // When the seller actually listed the car — drives newest-first ordering.
   if (it.itemCreationDate) l.listed_at = it.itemCreationDate;
+  // "Drive Side: Right-hand drive" aspect → true RHD import.
+  const side = pick("drive side", "steering side", "steering wheel side");
+  if (/right/i.test(side)) l.rhd = true;
   l.enriched = 3; // enrichment generation — bump to re-fetch all rows once
 }
 
@@ -213,6 +216,7 @@ async function enrichAll(token, byId) {
     l.images = c.images || [];
     l.location = c.location || l.location;
     l.listed_at = c.listed_at || "";
+    l.rhd = c.rhd || false;
     l.enriched = 3;
     cached++;
   }

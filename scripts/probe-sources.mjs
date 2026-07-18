@@ -1,63 +1,52 @@
-/**
- * scripts/probe-sources.mjs — throwaway reconnaissance.
- *
- * Hits candidate endpoints on each listing source from the GitHub runner and
- * prints status + a response snippet, so we can see real JSON shapes and
- * whether datacenter IPs get blocked (Cloudflare 403 etc.). Not part of the
- * app; removed once the real fetchers are built.
- */
+/** probe round 3 — dump exact card/JSON-LD structure for the 4 open dealers. */
+const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 
-const UA =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
+const dump = (tag, s) => console.log(`\n----- ${tag} -----\n` + s.replace(/\s+/g, " ").slice(0, 1600));
 
-const targets = [
-  // Cars & Bids — internal API candidates + HTML
-  ["C&B live JSON", "https://carsandbids.com/v2/search/listings?sort=ending_soon", "json"],
-  ["C&B listings", "https://carsandbids.com/v2/listings", "json"],
-  ["C&B auctions html", "https://carsandbids.com/auctions", "html"],
-  // Bring a Trailer — WP REST + auctions html
-  ["BaT wp auctions", "https://bringatrailer.com/wp-json/bringatrailer/1.0/data/keyword-data", "json"],
-  ["BaT auctions html", "https://bringatrailer.com/auctions/", "html"],
-  ["BaT models JDM", "https://bringatrailer.com/nissan/skyline/", "html"],
-  // Hemmings
-  ["Hemmings JDM html", "https://www.hemmings.com/classifieds/cars-for-sale/nissan/skyline", "html"],
-];
-
-async function probe(name, url, kind) {
-  try {
-    const res = await fetch(url, {
-      headers: {
-        "User-Agent": UA,
-        Accept: kind === "json" ? "application/json,*/*" : "text/html,*/*",
-        "Accept-Language": "en-US,en;q=0.9",
-      },
-      redirect: "follow",
-    });
-    const body = await res.text();
-    console.log(`\n=== ${name} [${res.status}] ${url}`);
-    console.log(`    content-type: ${res.headers.get("content-type")}  bytes: ${body.length}`);
-    if (kind === "html") {
-      // Surface embedded JSON hints (Next data, window vars, og:image, price)
-      for (const re of [
-        /__NEXT_DATA__/,
-        /window\.__[A-Z_]+__\s*=/,
-        /application\/(ld\+json|json)/,
-        /"currentBid"|"current_bid"|"price"|"sold_price"|"soldPrice"/,
-        /og:image/,
-        /data-listing|auction-item|listing-card/,
-      ]) {
-        const m = body.match(re);
-        if (m) console.log(`    hint: ${re} @${m.index}`);
-      }
-    }
-    console.log("    snippet:", body.slice(0, 700).replace(/\s+/g, " "));
-  } catch (err) {
-    console.log(`\n=== ${name} ERROR ${url}`);
-    console.log("    " + err.message);
-  }
+async function get(url) {
+  const r = await fetch(url, { headers: { "User-Agent": UA, "Accept-Language": "en-US,en;q=0.9" } });
+  console.log(`\n=== [${r.status}] ${url}`);
+  return r.text();
 }
 
-for (const [name, url, kind] of targets) {
-  await probe(name, url, kind);
+// Japanese Classics — WooCommerce loop
+{
+  const html = await get("https://www.japaneseclassics.com/inventory/");
+  const i = html.search(/class="[^"]*product[^"]*type-product/);
+  dump("JC first product block", i >= 0 ? html.slice(i, i + 2600) : "NOT FOUND; li.product idx=" + html.indexOf("li class=\"product"));
+  const links = [...html.matchAll(/href="(https:\/\/www\.japaneseclassics\.com\/inventory\/[^"\/]+\/)"/g)].map(m => m[1]);
+  console.log("JC car links:", new Set(links).size);
 }
-console.log("\nProbe complete.");
+
+// JDM Sport Classics — inventory list
+{
+  const html = await get("https://jdmsportclassics.com/inventory/?view_type=list");
+  const i = html.indexOf("/inventory/1");
+  dump("JSC around first car link", i >= 0 ? html.slice(Math.max(0, i - 1200), i + 1400) : "no /inventory/1 link");
+  const links = [...html.matchAll(/href="(https?:\/\/(?:www\.)?jdmsportclassics\.com\/inventory\/[^"\/]+\/)"/g)].map(m => m[1]);
+  console.log("JSC car links:", new Set(links).size);
+}
+
+// Montu — inventory feed
+{
+  const html = await get("https://montumotors.com/inventory-feed/?type=Current");
+  console.log("bytes:", html.length);
+  const i = html.indexOf("/inventory/");
+  dump("Montu around first card", i >= 0 ? html.slice(Math.max(0, i - 1200), i + 1600) : "no card");
+  const links = [...html.matchAll(/href="(?:https?:\/\/(?:www\.)?montumotors\.com)?(\/inventory\/[^"\/]+\/)"/g)].map(m => m[1]);
+  console.log("Montu car links:", new Set(links).size);
+}
+
+// JDMBuySell — JSON-LD + card structure
+{
+  const html = await get("https://www.jdmbuysell.com/for-sale/");
+  const lds = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => m[1]);
+  console.log("ld+json blocks:", lds.length);
+  for (const ld of lds.slice(0, 2)) dump("JBS ld+json", ld);
+  const i = html.indexOf("/ad/");
+  dump("JBS around first /ad/ card", i >= 0 ? html.slice(Math.max(0, i - 400), i + 2000) : "no ad link");
+  const usHits = (html.match(/United States|, USA|\bUSA\b/g) || []).length;
+  console.log("US mentions:", usHits);
+}
+
+console.log("\nProbe3 complete.");
