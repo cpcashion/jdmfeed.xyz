@@ -84,6 +84,27 @@ const fmtPrice = (n) => (typeof n === "number" && n > 0 ? "$" + n.toLocaleString
 const fmtMiles = (n) => (typeof n === "number" && n > 0 ? Math.round(n).toLocaleString() + " mi" : "—");
 const decadeOf = (y) => Math.floor(y / 10) * 10;
 
+/* "Cypress, CA" -> "California" for the card face; unknown shapes pass through. */
+const STATES = {
+  AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas", CA: "California", CO: "Colorado",
+  CT: "Connecticut", DE: "Delaware", FL: "Florida", GA: "Georgia", HI: "Hawaii", ID: "Idaho",
+  IL: "Illinois", IN: "Indiana", IA: "Iowa", KS: "Kansas", KY: "Kentucky", LA: "Louisiana",
+  ME: "Maine", MD: "Maryland", MA: "Massachusetts", MI: "Michigan", MN: "Minnesota",
+  MS: "Mississippi", MO: "Missouri", MT: "Montana", NE: "Nebraska", NV: "Nevada",
+  NH: "New Hampshire", NJ: "New Jersey", NM: "New Mexico", NY: "New York", NC: "North Carolina",
+  ND: "North Dakota", OH: "Ohio", OK: "Oklahoma", OR: "Oregon", PA: "Pennsylvania",
+  RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota", TN: "Tennessee", TX: "Texas",
+  UT: "Utah", VT: "Vermont", VA: "Virginia", WA: "Washington", WV: "West Virginia",
+  WI: "Wisconsin", WY: "Wyoming", DC: "Washington DC",
+};
+const stateOf = (loc) => {
+  const s = String(loc || "").trim();
+  const m = s.match(/,\s*([A-Za-z]{2})\.?$/);
+  if (m && STATES[m[1].toUpperCase()]) return STATES[m[1].toUpperCase()];
+  if (STATES[s.toUpperCase()]) return STATES[s.toUpperCase()];
+  return s || "United States";
+};
+
 const normalize = (raw, i, live = false) => ({
   id: raw.id || `${live ? "live" : "seed"}-${i}-${(raw.title || "x").slice(0, 12)}`,
   title: raw.title || `${raw.year} ${raw.make} ${raw.model}`,
@@ -506,7 +527,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
             ) : null;
           })()}
           <div style={{ marginTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <span style={{ ...body, fontSize: 12.5, color: T.faint }}>{listing.location}</span>
+            <span style={{ ...body, fontSize: 12.5, color: T.faint }}>{stateOf(listing.location)}</span>
             <span style={{
               ...mono, fontSize: 10.5, letterSpacing: "0.08em", padding: "4px 9px", borderRadius: 20,
               border: `1px solid ${listing.live ? "rgba(57,217,138,0.45)" : T.glassBrd}`,
@@ -1302,30 +1323,32 @@ export default function App() {
 
         <Glass radius={30} style={{
           position: "absolute", left: 16, right: 16, bottom: `calc(14px + env(safe-area-inset-bottom))`,
-          padding: "10px 14px", display: "flex", alignItems: "center", justifyContent: "space-between",
+          padding: "10px 14px", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center",
           background: "rgba(14,16,23,0.62)", zIndex: 30,
         }}>
           <button onClick={() => setTab("feed")} aria-label="Feed" style={{
-            border: "none", background: "none", cursor: "pointer", padding: "6px 10px",
+            border: "none", background: "none", cursor: "pointer", padding: "6px 10px", justifySelf: "start",
             ...display(800), fontSize: 13, letterSpacing: "0.06em",
             color: tab === "feed" ? T.ink : T.faint, borderBottom: `2px solid ${tab === "feed" ? T.ink : "transparent"}`,
           }}>FEED</button>
 
           {tab === "feed" && deck.length > 0 ? (
-            <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
-              <IconBtn label="Pass on this car" color={T.pass} border="rgba(255,90,72,0.4)"
+            <div style={{ display: "flex", gap: 18, alignItems: "center", justifySelf: "center" }}>
+              <IconBtn label="Pass on this car" color={T.pass} border="rgba(255,90,72,0.45)"
+                style={{ background: "rgba(255,90,72,0.12)" }}
                 onClick={() => setForced((f) => ({ dir: "left", n: (f?.n || 0) + 1 }))}><XIcon /></IconBtn>
-              <IconBtn label="Save this car" color={T.save} border="rgba(57,217,138,0.4)"
+              <IconBtn label="Save this car" color={T.save} border="rgba(57,217,138,0.45)"
+                style={{ background: "rgba(57,217,138,0.12)" }}
                 onClick={() => setForced((f) => ({ dir: "right", n: (f?.n || 0) + 1 }))}><HeartIcon /></IconBtn>
             </div>
           ) : (
-            <div style={{ ...mono, fontSize: 10.5, letterSpacing: "0.22em", color: T.faint }}>
+            <div style={{ ...mono, fontSize: 10.5, letterSpacing: "0.22em", color: T.faint, justifySelf: "center" }}>
               {tab === "feed" ? "" : `${saved.length} SAVED`}
             </div>
           )}
 
           <button onClick={() => setTab("garage")} aria-label="Garage — saved cars" style={{
-            border: "none", background: "none", cursor: "pointer", padding: "6px 10px", position: "relative",
+            border: "none", background: "none", cursor: "pointer", padding: "6px 10px", position: "relative", justifySelf: "end",
             ...display(800), fontSize: 13, letterSpacing: "0.06em",
             color: tab === "garage" ? T.ink : T.faint, borderBottom: `2px solid ${tab === "garage" ? T.ink : "transparent"}`,
           }}>
