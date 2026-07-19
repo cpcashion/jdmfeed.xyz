@@ -96,7 +96,10 @@ export async function fetchJdmBuySell() {
         if (!year || !make) continue;
         const url = `https://www.jdmbuysell.com/ad/${slug}/`;
         if (out.some((l) => l.source_url === url)) continue;
-        const specs = specsFromText(seg.replace(/<[^>]+>/g, " "));
+        // Cards end with an inline relative-date <script> whose code contains
+        // words like numeric:"auto" — mine specs from visible text only.
+        const visible = seg.replace(/<(script|style|svg)[\s\S]*?<\/\1>/g, " ").replace(/<[^>]+>/g, " ");
+        const specs = specsFromText(visible);
         const listedAt = seg.match(/<time[^>]*\bdatetime="([^"]+)"/)?.[1] || "";
         out.push(baseListing({
           title, year, make, model,
