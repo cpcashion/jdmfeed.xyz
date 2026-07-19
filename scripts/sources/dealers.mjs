@@ -6,27 +6,41 @@
  * is defensive: any failure logs and returns [] so one broken dealer
  * never hurts the rest of the feed.
  *
- *  - jdmbuysell.com — JDM marketplace (~6k listings worldwide, server-
- *    rendered cards, paginated /for-sale/?page=N). We keep US-located ads.
- *  - montumotors.com — /inventory-feed/?type=Current card grid.
- *  - jdmsportclassics.com — WP "Motors" theme /inventory/ list; car slugs
- *    carry year-make-model.
+ *  - jdmbuysell.com — JDM marketplace (~6k listings worldwide, Astro
+ *    server-rendered cards, paginated /for-sale/?page=N). Each card <a>
+ *    carries aria-label (clean title), a "FL, USA" location fact, a
+ *    <time datetime> listing date, and the price further down the card.
+ *    We keep US-located ads only.
+ *  - montumotors.com — /inventory-feed/?type=Current card grid. The site
+ *    sits behind a WAF that intermittently answers 202 challenges, so
+ *    fetches retry before giving up.
+ *  - jdmsportclassics.com — WP "Motors" theme /inventory/ list; each row
+ *    div carries data-price / data-mileage / data-date attributes and a
+ *    clean img alt title.
  */
 
 import { UA, decode, isJDM, parseTitle, specsFromText } from "./jdm.mjs";
 
 const now = () => new Date().toISOString();
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function getHtml(url) {
-  const res = await fetch(url, { headers: { "User-Agent": UA, "Accept-Language": "en-US,en;q=0.9" } });
-  if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`);
-  return res.text();
+async function getHtml(url, { retries = 0 } = {}) {
+  for (let attempt = 0; ; attempt++) {
+    const res = await fetch(url, { headers: { "User-Agent": UA, "Accept-Language": "en-US,en;q=0.9" } });
+    // 202 = WAF challenge page, not content — retry after a pause.
+    if ((res.status === 202 || res.status === 429 || res.status >= 500) && attempt < retries) {
+      await sleep(4000 * (attempt + 1));
+      continue;
+    }
+    if (!res.ok || res.status === 202) throw new Error(`HTTP ${res.status} ${url}`);
+    return res.text();
+  }
 }
 
 /* "1996-toyota-celica-gt-four-3" → "1996 Toyota Celica Gt Four" */
 const titleFromSlug = (slug) =>
   decode(slug)
-    .replace(/-\d+$/, "") // trailing de-dupe counter
+    .replace(/-\d+$/, "") // trailing de-dupe counter / stock number
     .split("-")
     .map((w) => (w.length ? w[0].toUpperCase() + w.slice(1) : w))
     .join(" ");
@@ -57,38 +71,50 @@ const baseListing = (over) => ({
 export async function fetchJdmBuySell() {
   const out = [];
   try {
-    for (let page = 1; page <= 8; page++) {
+    for (let page = 1; page <= 12; page++) {
       const html = (await getHtml(`https://www.jdmbuysell.com/for-sale/${page > 1 ? `?page=${page}` : ""}`))
         .replace(/\\\//g, "/");
-      // Split the page into per-ad segments anchored on the /ad/<slug>/ links.
-      const parts = html.split(/href="(?:https:\/\/www\.jdmbuysell\.com)?\/ad\//).slice(1);
+      // The <head> mentions /ad/ in comments — only body card anchors count.
+      const body = html.slice(Math.max(html.indexOf("<body"), 0));
+      const cards = [...body.matchAll(
+        /<a[^>]+href="(?:https:\/\/www\.jdmbuysell\.com)?\/ad\/([a-z0-9-]+)\/"[^>]*?aria-label="([^"]*)"/g,
+      )];
       let added = 0;
-      for (const part of parts) {
-        const slug = part.match(/^([a-z0-9-]+)\//)?.[1];
-        if (!slug) continue;
-        const seg = part.slice(0, 2600); // the card's own markup
-        // Marketplace is worldwide — keep ads that state a US location.
-        if (!/United States|,\s*USA\b|\bUSA\b/.test(seg)) continue;
-        const title = titleFromSlug(slug.replace(/^[a-z0-9]+?-(?=(?:19|20)\d\d-)/, "")); // drop seller prefix
+      for (let i = 0; i < cards.length; i++) {
+        const m = cards[i];
+        const slug = m[1];
+        // A card runs until the next card's anchor — the inline blur
+        // placeholder and flag SVG make each one several KB, so a small
+        // fixed window never reaches the price markup.
+        const seg = body.slice(m.index, cards[i + 1] ? cards[i + 1].index : m.index + 20000);
+        // Marketplace is worldwide — keep ads with a US location fact.
+        const usState = seg.match(/>\s*([A-Z]{2}), USA\s*</)?.[1];
+        if (!usState && !/data-listing-origin="United States"/.test(seg)) continue;
+        const title = decode(m[2]) || titleFromSlug(slug);
         if (!isJDM(title)) continue;
         const { year, make, model } = parseTitle(title);
         if (!year || !make) continue;
         const url = `https://www.jdmbuysell.com/ad/${slug}/`;
         if (out.some((l) => l.source_url === url)) continue;
-        const specs = specsFromText(seg.replace(/<[^>]+>/g, " "));
+        // Cards end with an inline relative-date <script> whose code contains
+        // words like numeric:"auto" — mine specs from visible text only.
+        const visible = seg.replace(/<(script|style|svg)[\s\S]*?<\/\1>/g, " ").replace(/<[^>]+>/g, " ");
+        const specs = specsFromText(visible);
+        const listedAt = seg.match(/<time[^>]*\bdatetime="([^"]+)"/)?.[1] || "";
         out.push(baseListing({
           title, year, make, model,
           price: firstPrice(seg),
           mileage: specs.mileage || 0,
           transmission: specs.transmission || "",
-          location: "United States",
+          location: usState || "United States",
           source: "JDM Buy & Sell",
           source_url: url,
-          image_url: firstImage(seg, "https://www.jdmbuysell.com"),
+          image_url: seg.match(/\bdata-fallback-src="(https?:[^"]+)"/)?.[1] || firstImage(seg, "https://www.jdmbuysell.com"),
+          ...(Date.parse(listedAt) ? { listed_at: new Date(listedAt).toISOString() } : {}),
         }));
         added++;
       }
-      if (parts.length === 0 || added === 0 && page > 2) break;
+      if (cards.length === 0 || (added === 0 && page > 2)) break;
     }
   } catch (err) {
     console.error(`  jdmbuysell failed: ${err.message}`);
@@ -102,7 +128,7 @@ export async function fetchJdmBuySell() {
 export async function fetchMontu() {
   const out = [];
   try {
-    const html = await getHtml("https://montumotors.com/inventory-feed/?type=Current");
+    const html = await getHtml("https://montumotors.com/inventory-feed/?type=Current", { retries: 3 });
     for (const m of html.matchAll(/<div class="[^"]*ft-item[^"]*">([\s\S]*?)(?=<div class="[^"]*ft-item|$)/g)) {
       const seg = m[1];
       const href = seg.match(/href="(\/inventory\/[^"]+\/)"/)?.[1];
@@ -117,7 +143,7 @@ export async function fetchMontu() {
       out.push(baseListing({
         title: rawTitle, year: year || 0, make, model: model || rawTitle,
         price,
-        location: "Tampa, Florida",
+        location: "Tampa, FL",
         source: "Montu Motors",
         source_url: url,
         image_url: firstImage(seg, "https://www.montumotors.com"),
@@ -136,24 +162,36 @@ export async function fetchJdmSportClassics() {
   const out = [];
   try {
     const html = await getHtml("https://jdmsportclassics.com/inventory/?view_type=list");
-    const parts = html.split(/href="https?:\/\/(?:www\.)?jdmsportclassics\.com\/inventory\//).slice(1);
-    for (const part of parts) {
-      const slug = part.match(/^([a-z0-9-]+)\//)?.[1];
+    // Each row: <div class="listing-list-loop … listing_is_active"
+    // data-price="25995" data-date="202607170835" data-mileage="109310">
+    // … <a href="…/inventory/<slug>/"> … <img alt="1996 Toyota Celica GT-Four">
+    for (const block of html.split(/class="listing-list-loop/).slice(1)) {
+      const head = block.slice(0, 1500); // the row div's own attributes/classes
+      const b = block.slice(0, 6000);
+      const slug = b.match(/href="https?:\/\/(?:www\.)?jdmsportclassics\.com\/inventory\/([a-z0-9-]+)\//)?.[1];
       if (!slug || !/^(?:19|20)\d\d-/.test(slug)) continue; // car slugs start with the year
+      if (!/listing_is_active/.test(head)) continue; // sold rows lose this class
       const url = `https://jdmsportclassics.com/inventory/${slug}/`;
       if (out.some((l) => l.source_url === url)) continue;
-      const title = titleFromSlug(slug);
+      const title = decode(b.match(/<img[^>]*\balt="([^"]{6,90})"/)?.[1] || "") || titleFromSlug(slug);
       if (!isJDM(title)) continue;
       const { year, make, model } = parseTitle(title);
       if (!year || !make) continue;
-      const seg = part.slice(0, 3000);
+      const dateRaw = head.match(/data-date="(\d{12})"/)?.[1];
+      const listedAt = dateRaw
+        ? `${dateRaw.slice(0, 4)}-${dateRaw.slice(4, 6)}-${dateRaw.slice(6, 8)}T${dateRaw.slice(8, 10)}:${dateRaw.slice(10, 12)}:00Z`
+        : "";
+      const manual = head.match(/\b(\d)-manual\b/);
       out.push(baseListing({
         title, year, make, model,
-        price: firstPrice(seg),
-        location: "Ontario, California",
+        price: Number(head.match(/data-price="(\d+)"/)?.[1]) || firstPrice(b),
+        mileage: Number(head.match(/data-mileage="(\d+)"/)?.[1]) || 0,
+        transmission: manual ? `${manual[1]}-Speed Manual` : (/\bautomatic\b/.test(head) ? "Automatic" : ""),
+        location: "Ontario, CA",
         source: "JDM Sport Classics",
         source_url: url,
-        image_url: firstImage(seg, "https://jdmsportclassics.com"),
+        image_url: firstImage(b, "https://jdmsportclassics.com"),
+        ...(listedAt ? { listed_at: listedAt } : {}),
       }));
     }
   } catch (err) {
