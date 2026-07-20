@@ -16,6 +16,22 @@ historical — the old domain is no longer the canonical origin).
   App source lives in `app/` (vite root, relative base).
 - **Google sign-in**: Google Identity Services, client id in `app/src/App.jsx`
   (`GOOGLE_CLIENT_ID`). Per-account garage keyed to the Google `sub`.
+- **Profiles / garage sync**: Firebase Auth + Firestore over plain REST (no
+  SDK) — the GIS sign-in credential is exchanged via `signInWithIdp` for a
+  refresh token stored in localStorage, so sync is silent on every visit
+  (no popups; the old Drive appDataFolder approach was removed because its
+  hourly token popup gets blocked outside a tap). Garage doc:
+  `garages/{uid}`, one JSON `data` field, timestamped last-writer-wins
+  merge with tombstones. Gated on `window.FIREBASE = { apiKey, projectId }`
+  in `app/index.html` — empty until the owner does the one-time setup:
+  1. console.firebase.google.com → Add project (Analytics off is fine).
+  2. Build → Authentication → Sign-in method → enable **Google**; under
+     "Web SDK configuration" paste the existing `GOOGLE_CLIENT_ID`.
+  3. Authentication → Settings → Authorized domains → add `popjdm.com`.
+  4. Build → Firestore Database → Create (production mode) → Rules:
+     `rules_version = '2'; service cloud.firestore { match /databases/{db}/documents { match /garages/{uid} { allow read, write: if request.auth != null && request.auth.uid == uid; } } }`
+  5. Project settings → Your apps → add a Web app → copy `apiKey` and
+     `projectId` into `window.FIREBASE` in `app/index.html`.
 - **Data pipeline** (all free, runs in GitHub Actions):
   - `.github/workflows/refresh-listings.yml` — cron every 6h + manual.
   - `scripts/fetch-listings.mjs` unions sources, sorts newest-first, writes

@@ -219,17 +219,23 @@ const profileFromCredential = (credential) => {
 /* Lightweight analytics — no-ops unless the GA loader in index.html ran. */
 const track = (name, params) => { try { window.gtag?.("event", name, params); } catch { /* blocked */ } };
 
-/* ---------------- garage sync (Google Drive appDataFolder) ----------------
+/* ---------------- garage sync (Firebase profile backend) ----------------
 
-   Saves live in localStorage per device; signing in with Google turns on
-   cross-device sync by mirroring the swipe map into a private file in the
-   USER'S OWN Google Drive app-data folder — no server, no database, free,
-   and invisible in their Drive UI. Entries are timestamped ({ d, t }) and
-   merged last-writer-wins per car, with "none" tombstones so removing a
-   car from the garage on one device removes it everywhere. */
+   Saves live in localStorage per device. Signing in with Google exchanges
+   the GIS credential for a Firebase Auth session (plain REST — no SDK)
+   whose refresh token persists in localStorage, so every later visit on
+   any device syncs the garage silently: no popups, no re-consent, ever.
+   The garage lives in Firestore at garages/{uid}. Entries are timestamped
+   ({ d, t }) and merged last-writer-wins per car, with "none" tombstones
+   so removing a car on one device removes it everywhere.
 
-const DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.appdata";
-const DRIVE_FILE = "popjdm-garage.json";
+   Activation: paste the Firebase web app's apiKey + projectId into
+   window.FIREBASE in app/index.html (setup steps in CLAUDE.md). Until
+   then the garage is device-local and the app never prompts for anything. */
+
+const FB = (typeof window !== "undefined" && window.FIREBASE) || {};
+const fbReady = () => !!(FB.apiKey && FB.projectId);
+const LS_FB = "popjdm.fbauth.v1";
 
 const dirOf = (e) => {
   const d = typeof e === "string" ? e : e?.d; // legacy entries were bare strings
@@ -246,69 +252,81 @@ const mergeSwiped = (a, b) => {
   return out;
 };
 
-let driveTokenClient = null;
-let driveToken = null;
-let driveTokenExp = 0;
-const resetDriveAuth = () => { driveToken = null; driveTokenExp = 0; };
+let fbSession = null; // { idToken, exp, refreshToken, uid }
+const fbPersist = () =>
+  saveJSON(LS_FB, fbSession ? { refreshToken: fbSession.refreshToken, uid: fbSession.uid } : null);
 
-const getDriveToken = (interactive) => new Promise((resolve) => {
-  if (driveToken && Date.now() < driveTokenExp - 60000) return resolve(driveToken);
-  loadGis()
-    .then(() => {
-      if (!driveTokenClient) {
-        driveTokenClient = window.google.accounts.oauth2.initTokenClient({
-          client_id: GOOGLE_CLIENT_ID, scope: DRIVE_SCOPE, callback: () => {},
-        });
-      }
-      driveTokenClient.callback = (resp) => {
-        if (resp?.access_token) {
-          driveToken = resp.access_token;
-          driveTokenExp = Date.now() + (Number(resp.expires_in) || 3600) * 1000;
-          resolve(driveToken);
-        } else resolve(null);
-      };
-      try {
-        driveTokenClient.requestAccessToken({ prompt: interactive ? "" : "none" });
-      } catch { resolve(null); }
-    })
-    .catch(() => resolve(null));
-});
-
-const driveHeaders = (tok) => ({ Authorization: `Bearer ${tok}` });
-
-const driveFindFile = async (tok) => {
-  const q = encodeURIComponent(`name='${DRIVE_FILE}'`);
-  const r = await fetch(`https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=files(id,name)&q=${q}`, { headers: driveHeaders(tok) });
-  if (!r.ok) throw new Error(`drive list ${r.status}`);
-  return (await r.json()).files?.[0]?.id || null;
-};
-
-const driveRead = async (tok, id) => {
-  const r = await fetch(`https://www.googleapis.com/drive/v3/files/${id}?alt=media`, { headers: driveHeaders(tok) });
-  if (!r.ok) throw new Error(`drive read ${r.status}`);
-  return r.json();
-};
-
-const driveWrite = async (tok, id, data) => {
-  if (id) {
-    const r = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${id}?uploadType=media`, {
-      method: "PATCH", headers: { ...driveHeaders(tok), "Content-Type": "application/json" }, body: JSON.stringify(data),
-    });
-    if (!r.ok) throw new Error(`drive update ${r.status}`);
-    return id;
-  }
-  const boundary = "popjdm" + Date.now();
-  const body =
-    `--${boundary}\r\nContent-Type: application/json\r\n\r\n` +
-    JSON.stringify({ name: DRIVE_FILE, parents: ["appDataFolder"] }) +
-    `\r\n--${boundary}\r\nContent-Type: application/json\r\n\r\n` +
-    JSON.stringify(data) + `\r\n--${boundary}--`;
-  const r = await fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
-    method: "POST", headers: { ...driveHeaders(tok), "Content-Type": `multipart/related; boundary=${boundary}` }, body,
+/* Google ID token (from the sign-in button) → Firebase session. Runs once
+   per sign-in; afterwards the refresh token keeps the session alive. */
+async function fbExchange(credential) {
+  const r = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=${FB.apiKey}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      postBody: `id_token=${credential}&providerId=google.com`,
+      requestUri: window.location.origin,
+      returnSecureToken: true,
+      returnIdpCredential: true,
+    }),
   });
-  if (!r.ok) throw new Error(`drive create ${r.status}`);
-  return (await r.json()).id;
-};
+  if (!r.ok) throw new Error(`auth exchange ${r.status}`);
+  const j = await r.json();
+  fbSession = {
+    idToken: j.idToken, refreshToken: j.refreshToken, uid: j.localId,
+    exp: Date.now() + (Number(j.expiresIn) || 3600) * 1000,
+  };
+  fbPersist();
+}
+
+/* A valid ID token, silently — via the cached token or the stored refresh
+   token. Returns null (never prompts) when signed out or unconfigured. */
+async function fbToken() {
+  if (!fbReady()) return null;
+  if (fbSession?.idToken && Date.now() < fbSession.exp - 60000) return fbSession.idToken;
+  const stored = fbSession || loadJSON(LS_FB, null);
+  if (!stored?.refreshToken) return null;
+  const r = await fetch(`https://securetoken.googleapis.com/v1/token?key=${FB.apiKey}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `grant_type=refresh_token&refresh_token=${encodeURIComponent(stored.refreshToken)}`,
+  });
+  if (!r.ok) {
+    // 400 = token revoked/expired — forget it so the UI can say so.
+    if (r.status === 400) { fbSession = null; fbPersist(); }
+    return null;
+  }
+  const j = await r.json();
+  fbSession = {
+    idToken: j.id_token, refreshToken: j.refresh_token, uid: j.user_id,
+    exp: Date.now() + (Number(j.expires_in) || 3600) * 1000,
+  };
+  fbPersist();
+  return fbSession.idToken;
+}
+
+const fbSignOut = () => { fbSession = null; fbPersist(); };
+
+/* The whole garage is one JSON blob in one Firestore doc — trivially
+   under the 1MB doc cap and keeps the REST surface tiny. */
+const garageUrl = () =>
+  `https://firestore.googleapis.com/v1/projects/${FB.projectId}/databases/(default)/documents/garages/${fbSession.uid}`;
+
+async function garageRead(tok) {
+  const r = await fetch(garageUrl(), { headers: { Authorization: `Bearer ${tok}` } });
+  if (r.status === 404) return null; // first device — no doc yet
+  if (!r.ok) throw new Error(`garage read ${r.status}`);
+  try { return JSON.parse((await r.json()).fields?.data?.stringValue || "null"); } catch { return null; }
+}
+
+async function garageWrite(tok, data) {
+  // PATCH upserts: creates the doc on the first device, updates after.
+  const r = await fetch(`${garageUrl()}?updateMask.fieldPaths=data`, {
+    method: "PATCH",
+    headers: { Authorization: `Bearer ${tok}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ fields: { data: { stringValue: JSON.stringify(data) } } }),
+  });
+  if (!r.ok) throw new Error(`garage write ${r.status}`);
+}
 
 /* ---------------- shared glass surface ---------------- */
 
@@ -903,7 +921,7 @@ function DetailSheet({ listing, onClose, saved, onToggleSave }) {
 
 /* ---------------- account sheet ---------------- */
 
-function AccountSheet({ open, onClose, user, onSignedIn, onSignOut, savedCount, garageSync, onSyncNow }) {
+function AccountSheet({ open, onClose, user, onSignedIn, onSignOut, savedCount, garageSync }) {
   const btnRef = useRef(null);
   const [authError, setAuthError] = useState(null);
 
@@ -918,7 +936,7 @@ function AccountSheet({ open, onClose, user, onSignedIn, onSignOut, savedCount, 
           client_id: GOOGLE_CLIENT_ID,
           callback: (resp) => {
             try {
-              onSignedIn(profileFromCredential(resp.credential));
+              onSignedIn(profileFromCredential(resp.credential), resp.credential);
             } catch {
               setAuthError("Sign-in response could not be read — try again.");
             }
@@ -945,15 +963,18 @@ function AccountSheet({ open, onClose, user, onSignedIn, onSignOut, savedCount, 
             <div style={{ ...mono, fontSize: 11.5, letterSpacing: "0.12em", color: T.faint, margin: "14px 0 8px" }}>
               {savedCount} CAR{savedCount === 1 ? "" : "S"} IN THE GARAGE
             </div>
-            <button onClick={onSyncNow} style={{
+            <div style={{
               ...mono, fontSize: 10.5, letterSpacing: "0.12em", padding: "7px 14px", borderRadius: 14,
-              cursor: "pointer", margin: "0 0 18px",
+              margin: "0 0 18px", display: "inline-block",
               color: garageSync === "on" ? T.save : garageSync === "error" ? T.pass : T.dim,
               background: "rgba(255,255,255,0.05)",
               border: `1px solid ${garageSync === "on" ? "rgba(57,217,138,0.4)" : T.glassBrd}`,
             }}>
-              {garageSync === "on" ? "● SYNCED ACROSS DEVICES" : garageSync === "error" ? "SYNC OFF — TAP TO ENABLE" : "TAP TO SYNC ACROSS DEVICES"}
-            </button>
+              {garageSync === "on" ? "● SYNCED ACROSS DEVICES"
+                : garageSync === "syncing" ? "SYNCING…"
+                : garageSync === "error" ? "SYNC PAUSED — SIGN OUT AND BACK IN"
+                : "SAVED ON THIS DEVICE"}
+            </div>
             <button onClick={onSignOut} style={{
               padding: "13px 26px", borderRadius: 16, cursor: "pointer", ...display(800), fontSize: 14,
               color: T.ink, background: "rgba(255,255,255,0.08)", border: `1px solid ${T.glassBrd}`, boxShadow: T.glassHi,
@@ -965,7 +986,7 @@ function AccountSheet({ open, onClose, user, onSignedIn, onSignOut, savedCount, 
           <>
             <h3 style={{ ...display(900), fontSize: 20, color: T.ink, margin: "0 0 8px" }}>Your garage, everywhere</h3>
             <p style={{ ...body, fontSize: 13.5, color: T.dim, maxWidth: 320, margin: "0 auto 20px", lineHeight: 1.6 }}>
-              Sign in to keep your saved cars tied to your profile on this device. Cars you've already saved come with you.
+              Sign in once and your garage follows you — every save and pass, on every device. Cars you've already saved come with you.
             </p>
             <div ref={btnRef} style={{ display: "flex", justifyContent: "center", minHeight: 44 }} />
             {authError ? <div style={{ ...body, fontSize: 12.5, color: T.pass, marginTop: 12 }}>{authError}</div> : null}
@@ -1327,58 +1348,57 @@ export default function App() {
 
   const resetDeck = () => { setSwiped((s) => Object.fromEntries(Object.entries(s).map(([k, v]) => [k, dirOf(v) === "right" ? v : mark("none")]))); };
 
-  /* ---- garage sync wiring ---- */
-  const [garageSync, setGarageSync] = useState("off"); // off | on | error
-  const driveFileId = useRef(null);
+  /* ---- garage sync wiring (silent — never prompts) ---- */
+  const [garageSync, setGarageSync] = useState("off"); // off | syncing | on | error
   const pushTimer = useRef(null);
   const syncedOnce = useRef(false);
 
-  const syncFromDrive = useCallback(async (interactive) => {
-    const tok = await getDriveToken(interactive);
+  const syncFromCloud = useCallback(async () => {
+    if (!fbReady()) return;
+    setGarageSync((s) => (s === "on" ? s : "syncing"));
+    const tok = await fbToken();
     if (!tok) { setGarageSync("error"); return; }
     try {
-      if (!driveFileId.current) driveFileId.current = await driveFindFile(tok);
-      if (driveFileId.current) {
-        const remote = await driveRead(tok, driveFileId.current);
-        // Local wins ties; otherwise last writer (by timestamp) wins per car.
-        setSwiped((local) => mergeSwiped(remote?.swiped || {}, local));
-      }
+      const remote = await garageRead(tok);
+      // Local wins ties; otherwise last writer (by timestamp) wins per car.
+      if (remote?.swiped) setSwiped((local) => mergeSwiped(remote.swiped, local));
       setGarageSync("on");
-      if (!syncedOnce.current) { syncedOnce.current = true; showToast("Garage synced with your Google account", T.save); }
+      if (!syncedOnce.current) { syncedOnce.current = true; showToast("Garage synced with your profile", T.save); }
     } catch {
       setGarageSync("error");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Already signed in from a previous visit → try a silent sync on load.
+  // Already signed in from a previous visit → the stored refresh token
+  // restores the session silently on every load, on every device.
   useEffect(() => {
-    if (user) syncFromDrive(false);
+    if (user) syncFromCloud();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Returning to the tab → pick up swipes made on other devices.
   useEffect(() => {
-    const onVis = () => { if (!document.hidden && user && garageSync === "on") syncFromDrive(false); };
+    const onVis = () => { if (!document.hidden && user) syncFromCloud(); };
     document.addEventListener("visibilitychange", onVis);
     return () => document.removeEventListener("visibilitychange", onVis);
-  }, [user, garageSync, syncFromDrive]);
+  }, [user, syncFromCloud]);
 
-  // Every swipe-map change pushes to Drive (debounced) while sync is on.
+  // Every swipe-map change pushes to the profile (debounced).
   useEffect(() => {
-    if (!user || garageSync !== "on") return undefined;
+    if (!user || !fbReady()) return undefined;
     clearTimeout(pushTimer.current);
     pushTimer.current = setTimeout(async () => {
-      const tok = await getDriveToken(false);
+      const tok = await fbToken();
       if (!tok) return;
       try {
-        driveFileId.current = await driveWrite(tok, driveFileId.current, { swiped, updated: Date.now() });
+        await garageWrite(tok, { swiped, updated: Date.now() });
       } catch { /* transient — next change retries */ }
     }, 1500);
     return () => clearTimeout(pushTimer.current);
-  }, [swiped, user, garageSync]);
+  }, [swiped, user]);
 
-  const handleSignedIn = useCallback((profile) => {
+  const handleSignedIn = useCallback((profile, credential) => {
     // Carry anonymous saves into the account on first sign-in.
     const anon = loadJSON(LS_SWIPED, {});
     const own = loadJSON(`${LS_SWIPED}.${profile.sub}`, {});
@@ -1388,14 +1408,17 @@ export default function App() {
     setAccountOpen(false);
     showToast(`Signed in as ${profile.name || profile.email}`, T.save);
     track("login");
-    syncFromDrive(true);
+    // The sign-in credential doubles as the profile-backend key — no
+    // second popup, no extra consent.
+    if (fbReady() && credential) {
+      fbExchange(credential).then(syncFromCloud).catch(() => setGarageSync("error"));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSignOut = () => {
-    resetDriveAuth();
+    fbSignOut();
     setGarageSync("off");
-    driveFileId.current = null;
     try { window.google?.accounts?.id?.disableAutoSelect(); } catch { /* not loaded */ }
     try { localStorage.removeItem(LS_USER); } catch { /* blocked */ }
     setUser(null);
@@ -1550,7 +1573,7 @@ export default function App() {
         saved={detail ? swiped[detail.id] === "right" : false} onToggleSave={toggleSave} />
       <AccountSheet open={accountOpen} onClose={() => setAccountOpen(false)} user={user}
         onSignedIn={handleSignedIn} onSignOut={handleSignOut} savedCount={saved.length}
-        garageSync={garageSync} onSyncNow={() => syncFromDrive(true)} />
+        garageSync={garageSync} />
       <FilterSheet open={filtersOpen} onClose={() => setFiltersOpen(false)} listings={listings}
         filters={filters} setFilters={setFilters}
         matchCount={listings.filter((l) => !dirOf(swiped[l.id]) && passesFilters(l)).length} />
