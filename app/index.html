@@ -25,6 +25,12 @@
         gtag("js", new Date());
         gtag("config", window.GA_ID);
       }
+
+      // Firebase profile backend (cross-device garage sync). Paste the web
+      // app's apiKey + projectId from console.firebase.google.com — setup
+      // steps in CLAUDE.md. Until both are filled in, garages stay local to
+      // each device and the app never prompts for anything.
+      window.FIREBASE = { apiKey: "", projectId: "" };
     </script>
   </head>
   <body>
