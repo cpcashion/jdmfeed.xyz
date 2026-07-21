@@ -43,11 +43,11 @@ historical — the old domain is no longer the canonical origin).
     hardcoded client id. Item-detail enrichment (specs, gallery, location,
     itemCreationDate) with a cross-run cache via `enriched` generation
     numbers in listings.json — bump the generation to force a full re-fetch.
-  - `scripts/process-cutouts.py` — rembg (isnet-general-use) cut-outs with
-    halo/blob cleanup; cache keyed by CUT_VERSION|image_url; bump
-    CUT_VERSION to regenerate all.
-- **Workflows race**: refresh runs can take ~30 min; deploys push to main
-  meanwhile. The publish step rebases + retries its push — keep that.
+  - Cards are full-bleed photos (listing's gallery lead) — the old rembg
+    cut-out pipeline was removed 2026-07 as too compute-heavy; card
+    legibility comes from scrims + the glass info panel.
+- **Workflows race**: deploys can push to main while a refresh runs. The
+  publish step rebases + retries its push — keep that.
 - **Shipping flow**: work on branch `claude/cutout-tune` (or the designated
   branch), PR → squash-merge to main → deploy.yml publishes automatically.
   The sandbox cannot reach external sites — test data changes via CI logs and
