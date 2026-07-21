@@ -28,34 +28,20 @@ jobs:
         env:
           EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
           EBAY_CERT_ID: ${{ secrets.EBAY_CERT_ID }}
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Cache background-removal model
-        uses: actions/cache@v4
-        with:
-          path: ~/.u2net
-          key: rembg-models-v2 # isnet-general-use
-      - name: Install rembg
-        run: pip install rembg onnxruntime pillow
-      - name: Cut out cars (transparent background)
-        run: python scripts/process-cutouts.py
-      - name: Publish updated listings + cut-outs to source and site root
+      - name: Publish updated listings to source and site root
         run: |
           # Also copy to the repo root so the branch-mode Pages publisher
           # serves it immediately (same pattern as the built site).
           cp app/public/listings.json listings.json
-          rm -rf cutouts && mkdir -p cutouts
-          cp -f app/public/cutouts/*.webp cutouts/ 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A app/public/listings.json app/public/cutouts listings.json cutouts
+          git add -A app/public/listings.json listings.json
           if git diff --cached --quiet; then
             echo "No listing changes this run."
           else
-            git commit -m "Refresh live listings + cut-outs [skip ci]"
-            # main can move while cut-outs process (site deploys race this
-            # job) — rebase our data commit on top and retry the push.
+            git commit -m "Refresh live listings [skip ci]"
+            # main can move while this job runs (site deploys race it) —
+            # rebase our data commit on top and retry the push.
             for i in 1 2 3; do
               git push && break
               git fetch origin main

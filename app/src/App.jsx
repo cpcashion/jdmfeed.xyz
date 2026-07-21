@@ -129,11 +129,12 @@ const normalize = (raw, i, live = false) => ({
   location: raw.location || "United States",
   source: raw.source || (live ? "Web" : "Demo data"),
   source_url: raw.source_url || "",
-  image: raw.image_url || raw.image || "",
+  // Card hero = the best photo the source has: gallery lead (full-size on
+  // BaT/eBay) over the search thumbnail.
+  image: (Array.isArray(raw.images) && raw.images[0]) || raw.image_url || raw.image || "",
   images: Array.isArray(raw.images) && raw.images.length
     ? raw.images
     : (raw.image_url || raw.image ? [raw.image_url || raw.image] : []),
-  cutout: raw.cutout || "",
   description: raw.description || "",
   paintName: raw.paintName || raw.paint || "",
   paint: paintFor(raw.paintName || raw.paint, raw.title || ""),
@@ -414,11 +415,8 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
   const gone = useRef(false); // fly-out started — this card is done taking input
   const btnDown = useRef(null); // where the DETAILS press started (drift check)
   const [imgOk, setImgOk] = useState(true);
-  const [cutOk, setCutOk] = useState(true);
   const p = listing.paint;
-  const showCutout = Boolean(listing.cutout) && cutOk;
-  // The masked full photo is the fallback when no cutout exists yet.
-  const showPhoto = !showCutout && Boolean(listing.image) && imgOk;
+  const showPhoto = Boolean(listing.image) && imgOk;
 
   /* The drag paints straight to the DOM inside the pointermove handler —
      browsers already coalesce moves to display cadence, so skipping the
@@ -515,7 +513,9 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
   };
 
   const behind = isTop || exiting ? 0 : stackIndex;
-  const ink = p.darkInk ? "#14161C" : T.ink;
+  // Over a full-bleed photo the type is always light; the gradient card
+  // (photo missing/broken) keeps the paint-aware ink.
+  const ink = showPhoto || !p.darkInk ? T.ink : "#14161C";
 
   return (
     <div
@@ -541,65 +541,39 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(120% 90% at 20% 110%, rgba(0,0,0,0.55), transparent 55%)" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay" }} />
 
-        <div aria-hidden style={{
-          position: "absolute", top: "8%", left: -8, right: 0, ...display(900),
-          fontSize: "clamp(88px, 27vw, 156px)", lineHeight: 0.84, color: ink,
-          opacity: p.darkInk ? 0.92 : 0.96, letterSpacing: "-0.04em", whiteSpace: "nowrap",
-          textShadow: p.darkInk ? "none" : "0 6px 40px rgba(0,0,0,0.35)", paddingLeft: 22,
-        }}>
-          <div style={{ ...mono, fontSize: 12, letterSpacing: "0.34em", opacity: 0.75, marginBottom: 12, fontWeight: 500 }}>
-            {listing.make.toUpperCase()} · {String(listing.year)}
-          </div>
-          {listing.chassis}
-        </div>
-
-        {showCutout && (
-          <>
-            {/* Soft ground shadow so the floating car feels planted on the card.
-                Sits just above the info glass so the car reads as floating
-                clear of the panel rather than tucked behind it. */}
-            <div aria-hidden style={{
-              position: "absolute", left: "16%", right: "16%", bottom: "40%", height: 28,
-              background: "radial-gradient(60% 100% at 50% 50%, rgba(0,0,0,0.6), transparent 70%)",
-              filter: "blur(11px)",
-            }} />
-            {/* The cut-out car floats over its own chassis type — its roofline
-                rises into the letters so the type reads BEHIND the car, the
-                editorial poster depth the design is going for. It's lifted to
-                clear the info glass so the car is never hidden behind it. */}
-            <img
-              src={`${import.meta.env.BASE_URL}${listing.cutout}`} alt={listing.title} draggable={false}
-              loading={isTop ? "eager" : "lazy"}
-              onError={() => setCutOk(false)}
-              style={{
-                position: "absolute", left: "1%", right: "1%", bottom: "38%", width: "98%",
-                maxHeight: "47%", objectFit: "contain", objectPosition: "bottom center",
-                userSelect: "none", filter: "drop-shadow(0 26px 28px rgba(0,0,0,0.6))",
-              }}
-            />
-          </>
-        )}
-
         {showPhoto && (
           <>
-            {/* Fallback: the photo fades in from the top, so the giant chassis
-                type sits partially BEHIND the car — the depth effect. */}
+            {/* Full-bleed hero: the listing's best photo fills the card. */}
             <img
               src={listing.image} alt={listing.title} draggable={false}
               loading={isTop ? "eager" : "lazy"}
               onError={() => setImgOk(false)}
               style={{
                 position: "absolute", inset: 0, width: "100%", height: "100%",
-                objectFit: "cover", objectPosition: "center 62%", userSelect: "none",
-                WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.30) 13%, rgba(0,0,0,0.88) 28%, #000 40%)",
-                maskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.30) 13%, rgba(0,0,0,0.88) 28%, #000 40%)",
+                objectFit: "cover", objectPosition: "center 58%", userSelect: "none",
               }}
             />
-            {/* Scrims keep the stamps and the info glass legible over any photo. */}
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, transparent 30%, transparent 55%, rgba(0,0,0,0.62) 100%)" }} />
-            <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay" }} />
+            {/* Scrims: a deep top wash so the giant type reads over any sky or
+                bodywork, and a bottom wash so the glass info panel keeps its
+                contrast on bright photos. */}
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.28) 26%, transparent 44%, transparent 58%, rgba(0,0,0,0.58) 100%)" }} />
+            <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay", opacity: 0.5 }} />
           </>
         )}
+
+        {/* The giant chassis type sits ON TOP of the photo, anchored to the
+            scrimmed band at the top — poster-style, always legible. */}
+        <div aria-hidden style={{
+          position: "absolute", top: "5.5%", left: -8, right: 0, ...display(900),
+          fontSize: "clamp(88px, 27vw, 156px)", lineHeight: 0.84, color: ink,
+          opacity: 0.97, letterSpacing: "-0.04em", whiteSpace: "nowrap",
+          textShadow: showPhoto || !p.darkInk ? "0 6px 44px rgba(0,0,0,0.55)" : "none", paddingLeft: 22,
+        }}>
+          <div style={{ ...mono, fontSize: 12, letterSpacing: "0.34em", opacity: 0.8, marginBottom: 12, fontWeight: 500 }}>
+            {listing.make.toUpperCase()} · {String(listing.year)}
+          </div>
+          {listing.chassis}
+        </div>
 
         <div ref={saveRef} style={{ position: "absolute", top: 26, left: 22, opacity: 0, transform: "rotate(-9deg) scale(0.9)", ...display(900), fontSize: 30, color: T.save, border: `3px solid ${T.save}`, borderRadius: 12, padding: "4px 14px", background: "rgba(0,0,0,0.25)", backdropFilter: "blur(6px)" }}>
           SAVE
