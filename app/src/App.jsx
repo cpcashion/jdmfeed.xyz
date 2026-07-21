@@ -597,32 +597,29 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
             </div>
             <div style={{ ...display(900), fontSize: 20, color: T.ink, whiteSpace: "nowrap" }}>{fmtPrice(listing.price)}</div>
           </div>
+          {/* Mileage and location stack on their own lines; the green source
+              pill sits on the right. A tap anywhere on the card opens the
+              full details — no explicit affordance needed. */}
           <div style={{ marginTop: 9, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
-            <span style={{ ...body, fontSize: 12.5, color: T.faint, display: "flex", alignItems: "center", gap: 7, minWidth: 0 }}>
-              {listing.rhd ? <span style={{ ...mono, fontSize: 10, letterSpacing: "0.1em", color: T.dim, padding: "2px 6px", borderRadius: 8, border: `1px solid ${T.glassBrd}`, flexShrink: 0 }}>RHD</span> : null}
-              {listing.mileage > 0 ? <span style={{ flexShrink: 0 }}>{fmtMiles(listing.mileage)}</span> : null}
-              {listing.mileage > 0 ? <span style={{ color: T.glassBrd, flexShrink: 0 }}>·</span> : null}
+            <div style={{ ...body, fontSize: 12.5, color: T.faint, minWidth: 0, display: "flex", flexDirection: "column", gap: 3 }}>
+              {(listing.rhd || listing.mileage > 0) ? (
+                <span style={{ display: "flex", alignItems: "center", gap: 7 }}>
+                  {listing.rhd ? <span style={{ ...mono, fontSize: 10, letterSpacing: "0.1em", color: T.dim, padding: "2px 6px", borderRadius: 8, border: `1px solid ${T.glassBrd}` }}>RHD</span> : null}
+                  {listing.mileage > 0 ? <span>{fmtMiles(listing.mileage)}</span> : null}
+                </span>
+              ) : null}
               <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                 {stateOf(listing.location)}
               </span>
-            </span>
-            <span style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
-              <span style={{
-                ...mono, fontSize: 10, letterSpacing: "0.06em", padding: "4px 8px", borderRadius: 20,
-                border: `1px solid ${listing.live ? "rgba(57,217,138,0.45)" : T.glassBrd}`,
-                color: listing.live ? T.save : T.faint,
-                background: listing.live ? "rgba(57,217,138,0.08)" : "rgba(255,255,255,0.04)",
-                whiteSpace: "nowrap",
-              }}>
-                {listing.live ? "● LIVE · " : ""}{listing.source.toUpperCase()}
-              </span>
-              {/* Tap-for-more affordance. */}
-              <span aria-hidden style={{
-                width: 26, height: 26, borderRadius: 13, display: "grid", placeItems: "center",
-                color: T.ink, background: "rgba(255,255,255,0.08)", border: `1px solid ${T.glassBrd}`, boxShadow: T.glassHi,
-              }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
-              </span>
+            </div>
+            <span style={{
+              ...mono, fontSize: 10, letterSpacing: "0.06em", padding: "4px 8px", borderRadius: 20, flexShrink: 0,
+              border: `1px solid ${listing.live ? "rgba(57,217,138,0.45)" : T.glassBrd}`,
+              color: listing.live ? T.save : T.faint,
+              background: listing.live ? "rgba(57,217,138,0.08)" : "rgba(255,255,255,0.04)",
+              whiteSpace: "nowrap",
+            }}>
+              {listing.live ? "● LIVE · " : ""}{listing.source.toUpperCase()}
             </span>
           </div>
         </Glass>
