@@ -407,12 +407,25 @@ const releaseVelocity = (d) => {
   return { vx: (last.x - first.x) / dt, vy: (last.y - first.y) / dt };
 };
 
+/* Live deck depth. The top card publishes its drag magnitude (0..1) on the
+   same pointermove frames it paints with; the card directly behind eases
+   toward the top slot so the deck gains depth as the front card leaves —
+   the Tinder-style parallax that makes the stack feel physical. No extra
+   rAF: publishing is driven by the drag frames (and the spring loop). */
+const deckListeners = new Set();
+const publishDepth = (mag, withTransition) => {
+  for (const fn of deckListeners) fn(mag, withTransition);
+};
+/* magnitude a card's drag maps to full lift-through of the card behind */
+const LIFT_SPAN = THRESH * 1.7;
+
 function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, onSwipeCommit, onOpen }) {
   const rootRef = useRef(null);
   const saveRef = useRef(null);
   const passRef = useRef(null);
   const drag = useRef(null); // live gesture: offsets + smoothed velocity
   const gone = useRef(false); // fly-out started — this card is done taking input
+  const spring = useRef(0); // rAF handle for the release spring
   const [imgOk, setImgOk] = useState(true);
   const p = listing.paint;
   const showPhoto = Boolean(listing.image) && imgOk;
@@ -423,14 +436,22 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
      finger. Rotation direction follows the grab point (grab the top half
      and the nose leads; grab the bottom and it trails), the way physical
      cards behave. */
-  const paint = () => {
-    const d = drag.current;
-    if (!d || !rootRef.current) return;
-    const rot = Math.max(-15, Math.min(15, d.dx * 0.06)) * d.rotDir;
-    rootRef.current.style.transform = `translate3d(${d.dx}px, ${d.dy * 0.9}px, 0) rotate(${rot}deg)`;
-    const so = clamp01(d.dx / THRESH), po = clamp01(-d.dx / THRESH);
+  /* Paint one frame at offset (x, y). Shared by the live drag and the
+     release spring so both read identically — rotation tracks x, the
+     stamps fade in with x, and the card behind lifts with |x|. */
+  const paintAt = (x, y, rotDir) => {
+    const el = rootRef.current;
+    if (!el) return;
+    const rot = Math.max(-15, Math.min(15, x * 0.06)) * rotDir;
+    el.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}deg)`;
+    const so = clamp01(x / THRESH), po = clamp01(-x / THRESH);
     if (saveRef.current) { saveRef.current.style.opacity = so; saveRef.current.style.transform = `rotate(-9deg) scale(${0.9 + so * 0.15})`; }
     if (passRef.current) { passRef.current.style.opacity = po; passRef.current.style.transform = `rotate(9deg) scale(${0.9 + po * 0.15})`; }
+    publishDepth(clamp01(Math.abs(x) / LIFT_SPAN), false);
+  };
+  const paint = () => {
+    const d = drag.current;
+    if (d) paintAt(d.dx, d.dy * 0.9, d.rotDir);
   };
 
   const flyOut = useCallback((dir, vx = 0, vy = 0) => {
@@ -439,6 +460,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
     buzz(12);
     const d = drag.current || { dx: 0, dy: 0, rotDir: 1 };
     drag.current = null;
+    cancelAnimationFrame(spring.current);
     const sign = dir === "right" ? 1 : -1;
     const distX = (window.innerWidth || 420) * 1.15 + 120;
     // The card leaves at the finger's speed — a hard flick exits faster —
@@ -452,6 +474,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
     }
     const stamp = dir === "right" ? saveRef.current : passRef.current;
     if (stamp) stamp.style.opacity = 1;
+    publishDepth(1, true); // the card behind rises to full as this one leaves
     onSwipeStart(listing.id, dir); // promote the next card immediately — no dead gap
     setTimeout(() => onSwipeCommit(listing.id, dir), ms + 40);
   }, [listing.id, onSwipeStart, onSwipeCommit]);
@@ -461,18 +484,37 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [forced && forced.n]);
 
-  const settle = () => {
+  /* Release spring: an under-damped spring integrated per frame, SEEDED with
+     the finger's release velocity (px/ms → px/s). This is the world-class
+     detail a fixed timing-curve can't do — a fast near-miss that doesn't
+     cross the threshold whips back with its own momentum and overshoots
+     just slightly, exactly like iOS/Framer. Rotation and deck depth ride
+     the same integrated position, so everything stays coherent. */
+  const springBack = (x0, y0, vx0, vy0, rotDir) => {
+    drag.current = null;
+    cancelAnimationFrame(spring.current);
     const el = rootRef.current;
-    if (el) {
-      el.style.transition = "transform 0.45s cubic-bezier(0.2, 1.25, 0.35, 1)"; // springy return
-      el.style.transform = "translate3d(0px, 0px, 0) rotate(0deg)";
-    }
-    for (const r of [saveRef, passRef]) if (r.current) r.current.style.opacity = 0;
+    if (el) el.style.transition = "none";
+    let x = x0, y = y0, vx = vx0 * 1000, vy = vy0 * 1000;
+    const k = 210, c = 23; // ~0.8 of critical → a hair of overshoot, no wobble
+    let t = performance.now();
+    const step = (now) => {
+      const dt = Math.min((now - t) / 1000, 0.032); t = now;
+      vx += (-k * x - c * vx) * dt; vy += (-k * y - c * vy) * dt;
+      x += vx * dt; y += vy * dt;
+      if (Math.abs(x) < 0.4 && Math.abs(y) < 0.4 && Math.hypot(vx, vy) < 8) {
+        paintAt(0, 0, rotDir); publishDepth(0, false); return;
+      }
+      paintAt(x, y, rotDir);
+      spring.current = requestAnimationFrame(step);
+    };
+    spring.current = requestAnimationFrame(step);
   };
 
   const onDown = (e) => {
     if (!isTop || gone.current) return;
     e.currentTarget.setPointerCapture(e.pointerId);
+    cancelAnimationFrame(spring.current); // grabbable mid-spring
     if (rootRef.current) rootRef.current.style.transition = "none";
     const r = e.currentTarget.getBoundingClientRect();
     drag.current = {
@@ -500,21 +542,42 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
     const proj = d.dx + vx * 200;
     if (proj > THRESH && d.dx > 20) return flyOut("right", vx, vy);
     if (proj < -THRESH && d.dx < -20) return flyOut("left", vx, vy);
-    drag.current = null;
-    settle();
     // A clean tap anywhere on the card opens the details.
-    if (!d.moved) { buzz(6); onOpen(listing); }
+    if (!d.moved) { drag.current = null; publishDepth(0, false); buzz(6); onOpen(listing); return; }
+    springBack(d.dx, d.dy * 0.9, vx, vy, d.rotDir);
   };
   const onCancel = () => {
-    if (!drag.current) return;
-    drag.current = null;
-    settle();
+    const d = drag.current;
+    if (!d) return;
+    springBack(d.dx, d.dy * 0.9, 0, 0, d.rotDir);
   };
 
   const behind = isTop || exiting ? 0 : stackIndex;
   // Over a full-bleed photo the type is always light; the gradient card
   // (photo missing/broken) keeps the paint-aware ink.
   const ink = showPhoto || !p.darkInk ? T.ink : "#14161C";
+
+  // Cancel any in-flight spring when this card unmounts.
+  useEffect(() => () => cancelAnimationFrame(spring.current), []);
+
+  // A resting card DIRECTLY behind the top one lifts toward the top slot as
+  // the front card is dragged — driven imperatively so it never re-renders.
+  useEffect(() => {
+    if (isTop || exiting || behind !== 1) return undefined;
+    const el = rootRef.current;
+    const restS = 1 - behind * 0.045, restY = behind * 12, restO = 1 - behind * 0.18;
+    const upS = 1, upY = 0, upO = 1; // the top slot
+    const update = (mag, withTransition) => {
+      if (!el) return;
+      el.style.transition = withTransition
+        ? "transform 0.42s cubic-bezier(0.22,1,0.36,1), opacity 0.42s ease" : "none";
+      el.style.transform = `translate3d(0px, ${restY + (upY - restY) * mag}px, 0) scale(${restS + (upS - restS) * mag})`;
+      el.style.opacity = restO + (upO - restO) * mag;
+    };
+    deckListeners.add(update);
+    return () => deckListeners.delete(update);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTop, exiting, behind]);
 
   return (
     <div
