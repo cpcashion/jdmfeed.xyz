@@ -413,7 +413,6 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
   const passRef = useRef(null);
   const drag = useRef(null); // live gesture: offsets + smoothed velocity
   const gone = useRef(false); // fly-out started — this card is done taking input
-  const btnDown = useRef(null); // where the DETAILS press started (drift check)
   const [imgOk, setImgOk] = useState(true);
   const p = listing.paint;
   const showPhoto = Boolean(listing.image) && imgOk;
@@ -543,35 +542,21 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
 
         {showPhoto && (
           <>
-            {/* Backdrop: a blurred, zoomed cover of the same photo fills the
-                card edge-to-edge so it reads full-bleed — this is what lives
-                behind the letterbox of the contained hero below. */}
-            <img aria-hidden
-              src={listing.image} draggable={false}
-              loading={isTop ? "eager" : "lazy"}
-              style={{
-                position: "absolute", inset: 0, width: "100%", height: "100%",
-                objectFit: "cover", objectPosition: "center 58%",
-                transform: "scale(1.18)", filter: "blur(26px) saturate(1.1) brightness(0.62)",
-                userSelect: "none",
-              }}
-            />
-            {/* Hero: the WHOLE car, uncropped. `contain` fits the full photo
-                width-to-width so the entire car length shows instead of the
-                cover crop that lopped off the nose and tail. */}
+            {/* Full-bleed hero: the listing's best photo covers the whole
+                card so the car fills the frame edge to edge. */}
             <img
               src={listing.image} alt={listing.title} draggable={false}
               loading={isTop ? "eager" : "lazy"}
               onError={() => setImgOk(false)}
               style={{
                 position: "absolute", inset: 0, width: "100%", height: "100%",
-                objectFit: "contain", objectPosition: "center 47%", userSelect: "none",
+                objectFit: "cover", objectPosition: "center 55%", userSelect: "none",
               }}
             />
             {/* Scrims: a deep top wash so the giant type reads over any sky or
-                bodywork, and a bottom wash so the glass info panel keeps its
-                contrast on bright photos. */}
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.22) 24%, transparent 42%, transparent 60%, rgba(0,0,0,0.6) 100%)" }} />
+                bodywork, and a short bottom wash so the compact glass bar
+                keeps its contrast on bright photos. */}
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.2) 23%, transparent 40%, transparent 72%, rgba(0,0,0,0.5) 100%)" }} />
             <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay", opacity: 0.5 }} />
           </>
         )}
@@ -597,70 +582,49 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
           PASS
         </div>
 
-        {/* The panel is passive on purpose: the card's gesture engine owns
-            every pointer, so a swipe that STARTS here still swipes, and a
-            clean tap here opens the details (the card-level tap path). Only
-            the DETAILS button intercepts its own presses. */}
-        <Glass radius={24} style={{ position: "absolute", left: 14, right: 14, bottom: 14, padding: "16px 18px 14px", cursor: "pointer" }}>
+        {/* Compact info bar — kept deliberately short so the full-bleed photo
+            fills as much of the card as possible. The panel is passive: the
+            card's gesture engine owns every pointer, so a swipe that STARTS
+            here still swipes and a clean tap here opens the details (the
+            card-level tap path). The "+" is a visible hint that it's tappable. */}
+        <Glass radius={22} style={{ position: "absolute", left: 14, right: 14, bottom: 14, padding: "12px 14px 12px 16px", cursor: "pointer" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
             <div style={{
-              ...display(800), fontSize: 21, color: T.ink, lineHeight: 1.1,
-              display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden",
+              ...display(800), fontSize: 20, color: T.ink, lineHeight: 1.1,
+              whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
             }}>
               {listing.year} {listing.model}
-              {listing.trim ? <span style={{ ...body, fontWeight: 500, fontSize: 14, color: T.dim }}>  {listing.trim}</span> : null}
             </div>
-            <div style={{ ...display(900), fontSize: 22, color: T.ink, whiteSpace: "nowrap" }}>{fmtPrice(listing.price)}</div>
+            <div style={{ ...display(900), fontSize: 20, color: T.ink, whiteSpace: "nowrap" }}>{fmtPrice(listing.price)}</div>
           </div>
-          {(() => {
-            // Only the specs the source actually knows — no "—" placeholders.
-            const quick = [
-              listing.mileage > 0 ? fmtMiles(listing.mileage) : "",
-              listing.transmission, listing.drivetrain,
-            ].filter(Boolean);
-            return quick.length ? (
-              <div style={{ ...mono, fontSize: 12, color: T.dim, marginTop: 8, display: "flex", flexWrap: "wrap", gap: "4px 14px" }}>
-                {quick.map((s) => <span key={s}>{s}</span>)}
-              </div>
-            ) : null;
-          })()}
-          <div style={{ marginTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <span style={{ ...body, fontSize: 12.5, color: T.faint }}>
-              {listing.rhd ? <span style={{ ...mono, fontSize: 10, letterSpacing: "0.1em", color: T.dim, marginRight: 8, padding: "2px 6px", borderRadius: 8, border: `1px solid ${T.glassBrd}` }}>RHD</span> : null}
-              {stateOf(listing.location)}
+          <div style={{ marginTop: 9, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
+            <span style={{ ...body, fontSize: 12.5, color: T.faint, display: "flex", alignItems: "center", gap: 7, minWidth: 0 }}>
+              {listing.rhd ? <span style={{ ...mono, fontSize: 10, letterSpacing: "0.1em", color: T.dim, padding: "2px 6px", borderRadius: 8, border: `1px solid ${T.glassBrd}`, flexShrink: 0 }}>RHD</span> : null}
+              {listing.mileage > 0 ? <span style={{ flexShrink: 0 }}>{fmtMiles(listing.mileage)}</span> : null}
+              {listing.mileage > 0 ? <span style={{ color: T.glassBrd, flexShrink: 0 }}>·</span> : null}
+              <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {stateOf(listing.location)}
+              </span>
             </span>
-            <span style={{
-              ...mono, fontSize: 10.5, letterSpacing: "0.08em", padding: "4px 9px", borderRadius: 20,
-              border: `1px solid ${listing.live ? "rgba(57,217,138,0.45)" : T.glassBrd}`,
-              color: listing.live ? T.save : T.faint,
-              background: listing.live ? "rgba(57,217,138,0.08)" : "rgba(255,255,255,0.04)",
-            }}>
-              {listing.live ? "● LIVE · " : ""}{listing.source.toUpperCase()}
+            <span style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+              <span style={{
+                ...mono, fontSize: 10, letterSpacing: "0.06em", padding: "4px 8px", borderRadius: 20,
+                border: `1px solid ${listing.live ? "rgba(57,217,138,0.45)" : T.glassBrd}`,
+                color: listing.live ? T.save : T.faint,
+                background: listing.live ? "rgba(57,217,138,0.08)" : "rgba(255,255,255,0.04)",
+                whiteSpace: "nowrap",
+              }}>
+                {listing.live ? "● LIVE · " : ""}{listing.source.toUpperCase()}
+              </span>
+              {/* Tap-for-more affordance. */}
+              <span aria-hidden style={{
+                width: 26, height: 26, borderRadius: 13, display: "grid", placeItems: "center",
+                color: T.ink, background: "rgba(255,255,255,0.08)", border: `1px solid ${T.glassBrd}`, boxShadow: T.glassHi,
+              }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
+              </span>
             </span>
           </div>
-          {/* Guaranteed tap target for the detail sheet. stopPropagation on
-              pointerdown keeps the card's swipe engine from ever capturing
-              this pointer, so the button works on every device regardless
-              of how the platform routes the tap gesture. */}
-          <button
-            onPointerDown={(e) => { e.stopPropagation(); btnDown.current = { x: e.clientX, y: e.clientY }; }}
-            onClick={(e) => {
-              e.stopPropagation();
-              const s = btnDown.current;
-              if (s && Math.hypot(e.clientX - s.x, e.clientY - s.y) > 12) return; // a drag, not a tap
-              buzz(6);
-              onOpen(listing);
-            }}
-            style={{
-              width: "100%", marginTop: 12, padding: "12px 0", borderRadius: 14, cursor: "pointer",
-              ...mono, fontSize: 11, letterSpacing: "0.22em", color: T.ink,
-              background: "rgba(255,255,255,0.07)", border: `1px solid ${T.glassBrd}`,
-              boxShadow: T.glassHi, display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-            }}
-          >
-            DETAILS
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M18 15l-6-6-6 6" /></svg>
-          </button>
         </Glass>
       </div>
     </div>
