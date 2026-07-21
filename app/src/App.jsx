@@ -543,20 +543,35 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
 
         {showPhoto && (
           <>
-            {/* Full-bleed hero: the listing's best photo fills the card. */}
+            {/* Backdrop: a blurred, zoomed cover of the same photo fills the
+                card edge-to-edge so it reads full-bleed — this is what lives
+                behind the letterbox of the contained hero below. */}
+            <img aria-hidden
+              src={listing.image} draggable={false}
+              loading={isTop ? "eager" : "lazy"}
+              style={{
+                position: "absolute", inset: 0, width: "100%", height: "100%",
+                objectFit: "cover", objectPosition: "center 58%",
+                transform: "scale(1.18)", filter: "blur(26px) saturate(1.1) brightness(0.62)",
+                userSelect: "none",
+              }}
+            />
+            {/* Hero: the WHOLE car, uncropped. `contain` fits the full photo
+                width-to-width so the entire car length shows instead of the
+                cover crop that lopped off the nose and tail. */}
             <img
               src={listing.image} alt={listing.title} draggable={false}
               loading={isTop ? "eager" : "lazy"}
               onError={() => setImgOk(false)}
               style={{
                 position: "absolute", inset: 0, width: "100%", height: "100%",
-                objectFit: "cover", objectPosition: "center 58%", userSelect: "none",
+                objectFit: "contain", objectPosition: "center 47%", userSelect: "none",
               }}
             />
             {/* Scrims: a deep top wash so the giant type reads over any sky or
                 bodywork, and a bottom wash so the glass info panel keeps its
                 contrast on bright photos. */}
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.28) 26%, transparent 44%, transparent 58%, rgba(0,0,0,0.58) 100%)" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.22) 24%, transparent 42%, transparent 60%, rgba(0,0,0,0.6) 100%)" }} />
             <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay", opacity: 0.5 }} />
           </>
         )}
