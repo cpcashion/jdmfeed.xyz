@@ -160,7 +160,6 @@ const SEED = [
 const LS_SWIPED = "touge.swiped.v1";
 const LS_LIVE = "touge.live.v1";
 const LS_USER = "touge.user.v1";
-const LS_ONBOARDED = "popjdm.onboarded.v1";
 
 const loadJSON = (key, fallback) => {
   try {
@@ -1211,33 +1210,34 @@ function Garage({ saved, passed, onRemove, onOpen }) {
 
 /* ---------------- onboarding ----------------
 
-   A 3-slide first-run intro in the brand's retro-JDM art direction:
-   cream paper, distressed grain, checkered-flag strips, sunset accents,
-   and the PopJDM badge. Swipeable (fitting, for a swipe app) with page
-   dots; "Start swiping" drops into the dark app. Shown once, gated on
-   LS_ONBOARDED. */
+   A first-run intro in the app's own Liquid-Glass language — the dark
+   surface, frosted panels and hairline borders, with one warm sunset-red
+   accent echoing the logo. Three swipeable slides, glass page dots, glass
+   buttons (no gradient fills). Shown on EVERY visit (no persistence);
+   Skip or "Start swiping" dismisses it for the session. */
 
-const OB = {
-  cream: "#F4E8D0", paper: "#EFE1C6", navy: "#0E1B2E", ink: "#1A1A1A",
-  coral: "#FF5E6E", amber: "#FFC35C", teal: "#006C7A", purple: "#8E7CC3",
-  dim: "rgba(26,26,26,0.62)",
-};
-const italic = (weight = 900) => ({ ...display(weight), fontStyle: "italic", fontVariationSettings: "'wdth' 125" });
-// A checkered-flag strip (the logo's motif), rendered as a CSS checkerboard.
-const Checker = ({ color = OB.navy, h = 15, style }) => (
-  <div aria-hidden style={{
-    height: h, opacity: 0.92,
-    backgroundImage: `conic-gradient(${color} 90deg, transparent 0 180deg, ${color} 0 270deg, transparent 0)`,
-    backgroundSize: `${h}px ${h}px`, ...style,
-  }} />
-);
-const Sunset = ({ size = 66, style }) => (
-  <div aria-hidden style={{
-    width: size, height: size, borderRadius: "50%",
-    background: `linear-gradient(180deg, ${OB.amber}, ${OB.coral} 62%, #E23B57)`,
-    boxShadow: `0 8px 30px ${OB.coral}66`, ...style,
-  }} />
-);
+const ACCENT = "#FF6B72"; // the logo's sunset red — the single accent colour
+
+// Frosted glass button — the app's Liquid-Glass surface, no gradient.
+function GlassButton({ children, onClick, bright, style }) {
+  const press = (v) => (e) => { e.currentTarget.style.transform = v; };
+  return (
+    <button
+      onClick={onClick}
+      onPointerDown={press("scale(0.975)")} onPointerUp={press("scale(1)")} onPointerLeave={press("scale(1)")}
+      style={{
+        ...display(800), fontSize: 15.5, letterSpacing: "0.01em", color: T.ink, cursor: "pointer",
+        padding: "15px 24px", borderRadius: 16, width: "100%",
+        background: bright ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.06)",
+        backdropFilter: "blur(24px) saturate(1.6)", WebkitBackdropFilter: "blur(24px) saturate(1.6)",
+        border: `1px solid ${bright ? "rgba(255,255,255,0.3)" : T.glassBrd}`,
+        boxShadow: `${T.glassHi}, 0 12px 32px rgba(0,0,0,0.45)`,
+        transition: "transform 0.14s ease, background 0.2s ease",
+        ...style,
+      }}
+    >{children}</button>
+  );
+}
 
 function Onboarding({ onDone }) {
   const N = 3;
@@ -1249,7 +1249,7 @@ function Onboarding({ onDone }) {
   const setX = (px, withTrans) => {
     const el = trackRef.current;
     if (!el) return;
-    el.style.transition = withTrans ? "transform 0.44s cubic-bezier(0.22,1,0.36,1)" : "none";
+    el.style.transition = withTrans ? "transform 0.5s cubic-bezier(0.22,1,0.36,1)" : "none";
     el.style.transform = `translate3d(calc(${(-i * 100) / N}% + ${px}px), 0, 0)`;
   };
   useEffect(() => { setX(0, true); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [i]);
@@ -1258,106 +1258,97 @@ function Onboarding({ onDone }) {
   const onMove = (e) => {
     const d = drag.current; if (!d) return;
     d.dx = e.clientX - d.x0;
-    if ((i === 0 && d.dx > 0) || (i === N - 1 && d.dx < 0)) d.dx *= 0.32; // rubber-band ends
+    if ((i === 0 && d.dx > 0) || (i === N - 1 && d.dx < 0)) d.dx *= 0.3; // rubber-band ends
     setX(d.dx, false);
   };
   const onUp = () => {
     const d = drag.current; if (!d) return; drag.current = null;
     const w = trackRef.current ? trackRef.current.offsetWidth / N : 320;
-    const t = Math.min(64, w * 0.22);
+    const t = Math.min(64, w * 0.2);
     if (d.dx < -t) go(i + 1);
     else if (d.dx > t) go(i - 1);
     else setX(0, true);
   };
 
   const logo = `${import.meta.env.BASE_URL}popjdm-logo.png`;
-  const label = { ...mono, fontSize: 11, letterSpacing: "0.34em", color: OB.teal, fontWeight: 500 };
+  const kicker = { ...mono, fontSize: 11, letterSpacing: "0.36em", color: T.faint };
+  const head = { ...display(800), fontSize: 31, color: T.ink, lineHeight: 1.08, letterSpacing: "-0.02em", margin: 0 };
+  const sub = (max = 300) => ({ ...body, fontSize: 15, lineHeight: 1.6, color: T.dim, maxWidth: max, margin: "16px auto 0" });
 
   const slides = [
     (
-      <>
-        <div style={{ ...mono, fontSize: 11, letterSpacing: "0.42em", color: OB.dim, marginBottom: 20 }}>スワイプ・セーブ・ドライブ</div>
-        <img src={logo} alt="PopJDM" draggable={false} style={{ width: "min(78%, 300px)", height: "auto", filter: "drop-shadow(0 10px 26px rgba(14,27,46,0.28))" }} />
-        <div style={{ ...italic(900), fontSize: 30, color: OB.navy, marginTop: 26, letterSpacing: "-0.01em" }}>Swipe. Save. Drive.</div>
-        <p style={{ ...body, fontSize: 15.5, lineHeight: 1.55, color: OB.dim, maxWidth: 300, margin: "14px auto 0" }}>
-          Every JDM car for sale in America — Skylines, Supras, kei trucks and RHD legends — in one feed built to flick through.
-        </p>
-      </>
+      <div style={{ textAlign: "center" }}>
+        <img src={logo} alt="PopJDM" draggable={false}
+          style={{ width: "min(82%, 310px)", height: "auto", filter: "drop-shadow(0 18px 44px rgba(0,0,0,0.6))" }} />
+        <p style={sub(288)}>Japan&rsquo;s greatest hits, for sale across the US — Skylines, Supras, kei trucks and the RHD legends, live right now.</p>
+      </div>
     ),
     (
-      <>
-        <div style={{ ...label, marginBottom: 22 }}>HOW IT WORKS</div>
-        <h2 style={{ ...italic(900), fontSize: 30, color: OB.navy, margin: "0 0 30px", lineHeight: 1.05 }}>Build your<br />garage by feel.</h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: 14, maxWidth: 320, margin: "0 auto", width: "100%" }}>
+      <div style={{ textAlign: "center", width: "100%" }}>
+        <div style={{ ...kicker, marginBottom: 16 }}>HOW IT WORKS</div>
+        <h2 style={head}>Swipe to build<br />your garage.</h2>
+        <div style={{
+          maxWidth: 322, margin: "30px auto 0", borderRadius: 20, overflow: "hidden",
+          background: T.glassBg, backdropFilter: "blur(28px) saturate(1.6)", WebkitBackdropFilter: "blur(28px) saturate(1.6)",
+          border: `1px solid ${T.glassBrd}`, boxShadow: T.glassHi,
+        }}>
           {[
-            { c: OB.coral, arrow: "→", t: "Swipe right to save", s: "It parks in your garage." },
-            { c: OB.navy, arrow: "←", t: "Swipe left to pass", s: "Gone — onto the next." },
-            { c: OB.teal, arrow: "◎", t: "Tap a card for details", s: "Photos, specs, price, source." },
-          ].map((r) => (
-            <div key={r.t} style={{ display: "flex", alignItems: "center", gap: 14, background: "rgba(255,255,255,0.5)", border: `1.5px solid ${r.c}`, borderRadius: 16, padding: "13px 15px", textAlign: "left" }}>
-              <span style={{ ...italic(900), fontSize: 22, color: r.c, width: 26, textAlign: "center", flexShrink: 0 }}>{r.arrow}</span>
+            { c: ACCENT, sym: "♥", t: "Swipe right", s: "Parks it in your garage" },
+            { c: "rgba(244,245,247,0.55)", sym: "✕", t: "Swipe left", s: "Pass — bring the next one" },
+            { c: "#66B2FF", sym: "↑", t: "Tap the card", s: "Full photos, specs & price" },
+          ].map((r, idx) => (
+            <div key={r.t} style={{ display: "flex", alignItems: "center", gap: 14, padding: "14px 16px", textAlign: "left", borderTop: idx ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
+              <span style={{ width: 34, height: 34, borderRadius: 17, display: "grid", placeItems: "center", flexShrink: 0, color: r.c, fontSize: 15, background: "rgba(255,255,255,0.06)", border: `1px solid ${T.glassBrd}` }}>{r.sym}</span>
               <span style={{ minWidth: 0 }}>
-                <span style={{ ...display(800), fontSize: 15.5, color: OB.navy, display: "block" }}>{r.t}</span>
-                <span style={{ ...body, fontSize: 12.5, color: OB.dim }}>{r.s}</span>
+                <span style={{ ...display(700), fontSize: 15, color: T.ink, display: "block" }}>{r.t}</span>
+                <span style={{ ...body, fontSize: 12.5, color: T.dim }}>{r.s}</span>
               </span>
             </div>
           ))}
         </div>
-      </>
+      </div>
     ),
     (
-      <>
-        <Sunset size={72} style={{ margin: "0 auto 22px" }} />
-        <div style={{ ...label, marginBottom: 14 }}>WHY POPJDM</div>
-        <h2 style={{ ...italic(900), fontSize: 30, color: OB.navy, margin: "0 0 16px", lineHeight: 1.05 }}>Fresh metal,<br />every day.</h2>
-        <p style={{ ...body, fontSize: 15.5, lineHeight: 1.55, color: OB.dim, maxWidth: 310, margin: "0 auto" }}>
-          Live listings from Bring a Trailer, eBay and the top RHD importers — refreshed around the clock and sorted newest-first. Sign in and your garage follows you to every device.
-        </p>
-      </>
+      <div style={{ textAlign: "center" }}>
+        <div style={{ ...kicker, marginBottom: 16 }}>ALWAYS FRESH</div>
+        <h2 style={head}>New metal,<br />every hour.</h2>
+        <p style={sub(300)}>Live from Bring a Trailer, eBay and the top RHD importers — sorted newest-first, so the feed is never stale.</p>
+      </div>
     ),
   ];
 
   return (
-    <div style={{ position: "fixed", inset: 0, zIndex: 200, background: OB.cream, ...body, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-      <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, opacity: 0.5, pointerEvents: "none" }} />
-      <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: `radial-gradient(70% 40% at 50% 0%, ${OB.amber}22, transparent 60%)` }} />
+    <div style={{ position: "fixed", inset: 0, zIndex: 200, background: T.bg, ...body, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(72% 42% at 50% -8%, rgba(255,107,114,0.16), transparent 62%), radial-gradient(62% 42% at 85% 110%, rgba(90,140,230,0.10), transparent 60%)" }} />
+      <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", backgroundImage: GRAIN, opacity: 0.6 }} />
 
-      <div style={{ display: "flex", justifyContent: "flex-end", padding: "calc(12px + env(safe-area-inset-top)) 16px 0", position: "relative" }}>
-        <button onClick={onDone} style={{ ...mono, fontSize: 11, letterSpacing: "0.18em", color: OB.dim, background: "none", border: "none", cursor: "pointer", padding: 8 }}>SKIP</button>
+      <div style={{ display: "flex", justifyContent: "flex-end", padding: "calc(14px + env(safe-area-inset-top)) 20px 0", position: "relative" }}>
+        <button onClick={onDone} style={{ ...mono, fontSize: 11, letterSpacing: "0.2em", color: T.faint, background: "none", border: "none", cursor: "pointer", padding: 8 }}>SKIP</button>
       </div>
-
-      <Checker color={OB.purple} h={14} style={{ position: "relative", margin: "6px 0 0" }} />
 
       <div onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}
         style={{ flex: 1, overflow: "hidden", position: "relative", touchAction: "pan-y" }}>
-        <div ref={trackRef} style={{ display: "flex", width: `${N * 100}%`, height: "100%", transform: `translate3d(0,0,0)`, willChange: "transform" }}>
+        <div ref={trackRef} style={{ display: "flex", width: `${N * 100}%`, height: "100%", willChange: "transform" }}>
           {slides.map((s, k) => (
-            <div key={k} style={{ width: `${100 / N}%`, height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "10px 30px 20px" }}>
+            <div key={k} style={{ width: `${100 / N}%`, height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 32px" }}>
               {s}
             </div>
           ))}
         </div>
       </div>
 
-      <Checker color={OB.purple} h={14} />
-
-      <div style={{ padding: "20px 26px calc(24px + env(safe-area-inset-bottom))", position: "relative" }}>
-        <div style={{ display: "flex", justifyContent: "center", gap: 9, marginBottom: 18 }}>
+      <div style={{ padding: "0 28px calc(30px + env(safe-area-inset-bottom))", position: "relative" }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: 8, marginBottom: 22 }}>
           {Array.from({ length: N }, (_, k) => (
             <button key={k} aria-label={`Slide ${k + 1}`} onClick={() => go(k)} style={{
-              width: k === i ? 22 : 8, height: 8, borderRadius: 4, border: "none", cursor: "pointer", padding: 0,
-              background: k === i ? OB.coral : "rgba(14,27,46,0.22)", transition: "width 0.3s ease, background 0.3s ease",
+              width: k === i ? 24 : 8, height: 8, borderRadius: 4, border: "none", cursor: "pointer", padding: 0,
+              background: k === i ? T.ink : "rgba(255,255,255,0.22)", transition: "width 0.3s ease, background 0.3s ease",
             }} />
           ))}
         </div>
-        <button onClick={() => (i < N - 1 ? go(i + 1) : onDone())} style={{
-          width: "100%", padding: "16px 0", borderRadius: 16, cursor: "pointer", border: "none",
-          ...display(900), fontSize: 16, letterSpacing: "0.01em", color: OB.cream,
-          background: i < N - 1 ? OB.navy : `linear-gradient(180deg, ${OB.amber}, ${OB.coral})`,
-          boxShadow: i < N - 1 ? "0 8px 22px rgba(14,27,46,0.28)" : `0 10px 26px ${OB.coral}66`,
-        }}>
+        <GlassButton bright onClick={() => (i < N - 1 ? go(i + 1) : onDone())}>
           {i < N - 1 ? "Next" : "Start swiping"}
-        </button>
+        </GlassButton>
       </div>
     </div>
   );
@@ -1367,7 +1358,8 @@ export default function App() {
   const [liveListings, setLiveListings] = useState(() =>
     loadJSON(LS_LIVE, []).map((r) => normalize(r, 0, true))
   );
-  const [onboarded, setOnboarded] = useState(() => loadJSON(LS_ONBOARDED, false));
+  // Onboarding shows on EVERY visit — session-only state, never persisted.
+  const [onboarded, setOnboarded] = useState(false);
   const [user, setUser] = useState(() => loadJSON(LS_USER, null));
   const [accountOpen, setAccountOpen] = useState(false);
   const [swiped, setSwiped] = useState(() =>
@@ -1726,7 +1718,7 @@ export default function App() {
         matchCount={listings.filter((l) => !dirOf(swiped[l.id]) && passesFilters(l)).length} />
 
       {!onboarded && (
-        <Onboarding onDone={() => { setOnboarded(true); saveJSON(LS_ONBOARDED, true); }} />
+        <Onboarding onDone={() => setOnboarded(true)} />
       )}
     </div>
   );
