@@ -160,6 +160,7 @@ const SEED = [
 const LS_SWIPED = "touge.swiped.v1";
 const LS_LIVE = "touge.live.v1";
 const LS_USER = "touge.user.v1";
+const LS_ONBOARDED = "popjdm.onboarded.v1";
 
 const loadJSON = (key, fallback) => {
   try {
@@ -1247,10 +1248,165 @@ function Garage({ saved, passed, onRemove, onOpen }) {
 
 /* ---------------- app shell ---------------- */
 
+/* ---------------- onboarding ----------------
+
+   A 3-slide first-run intro in the brand's retro-JDM art direction:
+   cream paper, distressed grain, checkered-flag strips, sunset accents,
+   and the PopJDM badge. Swipeable (fitting, for a swipe app) with page
+   dots; "Start swiping" drops into the dark app. Shown once, gated on
+   LS_ONBOARDED. */
+
+const OB = {
+  cream: "#F4E8D0", paper: "#EFE1C6", navy: "#0E1B2E", ink: "#1A1A1A",
+  coral: "#FF5E6E", amber: "#FFC35C", teal: "#006C7A", purple: "#8E7CC3",
+  dim: "rgba(26,26,26,0.62)",
+};
+const italic = (weight = 900) => ({ ...display(weight), fontStyle: "italic", fontVariationSettings: "'wdth' 125" });
+// A checkered-flag strip (the logo's motif), rendered as a CSS checkerboard.
+const Checker = ({ color = OB.navy, h = 15, style }) => (
+  <div aria-hidden style={{
+    height: h, opacity: 0.92,
+    backgroundImage: `conic-gradient(${color} 90deg, transparent 0 180deg, ${color} 0 270deg, transparent 0)`,
+    backgroundSize: `${h}px ${h}px`, ...style,
+  }} />
+);
+const Sunset = ({ size = 66, style }) => (
+  <div aria-hidden style={{
+    width: size, height: size, borderRadius: "50%",
+    background: `linear-gradient(180deg, ${OB.amber}, ${OB.coral} 62%, #E23B57)`,
+    boxShadow: `0 8px 30px ${OB.coral}66`, ...style,
+  }} />
+);
+
+function Onboarding({ onDone }) {
+  const N = 3;
+  const [i, setI] = useState(0);
+  const trackRef = useRef(null);
+  const drag = useRef(null);
+  const go = (n) => setI(Math.max(0, Math.min(N - 1, n)));
+
+  const setX = (px, withTrans) => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.style.transition = withTrans ? "transform 0.44s cubic-bezier(0.22,1,0.36,1)" : "none";
+    el.style.transform = `translate3d(calc(${(-i * 100) / N}% + ${px}px), 0, 0)`;
+  };
+  useEffect(() => { setX(0, true); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [i]);
+
+  const onDown = (e) => { drag.current = { x0: e.clientX, dx: 0 }; try { e.currentTarget.setPointerCapture(e.pointerId); } catch { /* */ } };
+  const onMove = (e) => {
+    const d = drag.current; if (!d) return;
+    d.dx = e.clientX - d.x0;
+    if ((i === 0 && d.dx > 0) || (i === N - 1 && d.dx < 0)) d.dx *= 0.32; // rubber-band ends
+    setX(d.dx, false);
+  };
+  const onUp = () => {
+    const d = drag.current; if (!d) return; drag.current = null;
+    const w = trackRef.current ? trackRef.current.offsetWidth / N : 320;
+    const t = Math.min(64, w * 0.22);
+    if (d.dx < -t) go(i + 1);
+    else if (d.dx > t) go(i - 1);
+    else setX(0, true);
+  };
+
+  const logo = `${import.meta.env.BASE_URL}popjdm-logo.png`;
+  const label = { ...mono, fontSize: 11, letterSpacing: "0.34em", color: OB.teal, fontWeight: 500 };
+
+  const slides = [
+    (
+      <>
+        <div style={{ ...mono, fontSize: 11, letterSpacing: "0.42em", color: OB.dim, marginBottom: 20 }}>スワイプ・セーブ・ドライブ</div>
+        <img src={logo} alt="PopJDM" draggable={false} style={{ width: "min(78%, 300px)", height: "auto", filter: "drop-shadow(0 10px 26px rgba(14,27,46,0.28))" }} />
+        <div style={{ ...italic(900), fontSize: 30, color: OB.navy, marginTop: 26, letterSpacing: "-0.01em" }}>Swipe. Save. Drive.</div>
+        <p style={{ ...body, fontSize: 15.5, lineHeight: 1.55, color: OB.dim, maxWidth: 300, margin: "14px auto 0" }}>
+          Every JDM car for sale in America — Skylines, Supras, kei trucks and RHD legends — in one feed built to flick through.
+        </p>
+      </>
+    ),
+    (
+      <>
+        <div style={{ ...label, marginBottom: 22 }}>HOW IT WORKS</div>
+        <h2 style={{ ...italic(900), fontSize: 30, color: OB.navy, margin: "0 0 30px", lineHeight: 1.05 }}>Build your<br />garage by feel.</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 14, maxWidth: 320, margin: "0 auto", width: "100%" }}>
+          {[
+            { c: OB.coral, arrow: "→", t: "Swipe right to save", s: "It parks in your garage." },
+            { c: OB.navy, arrow: "←", t: "Swipe left to pass", s: "Gone — onto the next." },
+            { c: OB.teal, arrow: "◎", t: "Tap a card for details", s: "Photos, specs, price, source." },
+          ].map((r) => (
+            <div key={r.t} style={{ display: "flex", alignItems: "center", gap: 14, background: "rgba(255,255,255,0.5)", border: `1.5px solid ${r.c}`, borderRadius: 16, padding: "13px 15px", textAlign: "left" }}>
+              <span style={{ ...italic(900), fontSize: 22, color: r.c, width: 26, textAlign: "center", flexShrink: 0 }}>{r.arrow}</span>
+              <span style={{ minWidth: 0 }}>
+                <span style={{ ...display(800), fontSize: 15.5, color: OB.navy, display: "block" }}>{r.t}</span>
+                <span style={{ ...body, fontSize: 12.5, color: OB.dim }}>{r.s}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+      </>
+    ),
+    (
+      <>
+        <Sunset size={72} style={{ margin: "0 auto 22px" }} />
+        <div style={{ ...label, marginBottom: 14 }}>WHY POPJDM</div>
+        <h2 style={{ ...italic(900), fontSize: 30, color: OB.navy, margin: "0 0 16px", lineHeight: 1.05 }}>Fresh metal,<br />every day.</h2>
+        <p style={{ ...body, fontSize: 15.5, lineHeight: 1.55, color: OB.dim, maxWidth: 310, margin: "0 auto" }}>
+          Live listings from Bring a Trailer, eBay and the top RHD importers — refreshed around the clock and sorted newest-first. Sign in and your garage follows you to every device.
+        </p>
+      </>
+    ),
+  ];
+
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 200, background: OB.cream, ...body, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, opacity: 0.5, pointerEvents: "none" }} />
+      <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: `radial-gradient(70% 40% at 50% 0%, ${OB.amber}22, transparent 60%)` }} />
+
+      <div style={{ display: "flex", justifyContent: "flex-end", padding: "calc(12px + env(safe-area-inset-top)) 16px 0", position: "relative" }}>
+        <button onClick={onDone} style={{ ...mono, fontSize: 11, letterSpacing: "0.18em", color: OB.dim, background: "none", border: "none", cursor: "pointer", padding: 8 }}>SKIP</button>
+      </div>
+
+      <Checker color={OB.purple} h={14} style={{ position: "relative", margin: "6px 0 0" }} />
+
+      <div onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}
+        style={{ flex: 1, overflow: "hidden", position: "relative", touchAction: "pan-y" }}>
+        <div ref={trackRef} style={{ display: "flex", width: `${N * 100}%`, height: "100%", transform: `translate3d(0,0,0)`, willChange: "transform" }}>
+          {slides.map((s, k) => (
+            <div key={k} style={{ width: `${100 / N}%`, height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "10px 30px 20px" }}>
+              {s}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <Checker color={OB.purple} h={14} />
+
+      <div style={{ padding: "20px 26px calc(24px + env(safe-area-inset-bottom))", position: "relative" }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: 9, marginBottom: 18 }}>
+          {Array.from({ length: N }, (_, k) => (
+            <button key={k} aria-label={`Slide ${k + 1}`} onClick={() => go(k)} style={{
+              width: k === i ? 22 : 8, height: 8, borderRadius: 4, border: "none", cursor: "pointer", padding: 0,
+              background: k === i ? OB.coral : "rgba(14,27,46,0.22)", transition: "width 0.3s ease, background 0.3s ease",
+            }} />
+          ))}
+        </div>
+        <button onClick={() => (i < N - 1 ? go(i + 1) : onDone())} style={{
+          width: "100%", padding: "16px 0", borderRadius: 16, cursor: "pointer", border: "none",
+          ...display(900), fontSize: 16, letterSpacing: "0.01em", color: OB.cream,
+          background: i < N - 1 ? OB.navy : `linear-gradient(180deg, ${OB.amber}, ${OB.coral})`,
+          boxShadow: i < N - 1 ? "0 8px 22px rgba(14,27,46,0.28)" : `0 10px 26px ${OB.coral}66`,
+        }}>
+          {i < N - 1 ? "Next" : "Start swiping"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [liveListings, setLiveListings] = useState(() =>
     loadJSON(LS_LIVE, []).map((r) => normalize(r, 0, true))
   );
+  const [onboarded, setOnboarded] = useState(() => loadJSON(LS_ONBOARDED, false));
   const [user, setUser] = useState(() => loadJSON(LS_USER, null));
   const [accountOpen, setAccountOpen] = useState(false);
   const [swiped, setSwiped] = useState(() =>
@@ -1607,6 +1763,10 @@ export default function App() {
       <FilterSheet open={filtersOpen} onClose={() => setFiltersOpen(false)} listings={listings}
         filters={filters} setFilters={setFilters}
         matchCount={listings.filter((l) => !dirOf(swiped[l.id]) && passesFilters(l)).length} />
+
+      {!onboarded && (
+        <Onboarding onDone={() => { setOnboarded(true); saveJSON(LS_ONBOARDED, true); }} />
+      )}
     </div>
   );
 }
