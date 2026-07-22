@@ -454,33 +454,50 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
     if (d) paintAt(d.dx, d.dy * 0.9, d.rotDir);
   };
 
+  /* Fly-out: integrated per frame and SEEDED with the finger's real release
+     velocity, so the card leaves at exactly the speed you were swiping — no
+     discontinuity, no "jump." A CSS ease-out can't do this: its start speed
+     is dictated by the curve+duration, not your finger, so a slow drag
+     leaps and a fast flick stalls at the hand-off. Here the first frame
+     continues at the release velocity and a constant outward pull carries
+     it off-screen, so a hard flick exits fast and a gentle push glides. */
   const flyOut = useCallback((dir, vx = 0, vy = 0) => {
     if (gone.current) return;
     gone.current = true;
     buzz(12);
     const d = drag.current || { dx: 0, dy: 0, rotDir: 1 };
+    const rotDir = d.rotDir || 1;
     drag.current = null;
     cancelAnimationFrame(spring.current);
     const sign = dir === "right" ? 1 : -1;
-    const distX = (window.innerWidth || 420) * 1.15 + 120;
-    // The card leaves at the finger's speed — a hard flick exits faster —
-    // and stays fully visible while it flies clear off-screen (no fade).
-    const speed = Math.max(Math.abs(vx), 1.1);
-    const ms = Math.round(Math.min(Math.max((distX - Math.abs(d.dx)) / speed, 180), 380));
+    const exitX = (window.innerWidth || 420) + 260; // fully clear of the frame
     const el = rootRef.current;
-    if (el) {
-      el.style.transition = `transform ${ms}ms cubic-bezier(0.32, 0.72, 0.46, 1)`;
-      el.style.transform = `translate3d(${sign * distX}px, ${d.dy * 0.9 + vy * ms * 0.35}px, 0) rotate(${sign * 22 * (d.rotDir || 1)}deg)`;
-    }
+    if (el) el.style.transition = "none";
+    let x = d.dx, y = d.dy * 0.9;
+    let vpx = vx * 1000, vpy = vy * 1000; // px/ms → px/s (the finger's speed)
+    if (vpx * sign < 0) vpx = 0; // a slight back-flick shouldn't fight the exit
+    const accel = sign * 5200; // constant outward pull; even a rest release glides off
     const stamp = dir === "right" ? saveRef.current : passRef.current;
     if (stamp) stamp.style.opacity = 1;
     publishDepth(1, true); // the card behind rises to full as this one leaves
     onSwipeStart(listing.id, dir); // promote the next card immediately — no dead gap
-    setTimeout(() => onSwipeCommit(listing.id, dir), ms + 40);
+    let t = performance.now();
+    const step = (now) => {
+      const dt = Math.min((now - t) / 1000, 0.032); t = now;
+      vpx += accel * dt;
+      x += vpx * dt; y += vpy * dt;
+      if (el) {
+        const rot = Math.max(-24, Math.min(24, x * 0.06)) * rotDir;
+        el.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}deg)`;
+      }
+      if (Math.abs(x) >= exitX) { onSwipeCommit(listing.id, dir); return; }
+      spring.current = requestAnimationFrame(step);
+    };
+    spring.current = requestAnimationFrame(step);
   }, [listing.id, onSwipeStart, onSwipeCommit]);
 
   useEffect(() => {
-    if (isTop && forced && forced.n > 0) flyOut(forced.dir, 1.5, 0);
+    if (isTop && forced && forced.n > 0) flyOut(forced.dir, 0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [forced && forced.n]);
 
