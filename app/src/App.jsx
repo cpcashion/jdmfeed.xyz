@@ -408,194 +408,155 @@ const releaseVelocity = (d) => {
   return { vx: (last.x - first.x) / dt, vy: (last.y - first.y) / dt };
 };
 
-/* Live deck depth. The top card publishes its drag magnitude (0..1) on the
-   same pointermove frames it paints with; the card directly behind eases
-   toward the top slot so the deck gains depth as the front card leaves —
-   the Tinder-style parallax that makes the stack feel physical. No extra
-   rAF: publishing is driven by the drag frames (and the spring loop). */
-const deckListeners = new Set();
-const publishDepth = (mag, withTransition) => {
-  for (const fn of deckListeners) fn(mag, withTransition);
-};
-/* magnitude a card's drag maps to full lift-through of the card behind */
-const LIFT_SPAN = THRESH * 1.7;
-
-function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, onSwipeCommit, onOpen }) {
+/* One card's swipe engine, rebuilt clean on the iOS interaction model.
+   Principles that keep it smooth and bug-free:
+     • Only the top card is interactive; cards behind are pure React inline
+       transforms (a CSS transition slides them up when the stack advances).
+       Nothing writes to another card's DOM — the cross-card coupling that
+       used to fight React is gone.
+     • The finger-glued drag writes the transform straight to the DOM; the
+       release runs ONE rAF loop (spring-home or fling), never both.
+     • `pos` mirrors the live offset, so grabbing a card mid-animation
+       continues from where it is instead of snapping.
+     • React.memo means unrelated parent renders (toasts, sync, …) can never
+       re-render a card mid-drag and reset its transform. */
+const SwipeCard = React.memo(function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, onSwipeCommit, onOpen }) {
   const rootRef = useRef(null);
   const saveRef = useRef(null);
   const passRef = useRef(null);
-  const drag = useRef(null); // live gesture: offsets + smoothed velocity
-  const gone = useRef(false); // fly-out started — this card is done taking input
-  const spring = useRef(0); // rAF handle for the release spring
+  const drag = useRef(null);   // live pointer gesture
+  const anim = useRef(0);      // rAF handle for the active physics loop
+  const gone = useRef(false);  // fling started — done taking input
+  const pos = useRef({ x: 0, y: 0, rotDir: 1 }); // live offset (mirrors the DOM)
   const [imgOk, setImgOk] = useState(true);
   const p = listing.paint;
   const showPhoto = Boolean(listing.image) && imgOk;
 
-  /* The drag paints straight to the DOM inside the pointermove handler —
-     browsers already coalesce moves to display cadence, so skipping the
-     extra rAF hop removes a frame of lag and the card feels glued to the
-     finger. Rotation direction follows the grab point (grab the top half
-     and the nose leads; grab the bottom and it trails), the way physical
-     cards behave. */
-  /* Paint one frame at offset (x, y). Shared by the live drag and the
-     release spring so both read identically — rotation tracks x, the
-     stamps fade in with x, and the card behind lifts with |x|. */
+  /* Write one frame at (x, y). The drag and both physics loops funnel through
+     here so rotation and the SAVE/PASS stamps stay coherent no matter what's
+     driving the motion. Rotation tracks x; the grab point sets its sign. */
   const paintAt = (x, y, rotDir) => {
+    pos.current = { x, y, rotDir };
     const el = rootRef.current;
     if (!el) return;
-    const rot = Math.max(-15, Math.min(15, x * 0.06)) * rotDir;
+    const rot = Math.max(-14, Math.min(14, x * 0.055)) * rotDir;
     el.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}deg)`;
     const so = clamp01(x / THRESH), po = clamp01(-x / THRESH);
-    if (saveRef.current) { saveRef.current.style.opacity = so; saveRef.current.style.transform = `rotate(-9deg) scale(${0.9 + so * 0.15})`; }
-    if (passRef.current) { passRef.current.style.opacity = po; passRef.current.style.transform = `rotate(9deg) scale(${0.9 + po * 0.15})`; }
-    publishDepth(clamp01(Math.abs(x) / LIFT_SPAN), false);
-  };
-  const paint = () => {
-    const d = drag.current;
-    if (d) paintAt(d.dx, d.dy * 0.9, d.rotDir);
+    if (saveRef.current) { saveRef.current.style.opacity = so; saveRef.current.style.transform = `rotate(-9deg) scale(${0.86 + so * 0.16})`; }
+    if (passRef.current) { passRef.current.style.opacity = po; passRef.current.style.transform = `rotate(9deg) scale(${0.86 + po * 0.16})`; }
   };
 
-  /* Fly-out: integrated per frame and SEEDED with the finger's real release
-     velocity, so the card leaves at exactly the speed you were swiping — no
-     discontinuity, no "jump." A CSS ease-out can't do this: its start speed
-     is dictated by the curve+duration, not your finger, so a slow drag
-     leaps and a fast flick stalls at the hand-off. Here the first frame
-     continues at the release velocity and a constant outward pull carries
-     it off-screen, so a hard flick exits fast and a gentle push glides. */
-  const flyOut = useCallback((dir, vx = 0, vy = 0) => {
-    if (gone.current) return;
-    gone.current = true;
-    buzz(12);
-    const d = drag.current || { dx: 0, dy: 0, rotDir: 1 };
-    const rotDir = d.rotDir || 1;
-    drag.current = null;
-    cancelAnimationFrame(spring.current);
-    const sign = dir === "right" ? 1 : -1;
-    const exitX = (window.innerWidth || 420) + 260; // fully clear of the frame
-    const el = rootRef.current;
-    if (el) el.style.transition = "none";
-    let x = d.dx, y = d.dy * 0.9;
-    let vpx = vx * 1000, vpy = vy * 1000; // px/ms → px/s (the finger's speed)
-    if (vpx * sign < 0) vpx = 0; // a slight back-flick shouldn't fight the exit
-    const accel = sign * 5200; // constant outward pull; even a rest release glides off
-    const stamp = dir === "right" ? saveRef.current : passRef.current;
-    if (stamp) stamp.style.opacity = 1;
-    publishDepth(1, true); // the card behind rises to full as this one leaves
-    onSwipeStart(listing.id, dir); // promote the next card immediately — no dead gap
-    let t = performance.now();
-    const step = (now) => {
-      const dt = Math.min((now - t) / 1000, 0.032); t = now;
-      vpx += accel * dt;
-      x += vpx * dt; y += vpy * dt;
-      if (el) {
-        const rot = Math.max(-24, Math.min(24, x * 0.06)) * rotDir;
-        el.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}deg)`;
-      }
-      if (Math.abs(x) >= exitX) { onSwipeCommit(listing.id, dir); return; }
-      spring.current = requestAnimationFrame(step);
-    };
-    spring.current = requestAnimationFrame(step);
-  }, [listing.id, onSwipeStart, onSwipeCommit]);
+  const stopAnim = () => { cancelAnimationFrame(anim.current); anim.current = 0; };
 
-  useEffect(() => {
-    if (isTop && forced && forced.n > 0) flyOut(forced.dir, 0, 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [forced && forced.n]);
-
-  /* Release spring: an under-damped spring integrated per frame, SEEDED with
-     the finger's release velocity (px/ms → px/s). This is the world-class
-     detail a fixed timing-curve can't do — a fast near-miss that doesn't
-     cross the threshold whips back with its own momentum and overshoots
-     just slightly, exactly like iOS/Framer. Rotation and deck depth ride
-     the same integrated position, so everything stays coherent. */
-  const springBack = (x0, y0, vx0, vy0, rotDir) => {
-    drag.current = null;
-    cancelAnimationFrame(spring.current);
-    const el = rootRef.current;
-    if (el) el.style.transition = "none";
-    let x = x0, y = y0, vx = vx0 * 1000, vy = vy0 * 1000;
-    const k = 210, c = 23; // ~0.8 of critical → a hair of overshoot, no wobble
-    let t = performance.now();
+  /* Spring back to center — SwiftUI's .spring(response:dampingFraction:),
+     integrated per frame and seeded with the release velocity. With
+     ω0 = 2π/response, acceleration = −ω0²·x − 2ζω0·v. A near-miss whips back
+     with its own momentum and settles with a hair of overshoot. */
+  const springHome = (vx0, vy0) => {
+    stopAnim();
+    const el = rootRef.current; if (el) el.style.transition = "none";
+    const resp = 0.42, zeta = 0.82, w0 = (2 * Math.PI) / resp;
+    const k = w0 * w0, c = 2 * zeta * w0;
+    let { x, y, rotDir } = pos.current;
+    let vx = vx0 * 1000, vy = vy0 * 1000, t = performance.now();
     const step = (now) => {
       const dt = Math.min((now - t) / 1000, 0.032); t = now;
       vx += (-k * x - c * vx) * dt; vy += (-k * y - c * vy) * dt;
       x += vx * dt; y += vy * dt;
-      if (Math.abs(x) < 0.4 && Math.abs(y) < 0.4 && Math.hypot(vx, vy) < 8) {
-        paintAt(0, 0, rotDir); publishDepth(0, false); return;
-      }
+      if (Math.abs(x) < 0.3 && Math.abs(y) < 0.3 && Math.hypot(vx, vy) < 6) { paintAt(0, 0, rotDir); anim.current = 0; return; }
       paintAt(x, y, rotDir);
-      spring.current = requestAnimationFrame(step);
+      anim.current = requestAnimationFrame(step);
     };
-    spring.current = requestAnimationFrame(step);
+    anim.current = requestAnimationFrame(step);
   };
+
+  /* Fling off-screen carrying the finger's ACTUAL release velocity: the first
+     frame continues that velocity and a constant outward pull carries the card
+     clear. No CSS timing curve, so no start-speed discontinuity (the "jump"). */
+  const fling = useCallback((dir, vx0 = 0, vy0 = 0) => {
+    if (gone.current) return;
+    gone.current = true;
+    buzz(11);
+    stopAnim();
+    const el = rootRef.current; if (el) el.style.transition = "none";
+    const sign = dir === "right" ? 1 : -1;
+    const exitX = (window.innerWidth || 420) + 280;
+    let { x, y, rotDir } = pos.current;
+    let vx = vx0 * 1000, vy = vy0 * 1000;
+    if (vx * sign < 0) vx = 0; // a slight back-flick shouldn't fight the exit
+    const stamp = dir === "right" ? saveRef.current : passRef.current;
+    if (stamp) stamp.style.opacity = 1;
+    onSwipeStart(listing.id, dir); // promote the next card immediately — no dead gap
+    let t = performance.now();
+    const step = (now) => {
+      const dt = Math.min((now - t) / 1000, 0.032); t = now;
+      vx += sign * 5400 * dt;
+      x += vx * dt; y += vy * dt;
+      pos.current = { x, y, rotDir };
+      if (el) { const rot = Math.max(-26, Math.min(26, x * 0.055)) * rotDir; el.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}deg)`; }
+      if (Math.abs(x) >= exitX) { anim.current = 0; onSwipeCommit(listing.id, dir); return; }
+      anim.current = requestAnimationFrame(step);
+    };
+    anim.current = requestAnimationFrame(step);
+  }, [listing.id, onSwipeStart, onSwipeCommit]);
+
+  // Button-triggered swipe: fling from rest (symmetric both ways).
+  useEffect(() => {
+    if (isTop && forced && forced.n > 0) fling(forced.dir, 0, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [forced && forced.n]);
+
+  useEffect(() => () => stopAnim(), []);
 
   const onDown = (e) => {
     if (!isTop || gone.current) return;
-    e.currentTarget.setPointerCapture(e.pointerId);
-    cancelAnimationFrame(spring.current); // grabbable mid-spring
-    if (rootRef.current) rootRef.current.style.transition = "none";
+    try { e.currentTarget.setPointerCapture(e.pointerId); } catch { /* */ }
+    stopAnim();
+    const el = rootRef.current; if (el) el.style.transition = "none";
     const r = e.currentTarget.getBoundingClientRect();
+    const cur = pos.current;
     drag.current = {
-      dx: 0, dy: 0, x0: e.clientX, y0: e.clientY, moved: false,
+      ox: e.clientX - cur.x, oy: e.clientY - cur.y, // origin: dx starts at cur.x, no snap
+      pressX: e.clientX, pressY: e.clientY, moved: false,
+      dx: cur.x, dy: cur.y,
       rotDir: e.clientY < r.top + r.height / 2 ? 1 : -1, // grab point sets the pivot feel
-      samples: [{ t: performance.now(), x: 0, y: 0 }],
+      samples: [{ t: performance.now(), x: cur.x, y: cur.y }],
     };
   };
   const onMove = (e) => {
     const d = drag.current;
     if (!d || gone.current) return;
-    d.dx = e.clientX - d.x0;
-    d.dy = e.clientY - d.y0;
+    d.dx = e.clientX - d.ox;
+    d.dy = (e.clientY - d.oy) * 0.92; // slight vertical resistance — anchored feel
+    if (!d.moved && Math.hypot(e.clientX - d.pressX, e.clientY - d.pressY) > 8) d.moved = true;
     trackSample(d, d.dx, d.dy);
-    if (Math.abs(d.dx) + Math.abs(d.dy) > 14) d.moved = true; // forgiving tap slop
-    paint();
+    paintAt(d.dx, d.dy, d.rotDir);
   };
   const onUp = () => {
     const d = drag.current;
     if (!d || gone.current) return;
+    drag.current = null;
+    if (!d.moved) { buzz(6); onOpen(listing); return; } // a clean tap opens details
     const { vx, vy } = releaseVelocity(d);
-    // Decide on the PROJECTED landing point (position + velocity carry),
-    // the way native swipe UIs do — no dead zone between "far enough" and
-    // "fast enough": a slow far drag and a quick short flick both commit.
-    const proj = d.dx + vx * 200;
-    if (proj > THRESH && d.dx > 20) return flyOut("right", vx, vy);
-    if (proj < -THRESH && d.dx < -20) return flyOut("left", vx, vy);
-    // A clean tap anywhere on the card opens the details.
-    if (!d.moved) { drag.current = null; publishDepth(0, false); buzz(6); onOpen(listing); return; }
-    springBack(d.dx, d.dy * 0.9, vx, vy, d.rotDir);
+    // Commit on the PROJECTED landing point (position + velocity carry), so a
+    // slow far drag and a quick short flick both leave — no dead zone.
+    const proj = d.dx + vx * 170;
+    if (proj > THRESH) return fling("right", vx, vy);
+    if (proj < -THRESH) return fling("left", vx, vy);
+    springHome(vx, vy);
   };
   const onCancel = () => {
     const d = drag.current;
     if (!d) return;
-    springBack(d.dx, d.dy * 0.9, 0, 0, d.rotDir);
+    drag.current = null;
+    const { vx, vy } = releaseVelocity(d);
+    springHome(vx, vy);
   };
 
   const behind = isTop || exiting ? 0 : stackIndex;
   // Over a full-bleed photo the type is always light; the gradient card
   // (photo missing/broken) keeps the paint-aware ink.
   const ink = showPhoto || !p.darkInk ? T.ink : "#14161C";
-
-  // Cancel any in-flight spring when this card unmounts.
-  useEffect(() => () => cancelAnimationFrame(spring.current), []);
-
-  // A resting card DIRECTLY behind the top one lifts toward the top slot as
-  // the front card is dragged — driven imperatively so it never re-renders.
-  useEffect(() => {
-    if (isTop || exiting || behind !== 1) return undefined;
-    const el = rootRef.current;
-    const restS = 1 - behind * 0.045, restY = behind * 12, restO = 1 - behind * 0.18;
-    const upS = 1, upY = 0, upO = 1; // the top slot
-    const update = (mag, withTransition) => {
-      if (!el) return;
-      el.style.transition = withTransition
-        ? "transform 0.42s cubic-bezier(0.22,1,0.36,1), opacity 0.42s ease" : "none";
-      el.style.transform = `translate3d(0px, ${restY + (upY - restY) * mag}px, 0) scale(${restS + (upS - restS) * mag})`;
-      el.style.opacity = restO + (upO - restO) * mag;
-    };
-    deckListeners.add(update);
-    return () => deckListeners.delete(update);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isTop, exiting, behind]);
 
   return (
     <div
@@ -707,7 +668,7 @@ function SwipeCard({ listing, isTop, stackIndex, exiting, forced, onSwipeStart, 
       </div>
     </div>
   );
-}
+});
 
 /* ---------------- shared bottom sheet (drag-to-dismiss) ---------------- */
 
