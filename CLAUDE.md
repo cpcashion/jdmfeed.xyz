@@ -23,7 +23,10 @@ historical — the old domain is no longer the canonical origin).
   hourly token popup gets blocked outside a tap). Garage doc:
   `garages/{uid}`, one JSON `data` field, timestamped last-writer-wins
   merge with tombstones. Gated on `window.FIREBASE = { apiKey, projectId }`
-  in `app/index.html` — empty until the owner does the one-time setup:
+  in `app/index.html` — **now configured** (project `jdm-feed`). The owner
+  must still finish the console steps below (enable the Google provider,
+  add `popjdm.com` as an authorized domain, publish the Firestore rules)
+  for sign-in + sync to actually work end to end:
   1. console.firebase.google.com → Add project (Analytics off is fine).
   2. Build → Authentication → Sign-in method → enable **Google**; under
      "Web SDK configuration" paste the existing `GOOGLE_CLIENT_ID`.
@@ -54,4 +57,5 @@ historical — the old domain is no longer the canonical origin).
   UI changes via local vite preview + the global Playwright install
   (`/opt/pw-browsers/chromium-1194/chrome-linux/chrome`).
 - **Analytics**: GA4 loader in `app/index.html`, gated on `window.GA_ID` —
-  needs the owner's Measurement ID (G-…) pasted there to activate.
+  **active** with `G-20EKSTM1BL` (the GA4 property linked to the `jdm-feed`
+  Firebase project).
