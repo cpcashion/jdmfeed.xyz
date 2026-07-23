@@ -82,6 +82,12 @@ const GRAIN =
 
 const fmtPrice = (n) => (typeof n === "number" && n > 0 ? "$" + n.toLocaleString() : "Auction");
 const fmtMiles = (n) => (typeof n === "number" && n > 0 ? Math.round(n).toLocaleString() + " mi" : "—");
+// Compact price for garage stats: $46,900 → "$47K", $5,800 → "$5.8K".
+const priceK = (n, floor = false) => {
+  const k = n / 1000;
+  const v = floor ? Math.floor(k) : (k < 10 ? Math.round(k * 10) / 10 : Math.round(k));
+  return "$" + v + "K";
+};
 const decadeOf = (y) => Math.floor(y / 10) * 10;
 
 /* "Cypress, CA" -> "California" for the card face; unknown shapes pass through. */
@@ -1128,96 +1134,177 @@ function FilterSheet({ open, onClose, filters, setFilters, matchCount, listings 
   );
 }
 
-/* ---------------- saved (garage) view ---------------- */
+/* ---------------- garage: your collection, grouped by chassis ---------------- */
 
-function Garage({ saved, passed, onRemove, onOpen }) {
-  const [bucket, setBucket] = useState("saved"); // "saved" | "passed"
-  const [sort, setSort] = useState("recent");
-  const source = bucket === "saved" ? saved : passed;
-  const rows = useMemo(() => {
-    const arr = [...source];
-    if (sort === "price↑") arr.sort((a, b) => a.price - b.price);
-    if (sort === "price↓") arr.sort((a, b) => b.price - a.price);
-    if (sort === "year") arr.sort((a, b) => a.year - b.year);
-    return arr;
-  }, [source, sort]);
+const paintGrad = (p) => `linear-gradient(158deg, ${p.stops[0]} 0%, ${p.stops[1]} 52%, ${p.stops[2]} 100%)`;
 
-  const seg = (active) => ({
-    flex: 1, padding: "10px 0", borderRadius: 14, cursor: "pointer", ...display(800), fontSize: 13,
-    letterSpacing: "0.04em", color: active ? T.bg : T.dim, background: active ? T.ink : "transparent",
-    border: "none", transition: "all 0.2s ease",
+/* One expandable stack per chassis code: the swipe card's own paint-code
+   look with the chassis as hero type, offset edges implying the saved
+   count, tap to open. */
+function ChassisStack({ g, expanded, onToggle }) {
+  const ink = g.paint.darkInk ? "#14161C" : T.ink;
+  const edge = (dy, s, o) => ({
+    position: "absolute", left: 0, right: 0, top: 0, height: 132, borderRadius: 26,
+    transform: `translateY(${dy}px) scale(${s})`, background: paintGrad(g.paint),
+    border: "1px solid rgba(255,255,255,0.12)", opacity: o,
   });
+  return (
+    <button onClick={onToggle} aria-expanded={expanded} style={{
+      position: "relative", width: "100%", height: 132 + 16, padding: 0, border: "none",
+      background: "transparent", cursor: "pointer", display: "block", marginBottom: 2,
+    }}>
+      {g.cars.length > 2 && <div aria-hidden style={edge(16, 0.9, 0.45)} />}
+      {g.cars.length > 1 && <div aria-hidden style={edge(8, 0.95, 0.7)} />}
+      <div style={{
+        position: "absolute", inset: `0 0 16px 0`, borderRadius: 26, overflow: "hidden", textAlign: "left",
+        background: paintGrad(g.paint), border: "1px solid rgba(255,255,255,0.16)",
+        boxShadow: "inset 0 1.5px 0 rgba(255,255,255,0.24), 0 20px 50px rgba(0,0,0,0.55)",
+      }}>
+        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(90% 80% at 82% 6%, ${g.paint.glow}55, transparent 60%)` }} />
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(120% 90% at 15% 115%, rgba(0,0,0,0.5), transparent 55%)" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay" }} />
+        <div aria-hidden style={{
+          position: "absolute", left: 18, bottom: -6, ...display(900), color: ink, opacity: 0.96,
+          fontSize: "clamp(48px, 16vw, 84px)", lineHeight: 0.82, letterSpacing: "-0.04em", whiteSpace: "nowrap",
+          textShadow: g.paint.darkInk ? "none" : "0 6px 34px rgba(0,0,0,0.4)",
+        }}>{g.chassis}</div>
+        <div style={{
+          position: "absolute", top: 14, right: 14, ...mono, fontSize: 11, letterSpacing: "0.1em",
+          color: ink, opacity: 0.9, padding: "5px 10px", borderRadius: 20,
+          background: "rgba(0,0,0,0.22)", border: "1px solid rgba(255,255,255,0.18)", backdropFilter: "blur(6px)",
+        }}>{g.cars.length} SAVED</div>
+        <div style={{
+          position: "absolute", top: 14, left: 16, ...mono, fontSize: 10.5, letterSpacing: "0.12em",
+          color: ink, opacity: 0.7,
+        }}>{expanded ? "▲ CLOSE" : "▼ OPEN"}</div>
+      </div>
+    </button>
+  );
+}
+
+function Garage({ saved, passed, freshnessReady, onRemove, onOpen }) {
+  const [open, setOpen] = useState(() => new Set());
+  const toggle = (k) => setOpen((s) => { const n = new Set(s); if (n.has(k)) n.delete(k); else n.add(k); return n; });
+  const chassisKey = (l) => (l.chassis || l.model || "JDM").toString().toUpperCase();
+
+  const groups = useMemo(() => {
+    const m = new Map();
+    for (const l of saved) {
+      const k = chassisKey(l);
+      if (!m.has(k)) m.set(k, { chassis: k, cars: [], passes: [] });
+      m.get(k).cars.push(l);
+    }
+    for (const l of passed) { const k = chassisKey(l); if (m.has(k)) m.get(k).passes.push(l); }
+    const arr = [...m.values()];
+    for (const g of arr) {
+      const pr = g.cars.filter((c) => c.price > 0).map((c) => c.price);
+      g.min = pr.length ? Math.min(...pr) : 0; g.max = pr.length ? Math.max(...pr) : 0; g.priced = pr.length;
+      const pp = g.passes.filter((c) => c.price > 0).map((c) => c.price);
+      g.ceil = pp.length ? Math.min(...pp) : 0;
+      g.live = g.cars.filter((c) => c._live).length;
+      g.paint = g.cars[0].paint;
+    }
+    return arr.sort((a, b) => b.cars.length - a.cars.length);
+  }, [saved, passed]);
+
+  const sum = useMemo(() => {
+    const pr = saved.filter((c) => c.price > 0).map((c) => c.price);
+    return { total: saved.length, min: pr.length ? Math.min(...pr) : 0, max: pr.length ? Math.max(...pr) : 0, priced: pr.length, stale: saved.filter((c) => !c._live).length };
+  }, [saved]);
+
+  if (saved.length === 0) {
+    return (
+      <div style={{ height: "100%", display: "grid", placeItems: "center", padding: "40px 24px", textAlign: "center" }}>
+        <div>
+          <div style={{ ...display(900), fontSize: 56, color: "rgba(255,255,255,0.08)", lineHeight: 1 }}>GARAGE</div>
+          <div style={{ ...display(800), fontSize: 18, color: T.ink, marginTop: 14 }}>The garage is empty</div>
+          <p style={{ ...body, fontSize: 13.5, color: T.dim, maxWidth: 270, margin: "8px auto 0", lineHeight: 1.6 }}>
+            Swipe right on a car in the feed and it parks here, grouped by chassis.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  const statLabel = { ...mono, fontSize: 9.5, letterSpacing: "0.16em", color: T.faint };
+  const statVal = { ...mono, fontSize: 14, color: T.ink, marginTop: 3, letterSpacing: "0.02em" };
 
   return (
     <div style={{ height: "100%", overflowY: "auto", padding: "8px 16px 140px" }}>
-      {/* Saved / Passed buckets — left-swipes aren't gone, they're parked here. */}
-      <Glass radius={18} style={{ display: "flex", padding: 4, gap: 4, margin: "4px 0 12px" }}>
-        <button style={seg(bucket === "saved")} onClick={() => setBucket("saved")}>Garage {saved.length ? `· ${saved.length}` : ""}</button>
-        <button style={seg(bucket === "passed")} onClick={() => setBucket("passed")}>Passed {passed.length ? `· ${passed.length}` : ""}</button>
+      {/* Top summary — the same three, across every chassis. */}
+      <Glass radius={18} style={{ display: "flex", padding: "14px 6px", margin: "4px 0 20px" }}>
+        <div style={{ flex: 1, textAlign: "center", padding: "0 6px" }}>
+          <div style={statLabel}>SAVED</div>
+          <div style={{ ...display(900), fontSize: 20, color: T.ink, marginTop: 2 }}>{sum.total}</div>
+        </div>
+        {sum.priced >= 2 && (
+          <div style={{ flex: 1.4, textAlign: "center", padding: "0 6px", borderLeft: `1px solid ${T.glassBrd}` }}>
+            <div style={statLabel}>TYPICAL RANGE</div>
+            <div style={{ ...display(900), fontSize: 20, color: T.ink, marginTop: 2 }}>{priceK(sum.min)}–{priceK(sum.max)}</div>
+          </div>
+        )}
+        {freshnessReady && sum.stale > 0 && (
+          <div style={{ flex: 1, textAlign: "center", padding: "0 6px", borderLeft: `1px solid ${T.glassBrd}` }}>
+            <div style={statLabel}>GONE</div>
+            <div style={{ ...display(900), fontSize: 20, color: T.pass, marginTop: 2 }}>{sum.stale}</div>
+          </div>
+        )}
       </Glass>
 
-      {rows.length === 0 ? (
-        <div style={{ display: "grid", placeItems: "center", padding: "80px 24px", textAlign: "center" }}>
-          <div>
-            <div style={{ ...display(900), fontSize: 56, color: "rgba(255,255,255,0.08)", lineHeight: 1 }}>
-              {bucket === "saved" ? "GARAGE" : "PASSED"}
+      {groups.map((g) => (
+        <div key={g.chassis} style={{ marginBottom: 26, animation: "riseIn 0.3s ease both" }}>
+          <ChassisStack g={g} expanded={open.has(g.chassis)} onToggle={() => toggle(g.chassis)} />
+
+          {/* Derived stats — plain arithmetic over the swipe log. Each is
+              suppressed entirely when there isn't the data to back it. */}
+          <div style={{ padding: "12px 4px 0" }}>
+            <div style={{ display: "flex", gap: 26 }}>
+              {g.priced >= 2 && (
+                <div><div style={statLabel}>YOUR RANGE</div><div style={statVal}>{priceK(g.min)}–{priceK(g.max)}</div></div>
+              )}
+              {freshnessReady && (
+                <div><div style={statLabel}>STILL AVAILABLE</div><div style={statVal}>{g.live} of {g.cars.length}</div></div>
+              )}
             </div>
-            <div style={{ ...display(800), fontSize: 18, color: T.ink, marginTop: 14 }}>
-              {bucket === "saved" ? "The garage is empty" : "No passed cars yet"}
-            </div>
-            <p style={{ ...body, fontSize: 13.5, color: T.dim, maxWidth: 270, margin: "8px auto 0", lineHeight: 1.6 }}>
-              {bucket === "saved"
-                ? "Swipe right on a car in the feed and it parks here."
-                : "Cars you swipe left land here, in case you change your mind later."}
-            </p>
+            {g.ceil > 0 && (
+              <div style={{ ...body, fontSize: 12.5, color: T.dim, marginTop: 10 }}>
+                You&rsquo;ve passed everything over <span style={{ ...display(800), color: T.ink }}>{priceK(g.ceil, true)}</span>
+              </div>
+            )}
           </div>
+
+          {open.has(g.chassis) && (
+            <div style={{ marginTop: 12 }}>
+              {g.cars.map((l) => (
+                <Glass key={l.id} radius={18} onClick={() => onOpen(l)} style={{
+                  padding: 12, marginBottom: 8, display: "flex", gap: 12, alignItems: "center", cursor: "pointer",
+                  opacity: l._live ? 1 : 0.5,
+                }}>
+                  <div style={{
+                    width: 52, height: 52, borderRadius: 13, flexShrink: 0, display: "grid", placeItems: "center", overflow: "hidden",
+                    background: `${l.image ? `url(${JSON.stringify(l.image)}) center/cover no-repeat, ` : ""}${paintGrad(l.paint)}`,
+                    border: "1px solid rgba(255,255,255,0.14)", filter: l._live ? "none" : "grayscale(0.7)",
+                    ...display(900), fontSize: 12, color: l.paint.darkInk ? "#14161C" : T.ink,
+                  }}>{l.image ? "" : l.chassis.slice(0, 5)}</div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ ...display(800), fontSize: 14.5, color: T.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                      {l.year} {l.model}
+                    </div>
+                    <div style={{ ...mono, fontSize: 11, color: T.dim, marginTop: 3, display: "flex", alignItems: "center", gap: 8 }}>
+                      {fmtPrice(l.price)}
+                      {!l._live && <span style={{ ...mono, fontSize: 9.5, letterSpacing: "0.12em", color: T.pass, padding: "1px 6px", borderRadius: 6, border: `1px solid rgba(255,90,72,0.4)` }}>GONE</span>}
+                    </div>
+                  </div>
+                  <button aria-label={`Remove ${l.title}`} onClick={(e) => { e.stopPropagation(); onRemove(l.id); }} style={{
+                    width: 32, height: 32, borderRadius: 16, display: "grid", placeItems: "center", cursor: "pointer",
+                    color: T.faint, background: "rgba(255,255,255,0.05)", border: `1px solid ${T.glassBrd}`, flexShrink: 0,
+                  }}><XIcon s={13} /></button>
+                </Glass>
+              ))}
+            </div>
+          )}
         </div>
-      ) : (
-        <>
-          <div style={{ display: "flex", gap: 8, margin: "2px 0 14px" }}>
-            {["recent", "price↑", "price↓", "year"].map((s) => (
-              <button key={s} onClick={() => setSort(s)} style={{
-                ...mono, fontSize: 11, letterSpacing: "0.06em", padding: "7px 12px", borderRadius: 16, cursor: "pointer",
-                color: sort === s ? T.bg : T.dim, background: sort === s ? T.ink : "rgba(255,255,255,0.05)",
-                border: `1px solid ${sort === s ? T.ink : T.glassBrd}`,
-              }}>{s}</button>
-            ))}
-          </div>
-          {rows.map((l) => (
-            <Glass key={l.id} radius={20} style={{ padding: 14, marginBottom: 10, display: "flex", gap: 14, alignItems: "center", animation: "riseIn 0.3s ease both", cursor: "pointer" }} onClick={() => onOpen(l)}>
-              <div style={{
-                width: 58, height: 58, borderRadius: 15, flexShrink: 0, display: "grid", placeItems: "center", overflow: "hidden",
-                background: `${l.image ? `url(${JSON.stringify(l.image)}) center/cover no-repeat, ` : ""}linear-gradient(150deg, ${l.paint.stops[0]}, ${l.paint.stops[1]}, ${l.paint.stops[2]})`,
-                border: "1px solid rgba(255,255,255,0.14)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.2)",
-                ...display(900), fontSize: 13, color: l.paint.darkInk ? "#14161C" : T.ink, letterSpacing: "-0.02em",
-              }}>
-                {l.image ? "" : l.chassis.slice(0, 5)}
-              </div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ ...display(800), fontSize: 15, color: T.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                  {l.year} {l.model}
-                </div>
-                <div style={{ ...mono, fontSize: 11, color: T.dim, marginTop: 3 }}>
-                  {fmtPrice(l.price)} · {fmtMiles(l.mileage)}
-                </div>
-              </div>
-              {/* One action either way: put the car back in the feed. */}
-              <button
-                aria-label={`Return ${l.title} to the feed`}
-                onClick={(e) => { e.stopPropagation(); onRemove(l.id); }}
-                style={{
-                  width: 34, height: 34, borderRadius: 17, display: "grid", placeItems: "center", cursor: "pointer",
-                  color: T.faint, background: "rgba(255,255,255,0.05)", border: `1px solid ${T.glassBrd}`,
-                }}
-              >
-                {bucket === "saved" ? <XIcon s={14} /> : (
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 14L4 9l5-5" /><path d="M4 9h10a6 6 0 0 1 0 12h-3" /></svg>
-                )}
-              </button>
-            </Glass>
-          ))}
-        </>
-      )}
+      ))}
     </div>
   );
 }
@@ -1436,8 +1523,31 @@ export default function App() {
   [filters]);
 
   const deck = useMemo(() => listings.filter((l) => !dirOf(swiped[l.id]) && passesFilters(l)), [listings, swiped, passesFilters]);
-  const saved = useMemo(() => listings.filter((l) => dirOf(swiped[l.id]) === "right"), [listings, swiped]);
-  const passed = useMemo(() => listings.filter((l) => dirOf(swiped[l.id]) === "left"), [listings, swiped]);
+
+  /* Garage sources come from the SWIPE LOG + its snapshots, not a join
+     against the live feed — so sold cars still show and a pass keeps its
+     price. Listings carry no stable id (it's index-derived), so identity
+     and freshness key on the stable source_url. Freshness only applies once
+     the live feed has actually loaded, otherwise nothing is falsely "gone". */
+  const freshnessReady = liveListings.length > 0;
+  const { saved, passed } = useMemo(() => {
+    const liveUrls = new Set(listings.map((l) => l.source_url).filter(Boolean));
+    const build = (want) => {
+      const bySrc = new Map();
+      for (const [id, e] of Object.entries(swiped)) {
+        if (dirOf(e) !== want) continue;
+        const snap = listingOf(e);
+        const base = snap ? { ...snap, paint: snap.paint || paintFor(snap.paintName, snap.title) } : listings.find((l) => l.id === id);
+        if (!base) continue;
+        const key = base.source_url || id;
+        const row = { ...base, id, _t: entryTime(e), _live: !freshnessReady || !base.source_url || liveUrls.has(base.source_url) };
+        const prev = bySrc.get(key);
+        if (!prev || row._t >= prev._t) bySrc.set(key, row); // newest swipe wins per car
+      }
+      return [...bySrc.values()].sort((a, b) => b._t - a._t);
+    };
+    return { saved: build("right"), passed: build("left") };
+  }, [swiped, listings, freshnessReady]);
 
   const showToast = (msg, color) => {
     clearTimeout(toastTimer.current);
@@ -1517,6 +1627,10 @@ export default function App() {
   }, []);
 
   useEffect(() => { refresh(false); }, [refresh]);
+
+  // Re-check the live feed each time the Garage opens, so saved cars that
+  // have sold get marked "gone" from a fresh listings.json.
+  useEffect(() => { if (tab === "garage") refresh(false); }, [tab, refresh]);
 
   const doSync = () => { if (sync !== "loading") refresh(true); };
 
@@ -1686,7 +1800,7 @@ export default function App() {
               )}
             </div>
           ) : (
-            <Garage saved={saved} passed={passed} onOpen={openDetail}
+            <Garage saved={saved} passed={passed} freshnessReady={freshnessReady} onOpen={openDetail}
               onRemove={(id) => setSwiped((s) => ({ ...s, [id]: mark("none", listingOf(s[id])) }))} />
           )}
         </main>
