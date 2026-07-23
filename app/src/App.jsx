@@ -242,13 +242,29 @@ const dirOf = (e) => {
   const d = typeof e === "string" ? e : e?.d; // legacy entries were bare strings
   return d === "left" || d === "right" ? d : null;
 };
-const mark = (d) => ({ d, t: Date.now() });
+/* A serializable snapshot of the listing at swipe time, stored INSIDE the
+   swipe entry. This is what lets the garage — and the price ceiling a pass
+   records — survive after a car leaves the live feed; it can't be
+   reconstructed from an id alone. Images are capped so the localStorage map
+   (and the synced Firestore doc) stay small. */
+const snapshot = (l) => {
+  if (!l) return undefined;
+  const { images, paint, ...rest } = l;
+  return { ...rest, paintName: rest.paintName || paint?.name || "", images: Array.isArray(images) ? images.slice(0, 6) : [] };
+};
+const listingOf = (e) => (e && typeof e === "object" ? e.l || null : null);
+const mark = (d, l) => { const s = snapshot(l); return s ? { d, t: Date.now(), l: s } : { d, t: Date.now() }; };
 const entryTime = (e) => (typeof e === "object" && e ? e.t || 0 : 0);
-/* Per-key last-writer-wins; ties go to `b` (call with local second). */
+/* Per-key last-writer-wins; ties go to `b` (call with local second). A
+   snapshot is never lost to a snapshot-less write of the same direction. */
 const mergeSwiped = (a, b) => {
   const out = { ...a };
   for (const [k, v] of Object.entries(b || {})) {
-    if (!(k in out) || entryTime(v) >= entryTime(out[k])) out[k] = v;
+    const cur = out[k];
+    if (!(k in out) || entryTime(v) >= entryTime(cur)) {
+      out[k] = (v && typeof v === "object" && !v.l && listingOf(cur) && dirOf(cur) === dirOf(v))
+        ? { ...v, l: cur.l } : v;
+    }
   }
   return out;
 };
@@ -1385,6 +1401,25 @@ export default function App() {
 
   const listings = useMemo(() => [...liveListings, ...SEED], [liveListings]);
 
+  // Migration/backfill: legacy swipe entries (a direction but no snapshot,
+  // including old bare-string entries) get a snapshot from the live feed
+  // while the car is still listed, so existing saves AND passes become
+  // durable. Purely additive — an entry is never dropped, only enriched.
+  useEffect(() => {
+    if (!listings.length) return;
+    setSwiped((s) => {
+      let changed = false;
+      const out = { ...s };
+      for (const [id, e] of Object.entries(s)) {
+        if (dirOf(e) && listingOf(e) == null) {
+          const live = listings.find((x) => x.id === id);
+          if (live) { out[id] = { d: dirOf(e), t: entryTime(e) || Date.now(), l: snapshot(live) }; changed = true; }
+        }
+      }
+      return changed ? out : s;
+    });
+  }, [listings]);
+
   useEffect(() => {
     saveJSON(user?.sub ? `${LS_SWIPED}.${user.sub}` : LS_SWIPED, swiped);
   }, [swiped, user]);
@@ -1413,13 +1448,13 @@ export default function App() {
   const openDetail = useCallback((l) => { setDetail(l); track("view_details"); }, []);
 
   const handleSwipe = useCallback((id, dir) => {
-    setSwiped((s) => ({ ...s, [id]: mark(dir) }));
+    const l = listings.find((x) => x.id === id);
+    // Snapshot the car with the swipe — both directions — so the garage and
+    // a pass's price ceiling survive after the listing leaves the feed.
+    setSwiped((s) => ({ ...s, [id]: mark(dir, l || listingOf(s[id])) }));
     track(dir === "right" ? "save_car" : "pass_car");
     setSwipeHistory((h) => [...h.slice(-30), id]);
-    if (dir === "right") {
-      const l = listings.find((x) => x.id === id);
-      showToast(`${l ? l.chassis : "Car"} parked in the garage`, T.save);
-    }
+    if (dir === "right") showToast(`${l ? l.chassis : "Car"} parked in the garage`, T.save);
   }, [listings]);
 
   /* Two-phase swipe: the card announces its fly-out immediately (the next
@@ -1449,7 +1484,7 @@ export default function App() {
     setSwipeHistory((h) => {
       if (!h.length) return h;
       const id = h[h.length - 1];
-      setSwiped((s) => ({ ...s, [id]: mark("none") }));
+      setSwiped((s) => ({ ...s, [id]: mark("none", listingOf(s[id])) }));
       const l = listings.find((x) => x.id === id);
       showToast(`${l ? l.chassis : "Card"} is back on top`, T.dim);
       return h.slice(0, -1);
@@ -1457,7 +1492,7 @@ export default function App() {
   }, [listings]);
 
   const toggleSave = (l) => {
-    setSwiped((s) => ({ ...s, [l.id]: mark(dirOf(s[l.id]) === "right" ? "none" : "right") }));
+    setSwiped((s) => ({ ...s, [l.id]: mark(dirOf(s[l.id]) === "right" ? "none" : "right", l) }));
     setDetail(null);
   };
 
@@ -1485,7 +1520,7 @@ export default function App() {
 
   const doSync = () => { if (sync !== "loading") refresh(true); };
 
-  const resetDeck = () => { setSwiped((s) => Object.fromEntries(Object.entries(s).map(([k, v]) => [k, dirOf(v) === "right" ? v : mark("none")]))); };
+  const resetDeck = () => { setSwiped((s) => Object.fromEntries(Object.entries(s).map(([k, v]) => [k, dirOf(v) === "right" ? v : mark("none", listingOf(v))]))); };
 
   /* ---- garage sync wiring (silent — never prompts) ---- */
   const [garageSync, setGarageSync] = useState("off"); // off | syncing | on | error
@@ -1652,7 +1687,7 @@ export default function App() {
             </div>
           ) : (
             <Garage saved={saved} passed={passed} onOpen={openDetail}
-              onRemove={(id) => setSwiped((s) => ({ ...s, [id]: mark("none") }))} />
+              onRemove={(id) => setSwiped((s) => ({ ...s, [id]: mark("none", listingOf(s[id])) }))} />
           )}
         </main>
 
