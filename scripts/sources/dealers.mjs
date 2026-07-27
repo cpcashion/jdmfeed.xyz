@@ -19,7 +19,7 @@
  *    clean img alt title.
  */
 
-import { UA, decode, isJDM, parseTitle, specsFromText } from "./jdm.mjs";
+import { UA, decode, isJDM, parseTitle, resolveChassis, specsFromText } from "./jdm.mjs";
 
 const now = () => new Date().toISOString();
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -60,11 +60,16 @@ const firstImage = (s, base = "") => {
   return u;
 };
 
-const baseListing = (over) => ({
-  chassis: "", trim: "", mileage: 0, transmission: "", engine: "", drivetrain: "",
-  color: "", description: "", paint: "", ends_at: "", live: true, rhd: true,
-  scraped_date: now(), ...over,
-});
+const baseListing = (over) => {
+  const l = {
+    chassis: "", trim: "", mileage: 0, transmission: "", engine: "", drivetrain: "",
+    color: "", description: "", paint: "", ends_at: "", live: true, rhd: true,
+    scraped_date: now(), ...over,
+  };
+  // Every dealer adapter lands here, so resolving once covers all of them.
+  if (!l.chassis) l.chassis = resolveChassis(l.title, l.make, l.model, l.year);
+  return l;
+};
 
 /* ---- jdmbuysell.com ---- */
 
