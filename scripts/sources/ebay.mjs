@@ -14,7 +14,7 @@
  */
 
 import fs from "node:fs";
-import { decode, isJDM, parseTitle, specsFromText } from "./jdm.mjs";
+import { decode, isJDM, parseTitle, resolveChassis, specsFromText } from "./jdm.mjs";
 
 // eBay keyset values never contain whitespace, so strip ALL whitespace and
 // invisible characters — phone copy/paste loves to smuggle one into the
@@ -122,7 +122,7 @@ export async function fetchEbayMotors() {
         year,
         make,
         model,
-        chassis: "",
+        chassis: resolveChassis(title, make, model, year),
         trim: "",
         price,
         mileage: specs.mileage || 0,

@@ -116,13 +116,27 @@ const stateOf = (loc) => {
   return s || "United States";
 };
 
+/* The card's hero type and the garage's grouping key. Prefer the real
+   chassis code the pipeline resolved (BNR34, FD3S, HDJ81); fall back to the
+   model name, trimmed at a word boundary so it never reads "MX-5 MI". */
+const chassisLabel = (raw) => {
+  const c = String(raw.chassis || "").trim().toUpperCase();
+  if (c) return c;
+  const m = String(raw.model || "").trim().toUpperCase();
+  if (!m) return "JDM";
+  if (m.length <= 12) return m;
+  const cut = m.slice(0, 12);
+  const sp = cut.lastIndexOf(" ");
+  return (sp > 4 ? cut.slice(0, sp) : cut).trim();
+};
+
 const normalize = (raw, i, live = false) => ({
   id: raw.id || `${live ? "live" : "seed"}-${i}-${(raw.title || "x").slice(0, 12)}`,
   title: raw.title || `${raw.year} ${raw.make} ${raw.model}`,
   year: Number(raw.year) || 1995,
   make: raw.make || "—",
   model: raw.model || "—",
-  chassis: (raw.chassis || raw.model || "JDM").toString().toUpperCase().slice(0, 7),
+  chassis: chassisLabel(raw),
   trim: raw.trim || "",
   price: typeof raw.price === "number" ? raw.price : Number(String(raw.price).replace(/[^0-9.]/g, "")) || 0,
   mileage: Number(raw.mileage) || 0,
@@ -1138,6 +1152,15 @@ function FilterSheet({ open, onClose, filters, setFilters, matchCount, listings 
 
 const paintGrad = (p) => `linear-gradient(158deg, ${p.stops[0]} 0%, ${p.stops[1]} 52%, ${p.stops[2]} 100%)`;
 
+/* Short codes get the full poster treatment; longer model-name fallbacks
+   step down so the label always fits the card. */
+const chassisFont = (s) => {
+  const n = String(s).length;
+  if (n <= 6) return "clamp(30px, 9.8vw, 50px)";
+  if (n <= 9) return "clamp(24px, 7.4vw, 39px)";
+  return "clamp(18px, 5.6vw, 30px)";
+};
+
 /* One expandable stack per chassis code: the swipe card's own paint-code
    look with the chassis as hero type, offset edges implying the saved
    count, tap to open. */
@@ -1168,8 +1191,9 @@ function ChassisStack({ g, onOpen }) {
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(120% 100% at 12% 122%, rgba(0,0,0,0.5), transparent 55%)" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: GRAIN, mixBlendMode: "overlay" }} />
         <div aria-hidden style={{
-          position: "absolute", left: 16, bottom: 4, ...display(900), color: ink, opacity: 0.96,
-          fontSize: "clamp(30px, 9.8vw, 50px)", lineHeight: 0.86, letterSpacing: "-0.035em", whiteSpace: "nowrap",
+          position: "absolute", left: 16, right: 76, bottom: 4, ...display(900), color: ink, opacity: 0.96,
+          fontSize: chassisFont(g.chassis), lineHeight: 0.86, letterSpacing: "-0.035em",
+          whiteSpace: "nowrap", overflow: "hidden", textOverflow: "clip",
           textShadow: g.paint.darkInk ? "none" : "0 5px 26px rgba(0,0,0,0.4)",
         }}>{g.chassis}</div>
         <div style={{
@@ -1195,7 +1219,7 @@ function ChassisSheet({ group: g, freshnessReady, onClose, onOpen, onRemove }) {
         {/* a soft wash of the chassis paint behind the header */}
         <div aria-hidden style={{ position: "absolute", inset: "-14px -22px 0", height: 108, background: `radial-gradient(78% 130% at 22% 0%, ${g.paint.glow}22, transparent 72%)`, pointerEvents: "none" }} />
         <div style={{ position: "relative", display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
-          <div style={{ ...display(900), fontSize: 34, color: T.ink, letterSpacing: "-0.03em", lineHeight: 1 }}>{g.chassis}</div>
+          <div style={{ ...display(900), fontSize: g.chassis.length <= 9 ? 34 : 26, color: T.ink, letterSpacing: "-0.03em", lineHeight: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{g.chassis}</div>
           <div style={{ ...mono, fontSize: 11, letterSpacing: "0.12em", color: T.dim }}>{g.cars.length} SAVED</div>
         </div>
         <div style={{ position: "relative", display: "flex", gap: 30, marginTop: 16 }}>

@@ -12,7 +12,7 @@
  */
 
 import fs from "node:fs";
-import { UA, decode, isJDM, parseTitle, specsFromText } from "./jdm.mjs";
+import { UA, decode, isJDM, parseTitle, resolveChassis, specsFromText } from "./jdm.mjs";
 
 /* ---- per-auction photo galleries ----
 
@@ -122,7 +122,7 @@ export async function fetchBringATrailer() {
       year,
       make,
       model,
-      chassis: "",
+      chassis: resolveChassis(it.title, make, model, year),
       trim: "",
       price: Number(it.current_bid) || 0,
       mileage: specs.mileage || 0,
