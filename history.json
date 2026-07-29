@@ -1,6 +1,259 @@
 {
-  "updated": "2026-07-29T09:11:54.151Z",
+  "updated": "2026-07-29T14:34:12.620Z",
   "listings": [
+    {
+      "title": "1993 Toyota Supra Turbo Built and Fresh Major Service by Sound Performance",
+      "year": 1993,
+      "make": "Toyota",
+      "model": "Supra Turbo Built and Fresh Major Service by Sound Performance",
+      "chassis": "JZA80",
+      "trim": "",
+      "price": 120212,
+      "mileage": 68431,
+      "transmission": "Custom 3-Speed TH400 Automatic",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Orange",
+      "location": "West Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/188690433302?_skw=Toyota+Supra&hash=item2beed38516:g:tTcAAeSwq55p31~B",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-29T09:10:27.626Z",
+      "listed_at": "2026-07-24T12:21:23.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-24T12:21:23.000Z",
+      "last_seen": "2026-07-29T09:11:54.151Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 120212
+        }
+      ],
+      "departed_at": "2026-07-29T14:34:12.620Z"
+    },
+    {
+      "title": "2006 Mazda RX-8 1.3 RF 4DR COUPE RWD",
+      "year": 2006,
+      "make": "Mazda",
+      "model": "RX-8 1.3 RF 4DR COUPE RWD",
+      "chassis": "SE3P",
+      "trim": "",
+      "price": 5900,
+      "mileage": 123302,
+      "transmission": "Automatic",
+      "engine": "1.3L Gas",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "WHITE",
+      "location": "Orlando, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/206437570275?_skw=Mazda+RX-8&hash=item3010a356e3:g:J3AAAeSwPtlqHSqG",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-29T09:10:27.626Z",
+      "listed_at": "2026-07-24T09:49:09.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-24T09:49:09.000Z",
+      "last_seen": "2026-07-29T09:11:54.151Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 5900
+        }
+      ],
+      "departed_at": "2026-07-29T14:34:12.620Z"
+    },
+    {
+      "title": "2008 Mazda MX-5 Miata Touring",
+      "year": 2008,
+      "make": "Mazda",
+      "model": "MX-5 Miata Touring",
+      "chassis": "NC",
+      "trim": "",
+      "price": 14900,
+      "mileage": 68268,
+      "transmission": "6 Speed Manual",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "White",
+      "location": "Pittsburgh, Pennsylvania",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287477829699?_skw=Mazda+Miata&hash=item42ef039043:g:9I4AAeSwHHhqKQbu",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-29T09:10:27.626Z",
+      "listed_at": "2026-07-22T13:15:36.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-22T13:15:36.000Z",
+      "last_seen": "2026-07-29T09:11:54.151Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 14900
+        }
+      ],
+      "departed_at": "2026-07-29T14:34:12.620Z"
+    },
+    {
+      "title": "1975 Datsun 280Z",
+      "year": 1975,
+      "make": "Datsun",
+      "model": "280Z",
+      "chassis": "S30",
+      "trim": "",
+      "price": 23995,
+      "mileage": 87426,
+      "transmission": "4 Speed Manual",
+      "engine": "2.8 I6",
+      "drivetrain": "RWD",
+      "color": "Red",
+      "location": "Lithia Springs, Georgia",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/278206545121?_skw=Datsun+280Z&hash=item40c666fce1:g:m0YAAeSwWhZqDeu~",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-29T09:10:27.626Z",
+      "listed_at": "2026-07-22T09:29:43.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-22T09:29:43.000Z",
+      "last_seen": "2026-07-29T09:11:54.151Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 23995
+        }
+      ],
+      "departed_at": "2026-07-29T14:34:12.620Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-07-29T09:10:45.567Z",
+      "title": "1998 Honda Acty",
+      "year": 1998,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 9600,
+      "location": "MD",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/tokyomotorsdc-1998-honda-acty-11096372609060/",
+      "listed_at": "2026-07-22T08:08:46.512Z",
+      "first_seen": "2026-07-22T08:08:46.512Z",
+      "last_seen": "2026-07-29T09:11:54.151Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 9600
+        }
+      ],
+      "departed_at": "2026-07-29T14:34:12.620Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-07-29T09:10:46.199Z",
+      "title": "1999 Honda Acty",
+      "year": 1999,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 10500,
+      "location": "NC",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/mayberryminitrucks-1999-honda-acty-tt2-003916/",
+      "listed_at": "2026-07-16T16:38:15.298Z",
+      "first_seen": "2026-07-16T16:38:15.298Z",
+      "last_seen": "2026-07-29T09:11:54.151Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 10500
+        }
+      ],
+      "departed_at": "2026-07-29T14:34:12.620Z"
+    },
+    {
+      "title": "1996 Toyota Land Cruiser HJ85",
+      "year": 1996,
+      "make": "Toyota",
+      "model": "Land Cruiser HJ85",
+      "chassis": "HDJ81",
+      "trim": "",
+      "price": 38500,
+      "mileage": 226713,
+      "transmission": "Automatic",
+      "engine": "4.5L Gas I6",
+      "drivetrain": "4WD",
+      "color": "",
+      "location": "Ocala, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/267729600059?_skw=Toyota+Land+Cruiser&hash=item3e55ed7e3b:g:ZNcAAeSwiU1pkcjk",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-29T09:10:27.626Z",
+      "listed_at": "2026-07-16T12:59:16.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-16T12:59:16.000Z",
+      "last_seen": "2026-07-29T09:11:54.151Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 38500
+        }
+      ],
+      "departed_at": "2026-07-29T14:34:12.620Z"
+    },
+    {
+      "chassis": "JB23",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-07-29T09:10:47.152Z",
+      "title": "1999 Suzuki Jimny",
+      "year": 1999,
+      "make": "Suzuki",
+      "model": "Jimny",
+      "price": 15999,
+      "location": "FL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/kurumaimports-1999-suzuki-jimny-495182/",
+      "listed_at": "2026-07-11T08:24:34.320Z",
+      "first_seen": "2026-07-11T08:24:34.320Z",
+      "last_seen": "2026-07-29T09:11:54.151Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 15999
+        }
+      ],
+      "departed_at": "2026-07-29T14:34:12.620Z"
+    },
     {
       "title": "2004 Toyota Land Cruiser",
       "year": 2004,
