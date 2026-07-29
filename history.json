@@ -1,6 +1,292 @@
 {
-  "updated": "2026-07-29T03:45:31.062Z",
+  "updated": "2026-07-29T09:11:54.151Z",
   "listings": [
+    {
+      "title": "2004 Toyota Land Cruiser",
+      "year": 2004,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "chassis": "UZJ100",
+      "trim": "",
+      "price": 17000,
+      "mileage": 244000,
+      "transmission": "Automatic",
+      "engine": "4.7L Gas V8",
+      "drivetrain": "4WD",
+      "color": "Black",
+      "location": "North Hills, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/206443569327?_skw=Toyota+Land+Cruiser&hash=item3010fee0af:g:OHIAAeSwnQxqZn1F",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-29T03:42:16.799Z",
+      "listed_at": "2026-07-26T21:36:13.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-26T21:36:13.000Z",
+      "last_seen": "2026-07-29T03:45:31.062Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 17000
+        }
+      ],
+      "departed_at": "2026-07-29T09:11:54.151Z"
+    },
+    {
+      "title": "2025 Acura Integra A-Spec Tech Package",
+      "year": 2025,
+      "make": "Acura",
+      "model": "Integra A-Spec Tech Package",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 29650,
+      "mileage": 35929,
+      "transmission": "CVT",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Apex Blue Pearl",
+      "location": "Greensboro, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327275856680?_skw=Acura+Integra&hash=item4c33294328:g:~~MAAeSwDgxp8t~E",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-29T03:42:16.799Z",
+      "listed_at": "2026-07-24T05:39:58.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-24T05:39:58.000Z",
+      "last_seen": "2026-07-29T03:45:31.062Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 29650
+        }
+      ],
+      "departed_at": "2026-07-29T09:11:54.151Z"
+    },
+    {
+      "title": "1996 Nissan 300ZX 2+2",
+      "year": 1996,
+      "make": "Nissan",
+      "model": "300ZX 2+2",
+      "chassis": "Z32",
+      "trim": "",
+      "price": 8000,
+      "mileage": 180000,
+      "transmission": "Manual",
+      "engine": "3.0L Gas V6",
+      "drivetrain": "RWD",
+      "color": "White",
+      "location": "Fresno, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/236955139524?_skw=Nissan+300ZX&hash=item372ba07dc4:g:Y-IAAeSw0XBqUsxL",
+      "ends_at": "2026-07-29T08:46:58.000Z",
+      "live": true,
+      "scraped_date": "2026-07-29T03:42:16.799Z",
+      "listed_at": "2026-07-22T08:46:58.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-22T08:46:58.000Z",
+      "last_seen": "2026-07-29T03:45:31.062Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 8000
+        }
+      ],
+      "departed_at": "2026-07-29T09:11:54.151Z"
+    },
+    {
+      "title": "2001 Toyota Land Cruiser Base",
+      "year": 2001,
+      "make": "Toyota",
+      "model": "Land Cruiser Base",
+      "chassis": "UZJ100",
+      "trim": "",
+      "price": 17995,
+      "mileage": 239401,
+      "transmission": "4-Speed Electronic Automatic w/OD,",
+      "engine": "4.7L Gas V8",
+      "drivetrain": "All Wheel Drive",
+      "color": "",
+      "location": "El Dorado Hills, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/358828855125?_skw=Toyota+Land+Cruiser&hash=item538bddcf55:g:F6kAAeSwIL9qH9l6",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-29T03:42:16.799Z",
+      "listed_at": "2026-07-22T07:59:02.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-22T07:59:02.000Z",
+      "last_seen": "2026-07-29T03:45:31.062Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 17995
+        }
+      ],
+      "departed_at": "2026-07-29T09:11:54.151Z"
+    },
+    {
+      "title": "1995 Nissan 240SX 2dr Coupe Base Manual",
+      "year": 1995,
+      "make": "Nissan",
+      "model": "240SX 2dr Coupe Base Manual",
+      "chassis": "S14",
+      "trim": "",
+      "price": 40001,
+      "mileage": 350,
+      "transmission": "5 Speed Manual",
+      "engine": "2.4L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Purple",
+      "location": "Santa Rosa Beach, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/168554166827?_skw=Nissan+240SX&hash=item273e9c7a2b:g:t7oAAeSwo4NqXw96",
+      "ends_at": "2026-07-29T06:23:18.000Z",
+      "live": true,
+      "scraped_date": "2026-07-29T03:42:16.799Z",
+      "listed_at": "2026-07-22T06:23:18.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-22T06:23:18.000Z",
+      "last_seen": "2026-07-29T03:45:31.062Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 40001
+        }
+      ],
+      "departed_at": "2026-07-29T09:11:54.151Z"
+    },
+    {
+      "title": "2006 Mazda MX-5 Miata Base",
+      "year": 2006,
+      "make": "Mazda",
+      "model": "MX-5 Miata Base",
+      "chassis": "NC",
+      "trim": "",
+      "price": 14900,
+      "mileage": 66140,
+      "transmission": "Manual",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Burgundy",
+      "location": "Pittsburgh, Pennsylvania",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287477276238?_skw=Mazda+Miata&hash=item42eefb1e4e:g:ThkAAeSwD-lqYGEK",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-29T03:42:16.799Z",
+      "listed_at": "2026-07-22T06:20:03.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-22T06:20:03.000Z",
+      "last_seen": "2026-07-29T03:45:31.062Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 14900
+        }
+      ],
+      "departed_at": "2026-07-29T09:11:54.151Z"
+    },
+    {
+      "title": "1982 Toyota Land Cruiser FJ40 with Trailer",
+      "year": 1982,
+      "make": "Toyota",
+      "model": "Land Cruiser FJ40 with Trailer",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 64995,
+      "mileage": 87,
+      "transmission": "4 Speed Manual",
+      "engine": "4.2L 2F Inline 6",
+      "drivetrain": "4X4",
+      "color": "Blue Gray",
+      "location": "Lithia Springs, Georgia",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/278206053461?_skw=Toyota+Land+Cruiser&hash=item40c65f7c55:g:qcEAAeSwYexqUJ6K",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-29T03:42:16.799Z",
+      "listed_at": "2026-07-22T05:11:58.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-22T05:11:58.000Z",
+      "last_seen": "2026-07-29T03:45:31.062Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 64995
+        }
+      ],
+      "departed_at": "2026-07-29T09:11:54.151Z"
+    },
+    {
+      "chassis": "HDJ81",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-07-29T03:42:39.191Z",
+      "title": "1996 Toyota Land Cruiser",
+      "year": 1996,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "price": 31900,
+      "location": "VA",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/drivermotorsports-1996-toyota-land-cruiser-1129/",
+      "listed_at": "2026-07-16T14:22:31.556Z",
+      "first_seen": "2026-07-16T14:22:31.556Z",
+      "last_seen": "2026-07-29T03:45:31.062Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 31900
+        }
+      ],
+      "departed_at": "2026-07-29T09:11:54.151Z"
+    },
+    {
+      "chassis": "JZX100",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-07-29T03:42:40.283Z",
+      "title": "1998 Toyota Mark II",
+      "year": 1998,
+      "make": "Toyota",
+      "model": "Mark II",
+      "price": 19900,
+      "location": "VA",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/drivermotorsports-1998-toyota-mark-2-1127/",
+      "listed_at": "2026-07-10T13:22:38.583Z",
+      "first_seen": "2026-07-10T13:22:38.583Z",
+      "last_seen": "2026-07-29T03:45:31.062Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 19900
+        }
+      ],
+      "departed_at": "2026-07-29T09:11:54.151Z"
+    },
     {
       "title": "2025 Mazda MX-5 Miata Grand Touring",
       "year": 2025,
