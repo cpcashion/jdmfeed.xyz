@@ -1,6 +1,195 @@
 {
-  "updated": "2026-07-30T03:31:27.642Z",
+  "updated": "2026-07-30T09:04:55.617Z",
   "listings": [
+    {
+      "title": "2021 Toyota GR Supra 3.0 Premium Coupe 2D",
+      "year": 2021,
+      "make": "Toyota",
+      "model": "GR Supra 3.0 Premium Coupe 2D",
+      "chassis": "A90",
+      "trim": "",
+      "price": 59100,
+      "mileage": 41152,
+      "transmission": "Automatic, 8-Spd",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Gray",
+      "location": "Miami, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/128001118614?_skw=Toyota+Supra&hash=item1dcd761196:g:WXEAAeSwi1JqWXQ4",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-30T03:30:41.343Z",
+      "listed_at": "2026-07-29T23:24:07.000Z",
+      "enriched": 3,
+      "first_seen": "2026-07-29T23:24:07.000Z",
+      "last_seen": "2026-07-30T03:31:27.642Z",
+      "price_history": [
+        {
+          "t": "2026-07-30T03:31:27.642Z",
+          "p": 59100
+        }
+      ],
+      "departed_at": "2026-07-30T09:04:55.617Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-07-30T03:31:01.879Z",
+      "title": "1997 Subaru Sambar",
+      "year": 1997,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 7500,
+      "location": "TX",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/jdmkingimports-1997-subaru-sambar-3974/",
+      "listed_at": "2026-07-27T10:07:39.243Z",
+      "first_seen": "2026-07-27T10:07:39.243Z",
+      "last_seen": "2026-07-30T03:31:27.642Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 7500
+        }
+      ],
+      "departed_at": "2026-07-30T09:04:55.617Z"
+    },
+    {
+      "title": "2026 Toyota GR Supra 3.0 Final Edition",
+      "year": 2026,
+      "make": "Toyota",
+      "model": "GR Supra 3.0 Final Edition",
+      "chassis": "A90",
+      "trim": "",
+      "price": 82500,
+      "mileage": 4101,
+      "transmission": "6 Speed Manual",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "White",
+      "location": "Tulsa, Oklahoma",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/336707409478?_skw=Toyota+Supra&hash=item4e65535646:g:uz4AAeSwSoNqL7iD",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-30T03:30:41.343Z",
+      "listed_at": "2026-07-25T08:38:39.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-25T08:38:39.000Z",
+      "last_seen": "2026-07-30T03:31:27.642Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 82500
+        }
+      ],
+      "departed_at": "2026-07-30T09:04:55.617Z"
+    },
+    {
+      "title": "2017 Nissan GT-R Premium AWD 2dr Coupe",
+      "year": 2017,
+      "make": "Nissan",
+      "model": "GT-R Premium AWD 2dr Coupe",
+      "chassis": "R35",
+      "trim": "",
+      "price": 149900,
+      "mileage": 29451,
+      "transmission": "Automatic 6-Speed",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Jet Black",
+      "location": "Marietta, Georgia",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/336707332518?_skw=Nissan+GT-R&hash=item4e655229a6:g:0mAAAeSw4qRqSgZT",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-30T03:30:41.343Z",
+      "listed_at": "2026-07-25T07:24:48.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-25T07:24:48.000Z",
+      "last_seen": "2026-07-30T03:31:27.642Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 149900
+        }
+      ],
+      "departed_at": "2026-07-30T09:04:55.617Z"
+    },
+    {
+      "title": "1999 Toyota Land Cruiser Sport Utility 4D",
+      "year": 1999,
+      "make": "Toyota",
+      "model": "Land Cruiser Sport Utility 4D",
+      "chassis": "UZJ100",
+      "trim": "",
+      "price": 22995,
+      "mileage": 195100,
+      "transmission": "Automatic",
+      "engine": "4.7L Gas V8",
+      "drivetrain": "All Wheel Drive",
+      "color": "White",
+      "location": "San Diego, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800404259183?_skw=Toyota+Land+Cruiser&hash=itemba5bcfc16f:g:dZYAAeSwYG9qUH2v",
+      "ends_at": "2026-07-30T05:09:48.000Z",
+      "live": true,
+      "scraped_date": "2026-07-30T03:30:41.343Z",
+      "listed_at": "2026-07-25T05:09:48.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-25T05:09:48.000Z",
+      "last_seen": "2026-07-30T03:31:27.642Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 22995
+        }
+      ],
+      "departed_at": "2026-07-30T09:04:55.617Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-07-30T03:31:01.969Z",
+      "title": "1994 Honda Acty",
+      "year": 1994,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 6800,
+      "location": "TX",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/jdmkingimports-1994-honda-acty-4039/",
+      "listed_at": "2026-07-21T08:52:33.936Z",
+      "first_seen": "2026-07-21T08:52:33.936Z",
+      "last_seen": "2026-07-30T03:31:27.642Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 6800
+        }
+      ],
+      "departed_at": "2026-07-30T09:04:55.617Z"
+    },
     {
       "title": "1990 Nissan 300ZX",
       "year": 1990,
