@@ -1,6 +1,915 @@
 {
-  "updated": "2026-07-31T14:37:25.905Z",
+  "updated": "2026-07-31T19:56:06.177Z",
   "listings": [
+    {
+      "title": "2023 Acura Integra A-Spec Tech Package",
+      "year": 2023,
+      "make": "Acura",
+      "model": "Integra A-Spec Tech Package",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 27595,
+      "mileage": 48167,
+      "transmission": "6-Speed Manual",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Platinum White Pearl",
+      "location": "Greensboro, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327287384472?_skw=Acura+Integra&hash=item4c33d92998:g:yw0AAeSwOPZqa6pK",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-30T19:48:04.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-30T19:48:04.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-30T19:54:15.449Z",
+          "p": 27595
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "2024 Acura Integra Base",
+      "year": 2024,
+      "make": "Acura",
+      "model": "Integra Base",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 25350,
+      "mileage": 44769,
+      "transmission": "CVT",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Majestic Black Pearl",
+      "location": "Greensboro, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327279589888?_skw=Acura+Integra&hash=item4c33623a00:g:zZ0AAeSw9h1qWTWz",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-26T19:52:44.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-26T19:52:44.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 25350
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "2007 Mazda MX-5 Miata PRHT Grand Touring",
+      "year": 2007,
+      "make": "Mazda",
+      "model": "MX-5 Miata PRHT Grand Touring",
+      "chassis": "NC",
+      "trim": "",
+      "price": 10695,
+      "mileage": 136495,
+      "transmission": "6-Speed Automatic Sport",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "True Red",
+      "location": "Greensboro, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327279589655?_skw=Mazda+Miata&hash=item4c33623917:g:0i4AAeSwflRqWYXo",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-26T19:52:32.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-26T19:52:32.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 10695
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "1975 Toyota Land Cruiser FJ40 Restomod",
+      "year": 1975,
+      "make": "Toyota",
+      "model": "Land Cruiser FJ40 Restomod",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 24995,
+      "mileage": 3710,
+      "transmission": "5 Speed Manual",
+      "engine": "350 V8",
+      "drivetrain": "4X4",
+      "color": "Olive Drab Green",
+      "location": "Lutz, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/278219519918?_skw=Toyota+Land+Cruiser&hash=item40c72cf7ae:g:UEIAAeSwPIZp6QIT",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-26T19:37:20.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-26T19:37:20.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 24995
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "2017 Nissan GT-R PREMIUM CICIO PERFORMANCE C1400+ PKG AND BRAKE PKG 20 INCH",
+      "year": 2017,
+      "make": "Nissan",
+      "model": "GT-R PREMIUM CICIO PERFORMANCE C1400+ PKG AND BRAKE PKG 20 INCH",
+      "chassis": "R35",
+      "trim": "",
+      "price": 175212,
+      "mileage": 10886,
+      "transmission": "6-Speed Double Clutch",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Jet Black",
+      "location": "West Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/358846108542?_skw=Nissan+GT-R&hash=item538ce5137e:g:NNAAAeSwXghqRQx0",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-26T16:00:03.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-26T16:00:03.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 186212
+        },
+        {
+          "t": "2026-07-29T14:34:12.620Z",
+          "p": 180212
+        },
+        {
+          "t": "2026-07-31T14:37:25.905Z",
+          "p": 175212
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "1982 Toyota Land Cruiser FJ40 LX",
+      "year": 1982,
+      "make": "Toyota",
+      "model": "Land Cruiser FJ40 LX",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 7500,
+      "mileage": 0,
+      "transmission": "Manual",
+      "engine": "",
+      "drivetrain": "",
+      "color": "tan",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1982-toyota-land-cruiser-fj40-118/",
+      "ends_at": "2026-07-31T18:00:00.000Z",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:57.094Z",
+      "first_seen": "2026-07-25T03:41:00.151Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 5000
+        },
+        {
+          "t": "2026-07-27T19:58:00.383Z",
+          "p": 5500
+        },
+        {
+          "t": "2026-07-31T03:53:11.128Z",
+          "p": 7000
+        },
+        {
+          "t": "2026-07-31T14:37:25.905Z",
+          "p": 7500
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "2015 Toyota Land Cruiser URJ200",
+      "year": 2015,
+      "make": "Toyota",
+      "model": "Land Cruiser URJ200",
+      "chassis": "J200",
+      "trim": "",
+      "price": 35000,
+      "mileage": 0,
+      "transmission": "Automatic",
+      "engine": "5.7-liter V8",
+      "drivetrain": "",
+      "color": "Blizzard Pearl",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/2015-toyota-land-cruiser-14/",
+      "ends_at": "2026-07-31T18:57:00.000Z",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:57.094Z",
+      "first_seen": "2026-07-25T03:41:00.151Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 20150
+        },
+        {
+          "t": "2026-07-28T03:39:07.870Z",
+          "p": 25551
+        },
+        {
+          "t": "2026-07-29T19:48:13.351Z",
+          "p": 27500
+        },
+        {
+          "t": "2026-07-30T03:31:27.642Z",
+          "p": 35000
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "2.0L-Powered 1967.5 Datsun 1600 Roadster 5-Speed",
+      "year": 1967,
+      "make": "Datsun",
+      "model": "1600 Roadster 5-Speed",
+      "chassis": "",
+      "trim": "",
+      "price": 10250,
+      "mileage": 0,
+      "transmission": "5-speed manual",
+      "engine": "2.0-liter U20 inline-four",
+      "drivetrain": "",
+      "color": "Eggshell White",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1967-datsun-1600-roadster-54/",
+      "ends_at": "2026-07-31T17:36:00.000Z",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:57.094Z",
+      "first_seen": "2026-07-24T19:49:06.665Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 10250
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "1978 Datsun 280Z 2+2 5-Speed",
+      "year": 1978,
+      "make": "Datsun",
+      "model": "280Z 2+2 5-Speed",
+      "chassis": "S30",
+      "trim": "",
+      "price": 17500,
+      "mileage": 0,
+      "transmission": "5-speed manual",
+      "engine": "2.8-liter inline-six",
+      "drivetrain": "",
+      "color": "Racing Green",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1978-datsun-280z-22-30/",
+      "ends_at": "2026-07-31T17:42:00.000Z",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:57.094Z",
+      "first_seen": "2026-07-24T19:49:06.665Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 6500
+        },
+        {
+          "t": "2026-07-28T03:39:07.870Z",
+          "p": 6607
+        },
+        {
+          "t": "2026-07-28T19:55:28.307Z",
+          "p": 7100
+        },
+        {
+          "t": "2026-07-29T03:45:31.062Z",
+          "p": 7507
+        },
+        {
+          "t": "2026-07-30T19:54:15.449Z",
+          "p": 8000
+        },
+        {
+          "t": "2026-07-31T03:53:11.128Z",
+          "p": 16000
+        },
+        {
+          "t": "2026-07-31T09:19:25.608Z",
+          "p": 17500
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "Original-Owner 1985 Mazda RX-7 GSL-SE 5-Speed",
+      "year": 1985,
+      "make": "Mazda",
+      "model": "RX-7 GSL-SE 5-Speed",
+      "chassis": "SA22C",
+      "trim": "",
+      "price": 11111,
+      "mileage": 0,
+      "transmission": "5-speed manual",
+      "engine": "limited-slip differential",
+      "drivetrain": "",
+      "color": "Light Beige",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1985-mazda-rx-7-112/",
+      "ends_at": "2026-07-31T18:03:00.000Z",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:57.094Z",
+      "first_seen": "2026-07-24T19:49:06.665Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 6100
+        },
+        {
+          "t": "2026-07-27T19:58:00.383Z",
+          "p": 6200
+        },
+        {
+          "t": "2026-07-28T03:39:07.870Z",
+          "p": 7500
+        },
+        {
+          "t": "2026-07-29T19:48:13.351Z",
+          "p": 7700
+        },
+        {
+          "t": "2026-07-30T19:54:15.449Z",
+          "p": 8000
+        },
+        {
+          "t": "2026-07-31T03:53:11.128Z",
+          "p": 8600
+        },
+        {
+          "t": "2026-07-31T14:37:25.905Z",
+          "p": 11111
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "31-Years-Family-Owned 1986 Suzuki Samurai",
+      "year": 1986,
+      "make": "Suzuki",
+      "model": "Samurai",
+      "chassis": "",
+      "trim": "",
+      "price": 5500,
+      "mileage": 0,
+      "transmission": "Manual",
+      "engine": "1,324cc inline-four",
+      "drivetrain": "",
+      "color": "Fantasy Black",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1986-suzuki-samurai-47/",
+      "ends_at": "2026-07-31T18:25:00.000Z",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:57.094Z",
+      "first_seen": "2026-07-24T19:49:06.665Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 5500
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "5k-Mile 2011 Mazda MX-5 Miata Sport 5-Speed",
+      "year": 2011,
+      "make": "Mazda",
+      "model": "MX-5 Miata Sport 5-Speed",
+      "chassis": "NC",
+      "trim": "",
+      "price": 5000,
+      "mileage": 5000,
+      "transmission": "5-speed manual",
+      "engine": "2.0-liter inline-four",
+      "drivetrain": "",
+      "color": "Liquid Silver Metallic",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/2011-mazda-mx-5-miata-16/",
+      "ends_at": "2026-07-31T18:29:00.000Z",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:57.094Z",
+      "first_seen": "2026-07-24T19:49:06.665Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 3500
+        },
+        {
+          "t": "2026-07-29T14:34:12.620Z",
+          "p": 3850
+        },
+        {
+          "t": "2026-07-30T14:34:01.465Z",
+          "p": 5000
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "L28-Powered 1972 Datsun 240Z 5-Speed",
+      "year": 1972,
+      "make": "Datsun",
+      "model": "240Z 5-Speed",
+      "chassis": "S30",
+      "trim": "",
+      "price": 10000,
+      "mileage": 0,
+      "transmission": "Automatic",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1972-datsun-240z-407/",
+      "ends_at": "2026-07-31T18:38:00.000Z",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:57.094Z",
+      "first_seen": "2026-07-24T19:49:06.665Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 4600
+        },
+        {
+          "t": "2026-07-29T03:45:31.062Z",
+          "p": 5000
+        },
+        {
+          "t": "2026-07-30T03:31:27.642Z",
+          "p": 5500
+        },
+        {
+          "t": "2026-07-30T09:04:55.617Z",
+          "p": 7200
+        },
+        {
+          "t": "2026-07-30T14:34:01.465Z",
+          "p": 7500
+        },
+        {
+          "t": "2026-07-30T19:54:15.449Z",
+          "p": 8250
+        },
+        {
+          "t": "2026-07-31T14:37:25.905Z",
+          "p": 10000
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "2001 Honda Prelude Type SH",
+      "year": 2001,
+      "make": "Honda",
+      "model": "Prelude Type SH",
+      "chassis": "",
+      "trim": "",
+      "price": 64900,
+      "mileage": 4955,
+      "transmission": "Manual",
+      "engine": "2.2L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Nighthawk Black Pearl",
+      "location": "Auburn, Massachusetts",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/147458969121?_skw=Honda+Prelude&hash=item22553d4e21:g:t1wAAeSw0sdqYVzA",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-24T18:32:39.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-24T18:32:39.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 64900
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "1994 Nissan 300ZX",
+      "year": 1994,
+      "make": "Nissan",
+      "model": "300ZX",
+      "chassis": "Z32",
+      "trim": "",
+      "price": 17000,
+      "mileage": 145000,
+      "transmission": "Manual",
+      "engine": "3.0L Gas V6",
+      "drivetrain": "RWD",
+      "color": "Black",
+      "location": "Waupaca, Wisconsin",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/398211829852?_skw=Nissan+300ZX&hash=item5cb746505c:g:fWAAAeSwMtBqLXAo",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-24T18:31:06.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-24T18:31:06.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 17000
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "1978 Toyota Land Cruiser",
+      "year": 1978,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 49997,
+      "mileage": 40684,
+      "transmission": "5-Speed Manual with Overdrive",
+      "engine": "2F 4.2L Inline-6",
+      "drivetrain": "",
+      "color": "Cream",
+      "location": "Bradenton, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/267737803894?_skw=Toyota+Land+Cruiser&hash=item3e566aac76:g:xiAAAeSw4GNp~g1M",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-24T16:27:39.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-24T16:27:39.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 49997
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "2008 Mitsubishi Lancer 4dr Sedan Manual Evolution MR",
+      "year": 2008,
+      "make": "Mitsubishi",
+      "model": "Lancer 4dr Sedan Manual Evolution MR",
+      "chassis": "CZ4A",
+      "trim": "",
+      "price": 24990,
+      "mileage": 94537,
+      "transmission": "Automatic",
+      "engine": "",
+      "drivetrain": "",
+      "color": "Red",
+      "location": "Addison, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/227445929033?_skw=Mitsubishi+Lancer+Evolution&hash=item34f4d57449:g:Y~MAAeSwgMtqY4lR",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-24T15:43:28.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-24T15:43:28.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 24990
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "1989 Toyota Land Cruiser HJ61 Turbodiesel 5-Speed 4WD",
+      "year": 1989,
+      "make": "Toyota",
+      "model": "Land Cruiser HJ61 Turbodiesel 5-Speed 4WD",
+      "chassis": "FJ62",
+      "trim": "",
+      "price": 46000,
+      "mileage": 0,
+      "transmission": "5-speed manual",
+      "engine": "4.0-liter turbodiesel inline-six",
+      "drivetrain": "4WD",
+      "color": "white",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1989-toyota-land-cruiser-hj61-15/",
+      "ends_at": "2026-07-31T17:30:00.000Z",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:57.094Z",
+      "first_seen": "2026-07-24T14:15:32.530Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 40027
+        },
+        {
+          "t": "2026-07-28T19:55:28.307Z",
+          "p": 41000
+        },
+        {
+          "t": "2026-07-29T14:34:12.620Z",
+          "p": 42000
+        },
+        {
+          "t": "2026-07-30T09:04:55.617Z",
+          "p": 45000
+        },
+        {
+          "t": "2026-07-31T14:37:25.905Z",
+          "p": 46000
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-07-31T14:37:19.538Z",
+      "title": "1992 Subaru Sambar",
+      "year": 1992,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 8000,
+      "location": "CA",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/jdmallmakesmotors-1992-subaru-sambar-ks4-131278/",
+      "listed_at": "2026-07-17T21:39:06.709Z",
+      "first_seen": "2026-07-17T21:39:06.709Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 8000
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "2006 Mazda MX-5 Miata",
+      "year": 2006,
+      "make": "Mazda",
+      "model": "MX-5 Miata",
+      "chassis": "NC",
+      "trim": "",
+      "price": 5999.99,
+      "mileage": 116190,
+      "transmission": "Automatic",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "RWD",
+      "color": "Gray",
+      "location": "Hudson, New Hampshire",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/298510241482?_skw=Mazda+Miata&hash=item458098ceca:g:s~AAAeSwNF5qFeJm",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-16T18:31:07.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-16T18:31:07.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 5999.99
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "1999 Suzuki Jimny",
+      "year": 1999,
+      "make": "Suzuki",
+      "model": "Jimny",
+      "chassis": "JB23",
+      "trim": "",
+      "price": 9800,
+      "mileage": 84174,
+      "transmission": "Manual",
+      "engine": "660cc",
+      "drivetrain": "4WD",
+      "color": "White",
+      "location": "Hallandale, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/307065686157?_skw=Suzuki+Jimny&hash=item477e8a888d:g:R7wAAeSwS55pnkJb",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-15T17:32:53.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-15T17:32:53.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 9800
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "1982 Mazda RX-7",
+      "year": 1982,
+      "make": "Mazda",
+      "model": "RX-7",
+      "chassis": "SA22C",
+      "trim": "",
+      "price": 14000,
+      "mileage": 117850,
+      "transmission": "Manual",
+      "engine": "",
+      "drivetrain": "RWD",
+      "color": "Black",
+      "location": "Murrells Inlet, South Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/307036933780?_skw=Mazda+RX-7&hash=item477cd3ce94:g:TmEAAeSwih1qRWYh",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-01T19:29:55.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-01T19:29:55.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 14000
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "2009 Nissan GT-R 2000HP+",
+      "year": 2009,
+      "make": "Nissan",
+      "model": "GT-R 2000HP+",
+      "chassis": "R35",
+      "trim": "",
+      "price": 135795,
+      "mileage": 26552,
+      "transmission": "Automatic",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "AWD",
+      "color": "Orange",
+      "location": "Naples, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/188586323524?_skw=Nissan+GT-R&hash=item2be89eee44:g:5koAAeSw-ABqZPEn",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-01T18:33:46.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-01T18:33:46.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 135795
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "1987 Nissan 300ZX",
+      "year": 1987,
+      "make": "Nissan",
+      "model": "300ZX",
+      "chassis": "Z31",
+      "trim": "",
+      "price": 9000,
+      "mileage": 69000,
+      "transmission": "Manual",
+      "engine": "3.0L Gas V6",
+      "drivetrain": "RWD",
+      "color": "Red",
+      "location": "Nixa, Missouri",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178272984738?_skw=Nissan+300ZX&hash=item2981e5dea2:g:TH4AAeSwf9FqPAMA",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-01T16:32:54.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-01T16:32:54.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 9000
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
+    {
+      "title": "2000 Nissan GT-R Scorch Racing 500HP Twin Turbo GTR R34 Low Miles",
+      "year": 2000,
+      "make": "Nissan",
+      "model": "GT-R Scorch Racing 500HP Twin Turbo GTR R34 Low Miles",
+      "chassis": "",
+      "trim": "",
+      "price": 205000,
+      "mileage": 39000,
+      "transmission": "Manual",
+      "engine": "RB25DETT",
+      "drivetrain": "",
+      "color": "Black",
+      "location": "Fort Lauderdale, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/227411880634?_skw=Nissan+Skyline&hash=item34f2cdeaba:g:3nUAAeSwze9qRTP8",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-07-31T14:36:58.310Z",
+      "listed_at": "2026-07-01T15:46:48.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-01T15:46:48.000Z",
+      "last_seen": "2026-07-31T14:37:25.905Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 205000
+        }
+      ],
+      "departed_at": "2026-07-31T19:56:06.177Z"
+    },
     {
       "title": "1993 Nissan 300ZX",
       "year": 1993,
