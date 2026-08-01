@@ -1,6 +1,202 @@
 {
-  "updated": "2026-08-01T03:53:27.246Z",
+  "updated": "2026-08-01T08:35:46.099Z",
   "listings": [
+    {
+      "title": "2023 Acura Integra A-Spec Tech Package",
+      "year": 2023,
+      "make": "Acura",
+      "model": "Integra A-Spec Tech Package",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 27595,
+      "mileage": 48171,
+      "transmission": "6-Speed Manual",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Platinum White Pearl",
+      "location": "Greensboro, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327287384472?_skw=Acura+Integra&hash=item4c33d92998:g:ShUAAeSw8fBqbPiT",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-01T03:51:56.627Z",
+      "listed_at": "2026-07-30T19:48:04.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-30T19:48:04.000Z",
+      "last_seen": "2026-08-01T03:53:27.246Z",
+      "price_history": [
+        {
+          "t": "2026-07-31T19:56:06.177Z",
+          "p": 27595
+        }
+      ],
+      "departed_at": "2026-08-01T08:35:46.099Z"
+    },
+    {
+      "title": "1998 Honda Prelude",
+      "year": 1998,
+      "make": "Honda",
+      "model": "Prelude",
+      "chassis": "",
+      "trim": "",
+      "price": 6000,
+      "mileage": 202233,
+      "transmission": "Manual",
+      "engine": "2.2L Gas I4",
+      "drivetrain": "FWD",
+      "color": "Black",
+      "location": "Riverside, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/366572153343?_skw=Honda+Prelude&hash=item55596729ff:g:Tc4AAeSwZlJqaaD1",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-01T03:51:56.627Z",
+      "listed_at": "2026-07-29T06:56:46.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-29T06:56:46.000Z",
+      "last_seen": "2026-08-01T03:53:27.246Z",
+      "price_history": [
+        {
+          "t": "2026-07-29T09:11:54.151Z",
+          "p": 6000
+        }
+      ],
+      "departed_at": "2026-08-01T08:35:46.099Z"
+    },
+    {
+      "title": "2026 Toyota Land Cruiser Base",
+      "year": 2026,
+      "make": "Toyota",
+      "model": "Land Cruiser Base",
+      "chassis": "J300",
+      "trim": "",
+      "price": 73995,
+      "mileage": 3,
+      "transmission": "8-Speed Automatic w/OD",
+      "engine": "2.4L Electric and Gas Hybrid I4",
+      "drivetrain": "Rear Wheel Drive w/4x4",
+      "color": "",
+      "location": "Norwalk, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/358849025203?_skw=Toyota+Land+Cruiser&hash=item538d1194b3:g:IngAAeSwkwdqJSBQ",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-01T03:51:56.627Z",
+      "listed_at": "2026-07-27T07:59:25.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-27T07:59:25.000Z",
+      "last_seen": "2026-08-01T03:53:27.246Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 73995
+        }
+      ],
+      "departed_at": "2026-08-01T08:35:46.099Z"
+    },
+    {
+      "title": "2002 Acura NSX Base 2dr Coupe",
+      "year": 2002,
+      "make": "Acura",
+      "model": "NSX Base 2dr Coupe",
+      "chassis": "NA2",
+      "trim": "",
+      "price": 209990,
+      "mileage": 21920,
+      "transmission": "Manual 6-Speed",
+      "engine": "3.2L Gas V6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Gray",
+      "location": "Destin, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287486592132?_skw=Acura+NSX&hash=item42ef894484:g:5GMAAeSwrmVqEVXk",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-01T03:51:56.627Z",
+      "listed_at": "2026-07-27T07:28:03.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-27T07:28:03.000Z",
+      "last_seen": "2026-08-01T03:53:27.246Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 209990
+        }
+      ],
+      "departed_at": "2026-08-01T08:35:46.099Z"
+    },
+    {
+      "title": "2021 Nissan GT-R Premium",
+      "year": 2021,
+      "make": "Nissan",
+      "model": "GT-R Premium",
+      "chassis": "R35",
+      "trim": "",
+      "price": 165990,
+      "mileage": 14009,
+      "transmission": "6-Speed Automatic",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Pearl White",
+      "location": "New Albany, Indiana",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287483089428?_skw=Nissan+GT-R&hash=item42ef53d214:g:nvIAAeSwAbNqNKEA",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-01T03:51:56.627Z",
+      "listed_at": "2026-07-25T07:56:40.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-25T07:56:40.000Z",
+      "last_seen": "2026-08-01T03:53:27.246Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 167990
+        },
+        {
+          "t": "2026-07-31T19:56:06.177Z",
+          "p": 165990
+        }
+      ],
+      "departed_at": "2026-08-01T08:35:46.099Z"
+    },
+    {
+      "title": "1996 Toyota Land Cruiser HJ85",
+      "year": 1996,
+      "make": "Toyota",
+      "model": "Land Cruiser HJ85",
+      "chassis": "HDJ81",
+      "trim": "",
+      "price": 38500,
+      "mileage": 226713,
+      "transmission": "Automatic",
+      "engine": "4.5L Gas I6",
+      "drivetrain": "4WD",
+      "color": "",
+      "location": "Ocala, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/267729600059?_skw=Toyota+Land+Cruiser&hash=item3e55ed7e3b:g:ZNcAAeSwiU1pkcjk",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-01T03:51:56.627Z",
+      "listed_at": "2026-07-16T12:59:16.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-16T12:59:16.000Z",
+      "last_seen": "2026-08-01T03:53:27.246Z",
+      "price_history": [
+        {
+          "t": "2026-07-30T09:04:55.617Z",
+          "p": 38500
+        }
+      ],
+      "departed_at": "2026-08-01T08:35:46.099Z"
+    },
     {
       "chassis": "KS4",
       "trim": "",
