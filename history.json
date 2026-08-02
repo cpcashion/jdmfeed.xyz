@@ -1,6 +1,291 @@
 {
-  "updated": "2026-08-02T08:38:53.064Z",
+  "updated": "2026-08-02T13:58:08.722Z",
   "listings": [
+    {
+      "title": "1980 Toyota Land Cruiser LX FRP TOP",
+      "year": 1980,
+      "make": "Toyota",
+      "model": "Land Cruiser LX FRP TOP",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 42000,
+      "mileage": 6000,
+      "transmission": "Manual",
+      "engine": "13B-T 4 Cylinder Turbo Diesel",
+      "drivetrain": "4WD",
+      "color": "Gray",
+      "location": "Taos, New Mexico",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287497413136?_skw=Toyota+Land+Cruiser&hash=item42f02e6210:g:B0AAAeSwqy1pAXZp",
+      "ends_at": "2026-08-11T20:19:50.000Z",
+      "live": true,
+      "scraped_date": "2026-08-02T08:37:26.800Z",
+      "listed_at": "2026-08-01T20:19:50.000Z",
+      "rhd": true,
+      "enriched": 3,
+      "first_seen": "2026-08-01T20:19:50.000Z",
+      "last_seen": "2026-08-02T08:38:53.064Z",
+      "price_history": [
+        {
+          "t": "2026-08-02T04:02:38.873Z",
+          "p": 42000
+        }
+      ],
+      "departed_at": "2026-08-02T13:58:08.722Z"
+    },
+    {
+      "title": "2025 Mazda MX-5 Miata Grand Touring",
+      "year": 2025,
+      "make": "Mazda",
+      "model": "MX-5 Miata Grand Touring",
+      "chassis": "ND",
+      "trim": "",
+      "price": 34950,
+      "mileage": 13221,
+      "transmission": "6-Speed Manual",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Snowflake White Pearl Mica",
+      "location": "Murfreesboro, Tennessee",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/318663780288?_skw=Mazda+Miata&hash=item4a31d767c0:g:hFoAAeSwHflqWiNP",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-02T08:37:26.800Z",
+      "listed_at": "2026-08-01T13:21:34.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-01T13:21:34.000Z",
+      "last_seen": "2026-08-02T08:38:53.064Z",
+      "price_history": [
+        {
+          "t": "2026-08-01T14:02:34.924Z",
+          "p": 34950
+        }
+      ],
+      "departed_at": "2026-08-02T13:58:08.722Z"
+    },
+    {
+      "chassis": "HDJ81",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-08-02T08:37:45.215Z",
+      "title": "1997 Toyota Land Cruiser Prado",
+      "year": 1997,
+      "make": "Toyota",
+      "model": "Land Cruiser Prado",
+      "price": 22995,
+      "location": "MI",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/jdmsportclassics-1997-toyota-land-cruiser-prado-62549/",
+      "listed_at": "2026-07-31T13:53:32.450Z",
+      "first_seen": "2026-07-31T13:53:32.450Z",
+      "last_seen": "2026-08-02T08:38:53.064Z",
+      "price_history": [
+        {
+          "t": "2026-07-31T14:37:25.905Z",
+          "p": 22995
+        }
+      ],
+      "departed_at": "2026-08-02T13:58:08.722Z"
+    },
+    {
+      "title": "2013 Nissan GT-R Premium Boostin Performance 4.1L AMS Performance Fully Built!",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "GT-R Premium Boostin Performance 4.1L AMS Performance Fully Built!",
+      "chassis": "R35",
+      "trim": "",
+      "price": 210212,
+      "mileage": 1349,
+      "transmission": "6-Speed Double Clutch",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Pearl White (Wrapped Satin Gray)",
+      "location": "West Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/188707006006?_skw=Nissan+GT-R&hash=item2befd06636:g:pGEAAeSw69Jp2MgW",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-02T08:37:26.800Z",
+      "listed_at": "2026-07-28T11:30:00.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-28T11:30:00.000Z",
+      "last_seen": "2026-08-02T08:38:53.064Z",
+      "price_history": [
+        {
+          "t": "2026-07-28T14:40:42.771Z",
+          "p": 210212
+        }
+      ],
+      "departed_at": "2026-08-02T13:58:08.722Z"
+    },
+    {
+      "title": "1977 Toyota Land Cruiser 3.0 diesel, 4x4 & Convertible Pick-up MINT CONDITION",
+      "year": 1977,
+      "make": "Toyota",
+      "model": "Land Cruiser 3.0 diesel",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 46900,
+      "mileage": 27865,
+      "transmission": "Manual",
+      "engine": "3.0 Diesel",
+      "drivetrain": "4WD",
+      "color": "Tan",
+      "location": "Pawling, New York",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178348561463?_skw=Toyota+Land+Cruiser&hash=item2986671437:g:KdQAAeSwKs5qZ3P1",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-02T08:37:26.800Z",
+      "listed_at": "2026-07-27T15:21:29.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-27T15:21:29.000Z",
+      "last_seen": "2026-08-02T08:38:53.064Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T19:58:00.383Z",
+          "p": 46900
+        }
+      ],
+      "departed_at": "2026-08-02T13:58:08.722Z"
+    },
+    {
+      "title": "1972 Datsun 240Z",
+      "year": 1972,
+      "make": "Datsun",
+      "model": "240Z",
+      "chassis": "S30",
+      "trim": "",
+      "price": 27995,
+      "mileage": 105766,
+      "transmission": "Manual",
+      "engine": "2.4-liter inline-six engine or L24 engine.",
+      "drivetrain": "RWD",
+      "color": "Orange",
+      "location": "Madison, Mississippi",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/278209625501?_skw=Datsun+240Z&hash=item40c695fd9d:g:8WQAAeSw0v1pt3-P",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-02T08:37:26.800Z",
+      "listed_at": "2026-07-23T07:44:35.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-23T07:44:35.000Z",
+      "last_seen": "2026-08-02T08:38:53.064Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 27995
+        }
+      ],
+      "departed_at": "2026-08-02T13:58:08.722Z"
+    },
+    {
+      "chassis": "",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-08-02T08:37:45.951Z",
+      "title": "1997 Toyota Crown",
+      "year": 1997,
+      "make": "Toyota",
+      "model": "Crown",
+      "price": 17900,
+      "location": "VA",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/drivermotorsports-1997-toyota-crown-1128/",
+      "listed_at": "2026-07-16T14:22:31.556Z",
+      "first_seen": "2026-07-16T14:22:31.556Z",
+      "last_seen": "2026-08-02T08:38:53.064Z",
+      "price_history": [
+        {
+          "t": "2026-08-02T08:38:53.064Z",
+          "p": 17900
+        }
+      ],
+      "departed_at": "2026-08-02T13:58:08.722Z"
+    },
+    {
+      "title": "1986 Mazda RX-7",
+      "year": 1986,
+      "make": "Mazda",
+      "model": "RX-7",
+      "chassis": "FC3S",
+      "trim": "",
+      "price": 12900,
+      "mileage": 4562,
+      "transmission": "Manual",
+      "engine": "LFX",
+      "drivetrain": "RWD",
+      "color": "Red",
+      "location": "Sterling, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/267716657730?_skw=Mazda+RX-7&hash=item3e55280242:g:zJAAAeSw~3tqRqhr",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-02T08:37:26.800Z",
+      "listed_at": "2026-07-03T13:44:27.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-03T13:44:27.000Z",
+      "last_seen": "2026-08-02T08:38:53.064Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 12900
+        }
+      ],
+      "departed_at": "2026-08-02T13:58:08.722Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-08-02T08:37:46.585Z",
+      "title": "1990 Subaru Sambar",
+      "year": 1990,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 14995,
+      "location": "WA",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/nwminitrucks-1990-subaru-sambar-476-5/",
+      "listed_at": "2026-06-21T10:40:23.907Z",
+      "first_seen": "2026-06-21T10:40:23.907Z",
+      "last_seen": "2026-08-02T08:38:53.064Z",
+      "price_history": [
+        {
+          "t": "2026-08-02T08:38:53.064Z",
+          "p": 14995
+        }
+      ],
+      "departed_at": "2026-08-02T13:58:08.722Z"
+    },
     {
       "title": "2000 Toyota MR2 Spyder Spyder",
       "year": 2000,
