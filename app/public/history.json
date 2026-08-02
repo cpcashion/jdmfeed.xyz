@@ -1,6 +1,206 @@
 {
-  "updated": "2026-08-02T04:02:38.873Z",
+  "updated": "2026-08-02T08:38:53.064Z",
   "listings": [
+    {
+      "title": "2000 Toyota MR2 Spyder Spyder",
+      "year": 2000,
+      "make": "Toyota",
+      "model": "MR2 Spyder Spyder",
+      "chassis": "ZZW30",
+      "trim": "",
+      "price": 15900,
+      "mileage": 82822,
+      "transmission": "5-Speed Manual",
+      "engine": "1.8L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Black",
+      "location": "Plainfield, Indiana",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/147466289584?_skw=Toyota+MR2&hash=item2255ad01b0:g:1TgAAeSwcRVqEpp-",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-02T03:54:31.569Z",
+      "listed_at": "2026-07-28T06:49:33.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-28T06:49:33.000Z",
+      "last_seen": "2026-08-02T04:02:38.873Z",
+      "price_history": [
+        {
+          "t": "2026-07-28T09:07:11.906Z",
+          "p": 15900
+        }
+      ],
+      "departed_at": "2026-08-02T08:38:53.064Z"
+    },
+    {
+      "title": "2007 Honda S2000 2dr Conv",
+      "year": 2007,
+      "make": "Honda",
+      "model": "S2000 2dr Conv",
+      "chassis": "AP2",
+      "trim": "",
+      "price": 40981,
+      "mileage": 38574,
+      "transmission": "Manual",
+      "engine": "2.2L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "YELLOW",
+      "location": "Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/147466285832?_skw=Honda+S2000&hash=item2255acf308:g:lKIAAeSwetZqLPou",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-02T03:54:31.569Z",
+      "listed_at": "2026-07-28T06:48:56.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-28T06:48:56.000Z",
+      "last_seen": "2026-08-02T04:02:38.873Z",
+      "price_history": [
+        {
+          "t": "2026-07-28T09:07:11.906Z",
+          "p": 41599
+        },
+        {
+          "t": "2026-07-31T09:19:25.608Z",
+          "p": 40981
+        }
+      ],
+      "departed_at": "2026-08-02T08:38:53.064Z"
+    },
+    {
+      "title": "2004 Toyota Land Cruiser Sport Utility 4D",
+      "year": 2004,
+      "make": "Toyota",
+      "model": "Land Cruiser Sport Utility 4D",
+      "chassis": "UZJ100",
+      "trim": "",
+      "price": 37995,
+      "mileage": 219336,
+      "transmission": "Automatic",
+      "engine": "4.7L Gas V8",
+      "drivetrain": "All Wheel Drive",
+      "color": "",
+      "location": "San Diego, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800420234649?_skw=Toyota+Land+Cruiser&hash=itemba5cc38599:g:5WIAAeSwvLpqM3xr",
+      "ends_at": "2026-08-02T05:10:26.000Z",
+      "live": true,
+      "scraped_date": "2026-08-02T03:54:31.569Z",
+      "listed_at": "2026-07-28T05:10:26.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-28T05:10:26.000Z",
+      "last_seen": "2026-08-02T04:02:38.873Z",
+      "price_history": [
+        {
+          "t": "2026-07-28T09:07:11.906Z",
+          "p": 37995
+        }
+      ],
+      "departed_at": "2026-08-02T08:38:53.064Z"
+    },
+    {
+      "title": "1993 Mazda RX-7 R1",
+      "year": 1993,
+      "make": "Mazda",
+      "model": "RX-7 R1",
+      "chassis": "FD3S",
+      "trim": "",
+      "price": 99900,
+      "mileage": 5899,
+      "transmission": "5 Speed Manual",
+      "engine": "1.3L Gas",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Vintage Red",
+      "location": "Charlotte, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800408745352?_skw=Mazda+RX-7&hash=itemba5c143588:g:iWwAAeSw6z9p3RxN",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-02T03:54:31.569Z",
+      "listed_at": "2026-07-26T08:14:43.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-26T08:14:43.000Z",
+      "last_seen": "2026-08-02T04:02:38.873Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 99900
+        }
+      ],
+      "departed_at": "2026-08-02T08:38:53.064Z"
+    },
+    {
+      "title": "2004 Mazda MX-5 Miata BASE",
+      "year": 2004,
+      "make": "Mazda",
+      "model": "MX-5 Miata BASE",
+      "chassis": "NB",
+      "trim": "",
+      "price": 7500,
+      "mileage": 180000,
+      "transmission": "Manual",
+      "engine": "1.8L Gas I4",
+      "drivetrain": "RWD",
+      "color": "Black",
+      "location": "Montgomery, Alabama",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/398214523104?_skw=Mazda+Miata&hash=item5cb76f68e0:g:omoAAeSwuZlqZNdn",
+      "ends_at": "2026-08-02T07:00:00.000Z",
+      "live": true,
+      "scraped_date": "2026-08-02T03:54:31.569Z",
+      "listed_at": "2026-07-26T07:00:00.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-26T07:00:00.000Z",
+      "last_seen": "2026-08-02T04:02:38.873Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 7500
+        }
+      ],
+      "departed_at": "2026-08-02T08:38:53.064Z"
+    },
+    {
+      "title": "1997 Mitsubishi 3000GT SL",
+      "year": 1997,
+      "make": "Mitsubishi",
+      "model": "3000GT SL",
+      "chassis": "Z16A",
+      "trim": "",
+      "price": 15499,
+      "mileage": 98250,
+      "transmission": "Automatic",
+      "engine": "3.0L Gas V6",
+      "drivetrain": "FWD",
+      "color": "Red",
+      "location": "Simi Valley, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/298475242163?_skw=Mitsubishi+3000GT&hash=item457e82c2b3:g:3H4AAeSw7tJpsxey",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-02T03:54:31.569Z",
+      "listed_at": "2026-07-03T06:53:36.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-03T06:53:36.000Z",
+      "last_seen": "2026-08-02T04:02:38.873Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 15999
+        },
+        {
+          "t": "2026-07-27T19:58:00.383Z",
+          "p": 15499
+        }
+      ],
+      "departed_at": "2026-08-02T08:38:53.064Z"
+    },
     {
       "chassis": "PK10",
       "trim": "",
