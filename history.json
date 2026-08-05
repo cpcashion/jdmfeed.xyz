@@ -1,6 +1,334 @@
 {
-  "updated": "2026-08-05T09:08:17.455Z",
+  "updated": "2026-08-05T14:35:53.297Z",
   "listings": [
+    {
+      "title": "2023 Acura Integra A-Spec Tech Package",
+      "year": 2023,
+      "make": "Acura",
+      "model": "Integra A-Spec Tech Package",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 27595,
+      "mileage": 48171,
+      "transmission": "6-Speed Manual",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Platinum White Pearl",
+      "location": "Greensboro, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327295256902?_skw=Acura+Integra&hash=item4c34514946:g:VqwAAeSwQtRqbYfc",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-05T09:06:43.592Z",
+      "listed_at": "2026-08-04T19:48:25.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-04T19:48:25.000Z",
+      "last_seen": "2026-08-05T09:08:17.455Z",
+      "price_history": [
+        {
+          "t": "2026-08-04T19:58:50.375Z",
+          "p": 27595
+        }
+      ],
+      "departed_at": "2026-08-05T14:35:53.297Z"
+    },
+    {
+      "title": "2007 Mazda MX-5 Miata PRHT Grand Touring",
+      "year": 2007,
+      "make": "Mazda",
+      "model": "MX-5 Miata PRHT Grand Touring",
+      "chassis": "NC",
+      "trim": "",
+      "price": 10695,
+      "mileage": 136495,
+      "transmission": "6-Speed Automatic Sport",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "True Red",
+      "location": "Greensboro, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327292748308?_skw=Mazda+Miata&hash=item4c342b0214:g:0i4AAeSwflRqWYXo",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-05T09:06:43.592Z",
+      "listed_at": "2026-08-03T05:09:59.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-03T05:09:59.000Z",
+      "last_seen": "2026-08-05T09:08:17.455Z",
+      "price_history": [
+        {
+          "t": "2026-08-03T10:11:56.941Z",
+          "p": 10695
+        }
+      ],
+      "departed_at": "2026-08-05T14:35:53.297Z"
+    },
+    {
+      "title": "2000 Mazda Mx-5 Miata 2DR MANUAL CONVERTIBLE RWD",
+      "year": 2000,
+      "make": "Mazda",
+      "model": "Mx-5 Miata 2DR MANUAL CONVERTIBLE RWD",
+      "chassis": "NB",
+      "trim": "",
+      "price": 7900,
+      "mileage": 184467,
+      "transmission": "Manual",
+      "engine": "1.8L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "RED",
+      "location": "Orlando, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/206457544066?_skw=Mazda+Miata&hash=item3011d41d82:g:NSsAAeSwNBlqE-8o",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-05T09:06:43.592Z",
+      "listed_at": "2026-08-01T13:20:55.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-01T13:20:55.000Z",
+      "last_seen": "2026-08-05T09:08:17.455Z",
+      "price_history": [
+        {
+          "t": "2026-08-01T14:02:34.924Z",
+          "p": 7900
+        }
+      ],
+      "departed_at": "2026-08-05T14:35:53.297Z"
+    },
+    {
+      "title": "2017 Nissan GT-R PREMIUM CICIO PERFORMANCE C1400+ PKG AND BRAKE PKG 20 INCH",
+      "year": 2017,
+      "make": "Nissan",
+      "model": "GT-R PREMIUM CICIO PERFORMANCE C1400+ PKG AND BRAKE PKG 20 INCH",
+      "chassis": "R35",
+      "trim": "",
+      "price": 175212,
+      "mileage": 10886,
+      "transmission": "6-Speed Double Clutch",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Jet Black",
+      "location": "Naperville, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/358866372455?_skw=Nissan+GT-R&hash=item538e1a4767:g:LyAAAeSwBUpqRQx4",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-05T09:06:43.592Z",
+      "listed_at": "2026-07-31T12:50:35.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-31T12:50:35.000Z",
+      "last_seen": "2026-08-05T09:08:17.455Z",
+      "price_history": [
+        {
+          "t": "2026-07-31T14:37:25.905Z",
+          "p": 175212
+        }
+      ],
+      "departed_at": "2026-08-05T14:35:53.297Z"
+    },
+    {
+      "title": "1995 Acura NSX NSX-T",
+      "year": 1995,
+      "make": "Acura",
+      "model": "NSX NSX-T",
+      "chassis": "NA1",
+      "trim": "",
+      "price": 275000,
+      "mileage": 4723,
+      "transmission": "5-Speed Manual",
+      "engine": "3.0L Gas V6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Berlina Black",
+      "location": "Scottsdale, Arizona",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/377384024163?_skw=Acura+NSX&hash=item57ddd73863:g:mWQAAeSwHuZqGt3l",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-05T09:06:43.592Z",
+      "listed_at": "2026-07-31T12:12:56.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-31T12:12:56.000Z",
+      "last_seen": "2026-08-05T09:08:17.455Z",
+      "price_history": [
+        {
+          "t": "2026-07-31T14:37:25.905Z",
+          "p": 275000
+        }
+      ],
+      "departed_at": "2026-08-05T14:35:53.297Z"
+    },
+    {
+      "title": "2021 Honda Civic Touring",
+      "year": 2021,
+      "make": "Honda",
+      "model": "Civic Touring",
+      "chassis": "",
+      "trim": "",
+      "price": 41678,
+      "mileage": 35824,
+      "transmission": "6-Speed Manual w/OD",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "",
+      "location": "West Covina, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/358866009034?_skw=Honda+Civic+Type+R&hash=item538e14bbca:g:tVcAAeSw0k5qBs4Z",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-05T09:06:43.592Z",
+      "listed_at": "2026-07-31T11:28:13.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-31T11:28:13.000Z",
+      "last_seen": "2026-08-05T09:08:17.455Z",
+      "price_history": [
+        {
+          "t": "2026-07-31T14:37:25.905Z",
+          "p": 41678
+        }
+      ],
+      "departed_at": "2026-08-05T14:35:53.297Z"
+    },
+    {
+      "title": "2020 Toyota GR Supra 3",
+      "year": 2020,
+      "make": "Toyota",
+      "model": "GR Supra 3",
+      "chassis": "A90",
+      "trim": "",
+      "price": 41487,
+      "mileage": 83686,
+      "transmission": "Automatic",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Nocturnal",
+      "location": "Wesley Chapel, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178359683654?_skw=Toyota+Supra&hash=item298710ca46:g:oj0AAeSwKwBqTiOq",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-05T09:06:43.592Z",
+      "listed_at": "2026-07-31T10:21:53.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-31T10:21:53.000Z",
+      "last_seen": "2026-08-05T09:08:17.455Z",
+      "price_history": [
+        {
+          "t": "2026-07-31T14:37:25.905Z",
+          "p": 43287
+        },
+        {
+          "t": "2026-08-02T13:58:08.722Z",
+          "p": 42287
+        },
+        {
+          "t": "2026-08-04T19:58:50.375Z",
+          "p": 41487
+        }
+      ],
+      "departed_at": "2026-08-05T14:35:53.297Z"
+    },
+    {
+      "title": "2008 Mazda MX-5 Miata Touring",
+      "year": 2008,
+      "make": "Mazda",
+      "model": "MX-5 Miata Touring",
+      "chassis": "NC",
+      "trim": "",
+      "price": 14900,
+      "mileage": 68268,
+      "transmission": "6 Speed Manual",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "White",
+      "location": "Pittsburgh, Pennsylvania",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287491019138?_skw=Mazda+Miata&hash=item42efccd182:g:9I4AAeSwHHhqKQbu",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-05T09:06:43.592Z",
+      "listed_at": "2026-07-29T13:16:00.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-29T13:16:00.000Z",
+      "last_seen": "2026-08-05T09:08:17.455Z",
+      "price_history": [
+        {
+          "t": "2026-07-29T14:34:12.620Z",
+          "p": 14900
+        }
+      ],
+      "departed_at": "2026-08-05T14:35:53.297Z"
+    },
+    {
+      "title": "1975 Datsun 280Z",
+      "year": 1975,
+      "make": "Datsun",
+      "model": "280Z",
+      "chassis": "S30",
+      "trim": "",
+      "price": 23995,
+      "mileage": 87426,
+      "transmission": "4 Speed Manual",
+      "engine": "2.8 I6",
+      "drivetrain": "RWD",
+      "color": "Red",
+      "location": "Lithia Springs, Georgia",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287490760729?_skw=Datsun+280Z&hash=item42efc8e019:g:m0YAAeSwWhZqDeu~",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-05T09:06:43.592Z",
+      "listed_at": "2026-07-29T09:30:01.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-29T09:30:01.000Z",
+      "last_seen": "2026-08-05T09:08:17.455Z",
+      "price_history": [
+        {
+          "t": "2026-07-29T14:34:12.620Z",
+          "p": 23995
+        }
+      ],
+      "departed_at": "2026-08-05T14:35:53.297Z"
+    },
+    {
+      "title": "1990 Mazda MX-5 Miata 5 Speed",
+      "year": 1990,
+      "make": "Mazda",
+      "model": "MX-5 Miata 5 Speed",
+      "chassis": "NA",
+      "trim": "",
+      "price": 9950,
+      "mileage": 78540,
+      "transmission": "Manual",
+      "engine": "1.6L Gas I4",
+      "drivetrain": "RWD",
+      "color": "Silver",
+      "location": "College Point, New York",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327249631090?_skw=Mazda+Miata&hash=item4c31991772:g:FZsAAeSw0t5p~Jmo",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-05T09:06:43.592Z",
+      "listed_at": "2026-07-06T14:09:23.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-06T14:09:23.000Z",
+      "last_seen": "2026-08-05T09:08:17.455Z",
+      "price_history": [
+        {
+          "t": "2026-07-27T15:05:53.178Z",
+          "p": 9950
+        }
+      ],
+      "departed_at": "2026-08-05T14:35:53.297Z"
+    },
     {
       "chassis": "S15",
       "trim": "",
