@@ -1,6 +1,285 @@
 {
-  "updated": "2026-08-06T09:08:25.660Z",
+  "updated": "2026-08-06T14:37:03.711Z",
   "listings": [
+    {
+      "title": "1993 Nissan 300ZX",
+      "year": 1993,
+      "make": "Nissan",
+      "model": "300ZX",
+      "chassis": "Z32",
+      "trim": "",
+      "price": 17995,
+      "mileage": 93237,
+      "transmission": "",
+      "engine": "3.0L Gas V6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Blue",
+      "location": "Salt Lake City, Utah",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/236981389804?_skw=Nissan+300ZX&hash=item372d3109ec:g:Bc0AAeSwgvZqaKAc",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-06T09:07:09.878Z",
+      "listed_at": "2026-08-03T12:27:59.000Z",
+      "enriched": 3,
+      "first_seen": "2026-08-03T12:27:59.000Z",
+      "last_seen": "2026-08-06T09:08:25.660Z",
+      "price_history": [
+        {
+          "t": "2026-08-06T09:08:25.660Z",
+          "p": 17995
+        }
+      ],
+      "departed_at": "2026-08-06T14:37:03.711Z"
+    },
+    {
+      "title": "1996 Nissan 240SX",
+      "year": 1996,
+      "make": "Nissan",
+      "model": "240SX",
+      "chassis": "S14",
+      "trim": "",
+      "price": 29212,
+      "mileage": 49069,
+      "transmission": "5-Speed Manual",
+      "engine": "2.4L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Blue",
+      "location": "Cary, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/168580455223?_skw=Nissan+240SX&hash=item27402d9b37:g:dzkAAeSw8tFpwmse",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-06T09:07:09.878Z",
+      "listed_at": "2026-08-01T13:20:17.000Z",
+      "enriched": 3,
+      "first_seen": "2026-08-01T13:20:17.000Z",
+      "last_seen": "2026-08-06T09:08:25.660Z",
+      "price_history": [
+        {
+          "t": "2026-08-06T09:08:25.660Z",
+          "p": 29212
+        }
+      ],
+      "departed_at": "2026-08-06T14:37:03.711Z"
+    },
+    {
+      "title": "2024 Toyota Land Cruiser w/ PREMIUM PKG",
+      "year": 2024,
+      "make": "Toyota",
+      "model": "Land Cruiser w/ PREMIUM PKG",
+      "chassis": "J300",
+      "trim": "",
+      "price": 64950,
+      "mileage": 26075,
+      "transmission": "8-Speed Shiftable Automatic",
+      "engine": "2.4L Electric and Gas Hybrid I4",
+      "drivetrain": "Rear Wheel Drive w/4x4",
+      "color": "Trail Dust w/Grayscape Roof",
+      "location": "Murfreesboro, Tennessee",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/318663663827?_skw=Toyota+Land+Cruiser&hash=item4a31d5a0d3:g:LpUAAeSwW0ZqYLib",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-06T09:07:09.878Z",
+      "listed_at": "2026-08-01T12:37:39.000Z",
+      "enriched": 3,
+      "first_seen": "2026-08-01T12:37:39.000Z",
+      "last_seen": "2026-08-06T09:08:25.660Z",
+      "price_history": [
+        {
+          "t": "2026-08-06T09:08:25.660Z",
+          "p": 64950
+        }
+      ],
+      "departed_at": "2026-08-06T14:37:03.711Z"
+    },
+    {
+      "title": "2023 Acura Integra A-SPEC TECH",
+      "year": 2023,
+      "make": "Acura",
+      "model": "Integra A-SPEC TECH",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 27000,
+      "mileage": 28227,
+      "transmission": "Manual",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "FWD",
+      "color": "Black",
+      "location": "Sharon, Pennsylvania",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/398231283912?_skw=Acura+Integra&hash=item5cb86f28c8:g:Q1YAAeSwuzZqWpuC",
+      "ends_at": "2026-08-06T14:25:06.000Z",
+      "live": true,
+      "scraped_date": "2026-08-06T09:07:09.878Z",
+      "listed_at": "2026-07-30T14:25:06.000Z",
+      "enriched": 3,
+      "first_seen": "2026-07-30T14:25:06.000Z",
+      "last_seen": "2026-08-06T09:08:25.660Z",
+      "price_history": [
+        {
+          "t": "2026-08-06T09:08:25.660Z",
+          "p": 27000
+        }
+      ],
+      "departed_at": "2026-08-06T14:37:03.711Z"
+    },
+    {
+      "title": "2003 Mitsubishi Lancer",
+      "year": 2003,
+      "make": "Mitsubishi",
+      "model": "Lancer",
+      "chassis": "CT9A",
+      "trim": "",
+      "price": 59900,
+      "mileage": 20105,
+      "transmission": "5-Speed Manual",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "All Wheel Drive",
+      "color": "Tarmac Black",
+      "location": "Grand Rapids, Michigan",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178356850820?_skw=Mitsubishi+Lancer+Evolution&hash=item2986e59084:g:gTQAAeSwvaVqRlnr",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-06T09:07:09.878Z",
+      "listed_at": "2026-07-30T12:34:57.000Z",
+      "enriched": 3,
+      "first_seen": "2026-07-30T12:34:57.000Z",
+      "last_seen": "2026-08-06T09:08:25.660Z",
+      "price_history": [
+        {
+          "t": "2026-08-06T09:08:25.660Z",
+          "p": 59900
+        }
+      ],
+      "departed_at": "2026-08-06T14:37:03.711Z"
+    },
+    {
+      "title": "2004 Nissan 350Z Touring",
+      "year": 2004,
+      "make": "Nissan",
+      "model": "350Z Touring",
+      "chassis": "Z33",
+      "trim": "",
+      "price": 13900,
+      "mileage": 19565,
+      "transmission": "5-Speed Automatic",
+      "engine": "3.5L Gas V6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Super Black",
+      "location": "Grand Rapids, Michigan",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178356490883?_skw=Nissan+350Z&hash=item2986e01283:g:K3cAAeSwI29p6ecu",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-06T09:07:09.878Z",
+      "listed_at": "2026-07-30T09:47:48.000Z",
+      "enriched": 3,
+      "first_seen": "2026-07-30T09:47:48.000Z",
+      "last_seen": "2026-08-06T09:08:25.660Z",
+      "price_history": [
+        {
+          "t": "2026-08-06T09:08:25.660Z",
+          "p": 13900
+        }
+      ],
+      "departed_at": "2026-08-06T14:37:03.711Z"
+    },
+    {
+      "chassis": "S210",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-08-06T09:07:40.814Z",
+      "title": "1999 Daihatsu Hijet",
+      "year": 1999,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 12400,
+      "location": "MD",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/tokyomotorsdc-1999-daihatsu-hijet-11114127884324/",
+      "listed_at": "2026-07-28T18:37:29.085Z",
+      "first_seen": "2026-07-28T18:37:29.085Z",
+      "last_seen": "2026-08-06T09:08:25.660Z",
+      "price_history": [
+        {
+          "t": "2026-08-02T08:38:53.064Z",
+          "p": 12400
+        }
+      ],
+      "departed_at": "2026-08-06T14:37:03.711Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-08-06T09:07:41.547Z",
+      "title": "1997 Subaru Sambar",
+      "year": 1997,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 11000,
+      "location": "CA",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/jdmallmakesmotors-1997-subaru-sambar-ks4-319947/",
+      "listed_at": "2026-07-17T21:39:06.709Z",
+      "first_seen": "2026-07-17T21:39:06.709Z",
+      "last_seen": "2026-08-06T09:08:25.660Z",
+      "price_history": [
+        {
+          "t": "2026-08-02T08:38:53.064Z",
+          "p": 11000
+        }
+      ],
+      "departed_at": "2026-08-06T14:37:03.711Z"
+    },
+    {
+      "title": "2016 Subaru WRX STI",
+      "year": 2016,
+      "make": "Subaru",
+      "model": "WRX STI",
+      "chassis": "VAB",
+      "trim": "",
+      "price": 15900,
+      "mileage": 118848,
+      "transmission": "Manual",
+      "engine": "2.5L Gas H4",
+      "drivetrain": "AWD",
+      "color": "Blue",
+      "location": "Burnsville, Minnesota",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178313512485?_skw=Subaru+WRX+STI&hash=item2984504625:g:Q2cAAeSw6XlqV8QQ",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-06T09:07:09.878Z",
+      "listed_at": "2026-07-15T17:50:28.000Z",
+      "enriched": 3,
+      "first_seen": "2026-07-15T17:50:28.000Z",
+      "last_seen": "2026-08-06T09:08:25.660Z",
+      "price_history": [
+        {
+          "t": "2026-08-06T09:08:25.660Z",
+          "p": 15900
+        }
+      ],
+      "departed_at": "2026-08-06T14:37:03.711Z"
+    },
     {
       "chassis": "",
       "trim": "",
