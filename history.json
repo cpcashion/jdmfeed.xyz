@@ -1,6 +1,262 @@
 {
-  "updated": "2026-08-08T07:18:09.454Z",
+  "updated": "2026-08-08T13:14:29.884Z",
   "listings": [
+    {
+      "title": "1993 Toyota Supra Turbo Built and Fresh Major Service by Sound Performance",
+      "year": 1993,
+      "make": "Toyota",
+      "model": "Supra Turbo Built and Fresh Major Service by Sound Performance",
+      "chassis": "JZA80",
+      "trim": "",
+      "price": 120212,
+      "mileage": 68431,
+      "transmission": "Custom 3-Speed TH400 Automatic",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Orange",
+      "location": "West Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/358878359092?_skw=Toyota+Supra&hash=item538ed12e34:g:tTcAAeSwq55p31~B",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-08T07:16:41.263Z",
+      "listed_at": "2026-08-03T12:33:25.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-03T12:33:25.000Z",
+      "last_seen": "2026-08-08T07:18:09.454Z",
+      "price_history": [
+        {
+          "t": "2026-08-07T07:43:59.654Z",
+          "p": 120212
+        }
+      ],
+      "departed_at": "2026-08-08T13:14:29.884Z"
+    },
+    {
+      "title": "2006 Mazda RX-8 1.3 RF 4DR COUPE RWD",
+      "year": 2006,
+      "make": "Mazda",
+      "model": "RX-8 1.3 RF 4DR COUPE RWD",
+      "chassis": "SE3P",
+      "trim": "",
+      "price": 5900,
+      "mileage": 123302,
+      "transmission": "Automatic",
+      "engine": "1.3L Gas",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "WHITE",
+      "location": "Orlando, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/206462048933?_skw=Mazda+RX-8&hash=item301218daa5:g:J3AAAeSwPtlqHSqG",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-08T07:16:41.263Z",
+      "listed_at": "2026-08-03T09:50:02.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-03T09:50:02.000Z",
+      "last_seen": "2026-08-08T07:18:09.454Z",
+      "price_history": [
+        {
+          "t": "2026-08-07T07:43:59.654Z",
+          "p": 5900
+        }
+      ],
+      "departed_at": "2026-08-08T13:14:29.884Z"
+    },
+    {
+      "title": "1997 Toyota Supra Turbo",
+      "year": 1997,
+      "make": "Toyota",
+      "model": "Supra Turbo",
+      "chassis": "JZA80",
+      "trim": "",
+      "price": 109900,
+      "mileage": 43361,
+      "transmission": "4-Speed Automatic",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Black",
+      "location": "Grand Rapids, Michigan",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178363195893?_skw=Toyota+Supra&hash=item29874661f5:g:7CUAAeSwHA1qUjDM",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-08T07:16:41.263Z",
+      "listed_at": "2026-08-01T12:08:48.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-01T12:08:48.000Z",
+      "last_seen": "2026-08-08T07:18:09.454Z",
+      "price_history": [
+        {
+          "t": "2026-08-07T07:43:59.654Z",
+          "p": 109900
+        }
+      ],
+      "departed_at": "2026-08-08T13:14:29.884Z"
+    },
+    {
+      "title": "2001 Honda S2000 Base 2dr Convertible",
+      "year": 2001,
+      "make": "Honda",
+      "model": "S2000 Base 2dr Convertible",
+      "chassis": "AP1",
+      "trim": "",
+      "price": 39950,
+      "mileage": 33415,
+      "transmission": "Manual 6-Speed",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Spa Yellow Pearl",
+      "location": "Sarasota, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/206457338853?_skw=Honda+S2000&hash=item3011d0fbe5:g:2VoAAeSwEHxqNnnV",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-08T07:16:41.263Z",
+      "listed_at": "2026-08-01T11:33:05.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-01T11:33:05.000Z",
+      "last_seen": "2026-08-08T07:18:09.454Z",
+      "price_history": [
+        {
+          "t": "2026-08-07T07:43:59.654Z",
+          "p": 39950
+        }
+      ],
+      "departed_at": "2026-08-08T13:14:29.884Z"
+    },
+    {
+      "title": "1979 Toyota Landcruiser FJ40 4WD 2 door Hardtop SUV",
+      "year": 1979,
+      "make": "Toyota",
+      "model": "Landcruiser FJ40 4WD 2 door Hardtop SUV",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 27500,
+      "mileage": 70715,
+      "transmission": "4 speed manual",
+      "engine": "4.2L 6 cyl",
+      "drivetrain": "4WD",
+      "color": "White",
+      "location": "Torrance, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800442815959?_skw=Toyota+Land+Cruiser&hash=itemba5e1c15d7:g:r6oAAeSwSzpp~wXY",
+      "ends_at": "2026-08-08T10:21:05.000Z",
+      "live": true,
+      "scraped_date": "2026-08-08T07:16:41.263Z",
+      "listed_at": "2026-08-01T10:21:05.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-01T10:21:05.000Z",
+      "last_seen": "2026-08-08T07:18:09.454Z",
+      "price_history": [
+        {
+          "t": "2026-08-07T07:43:59.654Z",
+          "p": 27500
+        }
+      ],
+      "departed_at": "2026-08-08T13:14:29.884Z"
+    },
+    {
+      "title": "2021 Nissan GT-R Premium",
+      "year": 2021,
+      "make": "Nissan",
+      "model": "GT-R Premium",
+      "chassis": "R35",
+      "trim": "",
+      "price": 165990,
+      "mileage": 14009,
+      "transmission": "6-Speed Automatic",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Pearl White",
+      "location": "New Albany, Indiana",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287496335640?_skw=Nissan+GT-R&hash=item42f01df118:g:nvIAAeSwAbNqNKEA",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-08T07:16:41.263Z",
+      "listed_at": "2026-08-01T07:57:01.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-01T07:57:01.000Z",
+      "last_seen": "2026-08-08T07:18:09.454Z",
+      "price_history": [
+        {
+          "t": "2026-08-07T07:43:59.654Z",
+          "p": 165990
+        }
+      ],
+      "departed_at": "2026-08-08T13:14:29.884Z"
+    },
+    {
+      "title": "1990 Mazda RX-7",
+      "year": 1990,
+      "make": "Mazda",
+      "model": "RX-7",
+      "chassis": "FC3S",
+      "trim": "",
+      "price": 2200,
+      "mileage": 175000,
+      "transmission": "Manual",
+      "engine": "1.3L Gas",
+      "drivetrain": "RWD",
+      "color": "Black",
+      "location": "Huntsville, Alabama",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/358857700280?_skw=Mazda+RX-7&hash=item538d95f3b8:g:ev0AAeSwAQ9qaeXs",
+      "ends_at": "2026-08-08T11:57:58.000Z",
+      "live": true,
+      "scraped_date": "2026-08-08T07:16:41.263Z",
+      "listed_at": "2026-07-29T11:57:58.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-29T11:57:58.000Z",
+      "last_seen": "2026-08-08T07:18:09.454Z",
+      "price_history": [
+        {
+          "t": "2026-08-07T07:43:59.654Z",
+          "p": 2200
+        }
+      ],
+      "departed_at": "2026-08-08T13:14:29.884Z"
+    },
+    {
+      "title": "2025 Mazda MX-5 Miata Grand Touring",
+      "year": 2025,
+      "make": "Mazda",
+      "model": "MX-5 Miata Grand Touring",
+      "chassis": "ND",
+      "trim": "",
+      "price": 34980,
+      "mileage": 22966,
+      "transmission": "6-Speed Automatic w/OD",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "",
+      "location": "Milpitas, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/358774984618?_skw=Mazda+Miata&hash=item5388a7cfaa:g:xQwAAeSwtmpqBIA3",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-08-08T07:16:41.263Z",
+      "listed_at": "2026-07-09T07:50:09.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-07-09T07:50:09.000Z",
+      "last_seen": "2026-08-08T07:18:09.454Z",
+      "price_history": [
+        {
+          "t": "2026-08-07T07:43:59.654Z",
+          "p": 34980
+        }
+      ],
+      "departed_at": "2026-08-08T13:14:29.884Z"
+    },
     {
       "title": "1995 Nissan 300ZX",
       "year": 1995,
