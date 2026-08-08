@@ -74,7 +74,11 @@ const baseListing = (over) => {
 /* ---- jdmbuysell.com ---- */
 
 const JBS_CARD = /<a[^>]+href="(?:https:\/\/www\.jdmbuysell\.com)?\/ad\/([a-z0-9-]+)\/"[^>]*?aria-label="([^"]*)"/g;
-const JBS_MAX_PAGES = 70; // 24 cards/page → ~1,700 ads scanned per refresh
+/* The marketplace runs to thousands of ads. 70 pages hit the cap rather
+   than the end (1,615 ads, still 7 of 9 US DC2s), so the ceiling is now
+   high enough that the "no new ads" check is what actually stops us. At
+   ~0.15s/page this costs well under a minute. */
+const JBS_MAX_PAGES = 320;
 
 /* Parse every card on one rendered listing page into our listing shape.
    `seen` dedupes across pages and facets, which overlap heavily. */
