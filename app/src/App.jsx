@@ -422,7 +422,24 @@ const HeartIcon = ({ s = 22, filled }) => (
 const THRESH = 80;
 const clamp01 = (v) => Math.min(Math.max(v, 0), 1);
 
-const buzz = (ms) => { try { navigator.vibrate?.(ms); } catch { /* unsupported */ } };
+/* Haptics. One named vocabulary for the whole app so call sites say what
+   HAPPENED, not how long to buzz — which is what lets the same calls map
+   onto real hardware later.
+
+   Today: navigator.vibrate drives Android. iOS Safari does not implement
+   the Vibration API at all, so iPhone web is silent no matter what we do
+   here. When this is wrapped for the App Store (Capacitor around the same
+   bundle), setting window.__haptics to @capacitor/haptics lights every one
+   of these up on the Taptic Engine with no call-site changes. */
+const HAPTIC_MS = { light: 6, select: 9, commit: 11, heavy: 18 };
+const haptic = (kind = "light") => {
+  try {
+    const native = typeof window !== "undefined" && window.__haptics;
+    if (native) { native(kind); return; } // Capacitor bridge, once wrapped
+    navigator.vibrate?.(HAPTIC_MS[kind] ?? 8);
+  } catch { /* unsupported — silent, never throws into a gesture */ }
+};
+const buzz = (ms) => haptic(ms >= 16 ? "heavy" : ms >= 10 ? "commit" : ms >= 8 ? "select" : "light");
 
 /* Release velocity from a ~110ms window of trailing samples, the way native
    velocity trackers do it — a single stationary event at release (or a
@@ -1148,6 +1165,74 @@ function FilterSheet({ open, onClose, filters, setFilters, matchCount, listings 
   );
 }
 
+/* ---------------- swipe-up filter handle ----------------
+
+   Filters used to hide behind an icon in the top-right corner — the far
+   corner from both thumbs on a phone, and the one part of the app you
+   couldn't reach by gesture. This is a grab handle above the tab bar:
+   flick it up (or tap it) and the filter sheet comes up, the same pull
+   the sheet itself uses to go back down. Sized for a thumb, and it shows
+   how many filters are live so the state is never hidden. */
+function FilterHandle({ activeCount, onOpen }) {
+  const drag = useRef(null);
+  const ref = useRef(null);
+  const lift = (px) => { if (ref.current) ref.current.style.transform = `translate3d(-50%, ${px}px, 0)`; };
+
+  const onDown = (e) => {
+    try { e.currentTarget.setPointerCapture(e.pointerId); } catch { /* */ }
+    drag.current = { y0: e.clientY, dy: 0, moved: false, samples: [{ t: performance.now(), x: 0, y: 0 }] };
+    if (ref.current) ref.current.style.transition = "none";
+  };
+  const onMove = (e) => {
+    const d = drag.current; if (!d) return;
+    d.dy = e.clientY - d.y0;
+    if (Math.abs(d.dy) > 5) d.moved = true;
+    trackSample(d, 0, d.dy);
+    // Follow the finger upward only, with resistance — a peek, not a drag.
+    lift(d.dy < 0 ? Math.max(d.dy * 0.55, -46) : Math.min(d.dy * 0.12, 6));
+  };
+  const settle = () => {
+    if (ref.current) {
+      ref.current.style.transition = "transform 0.34s cubic-bezier(0.22,1,0.36,1)";
+      lift(0);
+    }
+  };
+  const onUp = () => {
+    const d = drag.current; if (!d) return;
+    drag.current = null;
+    const { vy } = releaseVelocity(d);
+    settle();
+    // An upward flick or a decisive pull opens; so does a clean tap.
+    if (!d.moved || d.dy < -28 || vy < -0.35) { haptic("select"); onOpen(); }
+  };
+
+  return (
+    <button
+      ref={ref}
+      onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}
+      aria-label={`Filters${activeCount ? ` — ${activeCount} active` : ""}. Swipe up or tap to open`}
+      style={{
+        position: "absolute", left: "50%", transform: "translate3d(-50%, 0, 0)",
+        // Clears the tab bar (56px action buttons + padding ≈ 90px tall)
+        // and sits above it so the bar never crops the handle.
+        bottom: `calc(102px + env(safe-area-inset-bottom))`, zIndex: 31,
+        display: "flex", flexDirection: "column", alignItems: "center", gap: 5,
+        padding: "8px 20px 10px", borderRadius: 18, cursor: "grab", touchAction: "none",
+        background: "rgba(14,16,23,0.62)", backdropFilter: "blur(22px) saturate(1.6)",
+        WebkitBackdropFilter: "blur(22px) saturate(1.6)",
+        border: `1px solid ${activeCount ? "rgba(57,217,138,0.4)" : T.glassBrd}`,
+        boxShadow: T.glassHi, willChange: "transform",
+      }}
+    >
+      <span aria-hidden style={{ width: 34, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.3)" }} />
+      <span style={{ display: "flex", alignItems: "center", gap: 7, ...mono, fontSize: 10, letterSpacing: "0.18em", color: activeCount ? T.save : T.dim }}>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M18 15l-6-6-6 6" /></svg>
+        FILTERS{activeCount ? ` · ${activeCount}` : ""}
+      </span>
+    </button>
+  );
+}
+
 /* ---------------- garage: your collection, grouped by chassis ---------------- */
 
 const paintGrad = (p) => `linear-gradient(158deg, ${p.stops[0]} 0%, ${p.stops[1]} 52%, ${p.stops[2]} 100%)`;
@@ -1512,6 +1597,13 @@ export default function App() {
   // link opens the feed already tuned to that nameplate.
   const [filters, setFilters] = useState(() => ({ maxPrice: 200000, eras: new Set(), gearbox: "Any", rhdOnly: false, plates: platesFromHash() }));
 
+  // How many filters are actually narrowing the feed — surfaced on the
+  // handle so an active filter is never invisible.
+  const activeFilterCount = useMemo(() => (
+    (filters.maxPrice < 200000 ? 1 : 0) + filters.eras.size +
+    (filters.gearbox !== "Any" ? 1 : 0) + (filters.rhdOnly ? 1 : 0) + filters.plates.size
+  ), [filters]);
+
   // Keep the URL shareable: the hash always mirrors the nameplate filter.
   useEffect(() => {
     const hash = [...filters.plates].join(",");
@@ -1788,9 +1880,6 @@ export default function App() {
                 <path d="M21 12a9 9 0 1 1-2.6-6.4M21 3v6h-6" />
               </svg>
             </IconBtn>
-            <IconBtn label="Filters" size={40} onClick={() => setFiltersOpen(true)}>
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 7h16M7 12h10M10 17h4" /></svg>
-            </IconBtn>
             <IconBtn label={user ? "Account" : "Sign in"} size={40} onClick={() => setAccountOpen(true)}
               style={user?.picture ? { padding: 0, overflow: "hidden" } : undefined}>
               {user?.picture ? (
@@ -1841,6 +1930,10 @@ export default function App() {
               onRemove={(id) => setSwiped((s) => ({ ...s, [id]: mark("none", listingOf(s[id])) }))} />
           )}
         </main>
+
+        {tab === "feed" && (
+          <FilterHandle activeCount={activeFilterCount} onOpen={() => setFiltersOpen(true)} />
+        )}
 
         <Glass radius={30} style={{
           position: "absolute", left: 16, right: 16, bottom: `calc(14px + env(safe-area-inset-bottom))`,
