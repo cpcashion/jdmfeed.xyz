@@ -1165,74 +1165,6 @@ function FilterSheet({ open, onClose, filters, setFilters, matchCount, listings 
   );
 }
 
-/* ---------------- swipe-up filter handle ----------------
-
-   Filters used to hide behind an icon in the top-right corner — the far
-   corner from both thumbs on a phone, and the one part of the app you
-   couldn't reach by gesture. This is a grab handle above the tab bar:
-   flick it up (or tap it) and the filter sheet comes up, the same pull
-   the sheet itself uses to go back down. Sized for a thumb, and it shows
-   how many filters are live so the state is never hidden. */
-function FilterHandle({ activeCount, onOpen }) {
-  const drag = useRef(null);
-  const ref = useRef(null);
-  const lift = (px) => { if (ref.current) ref.current.style.transform = `translate3d(-50%, ${px}px, 0)`; };
-
-  const onDown = (e) => {
-    try { e.currentTarget.setPointerCapture(e.pointerId); } catch { /* */ }
-    drag.current = { y0: e.clientY, dy: 0, moved: false, samples: [{ t: performance.now(), x: 0, y: 0 }] };
-    if (ref.current) ref.current.style.transition = "none";
-  };
-  const onMove = (e) => {
-    const d = drag.current; if (!d) return;
-    d.dy = e.clientY - d.y0;
-    if (Math.abs(d.dy) > 5) d.moved = true;
-    trackSample(d, 0, d.dy);
-    // Follow the finger upward only, with resistance — a peek, not a drag.
-    lift(d.dy < 0 ? Math.max(d.dy * 0.55, -46) : Math.min(d.dy * 0.12, 6));
-  };
-  const settle = () => {
-    if (ref.current) {
-      ref.current.style.transition = "transform 0.34s cubic-bezier(0.22,1,0.36,1)";
-      lift(0);
-    }
-  };
-  const onUp = () => {
-    const d = drag.current; if (!d) return;
-    drag.current = null;
-    const { vy } = releaseVelocity(d);
-    settle();
-    // An upward flick or a decisive pull opens; so does a clean tap.
-    if (!d.moved || d.dy < -28 || vy < -0.35) { haptic("select"); onOpen(); }
-  };
-
-  return (
-    <button
-      ref={ref}
-      onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}
-      aria-label={`Filters${activeCount ? ` — ${activeCount} active` : ""}. Swipe up or tap to open`}
-      style={{
-        position: "absolute", left: "50%", transform: "translate3d(-50%, 0, 0)",
-        // Clears the tab bar (56px action buttons + padding ≈ 90px tall)
-        // and sits above it so the bar never crops the handle.
-        bottom: `calc(102px + env(safe-area-inset-bottom))`, zIndex: 31,
-        display: "flex", flexDirection: "column", alignItems: "center", gap: 5,
-        padding: "8px 20px 10px", borderRadius: 18, cursor: "grab", touchAction: "none",
-        background: "rgba(14,16,23,0.62)", backdropFilter: "blur(22px) saturate(1.6)",
-        WebkitBackdropFilter: "blur(22px) saturate(1.6)",
-        border: `1px solid ${activeCount ? "rgba(57,217,138,0.4)" : T.glassBrd}`,
-        boxShadow: T.glassHi, willChange: "transform",
-      }}
-    >
-      <span aria-hidden style={{ width: 34, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.3)" }} />
-      <span style={{ display: "flex", alignItems: "center", gap: 7, ...mono, fontSize: 10, letterSpacing: "0.18em", color: activeCount ? T.save : T.dim }}>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M18 15l-6-6-6 6" /></svg>
-        FILTERS{activeCount ? ` · ${activeCount}` : ""}
-      </span>
-    </button>
-  );
-}
-
 /* ---------------- garage: your collection, grouped by chassis ---------------- */
 
 const paintGrad = (p) => `linear-gradient(158deg, ${p.stops[0]} 0%, ${p.stops[1]} 52%, ${p.stops[2]} 100%)`;
@@ -1597,6 +1529,47 @@ export default function App() {
   // link opens the feed already tuned to that nameplate.
   const [filters, setFilters] = useState(() => ({ maxPrice: 200000, eras: new Set(), gearbox: "Any", rhdOnly: false, plates: platesFromHash() }));
 
+  /* ---- pull the tab bar up to reveal filters ----
+     The bar itself is the handle, so there's no extra chrome. A gesture
+     only becomes a pull once it clears tap slop, which keeps the FEED /
+     GARAGE / ✕ / ♥ buttons tappable; the trailing click after a real pull
+     is swallowed in onClickCapture so a pull never also fires a button. */
+  const barRef = useRef(null);
+  const barDrag = useRef(null);
+  const barPulled = useRef(false);
+
+  const barDown = (e) => {
+    barDrag.current = { y0: e.clientY, dy: 0, samples: [{ t: performance.now(), x: 0, y: 0 }] };
+    if (barRef.current) barRef.current.style.transition = "none";
+  };
+  const barMove = (e) => {
+    const d = barDrag.current;
+    if (!d) return;
+    d.dy = e.clientY - d.y0;
+    trackSample(d, 0, d.dy);
+    // Lift with resistance, upward only — a peek at the sheet behind it.
+    if (barRef.current) {
+      const lift = d.dy < 0 ? Math.max(d.dy * 0.5, -44) : 0;
+      barRef.current.style.transform = `translate3d(0, ${lift}px, 0)`;
+    }
+  };
+  const barUp = () => {
+    const d = barDrag.current;
+    if (!d) return;
+    barDrag.current = null;
+    const { vy } = releaseVelocity(d);
+    if (barRef.current) {
+      barRef.current.style.transition = "transform 0.34s cubic-bezier(0.22,1,0.36,1)";
+      barRef.current.style.transform = "translate3d(0, 0, 0)";
+    }
+    if (tab !== "feed") return; // filters only narrow the feed
+    if (d.dy < -26 || vy < -0.35) {
+      barPulled.current = true; // swallow the click this gesture would fire
+      haptic("select");
+      setFiltersOpen(true);
+    }
+  };
+
   // How many filters are actually narrowing the feed — surfaced on the
   // handle so an active filter is never invisible.
   const activeFilterCount = useMemo(() => (
@@ -1931,15 +1904,39 @@ export default function App() {
           )}
         </main>
 
-        {tab === "feed" && (
-          <FilterHandle activeCount={activeFilterCount} onOpen={() => setFiltersOpen(true)} />
-        )}
+        {/* The tab bar IS the filter handle: pull up anywhere on it and the
+            filter sheet comes out of it. The grab line at its top edge is
+            the only added chrome — taps on FEED/GARAGE/✕/♥ still work
+            because a gesture only counts as a pull once it clears the tap
+            slop, and the click that follows a pull is swallowed. */}
+        <Glass
+          ref={barRef}
+          onPointerDown={barDown} onPointerMove={barMove} onPointerUp={barUp} onPointerCancel={barUp}
+          onClickCapture={(e) => { if (barPulled.current) { barPulled.current = false; e.stopPropagation(); e.preventDefault(); } }}
+          radius={30}
+          style={{
+            position: "absolute", left: 16, right: 16, bottom: `calc(14px + env(safe-area-inset-bottom))`,
+            padding: "16px 14px 10px", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center",
+            background: "rgba(14,16,23,0.62)", zIndex: 30, touchAction: "none", willChange: "transform",
+          }}>
+          {/* Grab line — the whole affordance. Tints when a filter is on,
+              so active state shows without adding a badge or a label. */}
+          <button
+            onClick={() => tab === "feed" && setFiltersOpen(true)}
+            aria-label={`Filters${activeFilterCount ? ` — ${activeFilterCount} active` : ""}. Swipe up from the bar or tap`}
+            style={{
+              position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
+              padding: "7px 26px 5px", background: "none", border: "none",
+              cursor: tab === "feed" ? "grab" : "default",
+            }}
+          >
+            <span aria-hidden style={{
+              display: "block", width: 36, height: 4, borderRadius: 2,
+              background: activeFilterCount ? T.save : "rgba(255,255,255,0.26)",
+              transition: "background 0.25s ease",
+            }} />
+          </button>
 
-        <Glass radius={30} style={{
-          position: "absolute", left: 16, right: 16, bottom: `calc(14px + env(safe-area-inset-bottom))`,
-          padding: "10px 14px", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center",
-          background: "rgba(14,16,23,0.62)", zIndex: 30,
-        }}>
           <button onClick={() => setTab("feed")} aria-label="Feed" style={{
             border: "none", background: "none", cursor: "pointer", padding: "6px 10px", justifySelf: "start",
             ...display(800), fontSize: 13, letterSpacing: "0.06em",
@@ -1947,13 +1944,13 @@ export default function App() {
           }}>FEED</button>
 
           {tab === "feed" && deck.length > 0 ? (
-            <div style={{ display: "flex", gap: 18, alignItems: "center", justifySelf: "center" }}>
-              <IconBtn label="Pass on this car" color={T.pass} border="rgba(255,90,72,0.45)"
+            <div style={{ display: "flex", gap: 14, alignItems: "center", justifySelf: "center" }}>
+              <IconBtn label="Pass on this car" size={46} color={T.pass} border="rgba(255,90,72,0.45)"
                 style={{ background: "rgba(255,90,72,0.12)" }}
-                onClick={() => setForced((f) => ({ dir: "left", n: (f?.n || 0) + 1 }))}><XIcon /></IconBtn>
-              <IconBtn label="Save this car" color={T.save} border="rgba(57,217,138,0.45)"
+                onClick={() => setForced((f) => ({ dir: "left", n: (f?.n || 0) + 1 }))}><XIcon s={17} /></IconBtn>
+              <IconBtn label="Save this car" size={46} color={T.save} border="rgba(57,217,138,0.45)"
                 style={{ background: "rgba(57,217,138,0.12)" }}
-                onClick={() => setForced((f) => ({ dir: "right", n: (f?.n || 0) + 1 }))}><HeartIcon /></IconBtn>
+                onClick={() => setForced((f) => ({ dir: "right", n: (f?.n || 0) + 1 }))}><HeartIcon s={17} /></IconBtn>
             </div>
           ) : (
             <div style={{ ...mono, fontSize: 10.5, letterSpacing: "0.22em", color: T.faint, justifySelf: "center" }}>
