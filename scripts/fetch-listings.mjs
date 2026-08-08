@@ -17,7 +17,9 @@ import { fetchJdmBuySell, fetchMontu, fetchJdmSportClassics } from "./sources/de
 
 const OUT = path.resolve("app/public/listings.json");
 const HIST = path.resolve("app/public/history.json");
-const MAX_LISTINGS = 1000;
+const MAX_LISTINGS = 2000;
+const MAX_IMAGES = 8;   // per listing, in the published feed
+const MAX_DESC = 280;   // chars — the card and sheet never show more
 const MAX_HISTORY = 3000; // departed listings retained — bounds repo growth
 const MAX_POINTS = 24; // price points kept per listing
 
@@ -105,6 +107,14 @@ const listings = deduped.sort((a, b) => recency(b) - recency(a)).slice(0, MAX_LI
 if (listings.length === 0) {
   console.error("No listings from any source; leaving existing file untouched.");
   process.exit(1);
+}
+
+/* The app fetches this file on every load, so keep each row lean: the
+   gallery beyond a handful of shots and the tail of a long description
+   are never rendered, and at ~2k listings they dominate the payload. */
+for (const l of listings) {
+  if (Array.isArray(l.images) && l.images.length > MAX_IMAGES) l.images = l.images.slice(0, MAX_IMAGES);
+  if (typeof l.description === "string" && l.description.length > MAX_DESC) l.description = l.description.slice(0, MAX_DESC).trim() + "…";
 }
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });

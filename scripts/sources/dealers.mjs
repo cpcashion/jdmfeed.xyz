@@ -73,58 +73,81 @@ const baseListing = (over) => {
 
 /* ---- jdmbuysell.com ---- */
 
+const JBS_CARD = /<a[^>]+href="(?:https:\/\/www\.jdmbuysell\.com)?\/ad\/([a-z0-9-]+)\/"[^>]*?aria-label="([^"]*)"/g;
+/* The marketplace runs to thousands of ads. 70 pages hit the cap rather
+   than the end (1,615 ads, still 7 of 9 US DC2s), so the ceiling is now
+   high enough that the "no new ads" check is what actually stops us. At
+   ~0.15s/page this costs well under a minute. */
+const JBS_MAX_PAGES = 320;
+
+/* Parse every card on one rendered listing page into our listing shape.
+   `seen` dedupes across pages and facets, which overlap heavily. */
+function jbsParsePage(html, seen, out) {
+  // The <head> mentions /ad/ in comments — only body card anchors count.
+  const body = html.slice(Math.max(html.indexOf("<body"), 0));
+  const cards = [...body.matchAll(JBS_CARD)];
+  let fresh = 0;
+  for (let i = 0; i < cards.length; i++) {
+    const m = cards[i];
+    const slug = m[1];
+    if (seen.has(slug)) continue;
+    seen.add(slug);
+    fresh++;
+    // A card runs until the next card's anchor — the inline blur
+    // placeholder and flag SVG make each one several KB, so a small
+    // fixed window never reaches the price markup.
+    const seg = body.slice(m.index, cards[i + 1] ? cards[i + 1].index : m.index + 20000);
+    // Marketplace is worldwide — keep ads with a US location fact.
+    const usState = seg.match(/>\s*([A-Z]{2}), USA\s*</)?.[1];
+    if (!usState && !/data-listing-origin="United States"/.test(seg)) continue;
+    const title = decode(m[2]) || titleFromSlug(slug);
+    if (!isJDM(title)) continue;
+    const { year, make, model } = parseTitle(title);
+    if (!year || !make) continue;
+    // Cards end with an inline relative-date <script> whose code contains
+    // words like numeric:"auto" — mine specs from visible text only.
+    const visible = seg.replace(/<(script|style|svg)[\s\S]*?<\/\1>/g, " ").replace(/<[^>]+>/g, " ");
+    const specs = specsFromText(visible);
+    const listedAt = seg.match(/<time[^>]*\bdatetime="([^"]+)"/)?.[1] || "";
+    const img = seg.match(/\bdata-fallback-src="(https?:[^"]+)"/)?.[1] || firstImage(seg, "https://www.jdmbuysell.com");
+    out.push(baseListing({
+      title, year, make, model,
+      price: firstPrice(seg),
+      mileage: specs.mileage || 0,
+      transmission: specs.transmission || "",
+      location: usState || "United States",
+      source: "JDM Buy & Sell",
+      source_url: `https://www.jdmbuysell.com/ad/${slug}/`,
+      image_url: img,
+      images: img ? [img] : [],
+      ...(Date.parse(listedAt) ? { listed_at: new Date(listedAt).toISOString() } : {}),
+    }));
+  }
+  return { cards: cards.length, fresh };
+}
+
 export async function fetchJdmBuySell() {
   const out = [];
+  const seen = new Set(); // ad slugs seen anywhere this run
+  let pages = 0;
   try {
-    for (let page = 1; page <= 12; page++) {
+    /* Deep pagination. The old walk stopped after 12 pages AND bailed the
+       moment one page held no US ads — on a worldwide marketplace that's a
+       routine occurrence, so a single foreign-only page ended the whole
+       crawl (which is how the feed fell to 17 rows and showed 1 of 9 US
+       DC2s). Now we only stop when a page yields no NEW ads, i.e. we have
+       genuinely reached the end. */
+    for (let page = 1; page <= JBS_MAX_PAGES; page++) {
       const html = (await getHtml(`https://www.jdmbuysell.com/for-sale/${page > 1 ? `?page=${page}` : ""}`))
         .replace(/\\\//g, "/");
-      // The <head> mentions /ad/ in comments — only body card anchors count.
-      const body = html.slice(Math.max(html.indexOf("<body"), 0));
-      const cards = [...body.matchAll(
-        /<a[^>]+href="(?:https:\/\/www\.jdmbuysell\.com)?\/ad\/([a-z0-9-]+)\/"[^>]*?aria-label="([^"]*)"/g,
-      )];
-      let added = 0;
-      for (let i = 0; i < cards.length; i++) {
-        const m = cards[i];
-        const slug = m[1];
-        // A card runs until the next card's anchor — the inline blur
-        // placeholder and flag SVG make each one several KB, so a small
-        // fixed window never reaches the price markup.
-        const seg = body.slice(m.index, cards[i + 1] ? cards[i + 1].index : m.index + 20000);
-        // Marketplace is worldwide — keep ads with a US location fact.
-        const usState = seg.match(/>\s*([A-Z]{2}), USA\s*</)?.[1];
-        if (!usState && !/data-listing-origin="United States"/.test(seg)) continue;
-        const title = decode(m[2]) || titleFromSlug(slug);
-        if (!isJDM(title)) continue;
-        const { year, make, model } = parseTitle(title);
-        if (!year || !make) continue;
-        const url = `https://www.jdmbuysell.com/ad/${slug}/`;
-        if (out.some((l) => l.source_url === url)) continue;
-        // Cards end with an inline relative-date <script> whose code contains
-        // words like numeric:"auto" — mine specs from visible text only.
-        const visible = seg.replace(/<(script|style|svg)[\s\S]*?<\/\1>/g, " ").replace(/<[^>]+>/g, " ");
-        const specs = specsFromText(visible);
-        const listedAt = seg.match(/<time[^>]*\bdatetime="([^"]+)"/)?.[1] || "";
-        out.push(baseListing({
-          title, year, make, model,
-          price: firstPrice(seg),
-          mileage: specs.mileage || 0,
-          transmission: specs.transmission || "",
-          location: usState || "United States",
-          source: "JDM Buy & Sell",
-          source_url: url,
-          image_url: seg.match(/\bdata-fallback-src="(https?:[^"]+)"/)?.[1] || firstImage(seg, "https://www.jdmbuysell.com"),
-          ...(Date.parse(listedAt) ? { listed_at: new Date(listedAt).toISOString() } : {}),
-        }));
-        added++;
-      }
-      if (cards.length === 0 || (added === 0 && page > 2)) break;
+      pages++;
+      const { cards, fresh } = jbsParsePage(html, seen, out);
+      if (cards === 0 || fresh === 0) break; // end of the marketplace
     }
   } catch (err) {
     console.error(`  jdmbuysell failed: ${err.message}`);
   }
-  console.log(`  jdmbuysell: ${out.length} US listings`);
+  console.log(`  jdmbuysell: ${out.length} US listings from ${seen.size} ads across ${pages} pages`);
   return out;
 }
 
