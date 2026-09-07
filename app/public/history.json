@@ -1,6 +1,2871 @@
 {
-  "updated": "2026-09-07T12:38:29.953Z",
+  "updated": "2026-09-07T21:34:24.836Z",
   "listings": [
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:07.917Z",
+      "title": "1996 Subaru Sambar",
+      "year": 1996,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 5700,
+      "location": "CA",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/jdmallmakesmotors-1996-subaru-sambar-ks4-284423/",
+      "listed_at": "2026-09-05T21:40:51.526Z",
+      "first_seen": "2026-09-05T21:40:51.526Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T04:43:51.868Z",
+          "p": 5700
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S210",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:07.953Z",
+      "title": "2000 Daihatsu Hijet",
+      "year": 2000,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 6500,
+      "location": "CA",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/jdmallmakesmotors-2000-daihatsu-hijet-s210p-0057845/",
+      "listed_at": "2026-09-05T21:40:51.526Z",
+      "first_seen": "2026-09-05T21:40:51.526Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T04:43:51.868Z",
+          "p": 6500
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2016 Nissan GT-R",
+      "year": 2016,
+      "make": "Nissan",
+      "model": "GT-R",
+      "chassis": "R35",
+      "trim": "",
+      "price": 268000,
+      "mileage": 59,
+      "transmission": "",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "",
+      "location": "Costa Mesa, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/377471155021?_skw=Nissan+GT-R&hash=item57e308bb4d:g:Q7IAAeSwvW9qiI2R",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-09-04T19:40:29.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-04T19:40:29.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T20:48:59.824Z",
+          "p": 268000
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2021 Subaru WRX STI",
+      "year": 2021,
+      "make": "Subaru",
+      "model": "WRX STI",
+      "chassis": "VAB",
+      "trim": "",
+      "price": 35997,
+      "mileage": 31046,
+      "transmission": "6-Speed Manual w/OD",
+      "engine": "2.5L Gas H4",
+      "drivetrain": "All Wheel Drive",
+      "color": "",
+      "location": "Milpitas, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/820079923261?_skw=Subaru+WRX+STI&hash=itembef092903d:g:OpgAAeSwjLdpsbjN",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-09-02T20:56:23.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-02T20:56:23.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T10:39:01.539Z",
+          "p": 35997
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2024 Acura Integra w/A-Spec Technology Package",
+      "year": 2024,
+      "make": "Acura",
+      "model": "Integra w/A-Spec Technology Package",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 29888,
+      "mileage": 30648,
+      "transmission": "1-Speed CVT w/OD",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "",
+      "location": "Milpitas, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/820079833583?_skw=Acura+Integra&hash=itembef09131ef:g:pSkAAeSwqkdpsbjX",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-09-02T20:35:06.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-02T20:35:06.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T10:39:01.539Z",
+          "p": 29888
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2015 Nissan GT-R Black Edition",
+      "year": 2015,
+      "make": "Nissan",
+      "model": "GT-R Black Edition",
+      "chassis": "R35",
+      "trim": "",
+      "price": 151990,
+      "mileage": 22435,
+      "transmission": "6-Speed Automatic",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Super Silver",
+      "location": "Orlando, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/168658984433?_skw=Nissan+GT-R&hash=item2744dbddf1:g:i00AAeSwAxtp5oSa",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-09-02T20:17:05.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-02T20:17:05.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 151990
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2020 Toyota Land Cruiser Heritage Edition TrekBoxx Alpha 33\" Nitto 1 Owner",
+      "year": 2020,
+      "make": "Toyota",
+      "model": "Land Cruiser Heritage Edition TrekBoxx Alpha 33\" Nitto 1 Owner",
+      "chassis": "J200",
+      "trim": "",
+      "price": 83993,
+      "mileage": 79553,
+      "transmission": "Automatic",
+      "engine": "5.7L Gas V8",
+      "drivetrain": "Rear Wheel Drive w/4x4",
+      "color": "[218] Midnight Black Metallic",
+      "location": "Dallas, Texas",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800602714946?_skw=Toyota+Land+Cruiser&hash=itemba67a3f342:g:0fsAAeSw4U1qd26V",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-09-02T18:11:45.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-02T18:11:45.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 83993
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2015 Toyota Land Cruiser 1 Owner Dealer Serviced Southern Rust Free LOADED",
+      "year": 2015,
+      "make": "Toyota",
+      "model": "Land Cruiser 1 Owner Dealer Serviced Southern Rust Free LOADED",
+      "chassis": "J200",
+      "trim": "",
+      "price": 33992,
+      "mileage": 227989,
+      "transmission": "Automatic",
+      "engine": "5.7L Gas V8",
+      "drivetrain": "Rear Wheel Drive w/4x4",
+      "color": "[070] Blizzard Pearl",
+      "location": "Dallas, Texas",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800602686480?_skw=Toyota+Land+Cruiser&hash=itemba67a38410:g:6o0AAeSwfwBqfgYk",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-09-02T18:06:58.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-02T18:06:58.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 33992
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2016 Toyota Land Cruiser V8 1 Owner Blizzard Pearl 3rd Row Jump Seat LOADED",
+      "year": 2016,
+      "make": "Toyota",
+      "model": "Land Cruiser V8 1 Owner Blizzard Pearl 3rd Row Jump Seat LOADED",
+      "chassis": "J200",
+      "trim": "",
+      "price": 53992,
+      "mileage": 100530,
+      "transmission": "Automatic",
+      "engine": "5.7L Gas V8",
+      "drivetrain": "Rear Wheel Drive w/4x4",
+      "color": "[070] Blizzard Pearl",
+      "location": "Dallas, Texas",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800602685724?_skw=Toyota+Land+Cruiser&hash=itemba67a3811c:g:dekAAeSwAfJqfgYl",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-09-02T18:06:44.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-02T18:06:44.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 53992
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2015 Subaru WRX STI Limited Sedan LOW Miles! P&L Built! 475WHP! TONS OF",
+      "year": 2015,
+      "make": "Subaru",
+      "model": "WRX STI Limited Sedan LOW Miles! P&L Built! 475WHP! TONS OF",
+      "chassis": "VAB",
+      "trim": "",
+      "price": 39912,
+      "mileage": 38264,
+      "transmission": "6-Speed Manual",
+      "engine": "2.5L Gas H4",
+      "drivetrain": "All Wheel Drive",
+      "color": "Crystal Black Silica",
+      "location": "West Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/158250500841?_skw=Subaru+WRX+STI&hash=item24d87702e9:g:Z~4AAeSw9aNqFcuf",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-09-02T16:49:46.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-02T16:49:46.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T10:39:01.539Z",
+          "p": 39912
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "1993 Toyota Supra Turbo Built and Fresh Major Service by Sound Performance",
+      "year": 1993,
+      "make": "Toyota",
+      "model": "Supra Turbo Built and Fresh Major Service by Sound Performance",
+      "chassis": "JZA80",
+      "trim": "",
+      "price": 119912,
+      "mileage": 68431,
+      "transmission": "Custom 3-Speed TH400 Automatic",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Orange",
+      "location": "West Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/158249970756?_skw=Toyota+Supra&hash=item24d86eec44:g:tTcAAeSwq55p31~B",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-09-02T13:23:59.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-02T13:23:59.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 119912
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "1988 Toyota Land Cruiser",
+      "year": 1988,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "chassis": "FJ62",
+      "trim": "",
+      "price": 12500,
+      "mileage": 152378,
+      "transmission": "Manual",
+      "engine": "3B",
+      "drivetrain": "",
+      "color": "Green",
+      "location": "Pecos, Texas",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/198610281418?_skw=Toyota+Land+Cruiser&hash=item2e3e1863ca:g:jQAAAeSw7zhqjR6O",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-09-01T12:02:51.000Z",
+      "rhd": true,
+      "enriched": 3,
+      "first_seen": "2026-09-01T12:02:51.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 12500
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "TT2",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:07.992Z",
+      "title": "2000 Subaru Sambar",
+      "year": 2000,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 12999,
+      "location": "FL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/kurumaimports-2000-subaru-sambar-501933/",
+      "listed_at": "2026-09-01T08:56:18.656Z",
+      "first_seen": "2026-09-01T08:56:18.656Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-03T21:05:42.282Z",
+          "p": 12999
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "JDM 2001 Toyota Soarer 430SCV",
+      "year": 2001,
+      "make": "Toyota",
+      "model": "Soarer 430SCV",
+      "chassis": "",
+      "trim": "",
+      "price": 9999,
+      "mileage": 0,
+      "transmission": "Automatic",
+      "engine": "4.3-liter 3UZ-FE V8",
+      "drivetrain": "",
+      "color": "silver",
+      "rhd": true,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/2001-toyota-soarer/",
+      "ends_at": "2026-09-07T20:03:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.556Z",
+      "first_seen": "2026-09-01T05:13:30.533Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-01T16:44:33.719Z",
+          "p": 9999
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "1971 Datsun 240Z 4-Speed",
+      "year": 1971,
+      "make": "Datsun",
+      "model": "240Z 4-Speed",
+      "chassis": "S30",
+      "trim": "",
+      "price": 22500,
+      "mileage": 0,
+      "transmission": "4-speed manual",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1971-datsun-240z-359/",
+      "ends_at": "2026-09-07T20:19:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.556Z",
+      "first_seen": "2026-09-01T05:13:30.533Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-01T05:13:30.533Z",
+          "p": 17000
+        },
+        {
+          "t": "2026-09-02T21:07:12.146Z",
+          "p": 18000
+        },
+        {
+          "t": "2026-09-04T04:39:49.159Z",
+          "p": 20000
+        },
+        {
+          "t": "2026-09-06T04:43:51.868Z",
+          "p": 21000
+        },
+        {
+          "t": "2026-09-06T15:31:59.843Z",
+          "p": 22000
+        },
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 22500
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S110",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:08.315Z",
+      "title": "1994 Daihatsu Hijet",
+      "year": 1994,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 5700,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-daihatsu-hijet-1994-daihatsu-hijet-truck/",
+      "listed_at": "2026-09-01T04:46:42.758Z",
+      "first_seen": "2026-09-01T04:46:42.758Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 5700
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S210",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:08.315Z",
+      "title": "1999 Daihatsu Hijet",
+      "year": 1999,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 6700,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-daihatsu-hijet-1999-daihatsu-hijet-truck/",
+      "listed_at": "2026-09-01T04:46:42.758Z",
+      "first_seen": "2026-09-01T04:46:42.758Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-03T21:05:42.282Z",
+          "p": 6700
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:08.315Z",
+      "title": "1992 Honda Acty",
+      "year": 1992,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 4900,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1992-honda-acty-1992-honda-acty-truck/",
+      "listed_at": "2026-09-01T04:46:42.758Z",
+      "first_seen": "2026-09-01T04:46:42.758Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-01T21:05:35.940Z",
+          "p": 4900
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S110",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:08.648Z",
+      "title": "1998 Daihatsu Hijet",
+      "year": 1998,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 7700,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1998-daihatsu-hijet-1998-daihatsu-hijet-dump/",
+      "listed_at": "2026-09-01T04:35:35.758Z",
+      "first_seen": "2026-09-01T04:35:35.758Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-01T05:13:30.533Z",
+          "p": 7700
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "7k-Mile 2018 Toyota Land Cruiser URJ200",
+      "year": 2018,
+      "make": "Toyota",
+      "model": "Land Cruiser URJ200",
+      "chassis": "J200",
+      "trim": "",
+      "price": 82500,
+      "mileage": 7000,
+      "transmission": "Automatic",
+      "engine": "",
+      "drivetrain": "",
+      "color": "Midnight Black Metallic",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/2018-toyota-land-cruiser-19/",
+      "ends_at": "2026-09-07T17:43:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.556Z",
+      "first_seen": "2026-08-31T22:54:17.662Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-08-31T22:54:17.662Z",
+          "p": 78000
+        },
+        {
+          "t": "2026-09-04T16:25:06.841Z",
+          "p": 79000
+        },
+        {
+          "t": "2026-09-05T04:35:13.608Z",
+          "p": 82000
+        },
+        {
+          "t": "2026-09-06T15:31:59.843Z",
+          "p": 82500
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "Supercharged 2008 Honda S2000",
+      "year": 2008,
+      "make": "Honda",
+      "model": "S2000",
+      "chassis": "AP2",
+      "trim": "",
+      "price": 36666,
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/2008-honda-s2000-134/",
+      "ends_at": "2026-09-07T17:54:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.556Z",
+      "first_seen": "2026-08-31T22:54:17.662Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-08-31T22:54:17.662Z",
+          "p": 13000
+        },
+        {
+          "t": "2026-09-01T16:44:33.719Z",
+          "p": 21500
+        },
+        {
+          "t": "2026-09-01T21:05:35.940Z",
+          "p": 24444
+        },
+        {
+          "t": "2026-09-02T04:39:50.769Z",
+          "p": 25000
+        },
+        {
+          "t": "2026-09-02T16:37:51.963Z",
+          "p": 25250
+        },
+        {
+          "t": "2026-09-06T04:43:51.868Z",
+          "p": 32027
+        },
+        {
+          "t": "2026-09-06T15:31:59.843Z",
+          "p": 35000
+        },
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 35379
+        },
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 36666
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "12k-Mile 2016 Nissan GT-R Premium",
+      "year": 2016,
+      "make": "Nissan",
+      "model": "GT-R Premium",
+      "chassis": "R35",
+      "trim": "",
+      "price": 84500,
+      "mileage": 12000,
+      "transmission": "Automatic",
+      "engine": "revised ECU tune",
+      "drivetrain": "AWD",
+      "color": "",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/2016-nissan-gt-r-premium-15/",
+      "ends_at": "2026-09-07T17:56:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.556Z",
+      "first_seen": "2026-08-31T22:54:17.662Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-08-31T22:54:17.662Z",
+          "p": 66666
+        },
+        {
+          "t": "2026-09-01T05:13:30.533Z",
+          "p": 69035
+        },
+        {
+          "t": "2026-09-01T21:05:35.940Z",
+          "p": 81000
+        },
+        {
+          "t": "2026-09-03T11:19:38.146Z",
+          "p": 82000
+        },
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 84000
+        },
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 84500
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2006 Toyota Land Cruiser UZJ100",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser UZJ100",
+      "chassis": "UZJ100",
+      "trim": "",
+      "price": 17801,
+      "mileage": 0,
+      "transmission": "Automatic",
+      "engine": "4.7-liter 2UZ-FE V8",
+      "drivetrain": "",
+      "color": "Pacific Blue Metallic",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-111/",
+      "ends_at": "2026-09-07T19:01:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.556Z",
+      "first_seen": "2026-08-31T22:54:17.662Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-08-31T22:54:17.662Z",
+          "p": 11000
+        },
+        {
+          "t": "2026-09-01T21:05:35.940Z",
+          "p": 15000
+        },
+        {
+          "t": "2026-09-03T16:29:36.117Z",
+          "p": 15250
+        },
+        {
+          "t": "2026-09-04T16:25:06.841Z",
+          "p": 15500
+        },
+        {
+          "t": "2026-09-06T11:01:39.920Z",
+          "p": 16258
+        },
+        {
+          "t": "2026-09-06T20:29:25.258Z",
+          "p": 17501
+        },
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 17801
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "754-Mile 2020 Toyota GR Supra 3.0 Launch Edition",
+      "year": 2020,
+      "make": "Toyota",
+      "model": "GR Supra 3.0 Launch Edition",
+      "chassis": "A90",
+      "trim": "",
+      "price": 45000,
+      "mileage": 754,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/2020-toyota-gr-supra-10/",
+      "ends_at": "2026-09-07T19:09:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.556Z",
+      "first_seen": "2026-08-31T22:54:17.662Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-08-31T22:54:17.662Z",
+          "p": 20000
+        },
+        {
+          "t": "2026-09-03T04:38:16.915Z",
+          "p": 30250
+        },
+        {
+          "t": "2026-09-03T21:05:42.282Z",
+          "p": 36250
+        },
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 40000
+        },
+        {
+          "t": "2026-09-06T04:43:51.868Z",
+          "p": 40250
+        },
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 43486
+        },
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 45000
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "Widebody JDM 1994 Toyota Supra RZ Turbo 6-Speed",
+      "year": 1994,
+      "make": "Toyota",
+      "model": "Supra RZ Turbo 6-Speed",
+      "chassis": "JZA80",
+      "trim": "",
+      "price": 42000,
+      "mileage": 0,
+      "transmission": "6-speed manual",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "rhd": true,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1994-toyota-supra-213/",
+      "ends_at": "2026-09-07T19:10:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.556Z",
+      "first_seen": "2026-08-31T22:54:17.662Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-08-31T22:54:17.662Z",
+          "p": 22222
+        },
+        {
+          "t": "2026-09-02T11:22:53.107Z",
+          "p": 30000
+        },
+        {
+          "t": "2026-09-02T21:07:12.146Z",
+          "p": 35000
+        },
+        {
+          "t": "2026-09-05T04:35:13.608Z",
+          "p": 35250
+        },
+        {
+          "t": "2026-09-05T20:25:17.857Z",
+          "p": 35500
+        },
+        {
+          "t": "2026-09-06T04:43:51.868Z",
+          "p": 37000
+        },
+        {
+          "t": "2026-09-06T15:31:59.843Z",
+          "p": 39500
+        },
+        {
+          "t": "2026-09-06T20:29:25.258Z",
+          "p": 42000
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "LS6-Powered 1989 Toyota Land Cruiser FJ62",
+      "year": 1989,
+      "make": "Toyota",
+      "model": "Land Cruiser FJ62",
+      "chassis": "FJ62",
+      "trim": "",
+      "price": 34850,
+      "mileage": 0,
+      "transmission": "Automatic",
+      "engine": "5.7-liter LS6 V8",
+      "drivetrain": "",
+      "color": "Desert Tan",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1989-toyota-land-cruiser-fj62-312/",
+      "ends_at": "2026-09-07T19:11:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.556Z",
+      "first_seen": "2026-08-31T22:54:17.662Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-08-31T22:54:17.662Z",
+          "p": 15000
+        },
+        {
+          "t": "2026-09-01T05:13:30.533Z",
+          "p": 23000
+        },
+        {
+          "t": "2026-09-04T20:48:59.824Z",
+          "p": 23250
+        },
+        {
+          "t": "2026-09-06T04:43:51.868Z",
+          "p": 28000
+        },
+        {
+          "t": "2026-09-06T15:31:59.843Z",
+          "p": 30500
+        },
+        {
+          "t": "2026-09-06T20:29:25.258Z",
+          "p": 34567
+        },
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 34850
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "1996 Toyota Land Cruiser FZJ80",
+      "year": 1996,
+      "make": "Toyota",
+      "model": "Land Cruiser FZJ80",
+      "chassis": "FZJ80",
+      "trim": "",
+      "price": 16500,
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1996-toyota-land-cruiser-fzj80-164/",
+      "ends_at": "2026-09-07T19:21:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.556Z",
+      "first_seen": "2026-08-31T22:54:17.662Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-01T05:13:30.533Z",
+          "p": 14000
+        },
+        {
+          "t": "2026-09-02T04:39:50.769Z",
+          "p": 15000
+        },
+        {
+          "t": "2026-09-06T04:43:51.868Z",
+          "p": 16250
+        },
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 16500
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "1961 Toyota Land Cruiser",
+      "year": 1961,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 27500,
+      "mileage": 134743,
+      "transmission": "Manual",
+      "engine": "V6",
+      "drivetrain": "",
+      "color": "Yellow",
+      "location": "Bellingham, Massachusetts",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178456256218?_skw=Toyota+Land+Cruiser&hash=item298cd25eda:g:p8YAAeSwckZqQ2-s",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-08-31T16:11:32.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-31T16:11:32.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 27500
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2008 Mitsubishi Lancer 4dr Sedan Manual Evolution MR",
+      "year": 2008,
+      "make": "Mitsubishi",
+      "model": "Lancer 4dr Sedan Manual Evolution MR",
+      "chassis": "CZ4A",
+      "trim": "",
+      "price": 21990,
+      "mileage": 94537,
+      "transmission": "Automatic",
+      "engine": "",
+      "drivetrain": "",
+      "color": "Red",
+      "location": "Addison, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/227499466677?_skw=Mitsubishi+Lancer+Evolution&hash=item34f8065fb5:g:eCYAAeSw6o5qlZ08",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-08-31T15:24:49.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-31T15:24:49.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T10:39:01.539Z",
+          "p": 21990
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2017 Subaru WRX STi",
+      "year": 2017,
+      "make": "Subaru",
+      "model": "WRX STi",
+      "chassis": "VAB",
+      "trim": "",
+      "price": 30990,
+      "mileage": 8955,
+      "transmission": "Close-Ratio 6-Speed Manual",
+      "engine": "2.5L Gas H4",
+      "drivetrain": "All Wheel Drive",
+      "color": "Crystal White Pearl",
+      "location": "New Albany, Indiana",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287556341649?_skw=Subaru+WRX+STI&hash=item42f3b18f91:g:cCMAAeSw~gJqkjby",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-08-31T15:21:38.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-31T15:21:38.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T10:39:01.539Z",
+          "p": 30990
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2020 Subaru WRX STi",
+      "year": 2020,
+      "make": "Subaru",
+      "model": "WRX STi",
+      "chassis": "VAB",
+      "trim": "",
+      "price": 38990,
+      "mileage": 19898,
+      "transmission": "Close-Ratio 6-Speed Manual",
+      "engine": "2.5L Gas H4",
+      "drivetrain": "All Wheel Drive",
+      "color": "Crystal White Pearl",
+      "location": "New Albany, Indiana",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287556338262?_skw=Subaru+WRX+STI&hash=item42f3b18256:g:WCYAAeSwwrlqT~oU",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-08-31T15:16:57.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-31T15:16:57.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T10:39:01.539Z",
+          "p": 38990
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "1995 Mitsubishi 3000GT VR-4 Turbo",
+      "year": 1995,
+      "make": "Mitsubishi",
+      "model": "3000GT VR-4 Turbo",
+      "chassis": "Z16A",
+      "trim": "",
+      "price": 41500,
+      "mileage": 27097,
+      "transmission": "6-Speed Manual",
+      "engine": "3.0L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Caracas Red",
+      "location": "North Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/227499405828?_skw=Mitsubishi+3000GT&hash=item34f8057204:g:AewAAeSwcXFqlZAR",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-08-31T14:31:10.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-31T14:31:10.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T10:39:01.539Z",
+          "p": 41500
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:08.986Z",
+      "title": "1997 Subaru Sambar",
+      "year": 1997,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 5950,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-subaru-sambar-1997-subaru-sambar-van-kv4-170775/",
+      "listed_at": "2026-08-30T05:46:16.380Z",
+      "first_seen": "2026-08-30T05:46:16.380Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-02T11:22:53.107Z",
+          "p": 5950
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:08.987Z",
+      "title": "1997 Honda Acty",
+      "year": 1997,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 6050,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-honda-acty-1997-honda-acty-van-hh3-2332912/",
+      "listed_at": "2026-08-30T05:45:57.573Z",
+      "first_seen": "2026-08-30T05:45:57.573Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 6050
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S83",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.170Z",
+      "title": "1993 Daihatsu Hijet",
+      "year": 1993,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 4260,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1993-daihatsu-hijet-1993-daihatsu-hijet-van-s82v-522292/",
+      "listed_at": "2026-08-30T05:45:57.573Z",
+      "first_seen": "2026-08-30T05:45:57.573Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 4260
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.171Z",
+      "title": "1997 Honda Acty",
+      "year": 1997,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 5690,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-honda-acty-1997-honda-acty-van-hh3-2340090/",
+      "listed_at": "2026-08-30T05:45:38.067Z",
+      "first_seen": "2026-08-30T05:45:38.067Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-03T04:38:16.915Z",
+          "p": 5690
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S83",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.366Z",
+      "title": "1989 Daihatsu Hijet",
+      "year": 1989,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 5490,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1989-daihatsu-hijet-1989-daihatsu-hijet-truck-jumbo-s80p-137433/",
+      "listed_at": "2026-08-29T18:25:16.126Z",
+      "first_seen": "2026-08-29T18:25:16.126Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T20:25:17.857Z",
+          "p": 5490
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S110",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.546Z",
+      "title": "1997 Daihatsu Hijet",
+      "year": 1997,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 8127,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-daihatsu-hijet-1997-daihatsu-hijet-is-twin-cam-pbgmqc/",
+      "listed_at": "2026-08-29T18:25:16.126Z",
+      "first_seen": "2026-08-29T18:25:16.126Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T11:01:39.920Z",
+          "p": 8127
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.546Z",
+      "title": "1997 Honda Acty",
+      "year": 1997,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 5984,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-honda-acty-1997-honda-acty-4wd-sdx-mini-truck-1805/",
+      "listed_at": "2026-08-29T18:25:16.126Z",
+      "first_seen": "2026-08-29T18:25:16.126Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 5984
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S210",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.546Z",
+      "title": "2000 Daihatsu Hijet",
+      "year": 2000,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 5037,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-daihatsu-hijet-2000-daihatsu-hijet-urg9yt/",
+      "listed_at": "2026-08-29T18:25:16.126Z",
+      "first_seen": "2026-08-29T18:25:16.126Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-01T21:05:35.940Z",
+          "p": 5037
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.726Z",
+      "title": "1994 Subaru Sambar",
+      "year": 1994,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 6110,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-subaru-sambar-1994-subaru-sambar-truck-dump-ks4-199157/",
+      "listed_at": "2026-08-29T18:25:09.639Z",
+      "first_seen": "2026-08-29T18:25:09.639Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T20:25:17.857Z",
+          "p": 6110
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.726Z",
+      "title": "1997 Honda Acty",
+      "year": 1997,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 8500,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-honda-acty-1997-honda-acty-attack-4wd/",
+      "listed_at": "2026-08-29T18:25:09.639Z",
+      "first_seen": "2026-08-29T18:25:09.639Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-02T11:22:53.107Z",
+          "p": 8500
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.727Z",
+      "title": "1993 Subaru Sambar",
+      "year": 1993,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 6860,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1993-subaru-sambar-1993-subaru-sambar-truck-ks4-141456/",
+      "listed_at": "2026-08-29T18:25:09.639Z",
+      "first_seen": "2026-08-29T18:25:09.639Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T20:48:59.824Z",
+          "p": 6860
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.727Z",
+      "title": "1993 Subaru Sambar",
+      "year": 1993,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 10900,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1993-subaru-sambar-3f3b24e64101/",
+      "listed_at": "2026-08-29T18:25:09.639Z",
+      "first_seen": "2026-08-29T18:25:09.639Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 10900
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "JB23",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.872Z",
+      "title": "2001 Suzuki Jimny",
+      "year": 2001,
+      "make": "Suzuki",
+      "model": "Jimny",
+      "price": 6615,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2001-suzuki-jimny-2001-suzuki-jimny-rad9f8/",
+      "listed_at": "2026-08-29T18:25:09.639Z",
+      "first_seen": "2026-08-29T18:25:09.639Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T04:35:13.608Z",
+          "p": 6615
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S110",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.872Z",
+      "title": "1997 Daihatsu Hijet",
+      "year": 1997,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 5900,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-daihatsu-hijet-1997-daihatsu-hijet-dump-truck/",
+      "listed_at": "2026-08-29T18:25:09.639Z",
+      "first_seen": "2026-08-29T18:25:09.639Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 5900
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:09.873Z",
+      "title": "1999 Honda Acty",
+      "year": 1999,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 9134,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-honda-acty-1999-honda-acty-mini-van-2509/",
+      "listed_at": "2026-08-29T18:25:09.639Z",
+      "first_seen": "2026-08-29T18:25:09.639Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 9134
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "JA11",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.034Z",
+      "title": "1995 Suzuki Jimny",
+      "year": 1995,
+      "make": "Suzuki",
+      "model": "Jimny",
+      "price": 10049,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1995-suzuki-jimny-1995-suzuki-jimny-31x2hz/",
+      "listed_at": "2026-08-29T18:25:09.639Z",
+      "first_seen": "2026-08-29T18:25:09.639Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T15:31:59.843Z",
+          "p": 10049
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "JB23",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.035Z",
+      "title": "1999 Suzuki Jimny",
+      "year": 1999,
+      "make": "Suzuki",
+      "model": "Jimny",
+      "price": 7875,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-suzuki-jimny-1999-suzuki-jimny-xe-p7tcz/",
+      "listed_at": "2026-08-29T18:25:09.639Z",
+      "first_seen": "2026-08-29T18:25:09.639Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 7875
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S210",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.209Z",
+      "title": "2000 Daihatsu Hijet",
+      "year": 2000,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 19900,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-daihatsu-hijet-6fd9a522e528/",
+      "listed_at": "2026-08-29T18:25:03.357Z",
+      "first_seen": "2026-08-29T18:25:03.357Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T11:01:39.920Z",
+          "p": 19900
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.209Z",
+      "title": "1994 Honda Acty",
+      "year": 1994,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 4120,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-honda-acty-1994-honda-acty-truck-ha3-7000050/",
+      "listed_at": "2026-08-29T18:25:03.357Z",
+      "first_seen": "2026-08-29T18:25:03.357Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 4120
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.209Z",
+      "title": "1994 Honda Acty",
+      "year": 1994,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 9000,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-honda-acty-1994-honda-acty-sdx-4wd/",
+      "listed_at": "2026-08-29T18:25:03.357Z",
+      "first_seen": "2026-08-29T18:25:03.357Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T20:29:25.258Z",
+          "p": 9000
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.374Z",
+      "title": "1990 Subaru Sambar",
+      "year": 1990,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 12900,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1990-subaru-sambar-6ccb6c565c94/",
+      "listed_at": "2026-08-29T18:25:03.357Z",
+      "first_seen": "2026-08-29T18:25:03.357Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 12900
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S210",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.375Z",
+      "title": "1999 Daihatsu Hijet",
+      "year": 1999,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 4590,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-daihatsu-hijet-1999-daihatsu-hijet-truck-s200p-0018072/",
+      "listed_at": "2026-08-29T18:25:03.357Z",
+      "first_seen": "2026-08-29T18:25:03.357Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 4590
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.375Z",
+      "title": "1999 Honda Acty",
+      "year": 1999,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 7245,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-honda-acty-1999-honda-acty-krtb1e/",
+      "listed_at": "2026-08-29T18:25:03.357Z",
+      "first_seen": "2026-08-29T18:25:03.357Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 7245
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.527Z",
+      "title": "1998 Subaru Sambar",
+      "year": 1998,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 4000,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1998-subaru-sambar-1998-subaru-sambar-4wd-kei-truck-stk0545/",
+      "listed_at": "2026-08-29T18:25:03.357Z",
+      "first_seen": "2026-08-29T18:25:03.357Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 4000
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "JB23",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.707Z",
+      "title": "2000 Suzuki Jimny",
+      "year": 2000,
+      "make": "Suzuki",
+      "model": "Jimny",
+      "price": 8100,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-suzuki-jimny-2000-suzuki-jimny-wild-wind-turbo-4wd/",
+      "listed_at": "2026-08-29T18:24:56.844Z",
+      "first_seen": "2026-08-29T18:24:56.844Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T20:29:25.258Z",
+          "p": 8100
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.707Z",
+      "title": "1997 Subaru Sambar",
+      "year": 1997,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 5000,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-subaru-sambar-1997-subaru-sambar-truck-ks4-318951/",
+      "listed_at": "2026-08-29T18:24:56.844Z",
+      "first_seen": "2026-08-29T18:24:56.844Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 5000
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "KS4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.707Z",
+      "title": "1991 Subaru Sambar",
+      "year": 1991,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 5984,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1991-subaru-sambar-1991-subaru-sambar-3370/",
+      "listed_at": "2026-08-29T18:24:56.844Z",
+      "first_seen": "2026-08-29T18:24:56.844Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T11:01:39.920Z",
+          "p": 5984
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.707Z",
+      "title": "1999 Honda Acty",
+      "year": 1999,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 10900,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-honda-acty-2024b4372383/",
+      "listed_at": "2026-08-29T18:24:56.844Z",
+      "first_seen": "2026-08-29T18:24:56.844Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 10900
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "TT2",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.864Z",
+      "title": "1999 Subaru Sambar",
+      "year": 1999,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 13900,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-subaru-sambar-77d582f62d7c/",
+      "listed_at": "2026-08-29T18:24:56.844Z",
+      "first_seen": "2026-08-29T18:24:56.844Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 13900
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.864Z",
+      "title": "1996 Suzuki Jimny",
+      "year": 1996,
+      "make": "Suzuki",
+      "model": "Jimny",
+      "price": 8789,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1996-suzuki-jimny-1996-suzuki-jimny-dvj-nj/",
+      "listed_at": "2026-08-29T18:24:56.844Z",
+      "first_seen": "2026-08-29T18:24:56.844Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T20:29:25.258Z",
+          "p": 8789
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S210",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.864Z",
+      "title": "1999 Daihatsu Hijet",
+      "year": 1999,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 11900,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-daihatsu-hijet-59489b48f398/",
+      "listed_at": "2026-08-29T18:24:56.844Z",
+      "first_seen": "2026-08-29T18:24:56.844Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 11900
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "TT2",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:10.864Z",
+      "title": "2000 Subaru Sambar",
+      "year": 2000,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 17995,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-subaru-sambar-3ec8b3f7dc7b/",
+      "listed_at": "2026-08-29T18:24:56.844Z",
+      "first_seen": "2026-08-29T18:24:56.844Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 17995
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "TT2",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:11.065Z",
+      "title": "1999 Subaru Sambar",
+      "year": 1999,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 13900,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-subaru-sambar-ca68a1df0c01/",
+      "listed_at": "2026-08-29T18:24:56.844Z",
+      "first_seen": "2026-08-29T18:24:56.844Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 13900
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S110",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:11.065Z",
+      "title": "1995 Daihatsu Hijet",
+      "year": 1995,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 8189,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1995-daihatsu-hijet-1995-daihatsu-hijet-jhblc6/",
+      "listed_at": "2026-08-29T18:24:56.844Z",
+      "first_seen": "2026-08-29T18:24:56.844Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T15:31:59.843Z",
+          "p": 8189
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "TT2",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:11.244Z",
+      "title": "1999 Subaru Sambar",
+      "year": 1999,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 9900,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-subaru-sambar-ac-5-speed-granny-gear/",
+      "listed_at": "2026-08-29T18:24:56.844Z",
+      "first_seen": "2026-08-29T18:24:56.844Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 9900
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S83",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:11.244Z",
+      "title": "1990 Daihatsu Hijet",
+      "year": 1990,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 4210,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1990-daihatsu-hijet-1990-daihatsu-hijet-truck-s83p-029645/",
+      "listed_at": "2026-08-29T18:24:49.818Z",
+      "first_seen": "2026-08-29T18:24:49.818Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T15:31:59.843Z",
+          "p": 4210
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA4",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:11.414Z",
+      "title": "1995 Honda Acty",
+      "year": 1995,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 4670,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1995-honda-acty-1995-honda-acty-truck-ha4-2214621/",
+      "listed_at": "2026-08-29T18:24:49.818Z",
+      "first_seen": "2026-08-29T18:24:49.818Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 4670
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "TT2",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:11.414Z",
+      "title": "1999 Subaru Sambar",
+      "year": 1999,
+      "make": "Subaru",
+      "model": "Sambar",
+      "price": 4977,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-subaru-sambar-1999-subaru-sambar-dias-1viwam/",
+      "listed_at": "2026-08-29T18:24:49.818Z",
+      "first_seen": "2026-08-29T18:24:49.818Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T20:29:25.258Z",
+          "p": 4977
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "EXY10",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:11.415Z",
+      "title": "1994 Toyota Sera",
+      "year": 1994,
+      "make": "Toyota",
+      "model": "Sera",
+      "price": 10995,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-toyota-sera-399ea0035644/",
+      "listed_at": "2026-08-29T18:24:49.818Z",
+      "first_seen": "2026-08-29T18:24:49.818Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T16:25:06.841Z",
+          "p": 10995
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S210",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:11.415Z",
+      "title": "1999 Daihatsu Hijet",
+      "year": 1999,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 4060,
+      "location": "IL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-daihatsu-hijet-1999-daihatsu-hijet-truck-s210p-0010400/",
+      "listed_at": "2026-08-29T18:24:49.818Z",
+      "first_seen": "2026-08-29T18:24:49.818Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 4060
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HDJ81",
+      "trim": "",
+      "mileage": 126929,
+      "transmission": "6-Speed Manual",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:38:29.935Z",
+      "title": "1995 Toyota Land Cruiser Prado SX",
+      "year": 1995,
+      "make": "Toyota",
+      "model": "Land Cruiser Prado SX",
+      "price": 0,
+      "location": "Ontario, CA",
+      "source": "JDM Sport Classics",
+      "source_url": "https://jdmsportclassics.com/inventory/1995-toyota-land-cruiser-prado-sx-7/",
+      "listed_at": "2026-08-29T04:13:00Z",
+      "first_seen": "2026-08-29T04:13:00Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2017 Acura NSX Every Carbon Exterior Option! Ceramic Brakes! Huge 209k Original",
+      "year": 2017,
+      "make": "Acura",
+      "model": "NSX Every Carbon Exterior Option! Ceramic Brakes! Huge 209k Original",
+      "chassis": "NC1",
+      "trim": "",
+      "price": 154813,
+      "mileage": 13791,
+      "transmission": "9-Speed Double Clutch",
+      "engine": "3.5L Electric and Gas Hybrid V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Nouvelle Blue Pearl",
+      "location": "Tampa, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/820058615820?_skw=Acura+NSX&hash=itembeef4d700c:g:ztcAAeSwXm5qg3rj",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-08-28T15:52:12.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-28T15:52:12.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 154813
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S210",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:13.348Z",
+      "title": "1999 Daihatsu Hijet",
+      "year": 1999,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 9500,
+      "location": "FL",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/jptradeusa-1999-daihatsu-hijet-5248/",
+      "listed_at": "2026-08-27T03:36:16.117Z",
+      "first_seen": "2026-08-27T03:36:16.117Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 9500
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "1991 Mitsubishi 3000GT 3000GT VR-4 All wheel drive and steering",
+      "year": 1991,
+      "make": "Mitsubishi",
+      "model": "3000GT 3000GT VR-4 All wheel drive and steering",
+      "chassis": "Z16A",
+      "trim": "",
+      "price": 29888,
+      "mileage": 24168,
+      "transmission": "Manual",
+      "engine": "3.0L twin turbo V-6",
+      "drivetrain": "AWD",
+      "color": "Red",
+      "location": "Long Beach, New York",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/298607306261?_skw=Mitsubishi+3000GT&hash=item458661e615:g:TuUAAeSwo8JqiHOx",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-08-21T17:04:38.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-21T17:04:38.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T10:39:01.539Z",
+          "p": 29888
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "JZX100",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:18.428Z",
+      "title": "1998 Toyota Mark II",
+      "year": 1998,
+      "make": "Toyota",
+      "model": "Mark II",
+      "price": 12595,
+      "location": "TX",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1998-toyota-mark-2-15119521218671/",
+      "listed_at": "2026-08-19T01:05:30.148Z",
+      "first_seen": "2026-08-19T01:05:30.148Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T04:46:21.539Z",
+          "p": 12595
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:18.428Z",
+      "title": "1998 Subaru Legacy",
+      "year": 1998,
+      "make": "Subaru",
+      "model": "Legacy",
+      "price": 11495,
+      "location": "TX",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1998-subaru-legacy-7845125423215/",
+      "listed_at": "2026-08-19T01:05:30.148Z",
+      "first_seen": "2026-08-19T01:05:30.148Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T11:01:39.920Z",
+          "p": 11495
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "AP1",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:18.428Z",
+      "title": "1999 Honda S2000",
+      "year": 1999,
+      "make": "Honda",
+      "model": "S2000",
+      "price": 29495,
+      "location": "TX",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1999-honda-s2000-7798942007407/",
+      "listed_at": "2026-08-19T01:05:30.148Z",
+      "first_seen": "2026-08-19T01:05:30.148Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 29495
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:18.428Z",
+      "title": "1995 Toyota Crown",
+      "year": 1995,
+      "make": "Toyota",
+      "model": "Crown",
+      "price": 9995,
+      "location": "TX",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1995-toyota-crown-7790682964079/",
+      "listed_at": "2026-08-19T01:05:30.148Z",
+      "first_seen": "2026-08-19T01:05:30.148Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T11:01:39.920Z",
+          "p": 9995
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:18.624Z",
+      "title": "1996 Toyota Crown",
+      "year": 1996,
+      "make": "Toyota",
+      "model": "Crown",
+      "price": 11495,
+      "location": "TX",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1996-toyota-crown-7794765234287/",
+      "listed_at": "2026-08-19T01:05:30.148Z",
+      "first_seen": "2026-08-19T01:05:30.148Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T12:38:29.953Z",
+          "p": 11495
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:18.816Z",
+      "title": "1998 Toyota Crown",
+      "year": 1998,
+      "make": "Toyota",
+      "model": "Crown",
+      "price": 12395,
+      "location": "TX",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1998-toyota-crown-15429844566127/",
+      "listed_at": "2026-08-19T01:05:30.148Z",
+      "first_seen": "2026-08-19T01:05:30.148Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T15:31:59.843Z",
+          "p": 12395
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S110",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:19.008Z",
+      "title": "1998 Daihatsu Hijet",
+      "year": 1998,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 4391,
+      "location": "WI",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/minikeitrucks-1998-daihatsu-hijet-30831/",
+      "listed_at": "2026-08-19T00:56:05.978Z",
+      "first_seen": "2026-08-19T00:56:05.978Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T20:25:17.857Z",
+          "p": 4391
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "HA7",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:19.191Z",
+      "title": "2000 Honda Acty",
+      "year": 2000,
+      "make": "Honda",
+      "model": "Acty",
+      "price": 6802,
+      "location": "WI",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/minikeitrucks-2000-honda-acty-26195/",
+      "listed_at": "2026-08-19T00:56:05.978Z",
+      "first_seen": "2026-08-19T00:56:05.978Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T20:29:25.258Z",
+          "p": 6802
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "title": "2025 Acura Integra A-SPEC TECH",
+      "year": 2025,
+      "make": "Acura",
+      "model": "Integra A-SPEC TECH",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 23999,
+      "mileage": 9794,
+      "transmission": "Automatic",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "FWD",
+      "color": "Gray",
+      "location": "Hollywood, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/318698991333?_skw=Acura+Integra&hash=item4a33f0aee5:g:eZsAAeSwt99qd4sD",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-07T12:36:48.884Z",
+      "listed_at": "2026-08-08T20:03:24.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-08T20:03:24.000Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T10:39:01.539Z",
+          "p": 23999
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
+    {
+      "chassis": "S110",
+      "trim": "",
+      "mileage": 0,
+      "transmission": "",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "ends_at": "",
+      "live": true,
+      "rhd": true,
+      "scraped_date": "2026-09-07T12:37:21.477Z",
+      "title": "1997 Daihatsu Hijet",
+      "year": 1997,
+      "make": "Daihatsu",
+      "model": "Hijet",
+      "price": 9400,
+      "location": "NC",
+      "source": "JDM Buy & Sell",
+      "source_url": "https://www.jdmbuysell.com/ad/mayberryminitrucks-1997-daihatsu-hijet-s110p-116583/",
+      "listed_at": "2026-07-25T17:37:54.682Z",
+      "first_seen": "2026-07-25T17:37:54.682Z",
+      "last_seen": "2026-09-07T12:38:29.953Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T20:25:17.857Z",
+          "p": 9400
+        }
+      ],
+      "departed_at": "2026-09-07T21:34:24.836Z"
+    },
     {
       "chassis": "HA4",
       "trim": "",
@@ -90932,2739 +93797,6 @@
         }
       ],
       "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "title": "2020 Toyota Supra 3",
-      "year": 2020,
-      "make": "Toyota",
-      "model": "Supra 3",
-      "chassis": "A90",
-      "trim": "",
-      "price": 56990,
-      "mileage": 18461,
-      "transmission": "8-Speed Automatic",
-      "engine": "3.0L Gas I6",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Renaissance Red",
-      "location": "New Albany, Indiana",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/287546533057?_skw=Toyota+Supra&hash=item42f31be4c1:g:BJUAAeSwrhNqaZEc",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-02T04:37:09.580Z",
-      "listed_at": "2026-08-26T05:37:09.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-26T05:37:09.000Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-08-26T07:11:28.190Z",
-          "p": 56990
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "S15",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:38:35.451Z",
-      "title": "2002 Nissan Silvia",
-      "year": 2002,
-      "make": "Nissan",
-      "model": "Silvia",
-      "price": 0,
-      "location": "WA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/raregarageauto-2002-nissan-silvia-12434534/",
-      "listed_at": "2026-08-25T02:37:08.592Z",
-      "first_seen": "2026-08-25T02:37:08.592Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "JA11",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:48.992Z",
-      "title": "1994 Suzuki Jimny",
-      "year": 1994,
-      "make": "Suzuki",
-      "model": "Jimny",
-      "price": 9499,
-      "location": "NH",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/granitestateimports-1994-suzuki-jimny-1994-suzuki-jimny-sierra-49k-miles/",
-      "listed_at": "2026-08-22T12:30:15.467Z",
-      "first_seen": "2026-08-22T12:30:15.467Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 9499
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "title": "2024 Acura Integra",
-      "year": 2024,
-      "make": "Acura",
-      "model": "Integra",
-      "chassis": "DE4",
-      "trim": "",
-      "price": 29995,
-      "mileage": 47294,
-      "transmission": "Automatic",
-      "engine": "1.5L Gas I4",
-      "drivetrain": "Front Wheel Drive",
-      "color": "Majestic Black Pearl",
-      "location": "Palos Hills, Illinois",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/407159636634?_skw=Acura+Integra&hash=item5ecc9b029a:g:BrsAAeSw1B5qIplC",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-02T04:37:09.580Z",
-      "listed_at": "2026-08-20T23:29:09.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-20T23:29:09.000Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-08-21T01:59:49.193Z",
-          "p": 29995
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "JZX100",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:52.661Z",
-      "title": "2000 Toyota Mark II",
-      "year": 2000,
-      "make": "Toyota",
-      "model": "Mark II",
-      "price": 13495,
-      "location": "TX",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-2000-toyota-mark-2-14920811446383/",
-      "listed_at": "2026-08-19T01:05:30.148Z",
-      "first_seen": "2026-08-19T01:05:30.148Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 13495
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "S210",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:52.661Z",
-      "title": "1999 Daihatsu Hijet",
-      "year": 1999,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 9795,
-      "location": "TX",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1999-daihatsu-hijet-15398954336367/",
-      "listed_at": "2026-08-19T01:05:30.148Z",
-      "first_seen": "2026-08-19T01:05:30.148Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-02T04:39:50.769Z",
-          "p": 9795
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:52.661Z",
-      "title": "1998 Subaru Legacy",
-      "year": 1998,
-      "make": "Subaru",
-      "model": "Legacy",
-      "price": 11495,
-      "location": "TX",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1998-subaru-legacy-7845125423215/",
-      "listed_at": "2026-08-19T01:05:30.148Z",
-      "first_seen": "2026-08-19T01:05:30.148Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 11495
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:52.984Z",
-      "title": "1996 Subaru Legacy",
-      "year": 1996,
-      "make": "Subaru",
-      "model": "Legacy",
-      "price": 10495,
-      "location": "TX",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1996-subaru-legacy-15025414111343/",
-      "listed_at": "2026-08-19T01:05:30.148Z",
-      "first_seen": "2026-08-19T01:05:30.148Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T16:44:33.719Z",
-          "p": 10495
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "JZX90",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:52.984Z",
-      "title": "1996 Toyota Mark II",
-      "year": 1996,
-      "make": "Toyota",
-      "model": "Mark II",
-      "price": 12495,
-      "location": "TX",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1996-toyota-mark-2-15429844729967/",
-      "listed_at": "2026-08-19T01:05:30.148Z",
-      "first_seen": "2026-08-19T01:05:30.148Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-02T04:39:50.769Z",
-          "p": 12495
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:53.276Z",
-      "title": "2000 Toyota Crown",
-      "year": 2000,
-      "make": "Toyota",
-      "model": "Crown",
-      "price": 13995,
-      "location": "TX",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-2000-toyota-crown-8002940665967/",
-      "listed_at": "2026-08-19T01:05:30.148Z",
-      "first_seen": "2026-08-19T01:05:30.148Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 13995
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:53.276Z",
-      "title": "1996 Subaru Legacy",
-      "year": 1996,
-      "make": "Subaru",
-      "model": "Legacy",
-      "price": 11795,
-      "location": "TX",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1996-subaru-legacy-7790683062383/",
-      "listed_at": "2026-08-19T01:05:30.148Z",
-      "first_seen": "2026-08-19T01:05:30.148Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 11795
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:53.276Z",
-      "title": "1996 Subaru Legacy",
-      "year": 1996,
-      "make": "Subaru",
-      "model": "Legacy",
-      "price": 14995,
-      "location": "TX",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1996-subaru-legacy-7794765037679/",
-      "listed_at": "2026-08-19T01:05:30.148Z",
-      "first_seen": "2026-08-19T01:05:30.148Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-02T04:39:50.769Z",
-          "p": 14995
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:53.350Z",
-      "title": "1998 Subaru Sambar",
-      "year": 1998,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 5756,
-      "location": "WI",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/minikeitrucks-1998-subaru-sambar-34828/",
-      "listed_at": "2026-08-19T00:56:05.978Z",
-      "first_seen": "2026-08-19T00:56:05.978Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 5756
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:53.350Z",
-      "title": "1993 Subaru Sambar",
-      "year": 1993,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 3688,
-      "location": "WI",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/minikeitrucks-1993-subaru-sambar-32115/",
-      "listed_at": "2026-08-19T00:56:05.978Z",
-      "first_seen": "2026-08-19T00:56:05.978Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-02T04:39:50.769Z",
-          "p": 3688
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:53.350Z",
-      "title": "1996 Subaru Sambar",
-      "year": 1996,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 8519,
-      "location": "WI",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/minikeitrucks-1996-subaru-sambar-24693/",
-      "listed_at": "2026-08-19T00:56:05.978Z",
-      "first_seen": "2026-08-19T00:56:05.978Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-02T04:39:50.769Z",
-          "p": 8519
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "TT2",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:53.350Z",
-      "title": "2000 Subaru Sambar",
-      "year": 2000,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 4277,
-      "location": "WI",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/minikeitrucks-2000-subaru-sambar-33919/",
-      "listed_at": "2026-08-19T00:56:05.978Z",
-      "first_seen": "2026-08-19T00:56:05.978Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T16:44:33.719Z",
-          "p": 4277
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "HA7",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:53.350Z",
-      "title": "2000 Honda Acty",
-      "year": 2000,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4704,
-      "location": "WI",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/minikeitrucks-2000-honda-acty-31032/",
-      "listed_at": "2026-08-19T00:56:05.978Z",
-      "first_seen": "2026-08-19T00:56:05.978Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 4704
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:53.591Z",
-      "title": "1999 Honda Acty",
-      "year": 1999,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4038,
-      "location": "WI",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/minikeitrucks-1999-honda-acty-32313/",
-      "listed_at": "2026-08-19T00:56:05.978Z",
-      "first_seen": "2026-08-19T00:56:05.978Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-02T04:39:50.769Z",
-          "p": 4038
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:37:53.592Z",
-      "title": "1998 Honda Acty",
-      "year": 1998,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4724,
-      "location": "WI",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/minikeitrucks-1998-honda-acty-35103/",
-      "listed_at": "2026-08-19T00:56:05.978Z",
-      "first_seen": "2026-08-19T00:56:05.978Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-02T04:39:50.769Z",
-          "p": 4724
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "AP1",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:38:28.664Z",
-      "title": "1999 Honda S2000",
-      "year": 1999,
-      "make": "Honda",
-      "model": "S2000",
-      "price": 32999,
-      "location": "PA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/fedlegalimports-1999-honda-s2000-37646/",
-      "listed_at": "2026-06-01T19:52:19.431Z",
-      "first_seen": "2026-06-01T19:52:19.431Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T16:44:33.719Z",
-          "p": 32999
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "DC2",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:38:28.664Z",
-      "title": "2001 Honda Integra",
-      "year": 2001,
-      "make": "Honda",
-      "model": "Integra",
-      "price": 0,
-      "location": "PA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/fedlegalimports-2001-honda-integra-37353/",
-      "listed_at": "2026-06-01T19:52:19.431Z",
-      "first_seen": "2026-06-01T19:52:19.431Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "R34",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:38:29.004Z",
-      "title": "2000 Nissan Skyline",
-      "year": 2000,
-      "make": "Nissan",
-      "model": "Skyline",
-      "price": 65999,
-      "location": "PA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/fedlegalimports-2000-nissan-skyline-37971/",
-      "listed_at": "2026-06-01T19:52:19.431Z",
-      "first_seen": "2026-06-01T19:52:19.431Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 65999
-        }
-      ],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "UZJ100",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-02T04:38:29.377Z",
-      "title": "1999 Toyota Land Cruiser",
-      "year": 1999,
-      "make": "Toyota",
-      "model": "Land Cruiser",
-      "price": 0,
-      "location": "MI",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/jdmsportclassics-1999-toyota-land-cruiser-60995/",
-      "listed_at": "2026-05-12T20:19:54.530Z",
-      "first_seen": "2026-05-12T20:19:54.530Z",
-      "last_seen": "2026-09-02T04:39:50.769Z",
-      "price_history": [],
-      "departed_at": "2026-09-02T11:22:53.107Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:47.170Z",
-      "title": "1996 Daihatsu Hijet",
-      "year": 1996,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 7700,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1996-daihatsu-hijet-1996-daihatsu-hijet-dump-88/",
-      "listed_at": "2026-09-01T04:35:30.251Z",
-      "first_seen": "2026-09-01T04:35:30.251Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T05:13:30.533Z",
-          "p": 7700
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "2022 Mazda MX-5 Miata CLUB",
-      "year": 2022,
-      "make": "Mazda",
-      "model": "MX-5 Miata CLUB",
-      "chassis": "ND",
-      "trim": "",
-      "price": 34900,
-      "mileage": 15200,
-      "transmission": "Manual",
-      "engine": "2.0L Gas I4",
-      "drivetrain": "RWD",
-      "color": "White",
-      "location": "Boise, Idaho",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/168650481548?_skw=Mazda+Miata&hash=item27445a1f8c:g:CY8AAeSwtFxqk8~o",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-30T14:27:12.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-30T14:27:12.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-30T16:44:14.342Z",
-          "p": 36900
-        },
-        {
-          "t": "2026-08-31T22:54:17.662Z",
-          "p": 34900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:47.413Z",
-      "title": "1997 Subaru Sambar",
-      "year": 1997,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 5950,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-subaru-sambar-1997-subaru-sambar-van-kv4-170775/",
-      "listed_at": "2026-08-30T05:46:16.380Z",
-      "first_seen": "2026-08-30T05:46:16.380Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 5950
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:47.413Z",
-      "title": "1999 Honda Acty",
-      "year": 1999,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4490,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-honda-acty-1999-honda-acty-van-hh6-1000377/",
-      "listed_at": "2026-08-30T05:46:16.380Z",
-      "first_seen": "2026-08-30T05:46:16.380Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-30T11:58:03.332Z",
-          "p": 4490
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S210",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:47.705Z",
-      "title": "2000 Daihatsu Hijet",
-      "year": 2000,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 4310,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-daihatsu-hijet-2000-daihatsu-hijet-cargo-hijet-van-s210v-0019818/",
-      "listed_at": "2026-08-30T05:46:06.160Z",
-      "first_seen": "2026-08-30T05:46:06.160Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-30T16:44:14.342Z",
-          "p": 4310
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA7",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:47.992Z",
-      "title": "2000 Honda Acty",
-      "year": 2000,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 6350,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-honda-acty-2000-honda-acty-truck-ha7-1101607/",
-      "listed_at": "2026-08-30T05:45:48.864Z",
-      "first_seen": "2026-08-30T05:45:48.864Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-30T11:58:03.332Z",
-          "p": 6350
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S210",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:47.992Z",
-      "title": "2000 Daihatsu Hijet",
-      "year": 2000,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 4060,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-daihatsu-hijet-2000-daihatsu-hijet-truck-s200p-0047562/",
-      "listed_at": "2026-08-30T05:45:48.864Z",
-      "first_seen": "2026-08-30T05:45:48.864Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-30T11:58:03.332Z",
-          "p": 4060
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:48.563Z",
-      "title": "1992 Honda Acty",
-      "year": 1992,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 6614,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1992-honda-acty-1992-honda-acty-sdx-mini-truck-2926/",
-      "listed_at": "2026-08-29T18:25:16.126Z",
-      "first_seen": "2026-08-29T18:25:16.126Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 6614
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "TT2",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:48.563Z",
-      "title": "2000 Subaru Sambar",
-      "year": 2000,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 15900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-subaru-sambar-b23c5933ad3d/",
-      "listed_at": "2026-08-29T18:25:16.126Z",
-      "first_seen": "2026-08-29T18:25:16.126Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 15900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S83",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:48.564Z",
-      "title": "1989 Daihatsu Hijet",
-      "year": 1989,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 5490,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1989-daihatsu-hijet-1989-daihatsu-hijet-truck-jumbo-s80p-137433/",
-      "listed_at": "2026-08-29T18:25:16.126Z",
-      "first_seen": "2026-08-29T18:25:16.126Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-30T16:44:14.342Z",
-          "p": 5490
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S210",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:48.564Z",
-      "title": "1999 Daihatsu Hijet",
-      "year": 1999,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 10900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-daihatsu-hijet-d75f6b02fa31/",
-      "listed_at": "2026-08-29T18:25:16.126Z",
-      "first_seen": "2026-08-29T18:25:16.126Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 10900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:49.679Z",
-      "title": "1995 Honda Acty",
-      "year": 1995,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 6380,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1995-honda-acty-1995-honda-acty-truck-ha4-2222363/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 6380
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "TT2",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:49.680Z",
-      "title": "1999 Subaru Sambar",
-      "year": 1999,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 18900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-subaru-sambar-4f1df5dcf57d/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T05:13:30.533Z",
-          "p": 18900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "GC8",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:49.680Z",
-      "title": "2000 Subaru Impreza",
-      "year": 2000,
-      "make": "Subaru",
-      "model": "Impreza",
-      "price": 27995,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-subaru-impreza-2dfd8d796431/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T16:44:33.719Z",
-          "p": 27995
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:49.680Z",
-      "title": "1999 Honda Acty",
-      "year": 1999,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 9134,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-honda-acty-1999-honda-acty-mini-van-2509/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-29T20:58:53.018Z",
-          "p": 9134
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.038Z",
-      "title": "1997 Honda Acty",
-      "year": 1997,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 8500,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-honda-acty-1997-honda-acty-attack-4wd/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-31T22:54:17.662Z",
-          "p": 8500
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "JA11",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.038Z",
-      "title": "1995 Suzuki Jimny",
-      "year": 1995,
-      "make": "Suzuki",
-      "model": "Jimny",
-      "price": 10049,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1995-suzuki-jimny-1995-suzuki-jimny-31x2hz/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 10049
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.038Z",
-      "title": "1998 Subaru Sambar",
-      "year": 1998,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 4000,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1998-subaru-sambar-1998-subaru-sambar-4wd-kei-truck-stk0545/",
-      "listed_at": "2026-08-29T18:25:03.357Z",
-      "first_seen": "2026-08-29T18:25:03.357Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-31T13:56:57.793Z",
-          "p": 4000
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.039Z",
-      "title": "1997 Daihatsu Hijet",
-      "year": 1997,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 6615,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-daihatsu-hijet-1997-daihatsu-hijet-225/",
-      "listed_at": "2026-08-29T18:25:03.357Z",
-      "first_seen": "2026-08-29T18:25:03.357Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-31T13:56:57.793Z",
-          "p": 6615
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.191Z",
-      "title": "1994 Honda Acty",
-      "year": 1994,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4120,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-honda-acty-1994-honda-acty-truck-ha3-7000050/",
-      "listed_at": "2026-08-29T18:25:03.357Z",
-      "first_seen": "2026-08-29T18:25:03.357Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 4120
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S210",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.367Z",
-      "title": "1999 Daihatsu Hijet",
-      "year": 1999,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 4590,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-daihatsu-hijet-1999-daihatsu-hijet-truck-s200p-0018072/",
-      "listed_at": "2026-08-29T18:25:03.357Z",
-      "first_seen": "2026-08-29T18:25:03.357Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T05:13:30.533Z",
-          "p": 4590
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.590Z",
-      "title": "1994 Daihatsu Hijet",
-      "year": 1994,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 4350,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-daihatsu-hijet-1994-daihatsu-hijet-truck-s110p-007782/",
-      "listed_at": "2026-08-29T18:25:03.357Z",
-      "first_seen": "2026-08-29T18:25:03.357Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 4350
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "JB23",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.590Z",
-      "title": "1998 Suzuki Jimny",
-      "year": 1998,
-      "make": "Suzuki",
-      "model": "Jimny",
-      "price": 8817,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1998-suzuki-jimny-1998-suzuki-jimny-wide-397nr5/",
-      "listed_at": "2026-08-29T18:25:03.357Z",
-      "first_seen": "2026-08-29T18:25:03.357Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T05:13:30.533Z",
-          "p": 8817
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "TT2",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.590Z",
-      "title": "1999 Subaru Sambar",
-      "year": 1999,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 13900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-subaru-sambar-b38f0db4fa3c/",
-      "listed_at": "2026-08-29T18:25:03.357Z",
-      "first_seen": "2026-08-29T18:25:03.357Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-31T05:40:48.586Z",
-          "p": 13900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.764Z",
-      "title": "1993 Honda Acty",
-      "year": 1993,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4284,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1993-honda-acty-1993-honda-acty-t8lrct/",
-      "listed_at": "2026-08-29T18:25:03.357Z",
-      "first_seen": "2026-08-29T18:25:03.357Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 4284
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.764Z",
-      "title": "1995 Honda Acty",
-      "year": 1995,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4050,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1995-honda-acty-1995-honda-acty-truck-ha3-2210676/",
-      "listed_at": "2026-08-29T18:24:56.844Z",
-      "first_seen": "2026-08-29T18:24:56.844Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-31T22:54:17.662Z",
-          "p": 4050
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.765Z",
-      "title": "1999 Honda Acty",
-      "year": 1999,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 19900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-honda-acty-9a347e0f42b9/",
-      "listed_at": "2026-08-29T18:24:56.844Z",
-      "first_seen": "2026-08-29T18:24:56.844Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-31T05:40:48.586Z",
-          "p": 19900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.765Z",
-      "title": "1993 Subaru Sambar",
-      "year": 1993,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 6650,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1993-subaru-sambar-1993-subaru-sambar-truck-ks4-164608/",
-      "listed_at": "2026-08-29T18:24:56.844Z",
-      "first_seen": "2026-08-29T18:24:56.844Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 6650
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S210",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.939Z",
-      "title": "2000 Daihatsu Hijet",
-      "year": 2000,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 20900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-daihatsu-hijet-5c7a976e8e48/",
-      "listed_at": "2026-08-29T18:24:56.844Z",
-      "first_seen": "2026-08-29T18:24:56.844Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T16:44:33.719Z",
-          "p": 20900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:50.939Z",
-      "title": "1998 Daihatsu Hijet",
-      "year": 1998,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 24900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1998-daihatsu-hijet-1eac8311212b/",
-      "listed_at": "2026-08-29T18:24:56.844Z",
-      "first_seen": "2026-08-29T18:24:56.844Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 24900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:51.176Z",
-      "title": "1998 Honda Acty",
-      "year": 1998,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4490,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1998-honda-acty-1998-honda-acty-truck-ha4-2411206/",
-      "listed_at": "2026-08-29T18:24:56.844Z",
-      "first_seen": "2026-08-29T18:24:56.844Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-30T16:44:14.342Z",
-          "p": 4490
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "TT2",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:51.352Z",
-      "title": "1999 Subaru Sambar",
-      "year": 1999,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 12300,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-subaru-sambar-45d468341074/",
-      "listed_at": "2026-08-29T18:24:56.844Z",
-      "first_seen": "2026-08-29T18:24:56.844Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-30T21:09:48.707Z",
-          "p": 12300
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:51.515Z",
-      "title": "1997 Honda Acty",
-      "year": 1997,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4490,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-honda-acty-1997-honda-acty-truck-ha4-2336533/",
-      "listed_at": "2026-08-29T18:24:56.844Z",
-      "first_seen": "2026-08-29T18:24:56.844Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T16:44:33.719Z",
-          "p": 4490
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:51.748Z",
-      "title": "1999 Honda Acty",
-      "year": 1999,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 6614,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-honda-acty-1999-honda-acty-mini-van-2793/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 6614
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "TT2",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:51.748Z",
-      "title": "1999 Subaru Sambar",
-      "year": 1999,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 12900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-subaru-sambar-b8579dbabfb8/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 12900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:51.748Z",
-      "title": "1994 Daihatsu Hijet",
-      "year": 1994,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 13900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-daihatsu-hijet-1994-daihatsu-hi-jet-4wd-2hi-4hi-5mt-like-new/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T16:44:33.719Z",
-          "p": 13900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "GC8",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:51.749Z",
-      "title": "2000 Subaru Impreza",
-      "year": 2000,
-      "make": "Subaru",
-      "model": "Impreza",
-      "price": 18995,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-subaru-impreza-2000-subaru-impreza-wrx-awd-turbo-intercooled-5mt/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T05:13:30.533Z",
-          "p": 18995
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:51.749Z",
-      "title": "1994 Daihatsu Hijet",
-      "year": 1994,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 15900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-daihatsu-hijet-2bf24df0d36e/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 15900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:51.749Z",
-      "title": "1997 Subaru Sambar",
-      "year": 1997,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 4350,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-subaru-sambar-1997-subaru-sambar-truck-ks4-326582/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T16:44:33.719Z",
-          "p": 4350
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S210",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:52.067Z",
-      "title": "1999 Daihatsu Hijet",
-      "year": 1999,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 9764,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-daihatsu-hijet-1999-daihatsu-hijet-2904/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 9764
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:52.067Z",
-      "title": "1998 Daihatsu Hijet",
-      "year": 1998,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 12900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1998-daihatsu-hijet-5b05c22d0e0a/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 12900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:04:19.892Z",
-      "title": "1999 Honda Acty",
-      "year": 1999,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 8900,
-      "location": "AR",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/mudhogminitrucks-1999-honda-acty-501655/",
-      "listed_at": "2026-08-29T13:57:04.169Z",
-      "first_seen": "2026-08-29T13:57:04.169Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 8900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "2017 Nissan GT-R Premium",
-      "year": 2017,
-      "make": "Nissan",
-      "model": "GT-R Premium",
-      "chassis": "R35",
-      "trim": "",
-      "price": 106990,
-      "mileage": 64000,
-      "transmission": "6-Speed Automatic",
-      "engine": "3.8L Gas V6",
-      "drivetrain": "All Wheel Drive",
-      "color": "Pearl White",
-      "location": "Orlando, Florida",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/168644733339?_skw=Nissan+GT-R&hash=item274402699b:g:hygAAeSweKtqJ28F",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-28T01:51:37.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-28T01:51:37.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-28T11:28:33.556Z",
-          "p": 106990
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "2017 Nissan GT-R Premium",
-      "year": 2017,
-      "make": "Nissan",
-      "model": "GT-R Premium",
-      "chassis": "R35",
-      "trim": "",
-      "price": 144990,
-      "mileage": 21500,
-      "transmission": "6-Speed Automatic",
-      "engine": "3.8L Gas V6",
-      "drivetrain": "All Wheel Drive",
-      "color": "Jet Black Pearl",
-      "location": "Orlando, Florida",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/168644700457?_skw=Nissan+GT-R&hash=item274401e929:g:Y9EAAeSwyTVqkOVe",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-28T01:36:33.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-28T01:36:33.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-28T11:28:33.556Z",
-          "p": 144990
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "2020 Subaru WRX STI",
-      "year": 2020,
-      "make": "Subaru",
-      "model": "WRX STI",
-      "chassis": "VAB",
-      "trim": "",
-      "price": 31212,
-      "mileage": 62068,
-      "transmission": "6-Speed Manual",
-      "engine": "2.5L Gas H4",
-      "drivetrain": "All Wheel Drive",
-      "color": "Crystal White Pearl",
-      "location": "Cary, Illinois",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/168644213265?_skw=Subaru+WRX+STI&hash=item2743fa7a11:g:y1wAAeSwpyFqg3tD",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-27T21:27:26.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-27T21:27:26.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-27T22:18:55.131Z",
-          "p": 33212
-        },
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 31212
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:53.095Z",
-      "title": "1998 Mitsubishi Pajero",
-      "year": 1998,
-      "make": "Mitsubishi",
-      "model": "Pajero",
-      "price": 13000,
-      "location": "FL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/jptradeusa-1998-mitsubishi-pajero-5540/",
-      "listed_at": "2026-08-27T03:36:16.117Z",
-      "first_seen": "2026-08-27T03:36:16.117Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-27T09:53:17.730Z",
-          "p": 13000
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:53.095Z",
-      "title": "2001 Toyota Crown",
-      "year": 2001,
-      "make": "Toyota",
-      "model": "Crown",
-      "price": 15000,
-      "location": "FL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/jptradeusa-2001-toyota-crown-5299/",
-      "listed_at": "2026-08-27T03:36:16.117Z",
-      "first_seen": "2026-08-27T03:36:16.117Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-27T09:53:17.730Z",
-          "p": 15000
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "2020 Nissan GT-R Premium",
-      "year": 2020,
-      "make": "Nissan",
-      "model": "GT-R Premium",
-      "chassis": "R35",
-      "trim": "",
-      "price": 169990,
-      "mileage": 17827,
-      "transmission": "6-Speed Automatic",
-      "engine": "3.8L Gas V6",
-      "drivetrain": "All Wheel Drive",
-      "color": "Pearl White",
-      "location": "New Albany, Indiana",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/287546420068?_skw=Nissan+GT-R&hash=item42f31a2b64:g:YLYAAeSwguZqjmc3",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-26T04:12:43.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-26T04:12:43.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-26T07:11:28.190Z",
-          "p": 169990
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "2018 Subaru WRX STI",
-      "year": 2018,
-      "make": "Subaru",
-      "model": "WRX STI",
-      "chassis": "VAB",
-      "trim": "",
-      "price": 15150,
-      "mileage": 126517,
-      "transmission": "Manual",
-      "engine": "2.5L Gas H4",
-      "drivetrain": "All Wheel Drive",
-      "color": "Blue",
-      "location": "Jacksonville, Florida",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/178441101947?_skw=Subaru+WRX+STI&hash=item298beb227b:g:bCcAAeSwi55qh7yw",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-26T03:25:46.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-26T03:25:46.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-26T07:11:28.190Z",
-          "p": 15150
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "1971 Toyota Land Cruiser FJ-40",
-      "year": 1971,
-      "make": "Toyota",
-      "model": "Land Cruiser FJ-40",
-      "chassis": "FJ40",
-      "trim": "",
-      "price": 19900,
-      "mileage": 8280,
-      "transmission": "3-Speed Manual",
-      "engine": "3.9L I6",
-      "drivetrain": "4X4",
-      "color": "Capri Blue",
-      "location": "Grand Rapids, Michigan",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/147527502040?_skw=Toyota+Land+Cruiser&hash=item22595308d8:g:irIAAeSwfVNqYr9F",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-26T02:09:23.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-26T02:09:23.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-26T07:11:28.190Z",
-          "p": 19900
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:53.971Z",
-      "title": "1999 Subaru Legacy",
-      "year": 1999,
-      "make": "Subaru",
-      "model": "Legacy",
-      "price": 16500,
-      "location": "FL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/1999-subaru-legacy-bh-gt-b-manual-37k-miles-mt9gdbbu/",
-      "listed_at": "2026-08-26T02:06:28.580Z",
-      "first_seen": "2026-08-26T02:06:28.580Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 16500
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "26k-Mile 2002 Honda S2000",
-      "year": 2002,
-      "make": "Honda",
-      "model": "S2000",
-      "chassis": "AP1",
-      "trim": "",
-      "price": 33500,
-      "mileage": 26000,
-      "transmission": "Manual",
-      "engine": "2.0-liter VTEC inline-four",
-      "drivetrain": "",
-      "color": "Sebring Silver Metallic",
-      "rhd": false,
-      "location": "United States",
-      "source": "Bring a Trailer",
-      "source_url": "https://bringatrailer.com/listing/2002-honda-s2000-247/",
-      "ends_at": "2026-09-01T20:51:20.000Z",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:25.608Z",
-      "first_seen": "2026-08-26T02:00:02.619Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-26T02:00:02.619Z",
-          "p": 20000
-        },
-        {
-          "t": "2026-08-26T13:19:39.895Z",
-          "p": 20500
-        },
-        {
-          "t": "2026-08-28T22:24:43.444Z",
-          "p": 21000
-        },
-        {
-          "t": "2026-08-30T11:58:03.332Z",
-          "p": 24000
-        },
-        {
-          "t": "2026-08-30T16:44:14.342Z",
-          "p": 24500
-        },
-        {
-          "t": "2026-09-01T16:44:33.719Z",
-          "p": 24750
-        },
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 33500
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "1990 Toyota Land Cruiser FJ62",
-      "year": 1990,
-      "make": "Toyota",
-      "model": "Land Cruiser FJ62",
-      "chassis": "FJ62",
-      "trim": "",
-      "price": 27250,
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "4.0L 3F-E inline-six",
-      "drivetrain": "",
-      "color": "Gray Metallic",
-      "rhd": false,
-      "location": "United States",
-      "source": "Bring a Trailer",
-      "source_url": "https://bringatrailer.com/listing/1990-toyota-land-cruiser-fj62-110/",
-      "ends_at": "2026-09-01T20:55:00.000Z",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:25.608Z",
-      "first_seen": "2026-08-26T02:00:02.619Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-26T02:00:02.619Z",
-          "p": 1990
-        },
-        {
-          "t": "2026-08-26T13:19:39.895Z",
-          "p": 5555
-        },
-        {
-          "t": "2026-08-26T20:06:14.227Z",
-          "p": 10000
-        },
-        {
-          "t": "2026-08-27T22:18:55.131Z",
-          "p": 25000
-        },
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 27250
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "1999 Nissan Skyline GT-R V-Spec",
-      "year": 1999,
-      "make": "Nissan",
-      "model": "Skyline GT-R V-Spec",
-      "chassis": "BNR34",
-      "trim": "",
-      "price": 130505,
-      "mileage": 0,
-      "transmission": "Manual",
-      "engine": "",
-      "drivetrain": "AWD",
-      "color": "",
-      "rhd": false,
-      "location": "United States",
-      "source": "Bring a Trailer",
-      "source_url": "https://bringatrailer.com/listing/1999-nissan-skyline-gt-r-88/",
-      "ends_at": "2026-09-01T20:57:00.000Z",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:25.608Z",
-      "first_seen": "2026-08-26T02:00:02.619Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-26T13:19:39.895Z",
-          "p": 89434
-        },
-        {
-          "t": "2026-08-26T20:06:14.227Z",
-          "p": 90534
-        },
-        {
-          "t": "2026-08-29T07:08:31.431Z",
-          "p": 92500
-        },
-        {
-          "t": "2026-08-30T05:28:27.306Z",
-          "p": 100000
-        },
-        {
-          "t": "2026-08-31T05:40:48.586Z",
-          "p": 104777
-        },
-        {
-          "t": "2026-09-01T05:13:30.533Z",
-          "p": 110000
-        },
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 114777
-        },
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 130505
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "1988 Toyota Supra",
-      "year": 1988,
-      "make": "Toyota",
-      "model": "Supra",
-      "chassis": "MA70",
-      "trim": "",
-      "price": 15400,
-      "mileage": 158245,
-      "transmission": "Automatic",
-      "engine": "3.0L Gas I6",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Dark Blue Metallic",
-      "location": "Grand Rapids, Michigan",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/147527454834?_skw=Toyota+Supra&hash=item2259525072:g:d5cAAeSwUFpqYBvY",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-26T01:42:10.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-26T01:42:10.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-26T02:00:02.619Z",
-          "p": 15400
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "2021 Subaru WRX STi",
-      "year": 2021,
-      "make": "Subaru",
-      "model": "WRX STi",
-      "chassis": "VAB",
-      "trim": "",
-      "price": 41990,
-      "mileage": 11067,
-      "transmission": "Close-Ratio 6-Speed Manual",
-      "engine": "2.5L Gas H4",
-      "drivetrain": "All Wheel Drive",
-      "color": "Crystal White Pearl",
-      "location": "New Albany, Indiana",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/287546192220?_skw=Subaru+WRX+STI&hash=item42f316b15c:g:dqgAAeSwRvdqhQiW",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-26T01:36:51.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-26T01:36:51.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-26T02:00:02.619Z",
-          "p": 41990
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "2001 Toyota Land Cruiser Sport Utility 4D",
-      "year": 2001,
-      "make": "Toyota",
-      "model": "Land Cruiser Sport Utility 4D",
-      "chassis": "UZJ100",
-      "trim": "",
-      "price": 11985,
-      "mileage": 280833,
-      "transmission": "Automatic",
-      "engine": "4.7L Gas V8",
-      "drivetrain": "All Wheel Drive",
-      "color": "Beige",
-      "location": "San Juan Capistrano, California",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/298615891627?_skw=Toyota+Land+Cruiser&hash=item4586e4e6ab:g:xpcAAeSwOzRpzqOb",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-25T22:58:20.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-25T22:58:20.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-26T02:00:02.619Z",
-          "p": 11985
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "1992 Nissan 300ZX",
-      "year": 1992,
-      "make": "Nissan",
-      "model": "300ZX",
-      "chassis": "Z32",
-      "trim": "",
-      "price": 20000,
-      "mileage": 35000,
-      "transmission": "Manual",
-      "engine": "3.0L Gas V6",
-      "drivetrain": "RWD",
-      "color": "Gray",
-      "location": "Mesa, Arizona",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/336761458301?_skw=Nissan+300ZX&hash=item4e688c0e7d:g:YdgAAeSwR-Fqe4k0",
-      "ends_at": "2026-09-01T21:30:22.000Z",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-25T21:30:22.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-25T21:30:22.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-26T02:00:02.619Z",
-          "p": 20000
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "JB23",
-      "trim": "",
-      "mileage": 49878,
-      "transmission": "6-Speed Manual",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:05:35.921Z",
-      "title": "2001 Suzuki Jimny Land Venture Turbo",
-      "year": 2001,
-      "make": "Suzuki",
-      "model": "Jimny Land Venture Turbo",
-      "price": 0,
-      "location": "Ontario, CA",
-      "source": "JDM Sport Classics",
-      "source_url": "https://jdmsportclassics.com/inventory/2001-suzuki-jimny-land-venture-turbo/",
-      "listed_at": "2026-08-25T09:31:00Z",
-      "first_seen": "2026-08-25T09:31:00Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "title": "2004 Mazda RX-8",
-      "year": 2004,
-      "make": "Mazda",
-      "model": "RX-8",
-      "chassis": "SE3P",
-      "trim": "",
-      "price": 2500,
-      "mileage": 151000,
-      "transmission": "Manual",
-      "engine": "1.3L Gas",
-      "drivetrain": "RWD",
-      "color": "Grey",
-      "location": "Pomona, California",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/147523530538?_skw=Mazda+RX-8&hash=item2259166f2a:g:v4sAAeSwW6dqi90M",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-01T21:03:26.552Z",
-      "listed_at": "2026-08-24T06:03:53.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-24T06:03:53.000Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-08-24T07:31:03.950Z",
-          "p": 2500
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:58.969Z",
-      "title": "2000 Toyota Crown",
-      "year": 2000,
-      "make": "Toyota",
-      "model": "Crown",
-      "price": 13795,
-      "location": "TX",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-2000-toyota-crown-15044801986671/",
-      "listed_at": "2026-08-19T01:05:30.148Z",
-      "first_seen": "2026-08-19T01:05:30.148Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 13795
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:59.173Z",
-      "title": "1994 Honda Acty",
-      "year": 1994,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 27995,
-      "location": "TX",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1994-honda-acty-7974672597103/",
-      "listed_at": "2026-08-19T01:05:30.148Z",
-      "first_seen": "2026-08-19T01:05:30.148Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T21:05:35.940Z",
-          "p": 27995
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-01T21:03:59.173Z",
-      "title": "1997 Nissan Cima",
-      "year": 1997,
-      "make": "Nissan",
-      "model": "Cima",
-      "price": 11495,
-      "location": "TX",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/texasjdm-1997-nissan-cima-7903919669359/",
-      "listed_at": "2026-08-19T01:05:30.148Z",
-      "first_seen": "2026-08-19T01:05:30.148Z",
-      "last_seen": "2026-09-01T21:05:35.940Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 11495
-        }
-      ],
-      "departed_at": "2026-09-02T04:39:50.769Z"
     }
   ]
 }
