@@ -1,6 +1,198 @@
 {
-  "updated": "2026-09-11T11:24:58.676Z",
+  "updated": "2026-09-11T16:30:38.482Z",
   "listings": [
+    {
+      "title": "1991 Honda Prelude Si 2dr Coupe",
+      "year": 1991,
+      "make": "Honda",
+      "model": "Prelude Si 2dr Coupe",
+      "chassis": "",
+      "trim": "",
+      "price": 13999,
+      "mileage": 178792,
+      "transmission": "Manual 5-Speed",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Blue",
+      "location": "San Diego, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/257727614688?_skw=Honda+Prelude&hash=item3c01c34ee0:g:v3sAAeSwww5qZGO1",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-11T11:24:15.893Z",
+      "listed_at": "2026-09-06T16:16:49.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-06T16:16:49.000Z",
+      "last_seen": "2026-09-11T11:24:58.676Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T20:29:25.258Z",
+          "p": 13999
+        }
+      ],
+      "departed_at": "2026-09-11T16:30:38.482Z"
+    },
+    {
+      "title": "2004 Toyota Land Cruiser Sport Utility 4D",
+      "year": 2004,
+      "make": "Toyota",
+      "model": "Land Cruiser Sport Utility 4D",
+      "chassis": "UZJ100",
+      "trim": "",
+      "price": 35995,
+      "mileage": 219336,
+      "transmission": "Automatic",
+      "engine": "4.7L Gas V8",
+      "drivetrain": "All Wheel Drive",
+      "color": "Black",
+      "location": "San Diego, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800621879806?_skw=Toyota+Land+Cruiser&hash=itemba68c861fe:g:5WIAAeSwvLpqM3xr",
+      "ends_at": "2026-09-11T16:10:06.000Z",
+      "live": true,
+      "scraped_date": "2026-09-11T11:24:15.893Z",
+      "listed_at": "2026-09-06T16:10:06.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-06T16:10:06.000Z",
+      "last_seen": "2026-09-11T11:24:58.676Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T20:29:25.258Z",
+          "p": 35995
+        }
+      ],
+      "departed_at": "2026-09-11T16:30:38.482Z"
+    },
+    {
+      "title": "2013 Nissan GT-R Premium Boostin Performance 4.1L AMS Performance Fully Built!",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "GT-R Premium Boostin Performance 4.1L AMS Performance Fully Built!",
+      "chassis": "R35",
+      "trim": "",
+      "price": 209912,
+      "mileage": 1349,
+      "transmission": "6-Speed Double Clutch",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Pearl White (Wrapped Satin Gray)",
+      "location": "West Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/820094196611?_skw=Nissan+GT-R&hash=itembef16c5b83:g:pGEAAeSw69Jp2MgW",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-11T11:24:15.893Z",
+      "listed_at": "2026-09-06T11:39:42.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-06T11:39:42.000Z",
+      "last_seen": "2026-09-11T11:24:58.676Z",
+      "price_history": [
+        {
+          "t": "2026-09-06T15:31:59.843Z",
+          "p": 209912
+        }
+      ],
+      "departed_at": "2026-09-11T16:30:38.482Z"
+    },
+    {
+      "title": "2021 Toyota Supra 3.0 Premium Coupe 2D",
+      "year": 2021,
+      "make": "Toyota",
+      "model": "Supra 3.0 Premium Coupe 2D",
+      "chassis": "A90",
+      "trim": "",
+      "price": 46585,
+      "mileage": 40645,
+      "transmission": "Automatic, 8-Spd",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Black",
+      "location": "Jacksonville, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/158246826502?_skw=Toyota+Supra&hash=item24d83ef206:g:GEIAAeSwi0pqlg0q",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-11T11:24:15.893Z",
+      "listed_at": "2026-09-01T16:29:20.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-01T16:29:20.000Z",
+      "last_seen": "2026-09-11T11:24:58.676Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 46585
+        }
+      ],
+      "departed_at": "2026-09-11T16:30:38.482Z"
+    },
+    {
+      "title": "1991 Mazda MX-5 Miata",
+      "year": 1991,
+      "make": "Mazda",
+      "model": "MX-5 Miata",
+      "chassis": "NA",
+      "trim": "",
+      "price": 9500,
+      "mileage": 136416,
+      "transmission": "Manual",
+      "engine": "1.8L Gas I4",
+      "drivetrain": "RWD",
+      "color": "Red",
+      "location": "McKinney, Texas",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/188857832126?_skw=Mazda+Miata&hash=item2bf8cdd2be:g:k28AAeSwdABqku5M",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-11T11:24:15.893Z",
+      "listed_at": "2026-08-29T14:40:23.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-29T14:40:23.000Z",
+      "last_seen": "2026-09-11T11:24:58.676Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 9500
+        }
+      ],
+      "departed_at": "2026-09-11T16:30:38.482Z"
+    },
+    {
+      "title": "1985 Toyota Celica Supra P-Type",
+      "year": 1985,
+      "make": "Toyota",
+      "model": "Celica Supra P-Type",
+      "chassis": "",
+      "trim": "",
+      "price": 13500,
+      "mileage": 127627,
+      "transmission": "",
+      "engine": "2.8L I6 12V",
+      "drivetrain": "RWD",
+      "color": "Other Color",
+      "location": "Fort Lauderdale, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/257689054231?_skw=Toyota+Supra&hash=item3bff76ec17:g:TQIAAeSw-7pqEfEO",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-11T11:24:15.893Z",
+      "listed_at": "2026-08-18T20:56:22.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-18T20:56:22.000Z",
+      "last_seen": "2026-09-11T11:24:58.676Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 13500
+        }
+      ],
+      "departed_at": "2026-09-11T16:30:38.482Z"
+    },
     {
       "title": "2025 Acura Integra",
       "year": 2025,
@@ -93114,187 +93306,6 @@
         {
           "t": "2026-09-01T11:42:55.519Z",
           "p": 11000
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "FJ62",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:27.113Z",
-      "title": "1989 Toyota Land Cruiser",
-      "year": 1989,
-      "make": "Toyota",
-      "model": "Land Cruiser",
-      "price": 24000,
-      "location": "NH",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/northeastautoimports-1989-toyota-land-cruiser-481323/",
-      "listed_at": "2026-06-12T01:01:24.505Z",
-      "first_seen": "2026-06-12T01:01:24.505Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 24000
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:10.144Z",
-      "title": "2001 Toyota Crown",
-      "year": 2001,
-      "make": "Toyota",
-      "model": "Crown",
-      "price": 12380,
-      "location": "WA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/2001-toyota-crown-s170-royal-saloon-mqa7my7c/",
-      "listed_at": "2026-06-12T00:50:40.804Z",
-      "first_seen": "2026-06-12T00:50:40.804Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 12380
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "DC2",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:10.144Z",
-      "title": "1997 Honda Integra",
-      "year": 1997,
-      "make": "Honda",
-      "model": "Integra",
-      "price": 19995,
-      "location": "FL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/1997-honda-integra-dc2-type-r-mq9yk665/",
-      "listed_at": "2026-06-11T20:36:34.578Z",
-      "first_seen": "2026-06-11T20:36:34.578Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 19995
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "UZJ100",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:24.307Z",
-      "title": "2001 Toyota Land Cruiser",
-      "year": 2001,
-      "make": "Toyota",
-      "model": "Land Cruiser",
-      "price": 0,
-      "location": "FL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/prestigemotorstampa-2001-toyota-land-cruiser-23976491/",
-      "listed_at": "2026-06-11T19:02:34.390Z",
-      "first_seen": "2026-06-11T19:02:34.390Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:20.207Z",
-      "title": "1996 Nissan Cima",
-      "year": 1996,
-      "make": "Nissan",
-      "model": "Cima",
-      "price": 6952,
-      "location": "CA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/torqjdm-1996-nissan-cima-nissan-cima-2/",
-      "listed_at": "2026-06-11T12:32:36.192Z",
-      "first_seen": "2026-06-11T12:32:36.192Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 6952
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:20.207Z",
-      "title": "1993 Honda Prelude",
-      "year": 1993,
-      "make": "Honda",
-      "model": "Prelude",
-      "price": 7400,
-      "location": "CA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/torqjdm-1993-honda-prelude-honda-prelude/",
-      "listed_at": "2026-06-11T12:32:36.192Z",
-      "first_seen": "2026-06-11T12:32:36.192Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 7400
         }
       ],
       "departed_at": "2026-09-05T15:17:44.311Z"
