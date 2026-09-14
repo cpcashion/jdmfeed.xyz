@@ -1,6 +1,560 @@
 {
-  "updated": "2026-09-14T12:51:47.574Z",
+  "updated": "2026-09-14T21:51:23.276Z",
   "listings": [
+    {
+      "title": "1989 Toyota Land Cruiser FJ62 GX",
+      "year": 1989,
+      "make": "Toyota",
+      "model": "Land Cruiser FJ62 GX",
+      "chassis": "FJ62",
+      "trim": "",
+      "price": 36000,
+      "mileage": 134270,
+      "transmission": "Automatic",
+      "engine": "4.0L Gas I6",
+      "drivetrain": "4WD",
+      "color": "Gold",
+      "location": "Georgetown, Texas",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327356303509?_skw=Toyota+Land+Cruiser&hash=item4c37f4c895:g:EoIAAeSwjPFqmDqN",
+      "ends_at": "2026-09-20T14:12:34.000Z",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-09-13T14:12:34.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-13T14:12:34.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-13T16:20:09.696Z",
+          "p": 36000
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "1996 Toyota Land Cruiser Sport Utility 4D",
+      "year": 1996,
+      "make": "Toyota",
+      "model": "Land Cruiser Sport Utility 4D",
+      "chassis": "HDJ81",
+      "trim": "",
+      "price": 46580,
+      "mileage": 216612,
+      "transmission": "Automatic",
+      "engine": "4.5L Gas I6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Blue",
+      "location": "San Diego, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800637704941?_skw=Toyota+Land+Cruiser&hash=itemba69b9daed:g:GT4AAeSwyA1poI05",
+      "ends_at": "2026-09-14T21:33:56.000Z",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-09-09T21:33:56.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-09T21:33:56.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-10T04:45:38.327Z",
+          "p": 46580
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "1975 Toyota Land Cruiser FJ40 Restomod",
+      "year": 1975,
+      "make": "Toyota",
+      "model": "Land Cruiser FJ40 Restomod",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 21995,
+      "mileage": 3710,
+      "transmission": "5 Speed Manual",
+      "engine": "350 V8",
+      "drivetrain": "4X4",
+      "color": "Olive Drab Green",
+      "location": "Lutz, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/278360083205?_skw=Toyota+Land+Cruiser&hash=item40cf8dcb05:g:UEIAAeSwPIZp6QIT",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-09-09T20:21:31.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-09T20:21:31.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-09T20:57:47.344Z",
+          "p": 21995
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "1997 Toyota Celica GT",
+      "year": 1997,
+      "make": "Toyota",
+      "model": "Celica GT",
+      "chassis": "",
+      "trim": "",
+      "price": 10995,
+      "mileage": 57286,
+      "transmission": "4-Speed Automatic",
+      "engine": "2.2L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "",
+      "location": "Greensboro, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327350525880?_skw=Toyota+Celica&hash=item4c379c9fb8:g:GDUAAeSwseRqm3Gp",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-09-09T19:34:19.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-09T19:34:19.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-09T20:57:47.344Z",
+          "p": 10995
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "2017 Nissan GT-R PREMIUM CICIO PERFORMANCE C1400+ PKG AND BRAKE PKG 20 INCH",
+      "year": 2017,
+      "make": "Nissan",
+      "model": "GT-R PREMIUM CICIO PERFORMANCE C1400+ PKG AND BRAKE PKG 20 INCH",
+      "chassis": "R35",
+      "trim": "",
+      "price": 174912,
+      "mileage": 10886,
+      "transmission": "6-Speed Double Clutch",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Jet Black",
+      "location": "West Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/188908854287?_skw=Nissan+GT-R&hash=item2bfbd85c0f:g:NNAAAeSwXghqRQx0",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-09-09T16:17:40.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-09T16:17:40.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-09T16:40:50.134Z",
+          "p": 174912
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "2017 Nissan GT-R PREMIUM CICIO PERFORMANCE C1400+ PKG AND BRAKE PKG 20 INCH",
+      "year": 2017,
+      "make": "Nissan",
+      "model": "GT-R PREMIUM CICIO PERFORMANCE C1400+ PKG AND BRAKE PKG 20 INCH",
+      "chassis": "R35",
+      "trim": "",
+      "price": 174912,
+      "mileage": 10886,
+      "transmission": "6-Speed Double Clutch",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Jet Black",
+      "location": "Naperville, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/158274783202?_skw=Nissan+GT-R&hash=item24d9e987e2:g:LyAAAeSwBUpqRQx4",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-09-09T12:53:37.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-09T12:53:37.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-09T16:40:50.134Z",
+          "p": 174912
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "27k-Mile 2001 Honda S2000",
+      "year": 2001,
+      "make": "Honda",
+      "model": "S2000",
+      "chassis": "AP1",
+      "trim": "",
+      "price": 40000,
+      "mileage": 27000,
+      "transmission": "Manual",
+      "engine": "black convertible soft top",
+      "drivetrain": "",
+      "color": "Spa Yellow Pearl",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/2001-honda-s2000-246/",
+      "ends_at": "2026-09-14T17:07:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:03.903Z",
+      "first_seen": "2026-09-07T21:34:24.836Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T21:34:24.836Z",
+          "p": 30000
+        },
+        {
+          "t": "2026-09-09T04:47:17.237Z",
+          "p": 35000
+        },
+        {
+          "t": "2026-09-11T04:44:05.122Z",
+          "p": 36000
+        },
+        {
+          "t": "2026-09-12T04:38:41.908Z",
+          "p": 37000
+        },
+        {
+          "t": "2026-09-13T20:52:42.372Z",
+          "p": 38000
+        },
+        {
+          "t": "2026-09-14T04:59:53.490Z",
+          "p": 38500
+        },
+        {
+          "t": "2026-09-14T12:51:47.574Z",
+          "p": 40000
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "28k-Kilometer 1999 Nissan Stagea 25t RS Four V",
+      "year": 1999,
+      "make": "Nissan",
+      "model": "Stagea 25t RS Four V",
+      "chassis": "WC34",
+      "trim": "",
+      "price": 10500,
+      "mileage": 17000,
+      "transmission": "Automatic",
+      "engine": "turbocharged 2.5-liter NEO inline-six",
+      "drivetrain": "AWD",
+      "color": "Sonic Silver Metallic",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/1999-nissan-stagea-6/",
+      "ends_at": "2026-09-14T17:27:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:03.903Z",
+      "first_seen": "2026-09-07T21:34:24.836Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T21:34:24.836Z",
+          "p": 1000
+        },
+        {
+          "t": "2026-09-08T04:41:27.434Z",
+          "p": 3400
+        },
+        {
+          "t": "2026-09-08T16:40:51.935Z",
+          "p": 5000
+        },
+        {
+          "t": "2026-09-09T16:40:50.134Z",
+          "p": 7777
+        },
+        {
+          "t": "2026-09-09T20:57:47.344Z",
+          "p": 8888
+        },
+        {
+          "t": "2026-09-10T20:54:01.823Z",
+          "p": 9000
+        },
+        {
+          "t": "2026-09-11T04:44:05.122Z",
+          "p": 9300
+        },
+        {
+          "t": "2026-09-12T20:35:26.390Z",
+          "p": 9500
+        },
+        {
+          "t": "2026-09-14T04:59:53.490Z",
+          "p": 10500
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "2k-Mile 2009 Nissan GT-R Premium",
+      "year": 2009,
+      "make": "Nissan",
+      "model": "GT-R Premium",
+      "chassis": "R35",
+      "trim": "",
+      "price": 85035,
+      "mileage": 2000,
+      "transmission": "Automatic",
+      "engine": "twin-turbocharged 3.8-liter V6",
+      "drivetrain": "AWD",
+      "color": "Titanium Metallic",
+      "rhd": false,
+      "location": "United States",
+      "source": "Bring a Trailer",
+      "source_url": "https://bringatrailer.com/listing/2009-nissan-gt-r-premium-22/",
+      "ends_at": "2026-09-14T17:44:00.000Z",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:03.903Z",
+      "first_seen": "2026-09-07T21:34:24.836Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T21:34:24.836Z",
+          "p": 50000
+        },
+        {
+          "t": "2026-09-08T04:41:27.434Z",
+          "p": 69420
+        },
+        {
+          "t": "2026-09-08T11:24:07.908Z",
+          "p": 80770
+        },
+        {
+          "t": "2026-09-10T04:45:38.327Z",
+          "p": 85035
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "2008 Mitsubishi Lancer MR - TURBO - AWD - BBS Greddy",
+      "year": 2008,
+      "make": "Mitsubishi",
+      "model": "Lancer MR - TURBO - AWD - BBS Greddy",
+      "chassis": "CZ4A",
+      "trim": "",
+      "price": 19994,
+      "mileage": 94537,
+      "transmission": "6-Speed Double Clutch",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "All Wheel Drive",
+      "color": "Rally Red Pearl",
+      "location": "Addison, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/227510690541?_skw=Mitsubishi+Lancer+Evolution&hash=item34f8b1a2ed:g:IBAAAeSw7SlqjfTp",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-09-07T17:00:42.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-07T17:00:42.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T21:34:24.836Z",
+          "p": 19994
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "2017 Subaru WRX STi",
+      "year": 2017,
+      "make": "Subaru",
+      "model": "WRX STi",
+      "chassis": "VAB",
+      "trim": "",
+      "price": 29990,
+      "mileage": 8955,
+      "transmission": "Close-Ratio 6-Speed Manual",
+      "engine": "2.5L Gas H4",
+      "drivetrain": "All Wheel Drive",
+      "color": "Crystal White Pearl",
+      "location": "New Albany, Indiana",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287571406634?_skw=Subaru+WRX+STI&hash=item42f4976f2a:g:cCMAAeSw~gJqkjby",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-09-07T15:21:59.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-07T15:21:59.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T21:34:24.836Z",
+          "p": 30990
+        },
+        {
+          "t": "2026-09-11T20:59:39.151Z",
+          "p": 30590
+        },
+        {
+          "t": "2026-09-12T10:50:27.940Z",
+          "p": 29990
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "2020 Subaru WRX STi",
+      "year": 2020,
+      "make": "Subaru",
+      "model": "WRX STi",
+      "chassis": "VAB",
+      "trim": "",
+      "price": 37990,
+      "mileage": 19898,
+      "transmission": "Close-Ratio 6-Speed Manual",
+      "engine": "2.5L Gas H4",
+      "drivetrain": "All Wheel Drive",
+      "color": "Crystal White Pearl",
+      "location": "New Albany, Indiana",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287571402464?_skw=Subaru+WRX+STI&hash=item42f4975ee0:g:WCYAAeSwwrlqT~oU",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-09-07T15:17:09.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-07T15:17:09.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-07T21:34:24.836Z",
+          "p": 38990
+        },
+        {
+          "t": "2026-09-12T04:38:41.908Z",
+          "p": 37990
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "1994 Toyota Land Cruiser FZJ80",
+      "year": 1994,
+      "make": "Toyota",
+      "model": "Land Cruiser FZJ80",
+      "chassis": "FZJ80",
+      "trim": "",
+      "price": 14500,
+      "mileage": 199000,
+      "transmission": "Automatic",
+      "engine": "4.5L Gas I6",
+      "drivetrain": "4WD",
+      "color": "Green",
+      "location": "Hollywood, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/198611014213?_skw=Toyota+Land+Cruiser&hash=item2e3e239245:g:8koAAeSwi19qKXhZ",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-09-01T18:24:39.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-01T18:24:39.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 14500
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "1998 Honda Prelude",
+      "year": 1998,
+      "make": "Honda",
+      "model": "Prelude",
+      "chassis": "",
+      "trim": "",
+      "price": 16500,
+      "mileage": 47000,
+      "transmission": "Manual",
+      "engine": "2.2L Gas I4",
+      "drivetrain": "FWD",
+      "color": "Gray",
+      "location": "Phoenix, Arizona",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/206515160852?_skw=Honda+Prelude&hash=item3015434714:g:06YAAeSw0QpqK06z",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-08-25T18:13:04.000Z",
+      "rhd": true,
+      "enriched": 3,
+      "first_seen": "2026-08-25T18:13:04.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-05T10:39:01.539Z",
+          "p": 16500
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
+    {
+      "title": "2000 Toyota Land Cruiser",
+      "year": 2000,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "chassis": "UZJ100",
+      "trim": "",
+      "price": 17500,
+      "mileage": 372000,
+      "transmission": "Automatic",
+      "engine": "4.7L Gas V8",
+      "drivetrain": "4WD",
+      "color": "Champagne Pearl",
+      "location": "Punta Gorda, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178410737590?_skw=Toyota+Land+Cruiser&hash=item298a1bcfb6:g:8OEAAeSwgaVpYrEK",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-14T12:51:04.198Z",
+      "listed_at": "2026-08-15T21:15:12.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-15T21:15:12.000Z",
+      "last_seen": "2026-09-14T12:51:47.574Z",
+      "price_history": [
+        {
+          "t": "2026-09-04T11:23:38.580Z",
+          "p": 17500
+        }
+      ],
+      "departed_at": "2026-09-14T21:51:23.276Z"
+    },
     {
       "title": "1995 Acura NSX NSX-T",
       "year": 1995,
@@ -93584,461 +94138,6 @@
         {
           "t": "2026-09-01T11:42:55.519Z",
           "p": 7600
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "S210",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:19.030Z",
-      "title": "1999 Daihatsu Hijet",
-      "year": 1999,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 11900,
-      "location": "AR",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/mudhogminitrucks-1999-daihatsu-hijet-496546/",
-      "listed_at": "2026-07-22T14:07:54.430Z",
-      "first_seen": "2026-07-22T14:07:54.430Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 11900
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "NB",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:19.030Z",
-      "title": "2001 Mazda Roadster (Eunos Roadster / MX-5)",
-      "year": 2001,
-      "make": "Mazda",
-      "model": "Roadster",
-      "price": 11000,
-      "location": "FL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/jdmautomiami-2001-mazda-roadster-21/",
-      "listed_at": "2026-07-21T22:52:30.695Z",
-      "first_seen": "2026-07-21T22:52:30.695Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 11000
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:25.401Z",
-      "title": "1998 Subaru Sambar",
-      "year": 1998,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 0,
-      "location": "DC",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/capitaljdm-1998-subaru-sambar-95fa1061fc5245abb9330b2732ce0749/",
-      "listed_at": "2026-07-21T16:37:19.044Z",
-      "first_seen": "2026-07-21T16:37:19.044Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:19.030Z",
-      "title": "1997 Subaru Sambar",
-      "year": 1997,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 0,
-      "location": "DC",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/capitaljdm-1997-subaru-sambar-c3670be9de7d46ea97b24b7e8e73b5e4/",
-      "listed_at": "2026-07-21T16:22:17.227Z",
-      "first_seen": "2026-07-21T16:22:17.227Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "WC34",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:26.757Z",
-      "title": "1999 Nissan Stagea",
-      "year": 1999,
-      "make": "Nissan",
-      "model": "Stagea",
-      "price": 70000,
-      "location": "AZ",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/1999-nissan-stagea-wgnc34-stagea-autech-260rs-mrtnctj0/",
-      "listed_at": "2026-07-20T19:58:02.022Z",
-      "first_seen": "2026-07-20T19:58:02.022Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 70000
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "HDJ81",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:04.337Z",
-      "title": "1997 Toyota Land Cruiser",
-      "year": 1997,
-      "make": "Toyota",
-      "model": "Land Cruiser",
-      "price": 36400,
-      "location": "MD",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/tokyomotorsdc-1997-toyota-land-cruiser-11091481034788/",
-      "listed_at": "2026-07-19T08:54:14.169Z",
-      "first_seen": "2026-07-19T08:54:14.169Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 36400
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:04.337Z",
-      "title": "2001 Toyota Crown",
-      "year": 2001,
-      "make": "Toyota",
-      "model": "Crown",
-      "price": 18500,
-      "location": "FL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/japancar-fl-2001-toyota-crown-19878/",
-      "listed_at": "2026-07-18T23:23:23.533Z",
-      "first_seen": "2026-07-18T23:23:23.533Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 18500
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:19.030Z",
-      "title": "2000 Mitsubishi Pajero",
-      "year": 2000,
-      "make": "Mitsubishi",
-      "model": "Pajero",
-      "price": 13900,
-      "location": "AR",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/mudhogminitrucks-2000-mitsubishi-pajero-496100/",
-      "listed_at": "2026-07-18T14:53:37.479Z",
-      "first_seen": "2026-07-18T14:53:37.479Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 13900
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "JB23",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:19.031Z",
-      "title": "2001 Suzuki Jimny",
-      "year": 2001,
-      "make": "Suzuki",
-      "model": "Jimny",
-      "price": 12900,
-      "location": "AR",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/mudhogminitrucks-2001-suzuki-jimny-496096/",
-      "listed_at": "2026-07-18T14:53:37.479Z",
-      "first_seen": "2026-07-18T14:53:37.479Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 12900
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "TT2",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:19.031Z",
-      "title": "1999 Subaru Sambar",
-      "year": 1999,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 11900,
-      "location": "AR",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/mudhogminitrucks-1999-subaru-sambar-496097/",
-      "listed_at": "2026-07-18T14:53:37.479Z",
-      "first_seen": "2026-07-18T14:53:37.479Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 11900
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "S83",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:04.337Z",
-      "title": "1993 Daihatsu Hijet",
-      "year": 1993,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 9000,
-      "location": "NY",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckking-1993-daihatsu-hijet-0567/",
-      "listed_at": "2026-07-18T10:53:01.278Z",
-      "first_seen": "2026-07-18T10:53:01.278Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 9000
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "JZS161",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:23.725Z",
-      "title": "1998 Toyota Aristo",
-      "year": 1998,
-      "make": "Toyota",
-      "model": "Aristo",
-      "price": 17999,
-      "location": "PA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/fedlegalimports-1998-toyota-aristo-40330/",
-      "listed_at": "2026-07-18T06:37:53.759Z",
-      "first_seen": "2026-07-18T06:37:53.759Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 17999
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:04.337Z",
-      "title": "1992 Mitsubishi Delica",
-      "year": 1992,
-      "make": "Mitsubishi",
-      "model": "Delica",
-      "price": 33900,
-      "location": "ID",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/nomadicvan-1992-mitsubishi-delica-vesper/",
-      "listed_at": "2026-07-17T18:08:06.242Z",
-      "first_seen": "2026-07-17T18:08:06.242Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 33900
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:19.031Z",
-      "title": "1996 Daihatsu Hijet",
-      "year": 1996,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 18900,
-      "location": "AR",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/mudhogminitrucks-1996-daihatsu-hijet-495959/",
-      "listed_at": "2026-07-17T14:58:34.727Z",
-      "first_seen": "2026-07-17T14:58:34.727Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 18900
-        }
-      ],
-      "departed_at": "2026-09-05T15:17:44.311Z"
-    },
-    {
-      "chassis": "S15",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-05T10:38:04.337Z",
-      "title": "2000 Nissan Silvia",
-      "year": 2000,
-      "make": "Nissan",
-      "model": "Silvia",
-      "price": 17785,
-      "location": "SC",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/jdmimportautocenter-2000-nissan-silvia-7021250281585/",
-      "listed_at": "2026-07-17T03:39:08.048Z",
-      "first_seen": "2026-07-17T03:39:08.048Z",
-      "last_seen": "2026-09-05T10:39:01.539Z",
-      "price_history": [
-        {
-          "t": "2026-09-01T11:42:55.519Z",
-          "p": 17785
         }
       ],
       "departed_at": "2026-09-05T15:17:44.311Z"
