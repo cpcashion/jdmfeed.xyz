@@ -1,6 +1,134 @@
 {
-  "updated": "2026-09-20T11:27:29.747Z",
+  "updated": "2026-09-20T16:09:19.017Z",
   "listings": [
+    {
+      "title": "1996 Nissan 240SX",
+      "year": 1996,
+      "make": "Nissan",
+      "model": "240SX",
+      "chassis": "S14",
+      "trim": "",
+      "price": 29212,
+      "mileage": 49069,
+      "transmission": "5-Speed Manual",
+      "engine": "2.4L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Blue",
+      "location": "Cary, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/168690686148?_skw=Nissan+240SX&hash=item2746bf98c4:g:dzkAAeSw8tFpwmse",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-20T11:27:08.918Z",
+      "listed_at": "2026-09-15T13:25:11.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-15T13:25:11.000Z",
+      "last_seen": "2026-09-20T11:27:29.747Z",
+      "price_history": [
+        {
+          "t": "2026-09-18T11:18:52.783Z",
+          "p": 29212
+        }
+      ],
+      "departed_at": "2026-09-20T16:09:19.017Z"
+    },
+    {
+      "title": "2017 Subaru WRX STi",
+      "year": 2017,
+      "make": "Subaru",
+      "model": "WRX STi",
+      "chassis": "VAB",
+      "trim": "",
+      "price": 22585,
+      "mileage": 72527,
+      "transmission": "Manual",
+      "engine": "2.5L DOHC Intercooled High-Boost DAVCS",
+      "drivetrain": "AWD",
+      "color": "Other Color",
+      "location": "Kernersville, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/366670464253?_skw=Subaru+WRX+STI&hash=item555f4344fd:g:m5oAAeSwId5qqTRF",
+      "ends_at": "2026-09-22T12:04:35.000Z",
+      "live": true,
+      "scraped_date": "2026-09-20T11:27:08.918Z",
+      "listed_at": "2026-09-15T12:04:35.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-15T12:04:35.000Z",
+      "last_seen": "2026-09-20T11:27:29.747Z",
+      "price_history": [
+        {
+          "t": "2026-09-18T11:18:52.783Z",
+          "p": 22585
+        }
+      ],
+      "departed_at": "2026-09-20T16:09:19.017Z"
+    },
+    {
+      "title": "1991 Toyota MR2 T-Top",
+      "year": 1991,
+      "make": "Toyota",
+      "model": "MR2 T-Top",
+      "chassis": "SW20",
+      "trim": "",
+      "price": 8699,
+      "mileage": 127750,
+      "transmission": "",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "RWD",
+      "color": "",
+      "location": "Round Lake, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/128078459503?_skw=Toyota+MR2&hash=item1dd212326f:g:KN4AAeSwS2xqp3RZ",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-20T11:27:08.918Z",
+      "listed_at": "2026-09-14T04:18:05.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-14T04:18:05.000Z",
+      "last_seen": "2026-09-20T11:27:29.747Z",
+      "price_history": [
+        {
+          "t": "2026-09-18T11:18:52.783Z",
+          "p": 8699
+        }
+      ],
+      "departed_at": "2026-09-20T16:09:19.017Z"
+    },
+    {
+      "title": "1980 Toyota Land Cruiser",
+      "year": 1980,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 24000,
+      "mileage": 20000,
+      "transmission": "Automatic",
+      "engine": "Chevy Small Block 350 V8",
+      "drivetrain": "4WD",
+      "color": "Green",
+      "location": "Fort Lauderdale, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/298606785741?_skw=Toyota+Land+Cruiser&hash=item458659f4cd:g:17MAAeSwgCRqX-fc",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-20T11:27:08.918Z",
+      "listed_at": "2026-08-21T12:26:03.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-08-21T12:26:03.000Z",
+      "last_seen": "2026-09-20T11:27:29.747Z",
+      "price_history": [
+        {
+          "t": "2026-09-18T11:18:52.783Z",
+          "p": 24000
+        }
+      ],
+      "departed_at": "2026-09-20T16:09:19.017Z"
+    },
     {
       "title": "2023 Acura Integra w/A-Spec Technology Package",
       "year": 2023,
@@ -96254,125 +96382,6 @@
         {
           "t": "2026-09-05T20:25:17.857Z",
           "p": 16000
-        }
-      ],
-      "departed_at": "2026-09-09T04:47:17.237Z"
-    },
-    {
-      "chassis": "CN9A",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-08T21:12:39.929Z",
-      "title": "1997 Mitsubishi Lancer Evolution",
-      "year": 1997,
-      "make": "Mitsubishi",
-      "model": "Lancer Evolution",
-      "price": 23995,
-      "location": "WA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/speedworksnw-1997-mitsubishi-lancer-evo-012763/",
-      "listed_at": "2026-06-01T19:57:04.009Z",
-      "first_seen": "2026-06-01T19:57:04.009Z",
-      "last_seen": "2026-09-08T21:14:04.175Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 23995
-        }
-      ],
-      "departed_at": "2026-09-09T04:47:17.237Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-08T21:12:39.929Z",
-      "title": "1987 Suzuki Jimny",
-      "year": 1987,
-      "make": "Suzuki",
-      "model": "Jimny",
-      "price": 13995,
-      "location": "WA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/speedworksnw-1987-suzuki-jimny-117559/",
-      "listed_at": "2026-06-01T19:57:04.009Z",
-      "first_seen": "2026-06-01T19:57:04.009Z",
-      "last_seen": "2026-09-08T21:14:04.175Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 13995
-        }
-      ],
-      "departed_at": "2026-09-09T04:47:17.237Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-08T21:12:44.705Z",
-      "title": "2000 Honda Prelude",
-      "year": 2000,
-      "make": "Honda",
-      "model": "Prelude",
-      "price": 0,
-      "location": "FL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/prestigemotorstampa-2000-honda-prelude-23240345/",
-      "listed_at": "2026-06-01T19:56:37.480Z",
-      "first_seen": "2026-06-01T19:56:37.480Z",
-      "last_seen": "2026-09-08T21:14:04.175Z",
-      "price_history": [],
-      "departed_at": "2026-09-09T04:47:17.237Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-08T21:12:24.131Z",
-      "title": "1989 Suzuki Jimny",
-      "year": 1989,
-      "make": "Suzuki",
-      "model": "Jimny",
-      "price": 15500,
-      "location": "NJ",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/japstarimports-1989-suzuki-jimny-170/",
-      "listed_at": "2026-06-01T19:53:04.964Z",
-      "first_seen": "2026-06-01T19:53:04.964Z",
-      "last_seen": "2026-09-08T21:14:04.175Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 15500
         }
       ],
       "departed_at": "2026-09-09T04:47:17.237Z"
