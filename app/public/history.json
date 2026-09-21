@@ -1,6 +1,237 @@
 {
-  "updated": "2026-09-21T04:58:55.449Z",
+  "updated": "2026-09-21T12:52:27.897Z",
   "listings": [
+    {
+      "title": "1999 Toyota Land Cruiser",
+      "year": 1999,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "chassis": "UZJ100",
+      "trim": "",
+      "price": 9800,
+      "mileage": 452000,
+      "transmission": "Automatic",
+      "engine": "4.7L Gas V8",
+      "drivetrain": "4WD",
+      "color": "Green",
+      "location": "Thomasville, Georgia",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/366681506349?_skw=Toyota+Land+Cruiser&hash=item555febc22d:g:J24AAeSw2uxqsHs0",
+      "ends_at": "2026-09-28T01:02:09.000Z",
+      "live": true,
+      "scraped_date": "2026-09-21T04:58:35.087Z",
+      "listed_at": "2026-09-21T01:02:09.000Z",
+      "enriched": 3,
+      "first_seen": "2026-09-21T01:02:09.000Z",
+      "last_seen": "2026-09-21T04:58:55.449Z",
+      "price_history": [
+        {
+          "t": "2026-09-21T04:58:55.449Z",
+          "p": 9800
+        }
+      ],
+      "departed_at": "2026-09-21T12:52:27.897Z"
+    },
+    {
+      "title": "2024 Acura Integra 1.5T w/A-Spec & Tech Pkg Hatchback Sedan 4D",
+      "year": 2024,
+      "make": "Acura",
+      "model": "Integra 1.5T w/A-Spec & Tech Pkg Hatchback Sedan 4D",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 11980,
+      "mileage": 49857,
+      "transmission": "Manual, 6-Spd w/Rev-Match Control",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Black",
+      "location": "Miami, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178506675149?_skw=Acura+Integra&hash=item298fd3b3cd:g:PuAAAeSwXFhqrMXM",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-21T04:58:35.087Z",
+      "listed_at": "2026-09-18T05:07:34.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-18T05:07:34.000Z",
+      "last_seen": "2026-09-21T04:58:55.449Z",
+      "price_history": [
+        {
+          "t": "2026-09-18T11:18:52.783Z",
+          "p": 11980
+        }
+      ],
+      "departed_at": "2026-09-21T12:52:27.897Z"
+    },
+    {
+      "title": "2025 Acura Integra",
+      "year": 2025,
+      "make": "Acura",
+      "model": "Integra",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 29200,
+      "mileage": 1445,
+      "transmission": "CVT Transmission",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Platinum White Pearl",
+      "location": "Brooklyn, New York",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/237074142095?_skw=Acura+Integra&hash=item3732b8538f:g:a4sAAeSwwelqrDCz",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-21T04:58:35.087Z",
+      "listed_at": "2026-09-17T18:30:49.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-17T18:30:49.000Z",
+      "last_seen": "2026-09-21T04:58:55.449Z",
+      "price_history": [
+        {
+          "t": "2026-09-18T11:18:52.783Z",
+          "p": 29500
+        },
+        {
+          "t": "2026-09-18T20:56:07.638Z",
+          "p": 29200
+        }
+      ],
+      "departed_at": "2026-09-21T12:52:27.897Z"
+    },
+    {
+      "title": "2013 Nissan GT-R Premium Boostin Performance 4.1L AMS Performance Fully Built!",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "GT-R Premium Boostin Performance 4.1L AMS Performance Fully Built!",
+      "chassis": "R35",
+      "trim": "",
+      "price": 209912,
+      "mileage": 1349,
+      "transmission": "6-Speed Double Clutch",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Pearl White (Wrapped Satin Gray)",
+      "location": "West Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/820133834483?_skw=Nissan+GT-R&hash=itembef3c92ef3:g:pGEAAeSw69Jp2MgW",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-21T04:58:35.087Z",
+      "listed_at": "2026-09-16T11:40:33.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-16T11:40:33.000Z",
+      "last_seen": "2026-09-21T04:58:55.449Z",
+      "price_history": [
+        {
+          "t": "2026-09-18T11:18:52.783Z",
+          "p": 209912
+        }
+      ],
+      "departed_at": "2026-09-21T12:52:27.897Z"
+    },
+    {
+      "title": "2018 Nissan GT-R NISMO AWD 2dr Coupe",
+      "year": 2018,
+      "make": "Nissan",
+      "model": "GT-R NISMO AWD 2dr Coupe",
+      "chassis": "R35",
+      "trim": "",
+      "price": 249900,
+      "mileage": 16614,
+      "transmission": "Automatic 6-Speed",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Jet Black",
+      "location": "Marietta, Georgia",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/237070822104?_skw=Nissan+GT-R&hash=item373285aad8:g:C~YAAeSwfCxqbE7s",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-21T04:58:35.087Z",
+      "listed_at": "2026-09-16T07:33:40.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-16T07:33:40.000Z",
+      "last_seen": "2026-09-21T04:58:55.449Z",
+      "price_history": [
+        {
+          "t": "2026-09-18T11:18:52.783Z",
+          "p": 249900
+        }
+      ],
+      "departed_at": "2026-09-21T12:52:27.897Z"
+    },
+    {
+      "title": "2007 Toyota Land Cruiser",
+      "year": 2007,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "chassis": "UZJ100",
+      "trim": "",
+      "price": 26900,
+      "mileage": 128849,
+      "transmission": "Automatic",
+      "engine": "4.7L Gas V8",
+      "drivetrain": "All Wheel Drive",
+      "color": "Black",
+      "location": "Costa Mesa, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800659891635?_skw=Toyota+Land+Cruiser&hash=itemba6b0c65b3:g:bNcAAeSwEMdqVLCR",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-21T04:58:35.087Z",
+      "listed_at": "2026-09-14T09:44:02.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-14T09:44:02.000Z",
+      "last_seen": "2026-09-21T04:58:55.449Z",
+      "price_history": [
+        {
+          "t": "2026-09-18T11:18:52.783Z",
+          "p": 26900
+        }
+      ],
+      "departed_at": "2026-09-21T12:52:27.897Z"
+    },
+    {
+      "title": "1997 Toyota Land Cruiser 40th Anniversary",
+      "year": 1997,
+      "make": "Toyota",
+      "model": "Land Cruiser 40th Anniversary",
+      "chassis": "HDJ81",
+      "trim": "",
+      "price": 17900,
+      "mileage": 268229,
+      "transmission": "Automatic",
+      "engine": "4.5L Gas I6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Sage Green",
+      "location": "Grand Rapids, Michigan",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/147572034353?_skw=Toyota+Land+Cruiser&hash=item225bfa8b31:g:BysAAeSwaslqJmUx",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-21T04:58:35.087Z",
+      "listed_at": "2026-09-14T06:54:11.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-14T06:54:11.000Z",
+      "last_seen": "2026-09-21T04:58:55.449Z",
+      "price_history": [
+        {
+          "t": "2026-09-18T11:18:52.783Z",
+          "p": 18900
+        },
+        {
+          "t": "2026-09-19T04:40:20.147Z",
+          "p": 17900
+        }
+      ],
+      "departed_at": "2026-09-21T12:52:27.897Z"
+    },
     {
       "title": "1995 Acura NSX NSX-T",
       "year": 1995,
@@ -96279,223 +96510,6 @@
         {
           "t": "2026-09-08T16:40:51.935Z",
           "p": 6867
-        }
-      ],
-      "departed_at": "2026-09-09T04:47:17.237Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-08T21:11:33.601Z",
-      "title": "1998 Daihatsu Hijet",
-      "year": 1998,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 8900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1998-daihatsu-hijet-1998-daihatsu-hi-jet-drum-4wd-2hi-4hi-5mt-clean/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-08T21:14:04.175Z",
-      "price_history": [
-        {
-          "t": "2026-09-08T16:40:51.935Z",
-          "p": 8900
-        }
-      ],
-      "departed_at": "2026-09-09T04:47:17.237Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-08T21:11:33.601Z",
-      "title": "1996 Daihatsu Hijet",
-      "year": 1996,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 5500,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1996-daihatsu-hijet-1996-daihatsu-hijet/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-08T21:14:04.175Z",
-      "price_history": [
-        {
-          "t": "2026-09-07T21:34:24.836Z",
-          "p": 5500
-        }
-      ],
-      "departed_at": "2026-09-09T04:47:17.237Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-08T21:11:33.970Z",
-      "title": "1997 Honda Acty",
-      "year": 1997,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 5000,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-honda-acty-1997-honda-acty-truck-ha4-2375530/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-08T21:14:04.175Z",
-      "price_history": [
-        {
-          "t": "2026-09-08T04:41:27.434Z",
-          "p": 5000
-        }
-      ],
-      "departed_at": "2026-09-09T04:47:17.237Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-08T21:11:33.970Z",
-      "title": "1998 Daihatsu Hijet",
-      "year": 1998,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 12900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1998-daihatsu-hijet-5b05c22d0e0a/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-08T21:14:04.175Z",
-      "price_history": [
-        {
-          "t": "2026-09-08T21:14:04.175Z",
-          "p": 12900
-        }
-      ],
-      "departed_at": "2026-09-09T04:47:17.237Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-08T21:11:33.970Z",
-      "title": "1998 Daihatsu Hijet",
-      "year": 1998,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 7900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1998-daihatsu-hijet-1998-daihatsu-hijet-4wd/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-08T21:14:04.175Z",
-      "price_history": [
-        {
-          "t": "2026-09-07T04:46:21.539Z",
-          "p": 7900
-        }
-      ],
-      "departed_at": "2026-09-09T04:47:17.237Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-08T21:11:34.345Z",
-      "title": "1993 Honda Acty",
-      "year": 1993,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4725,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1993-honda-acty-1993-honda-acty-szm21r/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-08T21:14:04.175Z",
-      "price_history": [
-        {
-          "t": "2026-09-06T11:01:39.920Z",
-          "p": 4725
-        }
-      ],
-      "departed_at": "2026-09-09T04:47:17.237Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-08T21:11:34.345Z",
-      "title": "1993 Honda Acty",
-      "year": 1993,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4050,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1993-honda-acty-1993-honda-acty-truck-ha4-2089336/",
-      "listed_at": "2026-08-29T18:24:49.818Z",
-      "first_seen": "2026-08-29T18:24:49.818Z",
-      "last_seen": "2026-09-08T21:14:04.175Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T10:39:01.539Z",
-          "p": 4050
         }
       ],
       "departed_at": "2026-09-09T04:47:17.237Z"
