@@ -1,6 +1,262 @@
 {
-  "updated": "2026-09-25T11:53:44.392Z",
+  "updated": "2026-09-25T17:14:40.701Z",
   "listings": [
+    {
+      "title": "1999 Nissan Silvia",
+      "year": 1999,
+      "make": "Nissan",
+      "model": "Silvia",
+      "chassis": "S15",
+      "trim": "",
+      "price": 34999,
+      "mileage": 60000,
+      "transmission": "Manual",
+      "engine": "",
+      "drivetrain": "",
+      "color": "",
+      "location": "Castroville, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178526334857?_skw=Nissan+Silvia&hash=item2990ffaf89:g:BBoAAeSw93hqtdGL",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-25T11:53:24.358Z",
+      "listed_at": "2026-09-25T01:44:07.000Z",
+      "rhd": true,
+      "enriched": 3,
+      "first_seen": "2026-09-25T01:44:07.000Z",
+      "last_seen": "2026-09-25T11:53:44.392Z",
+      "price_history": [
+        {
+          "t": "2026-09-25T11:53:44.392Z",
+          "p": 34999
+        }
+      ],
+      "departed_at": "2026-09-25T17:14:40.701Z"
+    },
+    {
+      "title": "1983 Toyota Land Cruiser FJ60",
+      "year": 1983,
+      "make": "Toyota",
+      "model": "Land Cruiser FJ60",
+      "chassis": "FJ60",
+      "trim": "",
+      "price": 14000,
+      "mileage": 203387,
+      "transmission": "Manual",
+      "engine": "4.2L Gas I6",
+      "drivetrain": "4WD",
+      "color": "Beige",
+      "location": "Las Vegas, Nevada",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/318913958873?_skw=Toyota+Land+Cruiser&hash=item4a40c0d3d9:g:NY8AAeSw3alqtYbR",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-25T11:53:24.358Z",
+      "listed_at": "2026-09-24T20:38:08.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-24T20:38:08.000Z",
+      "last_seen": "2026-09-25T11:53:44.392Z",
+      "price_history": [
+        {
+          "t": "2026-09-25T05:00:17.035Z",
+          "p": 14000
+        }
+      ],
+      "departed_at": "2026-09-25T17:14:40.701Z"
+    },
+    {
+      "title": "2022 Toyota Supra 3",
+      "year": 2022,
+      "make": "Toyota",
+      "model": "Supra 3",
+      "chassis": "A90",
+      "trim": "",
+      "price": 54995,
+      "mileage": 21453,
+      "transmission": "Automatic",
+      "engine": "3.0L Turbo I6 382hp 368ft. lbs.",
+      "drivetrain": "RWD",
+      "color": "Renaissance Red 2.0",
+      "location": "Aurora, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327366790089?_skw=Toyota+Supra&hash=item4c3894cbc9:g:hLUAAeSwpalqqXDE",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-25T11:53:24.358Z",
+      "listed_at": "2026-09-20T18:00:51.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-20T18:00:51.000Z",
+      "last_seen": "2026-09-25T11:53:44.392Z",
+      "price_history": [
+        {
+          "t": "2026-09-24T17:13:49.417Z",
+          "p": 54995
+        }
+      ],
+      "departed_at": "2026-09-25T17:14:40.701Z"
+    },
+    {
+      "title": "2021 Toyota Supra 3.0 Premium Coupe 2D",
+      "year": 2021,
+      "make": "Toyota",
+      "model": "Supra 3.0 Premium Coupe 2D",
+      "chassis": "A90",
+      "trim": "",
+      "price": 50999,
+      "mileage": 12881,
+      "transmission": "Automatic, 8-Spd",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "",
+      "location": "West Sacramento, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/407232097039?_skw=Toyota+Supra&hash=item5ed0ecab0f:g:g~IAAeSwhPJqiIEg",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-25T11:53:24.358Z",
+      "listed_at": "2026-09-20T17:05:24.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-20T17:05:24.000Z",
+      "last_seen": "2026-09-25T11:53:44.392Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 50999
+        }
+      ],
+      "departed_at": "2026-09-25T17:14:40.701Z"
+    },
+    {
+      "title": "1996 Nissan 240SX",
+      "year": 1996,
+      "make": "Nissan",
+      "model": "240SX",
+      "chassis": "S14",
+      "trim": "",
+      "price": 29212,
+      "mileage": 49069,
+      "transmission": "5-Speed Manual",
+      "engine": "2.4L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Blue",
+      "location": "Cary, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/168702526146?_skw=Nissan+240SX&hash=item27477442c2:g:dzkAAeSw8tFpwmse",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-25T11:53:24.358Z",
+      "listed_at": "2026-09-20T13:25:29.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-20T13:25:29.000Z",
+      "last_seen": "2026-09-25T11:53:44.392Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 29212
+        }
+      ],
+      "departed_at": "2026-09-25T17:14:40.701Z"
+    },
+    {
+      "title": "1970 Toyota Land Cruiser",
+      "year": 1970,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 59990,
+      "mileage": 31207,
+      "transmission": "Manual",
+      "engine": "",
+      "drivetrain": "Four Wheel Drive",
+      "color": "Blue",
+      "location": "Henrico, Virginia",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178507729507?_skw=Toyota+Land+Cruiser&hash=item298fe3ca63:g:WUoAAeSwfGNqrUdR",
+      "ends_at": "2026-09-25T14:14:47.000Z",
+      "live": true,
+      "scraped_date": "2026-09-25T11:53:24.358Z",
+      "listed_at": "2026-09-18T14:14:47.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-18T14:14:47.000Z",
+      "last_seen": "2026-09-25T11:53:44.392Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 59990
+        }
+      ],
+      "departed_at": "2026-09-25T17:14:40.701Z"
+    },
+    {
+      "title": "2025 Acura Integra Type S",
+      "year": 2025,
+      "make": "Acura",
+      "model": "Integra Type S",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 46435,
+      "mileage": 25594,
+      "transmission": "Manual",
+      "engine": "2.0L I4 DOHC 16V",
+      "drivetrain": "FWD",
+      "color": "Other Color",
+      "location": "Kernersville, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/318886670176?_skw=Acura+Integra&hash=item4a3f206f60:g:FlAAAeSwawdqeJYx",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-25T11:53:24.358Z",
+      "listed_at": "2026-09-18T12:37:03.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-18T12:37:03.000Z",
+      "last_seen": "2026-09-25T11:53:44.392Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 46435
+        }
+      ],
+      "departed_at": "2026-09-25T17:14:40.701Z"
+    },
+    {
+      "title": "2007 Subaru Impreza WRX STI Limited",
+      "year": 2007,
+      "make": "Subaru",
+      "model": "Impreza WRX STI Limited",
+      "chassis": "GDB",
+      "trim": "",
+      "price": 21995,
+      "mileage": 149820,
+      "transmission": "Manual",
+      "engine": "2.5L turbocharger H4 double overhead camshaft 16V",
+      "drivetrain": "AWD",
+      "color": "Urban Gray Metallic",
+      "location": "Madison, Wisconsin",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/237069541261?_skw=Subaru+WRX+STI&hash=item3732721f8d:g:JnwAAeSwKcBqqWdH",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-25T11:53:24.358Z",
+      "listed_at": "2026-09-15T15:40:46.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-15T15:40:46.000Z",
+      "last_seen": "2026-09-25T11:53:44.392Z",
+      "price_history": [
+        {
+          "t": "2026-09-24T11:49:18.830Z",
+          "p": 21995
+        }
+      ],
+      "departed_at": "2026-09-25T17:14:40.701Z"
+    },
     {
       "title": "1991 Nissan Figaro",
       "year": 1991,
@@ -97810,254 +98066,6 @@
       "first_seen": "2026-06-12T18:51:21.194Z",
       "last_seen": "2026-09-09T11:27:30.550Z",
       "price_history": [],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "UZJ100",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:47.200Z",
-      "title": "1998 Toyota Land Cruiser Prado",
-      "year": 1998,
-      "make": "Toyota",
-      "model": "Land Cruiser Prado",
-      "price": 38500,
-      "location": "HI",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/jdmhawaii-1998-toyota-land-cruiser-prado-121358546/",
-      "listed_at": "2026-06-12T18:48:22.295Z",
-      "first_seen": "2026-06-12T18:48:22.295Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-08T21:14:04.175Z",
-          "p": 38500
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:32.069Z",
-      "title": "1999 Isuzu Vehicross",
-      "year": 1999,
-      "make": "Isuzu",
-      "model": "Vehicross",
-      "price": 22900,
-      "location": "VA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/drivermotorsports-1999-isuzu-1111/",
-      "listed_at": "2026-06-12T18:46:25.219Z",
-      "first_seen": "2026-06-12T18:46:25.219Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 22900
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "GDB",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:32.069Z",
-      "title": "2001 Subaru Impreza",
-      "year": 2001,
-      "make": "Subaru",
-      "model": "Impreza",
-      "price": 27000,
-      "location": "NH",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/northeastautoimports-2001-subaru-impreza-490567/",
-      "listed_at": "2026-06-12T01:01:24.505Z",
-      "first_seen": "2026-06-12T01:01:24.505Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 27000
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "GDB",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:32.069Z",
-      "title": "2001 Subaru Impreza",
-      "year": 2001,
-      "make": "Subaru",
-      "model": "Impreza",
-      "price": 28000,
-      "location": "NH",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/northeastautoimports-2001-subaru-impreza-489655/",
-      "listed_at": "2026-06-12T01:01:24.505Z",
-      "first_seen": "2026-06-12T01:01:24.505Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 28000
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "GDB",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:32.069Z",
-      "title": "2001 Subaru Impreza",
-      "year": 2001,
-      "make": "Subaru",
-      "model": "Impreza",
-      "price": 26500,
-      "location": "NH",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/northeastautoimports-2001-subaru-impreza-468933/",
-      "listed_at": "2026-06-12T01:01:24.505Z",
-      "first_seen": "2026-06-12T01:01:24.505Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 26500
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "GDB",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:32.069Z",
-      "title": "2001 Subaru Impreza",
-      "year": 2001,
-      "make": "Subaru",
-      "model": "Impreza",
-      "price": 25000,
-      "location": "NH",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/northeastautoimports-2001-subaru-impreza-468934/",
-      "listed_at": "2026-06-12T01:01:24.505Z",
-      "first_seen": "2026-06-12T01:01:24.505Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 25000
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "GDB",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:32.069Z",
-      "title": "2001 Subaru Impreza",
-      "year": 2001,
-      "make": "Subaru",
-      "model": "Impreza",
-      "price": 23500,
-      "location": "NH",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/northeastautoimports-2001-subaru-impreza-490569/",
-      "listed_at": "2026-06-12T01:01:24.505Z",
-      "first_seen": "2026-06-12T01:01:24.505Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 23500
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "HA7",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:44.178Z",
-      "title": "2000 Honda Acty",
-      "year": 2000,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 10500,
-      "location": "NH",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/northeastautoimports-2000-honda-acty-469433/",
-      "listed_at": "2026-06-12T01:01:24.505Z",
-      "first_seen": "2026-06-12T01:01:24.505Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 10500
-        }
-      ],
       "departed_at": "2026-09-09T16:40:50.134Z"
     }
   ]
