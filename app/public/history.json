@@ -1,6 +1,262 @@
 {
-  "updated": "2026-09-27T05:21:37.604Z",
+  "updated": "2026-09-27T12:05:55.962Z",
   "listings": [
+    {
+      "title": "2024 Nissan GT-R T-spec",
+      "year": 2024,
+      "make": "Nissan",
+      "model": "GT-R T-spec",
+      "chassis": "R35",
+      "trim": "",
+      "price": 279995,
+      "mileage": 336,
+      "transmission": "6-Speed Automatic",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Midnight",
+      "location": "Orlando, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/168706962169?_skw=Nissan+GT-R&hash=item2747b7f2f9:g:2cwAAeSw3Txqq89J",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-27T05:20:52.124Z",
+      "listed_at": "2026-09-22T11:33:39.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-22T11:33:39.000Z",
+      "last_seen": "2026-09-27T05:21:37.604Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 279995
+        }
+      ],
+      "departed_at": "2026-09-27T12:05:55.962Z"
+    },
+    {
+      "title": "2013 Nissan GT-R Black Edition",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "GT-R Black Edition",
+      "chassis": "R35",
+      "trim": "",
+      "price": 88411,
+      "mileage": 60596,
+      "transmission": "Automatic w/Manual Shift",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Gun Metallic",
+      "location": "Wesley Chapel, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/178518503813?_skw=Nissan+GT-R&hash=item2990883185:g:UAMAAeSwNYxqooK0",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-27T05:20:52.124Z",
+      "listed_at": "2026-09-22T10:27:19.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-22T10:27:19.000Z",
+      "last_seen": "2026-09-27T05:21:37.604Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 88411
+        }
+      ],
+      "departed_at": "2026-09-27T12:05:55.962Z"
+    },
+    {
+      "title": "2017 Subaru WRX STI",
+      "year": 2017,
+      "make": "Subaru",
+      "model": "WRX STI",
+      "chassis": "VAB",
+      "trim": "",
+      "price": 24995,
+      "mileage": 87847,
+      "transmission": "Manual",
+      "engine": "2.5L Gas H4",
+      "drivetrain": "All Wheel Drive",
+      "color": "Crystal White Pearl",
+      "location": "Rancho Cordova, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/198659257201?_skw=Subaru+WRX+STI&hash=item2e4103b371:g:f-IAAeSwR7pqjWEY",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-27T05:20:52.124Z",
+      "listed_at": "2026-09-22T09:38:24.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-22T09:38:24.000Z",
+      "last_seen": "2026-09-27T05:21:37.604Z",
+      "price_history": [
+        {
+          "t": "2026-09-24T11:49:18.830Z",
+          "p": 24995
+        }
+      ],
+      "departed_at": "2026-09-27T12:05:55.962Z"
+    },
+    {
+      "title": "1974 Toyota Land Cruiser FJ44 Icon",
+      "year": 1974,
+      "make": "Toyota",
+      "model": "Land Cruiser FJ44 Icon",
+      "chassis": "FJ40",
+      "trim": "",
+      "price": 249950,
+      "mileage": 8256,
+      "transmission": "4-Speed Automatic",
+      "engine": "6.2 V8",
+      "drivetrain": "",
+      "color": "Volcanic Black",
+      "location": "Murfreesboro, Tennessee",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/318902915849?_skw=Toyota+Land+Cruiser&hash=item4a40185309:g:Cb8AAeSwDK9qr5c~",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-27T05:20:52.124Z",
+      "listed_at": "2026-09-22T08:37:59.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-22T08:37:59.000Z",
+      "last_seen": "2026-09-27T05:21:37.604Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 249950
+        }
+      ],
+      "departed_at": "2026-09-27T12:05:55.962Z"
+    },
+    {
+      "title": "1998 Toyota Supra Turbo 2dr Hatchback",
+      "year": 1998,
+      "make": "Toyota",
+      "model": "Supra Turbo 2dr Hatchback",
+      "chassis": "JZA80",
+      "trim": "",
+      "price": 199900,
+      "mileage": 24702,
+      "transmission": "Manual 6-Speed",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Black",
+      "location": "Marietta, Georgia",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/336806750405?_skw=Toyota+Supra&hash=item4e6b3f28c5:g:YrwAAeSwdixqdYlo",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-27T05:20:52.124Z",
+      "listed_at": "2026-09-22T07:14:55.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-22T07:14:55.000Z",
+      "last_seen": "2026-09-27T05:21:37.604Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 199900
+        }
+      ],
+      "departed_at": "2026-09-27T12:05:55.962Z"
+    },
+    {
+      "title": "2025 Acura Integra A-Spec Tech Package",
+      "year": 2025,
+      "make": "Acura",
+      "model": "Integra A-Spec Tech Package",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 29395,
+      "mileage": 35929,
+      "transmission": "CVT",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Apex Blue Pearl",
+      "location": "Greensboro, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327369007669?_skw=Acura+Integra&hash=item4c38b6a235:g:~~MAAeSwDgxp8t~E",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-27T05:20:52.124Z",
+      "listed_at": "2026-09-22T05:43:41.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-22T05:43:41.000Z",
+      "last_seen": "2026-09-27T05:21:37.604Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 29395
+        }
+      ],
+      "departed_at": "2026-09-27T12:05:55.962Z"
+    },
+    {
+      "title": "2021 Honda Civic Touring",
+      "year": 2021,
+      "make": "Honda",
+      "model": "Civic Touring",
+      "chassis": "",
+      "trim": "",
+      "price": 42777,
+      "mileage": 41175,
+      "transmission": "Manual",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Boost Blue Pearl",
+      "location": "Rancho Cordova, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/198654783632?_skw=Honda+Civic+Type+R&hash=item2e40bf7090:g:VRMAAeSwlYhqbw1l",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-27T05:20:52.124Z",
+      "listed_at": "2026-09-20T09:32:53.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-20T09:32:53.000Z",
+      "last_seen": "2026-09-27T05:21:37.604Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 42777
+        }
+      ],
+      "departed_at": "2026-09-27T12:05:55.962Z"
+    },
+    {
+      "title": "1993 Mazda RX-7 R1",
+      "year": 1993,
+      "make": "Mazda",
+      "model": "RX-7 R1",
+      "chassis": "FD3S",
+      "trim": "",
+      "price": 99900,
+      "mileage": 5899,
+      "transmission": "5 Speed Manual",
+      "engine": "1.3L Gas",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Vintage Red",
+      "location": "Charlotte, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800689137120?_skw=Mazda+RX-7&hash=itemba6ccaa5e0:g:ACYAAeSww49qsaBW",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-09-27T05:20:52.124Z",
+      "listed_at": "2026-09-20T08:17:47.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-20T08:17:47.000Z",
+      "last_seen": "2026-09-27T05:21:37.604Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 99900
+        }
+      ],
+      "departed_at": "2026-09-27T12:05:55.962Z"
+    },
     {
       "title": "2021 Toyota Supra 3.0 Premium-$30K MODS-BIG TURBO!",
       "year": 2021,
@@ -98375,254 +98631,6 @@
         {
           "t": "2026-09-05T20:25:17.857Z",
           "p": 9995
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "JZS161",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:25.782Z",
-      "title": "2000 Toyota Aristo",
-      "year": 2000,
-      "make": "Toyota",
-      "model": "Aristo",
-      "price": 24999,
-      "location": "PA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/fedlegalimports-2000-toyota-aristo-40333/",
-      "listed_at": "2026-07-11T06:23:01.741Z",
-      "first_seen": "2026-07-11T06:23:01.741Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 24999
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "R34",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:47.160Z",
-      "title": "2000 Nissan Skyline",
-      "year": 2000,
-      "make": "Nissan",
-      "model": "Skyline",
-      "price": 29999,
-      "location": "PA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/fedlegalimports-2000-nissan-skyline-40530/",
-      "listed_at": "2026-07-11T06:23:01.741Z",
-      "first_seen": "2026-07-11T06:23:01.741Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 29999
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "R34",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:25.782Z",
-      "title": "2000 Nissan Skyline",
-      "year": 2000,
-      "make": "Nissan",
-      "model": "Skyline",
-      "price": 22985,
-      "location": "SC",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/jdmimportautocenter-2000-nissan-skyline-6848998441073/",
-      "listed_at": "2026-07-11T04:24:19.194Z",
-      "first_seen": "2026-07-11T04:24:19.194Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 22985
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:43.257Z",
-      "title": "1994 Daihatsu Hijet",
-      "year": 1994,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 12900,
-      "location": "AR",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/mudhogminitrucks-1994-daihatsu-hijet-494959/",
-      "listed_at": "2026-07-10T14:38:47.438Z",
-      "first_seen": "2026-07-10T14:38:47.438Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 12900
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "S13",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:26.010Z",
-      "title": "1990 Nissan Silvia",
-      "year": 1990,
-      "make": "Nissan",
-      "model": "Silvia",
-      "price": 19999,
-      "location": "PA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/fedlegalimports-1990-nissan-silvia-40332/",
-      "listed_at": "2026-07-10T06:23:02.560Z",
-      "first_seen": "2026-07-10T06:23:02.560Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 19999
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "S15",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:47.160Z",
-      "title": "1999 Nissan Silvia",
-      "year": 1999,
-      "make": "Nissan",
-      "model": "Silvia",
-      "price": 33999,
-      "location": "PA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/fedlegalimports-1999-nissan-silvia-40334/",
-      "listed_at": "2026-07-10T06:23:02.560Z",
-      "first_seen": "2026-07-10T06:23:02.560Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 33999
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "S15",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:47.440Z",
-      "title": "2000 Nissan Silvia",
-      "year": 2000,
-      "make": "Nissan",
-      "model": "Silvia",
-      "price": 24999,
-      "location": "PA",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/fedlegalimports-2000-nissan-silvia-40331/",
-      "listed_at": "2026-07-10T06:23:02.560Z",
-      "first_seen": "2026-07-10T06:23:02.560Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-08T21:14:04.175Z",
-          "p": 24999
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:26.010Z",
-      "title": "2000 Toyota Crown",
-      "year": 2000,
-      "make": "Toyota",
-      "model": "Crown",
-      "price": 8950,
-      "location": "NC",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/2000-toyota-crown-s170-majesta-mrdrmem1/",
-      "listed_at": "2026-07-09T17:13:08.583Z",
-      "first_seen": "2026-07-09T17:13:08.583Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-05T20:25:17.857Z",
-          "p": 8950
         }
       ],
       "departed_at": "2026-09-09T16:40:50.134Z"
