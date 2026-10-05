@@ -1,6 +1,326 @@
 {
-  "updated": "2026-10-04T21:29:08.313Z",
+  "updated": "2026-10-05T05:44:36.229Z",
   "listings": [
+    {
+      "title": "2004 Nissan 350Z ROADSTER",
+      "year": 2004,
+      "make": "Nissan",
+      "model": "350Z ROADSTER",
+      "chassis": "Z33",
+      "trim": "",
+      "price": 12495,
+      "mileage": 54248,
+      "transmission": "Automatic",
+      "engine": "3.5L Gas V6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "RED",
+      "location": "Bloomington, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/227545315637?_skw=Nissan+350Z&hash=item34fac1f935:g:z-oAAeSwQn1qtdM2",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-04T21:28:47.508Z",
+      "listed_at": "2026-09-30T01:52:07.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-30T01:52:07.000Z",
+      "last_seen": "2026-10-04T21:29:08.313Z",
+      "price_history": [
+        {
+          "t": "2026-09-30T05:35:31.658Z",
+          "p": 12495
+        }
+      ],
+      "departed_at": "2026-10-05T05:44:36.229Z"
+    },
+    {
+      "title": "2020 Toyota Supra 3",
+      "year": 2020,
+      "make": "Toyota",
+      "model": "Supra 3",
+      "chassis": "A90",
+      "trim": "",
+      "price": 56900,
+      "mileage": 4299,
+      "transmission": "8-Speed Automatic",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Renaissance Red",
+      "location": "Portland, Oregon",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/237097917116?_skw=Toyota+Supra&hash=item3734231abc:g:7h4AAeSwMaJqrEBu",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-04T21:28:47.508Z",
+      "listed_at": "2026-09-30T01:35:25.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-30T01:35:25.000Z",
+      "last_seen": "2026-10-04T21:29:08.313Z",
+      "price_history": [
+        {
+          "t": "2026-09-30T05:35:31.658Z",
+          "p": 56900
+        }
+      ],
+      "departed_at": "2026-10-05T05:44:36.229Z"
+    },
+    {
+      "title": "1996 Toyota Land Cruiser Sport Utility 4D",
+      "year": 1996,
+      "make": "Toyota",
+      "model": "Land Cruiser Sport Utility 4D",
+      "chassis": "HDJ81",
+      "trim": "",
+      "price": 46580,
+      "mileage": 216612,
+      "transmission": "Automatic",
+      "engine": "4.5L Gas I6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Blue",
+      "location": "San Diego, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800735202897?_skw=Toyota+Land+Cruiser&hash=itemba6f898e51:g:GT4AAeSwyA1poI05",
+      "ends_at": "2026-10-04T21:35:08.000Z",
+      "live": true,
+      "scraped_date": "2026-10-04T21:28:47.508Z",
+      "listed_at": "2026-09-29T21:35:08.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-29T21:35:08.000Z",
+      "last_seen": "2026-10-04T21:29:08.313Z",
+      "price_history": [
+        {
+          "t": "2026-09-29T22:18:10.599Z",
+          "p": 46580
+        }
+      ],
+      "departed_at": "2026-10-05T05:44:36.229Z"
+    },
+    {
+      "title": "2006 Toyota Land Cruiser 160K Serviced 3rd Row Lifted CARFAX WE SHIP",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser 160K Serviced 3rd Row Lifted CARFAX WE SHIP",
+      "chassis": "UZJ100",
+      "trim": "",
+      "price": 26950,
+      "mileage": 160177,
+      "transmission": "Automatic",
+      "engine": "4.7L V8 F DOHC 32V",
+      "drivetrain": "4WD",
+      "color": "Silver",
+      "location": "Feasterville-Trevose, Pennsylvania",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/198674092260?_skw=Toyota+Land+Cruiser&hash=item2e41e610e4:g:r~AAAeSw9x1quwJ9",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-04T21:28:47.508Z",
+      "listed_at": "2026-09-29T00:11:20.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-29T00:11:20.000Z",
+      "last_seen": "2026-10-04T21:29:08.313Z",
+      "price_history": [
+        {
+          "t": "2026-09-29T05:47:09.588Z",
+          "p": 26950
+        }
+      ],
+      "departed_at": "2026-10-05T05:44:36.229Z"
+    },
+    {
+      "title": "2013 Subaru Impreza WRX STI-HUGE $40K BUILD-602HP!",
+      "year": 2013,
+      "make": "Subaru",
+      "model": "Impreza WRX STI-HUGE $40K BUILD-602HP!",
+      "chassis": "GRB",
+      "trim": "",
+      "price": 39995,
+      "mileage": 11101,
+      "transmission": "6 Speed Manual",
+      "engine": "2.5L Turbo H4 305hp 290ft. lbs.",
+      "drivetrain": "AWD",
+      "color": "Tangerine Orange Pearl",
+      "location": "Joliet, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/327377709507?_skw=Subaru+WRX+STI&hash=item4c393b69c3:g:1AkAAeSwtZFqOftk",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-04T21:28:47.508Z",
+      "listed_at": "2026-09-28T03:40:56.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-28T03:40:56.000Z",
+      "last_seen": "2026-10-04T21:29:08.313Z",
+      "price_history": [
+        {
+          "t": "2026-09-28T05:27:51.374Z",
+          "p": 39995
+        }
+      ],
+      "departed_at": "2026-10-05T05:44:36.229Z"
+    },
+    {
+      "title": "1993 Mazda RX-7 Touring",
+      "year": 1993,
+      "make": "Mazda",
+      "model": "RX-7 Touring",
+      "chassis": "FD3S",
+      "trim": "",
+      "price": 99900,
+      "mileage": 48283,
+      "transmission": "Manual",
+      "engine": "1.3L Gas",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Red",
+      "location": "Lewisville, Texas",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287613046511?_skw=Mazda+RX-7&hash=item42f712ceef:g:60YAAeSwNiZqtt4b",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-04T21:28:47.508Z",
+      "listed_at": "2026-09-28T00:25:27.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-28T00:25:27.000Z",
+      "last_seen": "2026-10-04T21:29:08.313Z",
+      "price_history": [
+        {
+          "t": "2026-09-28T05:27:51.374Z",
+          "p": 99900
+        }
+      ],
+      "departed_at": "2026-10-05T05:44:36.229Z"
+    },
+    {
+      "title": "1993 Mazda RX-7 Touring",
+      "year": 1993,
+      "make": "Mazda",
+      "model": "RX-7 Touring",
+      "chassis": "FD3S",
+      "trim": "",
+      "price": 64900,
+      "mileage": 13064,
+      "transmission": "Manual",
+      "engine": "1.3L Gas",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Red",
+      "location": "Lewisville, Texas",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287613044937?_skw=Mazda+RX-7&hash=item42f712c8c9:g:gHEAAeSwsGZqtuKW",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-04T21:28:47.508Z",
+      "listed_at": "2026-09-28T00:24:07.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-28T00:24:07.000Z",
+      "last_seen": "2026-10-04T21:29:08.313Z",
+      "price_history": [
+        {
+          "t": "2026-09-28T05:27:51.374Z",
+          "p": 64900
+        }
+      ],
+      "departed_at": "2026-10-05T05:44:36.229Z"
+    },
+    {
+      "title": "2008 Mitsubishi Lancer EVOLUTION GSR",
+      "year": 2008,
+      "make": "Mitsubishi",
+      "model": "Lancer EVOLUTION GSR",
+      "chassis": "CZ4A",
+      "trim": "",
+      "price": 29500,
+      "mileage": 78600,
+      "transmission": "Manual",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "AWD",
+      "color": "Silver",
+      "location": "Orlando, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/318912325760?_skw=Mitsubishi+Lancer+Evolution&hash=item4a40a7e880:g:YYsAAeSwrwFqtILa",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-04T21:28:47.508Z",
+      "listed_at": "2026-09-24T12:18:45.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-24T12:18:45.000Z",
+      "last_seen": "2026-10-04T21:29:08.313Z",
+      "price_history": [
+        {
+          "t": "2026-09-24T17:13:49.417Z",
+          "p": 29500
+        }
+      ],
+      "departed_at": "2026-10-05T05:44:36.229Z"
+    },
+    {
+      "title": "2015 Nissan GT-R PREMIUM",
+      "year": 2015,
+      "make": "Nissan",
+      "model": "GT-R PREMIUM",
+      "chassis": "R35",
+      "trim": "",
+      "price": 67500,
+      "mileage": 68000,
+      "transmission": "Automatic",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "AWD",
+      "color": "Grey",
+      "location": "Mukilteo, Washington",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800614360546?_skw=Nissan+GT-R&hash=itemba6855a5e2:g:1CwAAeSwKtNqm2vK",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-04T21:28:47.508Z",
+      "listed_at": "2026-09-05T01:14:19.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-05T01:14:19.000Z",
+      "last_seen": "2026-10-04T21:29:08.313Z",
+      "price_history": [
+        {
+          "t": "2026-09-23T11:40:56.683Z",
+          "p": 67500
+        }
+      ],
+      "departed_at": "2026-10-05T05:44:36.229Z"
+    },
+    {
+      "title": "1996 Nissan 300ZX",
+      "year": 1996,
+      "make": "Nissan",
+      "model": "300ZX",
+      "chassis": "Z32",
+      "trim": "",
+      "price": 34990,
+      "mileage": 27338,
+      "transmission": "Manual",
+      "engine": "3.0L Gas V6",
+      "drivetrain": "RWD",
+      "color": "Red",
+      "location": "Independence, Missouri",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/307163295420?_skw=Nissan+300ZX&hash=item47845beebc:g:6AAAAeSwJ4ZquSzW",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-04T21:28:47.508Z",
+      "listed_at": "2026-09-04T21:40:57.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-04T21:40:57.000Z",
+      "last_seen": "2026-10-04T21:29:08.313Z",
+      "price_history": [
+        {
+          "t": "2026-09-27T16:59:47.726Z",
+          "p": 34990
+        }
+      ],
+      "departed_at": "2026-10-05T05:44:36.229Z"
+    },
     {
       "title": "2007 Mazda MX-5 Miata Sport Convertible 2D",
       "year": 2007,
@@ -100131,316 +100451,6 @@
         {
           "t": "2026-09-09T04:47:17.237Z",
           "p": 17995
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:15.585Z",
-      "title": "1997 Subaru Sambar",
-      "year": 1997,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 8757,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-subaru-sambar-1997-subaru-sambar-hd-dump-wu-wwo/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-09T04:47:17.237Z",
-          "p": 8757
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:15.585Z",
-      "title": "1999 Honda Acty",
-      "year": 1999,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 7875,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1999-honda-acty-1999-honda-acty-sdx-rlsgfn/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-09T04:47:17.237Z",
-          "p": 7875
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "TT2",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:15.585Z",
-      "title": "2000 Subaru Sambar",
-      "year": 2000,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 12900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-2000-subaru-sambar-de337e9f0a67/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-08T16:40:51.935Z",
-          "p": 12900
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:15.585Z",
-      "title": "1983 Subaru Sambar",
-      "year": 1983,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 6614,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1983-subaru-sambar-1983-subaru-sambar-4wd-mini-truck-1895/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-09T04:47:17.237Z",
-          "p": 6614
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:15.758Z",
-      "title": "1997 Honda Acty",
-      "year": 1997,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 8500,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-honda-acty-1997-honda-acty-attack-4wd/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-08T11:24:07.908Z",
-          "p": 8500
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "HA4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:15.758Z",
-      "title": "1997 Honda Acty",
-      "year": 1997,
-      "make": "Honda",
-      "model": "Acty",
-      "price": 4170,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-honda-acty-1997-honda-acty-truck-ha3-2334244/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-09T11:27:30.550Z",
-          "p": 4170
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:15.758Z",
-      "title": "1994 Daihatsu Hijet",
-      "year": 1994,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 9600,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-daihatsu-hijet-bf4c2b8a2992/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-09T11:27:30.550Z",
-          "p": 9600
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "S110",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:15.758Z",
-      "title": "1997 Daihatsu Hijet",
-      "year": 1997,
-      "make": "Daihatsu",
-      "model": "Hijet",
-      "price": 5900,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1997-daihatsu-hijet-1997-daihatsu-hijet-dump-truck/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-09T11:27:30.550Z",
-          "p": 5900
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:15.758Z",
-      "title": "1994 Subaru Sambar",
-      "year": 1994,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 4140,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-subaru-sambar-1994-subaru-sambar-truck-ks4-173128/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-09T04:47:17.237Z",
-          "p": 4140
-        }
-      ],
-      "departed_at": "2026-09-09T16:40:50.134Z"
-    },
-    {
-      "chassis": "KS4",
-      "trim": "",
-      "mileage": 0,
-      "transmission": "",
-      "engine": "",
-      "drivetrain": "",
-      "color": "",
-      "ends_at": "",
-      "live": true,
-      "rhd": true,
-      "scraped_date": "2026-09-09T11:26:15.758Z",
-      "title": "1994 Subaru Sambar",
-      "year": 1994,
-      "make": "Subaru",
-      "model": "Sambar",
-      "price": 8950,
-      "location": "IL",
-      "source": "JDM Buy & Sell",
-      "source_url": "https://www.jdmbuysell.com/ad/keitruckdirect-1994-subaru-sambar-1994-subaru-sambar-ks4-5-speed-4wd-e1-granny-gear/",
-      "listed_at": "2026-08-29T18:25:09.639Z",
-      "first_seen": "2026-08-29T18:25:09.639Z",
-      "last_seen": "2026-09-09T11:27:30.550Z",
-      "price_history": [
-        {
-          "t": "2026-09-09T04:47:17.237Z",
-          "p": 8950
         }
       ],
       "departed_at": "2026-09-09T16:40:50.134Z"
