@@ -1,6 +1,102 @@
 {
-  "updated": "2026-10-14T11:56:20.336Z",
+  "updated": "2026-10-14T17:13:19.154Z",
   "listings": [
+    {
+      "title": "1992 Toyota MR2",
+      "year": 1992,
+      "make": "Toyota",
+      "model": "MR2",
+      "chassis": "SW20",
+      "trim": "",
+      "price": 11499,
+      "mileage": 91000,
+      "transmission": "Manual",
+      "engine": "2.2L Gas I4",
+      "drivetrain": "RWD",
+      "color": "Red",
+      "location": "Wildomar, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/880014567779?_skw=Toyota+MR2&hash=itemcce4f4a963:g:FdYAAeSw24Zqzm0D",
+      "ends_at": "2026-10-23T18:03:52.000Z",
+      "live": true,
+      "scraped_date": "2026-10-14T11:55:59.226Z",
+      "listed_at": "2026-10-13T18:03:52.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-13T18:03:52.000Z",
+      "last_seen": "2026-10-14T11:56:20.336Z",
+      "price_history": [
+        {
+          "t": "2026-10-13T22:47:30.485Z",
+          "p": 11499
+        }
+      ],
+      "departed_at": "2026-10-14T17:13:19.154Z"
+    },
+    {
+      "title": "1996 Toyota Supra 2JZ RHD JZ80",
+      "year": 1996,
+      "make": "Toyota",
+      "model": "Supra 2JZ RHD JZ80",
+      "chassis": "JZA80",
+      "trim": "",
+      "price": 49999,
+      "mileage": 105000,
+      "transmission": "Automatic",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "RWD",
+      "color": "Red",
+      "location": "Jacksonville, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/318925133423?_skw=Toyota+Supra&hash=item4a416b566f:g:KfoAAeSwBCJqdNCa",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-14T11:55:59.226Z",
+      "listed_at": "2026-09-27T15:12:52.000Z",
+      "rhd": true,
+      "enriched": 3,
+      "first_seen": "2026-09-27T15:12:52.000Z",
+      "last_seen": "2026-10-14T11:56:20.336Z",
+      "price_history": [
+        {
+          "t": "2026-10-12T15:30:35.745Z",
+          "p": 49999
+        }
+      ],
+      "departed_at": "2026-10-14T17:13:19.154Z"
+    },
+    {
+      "title": "1990 Mazda MX-5 Miata",
+      "year": 1990,
+      "make": "Mazda",
+      "model": "MX-5 Miata",
+      "chassis": "NA",
+      "trim": "",
+      "price": 18500,
+      "mileage": 110000,
+      "transmission": "Manual",
+      "engine": "",
+      "drivetrain": "",
+      "color": "Blue",
+      "location": "North Hollywood, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/318870439760?_skw=Mazda+Miata&hash=item4a3e28c750:g:cpIAAeSwTONqKLJK",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-14T11:55:59.226Z",
+      "listed_at": "2026-09-14T15:50:14.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-14T15:50:14.000Z",
+      "last_seen": "2026-10-14T11:56:20.336Z",
+      "price_history": [
+        {
+          "t": "2026-10-12T15:30:35.745Z",
+          "p": 18500
+        }
+      ],
+      "departed_at": "2026-10-14T17:13:19.154Z"
+    },
     {
       "title": "2003 Mazda MX-5 Miata LS",
       "year": 2003,
@@ -100667,102 +100763,6 @@
         {
           "t": "2026-09-16T11:38:12.516Z",
           "p": 17995
-        }
-      ],
-      "departed_at": "2026-09-17T04:55:29.089Z"
-    },
-    {
-      "title": "2018 Nissan GT-R NISMO AWD 2dr Coupe",
-      "year": 2018,
-      "make": "Nissan",
-      "model": "GT-R NISMO AWD 2dr Coupe",
-      "chassis": "R35",
-      "trim": "",
-      "price": 249900,
-      "mileage": 16614,
-      "transmission": "Automatic 6-Speed",
-      "engine": "3.8L Gas V6",
-      "drivetrain": "All Wheel Drive",
-      "color": "Jet Black",
-      "location": "Marietta, Georgia",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/237070822104?_skw=Nissan+GT-R&hash=item373285aad8:g:C~YAAeSwfCxqbE7s",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-16T21:19:44.422Z",
-      "listed_at": "2026-09-16T07:33:40.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-16T07:33:40.000Z",
-      "last_seen": "2026-09-16T21:20:37.791Z",
-      "price_history": [
-        {
-          "t": "2026-09-16T11:38:12.516Z",
-          "p": 249900
-        }
-      ],
-      "departed_at": "2026-09-17T04:55:29.089Z"
-    },
-    {
-      "title": "2002 Honda S2000",
-      "year": 2002,
-      "make": "Honda",
-      "model": "S2000",
-      "chassis": "AP1",
-      "trim": "",
-      "price": 47900,
-      "mileage": 20905,
-      "transmission": "6-Speed Manual",
-      "engine": "2.0L Gas I4",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Suzuka Blue",
-      "location": "Grand Rapids, Michigan",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/147576549464?_skw=Honda+S2000&hash=item225c3f7058:g:nK8AAeSwK7pqqjVU",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-16T21:19:44.422Z",
-      "listed_at": "2026-09-16T06:26:06.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-16T06:26:06.000Z",
-      "last_seen": "2026-09-16T21:20:37.791Z",
-      "price_history": [
-        {
-          "t": "2026-09-16T11:38:12.516Z",
-          "p": 47900
-        }
-      ],
-      "departed_at": "2026-09-17T04:55:29.089Z"
-    },
-    {
-      "title": "1982 Toyota Land Cruiser FJ40 with Trailer",
-      "year": 1982,
-      "make": "Toyota",
-      "model": "Land Cruiser FJ40 with Trailer",
-      "chassis": "FJ40",
-      "trim": "",
-      "price": 64995,
-      "mileage": 87,
-      "transmission": "4 Speed Manual",
-      "engine": "4.2L 2F Inline 6",
-      "drivetrain": "4X4",
-      "color": "Blue Gray",
-      "location": "Lithia Springs, Georgia",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/287589582613?_skw=Toyota+Land+Cruiser&hash=item42f5acc715:g:DewAAeSw4FBqqjVZ",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-16T21:19:44.422Z",
-      "listed_at": "2026-09-16T06:25:45.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-16T06:25:45.000Z",
-      "last_seen": "2026-09-16T21:20:37.791Z",
-      "price_history": [
-        {
-          "t": "2026-09-16T11:38:12.516Z",
-          "p": 64995
         }
       ],
       "departed_at": "2026-09-17T04:55:29.089Z"
