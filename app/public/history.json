@@ -1,6 +1,102 @@
 {
-  "updated": "2026-10-16T11:27:33.428Z",
+  "updated": "2026-10-16T16:41:34.836Z",
   "listings": [
+    {
+      "title": "1996 Toyota Supra 2JZ RHD JZ80",
+      "year": 1996,
+      "make": "Toyota",
+      "model": "Supra 2JZ RHD JZ80",
+      "chassis": "JZA80",
+      "trim": "",
+      "price": 49999,
+      "mileage": 105000,
+      "transmission": "Automatic",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "RWD",
+      "color": "Red",
+      "location": "Jacksonville, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/860048733749?_skw=Toyota+Supra&hash=itemc83ee63635:g:KfoAAeSwBCJqdNCa",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-16T11:27:16.041Z",
+      "listed_at": "2026-10-16T00:55:44.000Z",
+      "rhd": true,
+      "enriched": 3,
+      "first_seen": "2026-10-16T00:55:44.000Z",
+      "last_seen": "2026-10-16T11:27:33.428Z",
+      "price_history": [
+        {
+          "t": "2026-10-16T04:35:19.196Z",
+          "p": 49999
+        }
+      ],
+      "departed_at": "2026-10-16T16:41:34.836Z"
+    },
+    {
+      "title": "1991 Honda Prelude Si 2dr Coupe",
+      "year": 1991,
+      "make": "Honda",
+      "model": "Prelude Si 2dr Coupe",
+      "chassis": "",
+      "trim": "",
+      "price": 13999,
+      "mileage": 178792,
+      "transmission": "Manual 5-Speed",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Blue",
+      "location": "San Diego, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/257793914352?_skw=Honda+Prelude&hash=item3c05b6f5f0:g:pH0AAeSwjH9qyJPh",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-16T11:27:16.041Z",
+      "listed_at": "2026-10-11T16:20:02.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-11T16:20:02.000Z",
+      "last_seen": "2026-10-16T11:27:33.428Z",
+      "price_history": [
+        {
+          "t": "2026-10-12T15:30:35.745Z",
+          "p": 13999
+        }
+      ],
+      "departed_at": "2026-10-16T16:41:34.836Z"
+    },
+    {
+      "title": "2013 Nissan GT-R Premium Boostin Performance 4.1L AMS Performance Fully Built!",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "GT-R Premium Boostin Performance 4.1L AMS Performance Fully Built!",
+      "chassis": "R35",
+      "trim": "",
+      "price": 200212,
+      "mileage": 1349,
+      "transmission": "6-Speed Double Clutch",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Pearl White (Wrapped Satin Gray)",
+      "location": "West Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/960052347437?_skw=Nissan+GT-R&hash=itemdf8794422d:g:pGEAAeSw69Jp2MgW",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-16T11:27:16.041Z",
+      "listed_at": "2026-10-11T11:42:49.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-11T11:42:49.000Z",
+      "last_seen": "2026-10-16T11:27:33.428Z",
+      "price_history": [
+        {
+          "t": "2026-10-12T15:30:35.745Z",
+          "p": 200212
+        }
+      ],
+      "departed_at": "2026-10-16T16:41:34.836Z"
+    },
     {
       "title": "1996 Mazda MX-5 Miata MX-5",
       "year": 1996,
@@ -100824,102 +100920,6 @@
         {
           "t": "2026-09-17T11:45:46.475Z",
           "p": 49995
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "1990 Toyota Supra",
-      "year": 1990,
-      "make": "Toyota",
-      "model": "Supra",
-      "chassis": "MA70",
-      "trim": "",
-      "price": 8900,
-      "mileage": 112991,
-      "transmission": "Automatic",
-      "engine": "",
-      "drivetrain": "RWD",
-      "color": "White",
-      "location": "Jamaica, New York",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/257715307802?_skw=Toyota+Supra&hash=item3c0107851a:g:OqUAAeSwM6Bqli1z",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-01T01:42:44.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-01T01:42:44.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 8900
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "2015 Subaru WRX STI STI",
-      "year": 2015,
-      "make": "Subaru",
-      "model": "WRX STI STI",
-      "chassis": "VAB",
-      "trim": "",
-      "price": 25600,
-      "mileage": 78362,
-      "transmission": "Manual",
-      "engine": "2.5L Gas H4",
-      "drivetrain": "AWD",
-      "color": "Black",
-      "location": "Hempstead, New York",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/227499907401?_skw=Subaru+WRX+STI&hash=item34f80d1949:g:m~sAAeSwlGBqHDa9",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-01T00:02:02.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-01T00:02:02.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 25600
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "2000 Acura Integra GS",
-      "year": 2000,
-      "make": "Acura",
-      "model": "Integra GS",
-      "chassis": "DC2",
-      "trim": "",
-      "price": 8500,
-      "mileage": 265380,
-      "transmission": "",
-      "engine": "1.8L Gas I4",
-      "drivetrain": "FWD",
-      "color": "Blue",
-      "location": "Madison, Georgia",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/128054482782?_skw=Acura+Integra&hash=item1dd0a4575e:g:QckAAeSw8rhqlgPW",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-08-31T23:32:51.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-31T23:32:51.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 8500
         }
       ],
       "departed_at": "2026-09-18T04:46:28.438Z"
