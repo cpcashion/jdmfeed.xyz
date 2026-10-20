@@ -1,6 +1,270 @@
 {
-  "updated": "2026-10-20T11:41:31.989Z",
+  "updated": "2026-10-20T17:10:36.649Z",
   "listings": [
+    {
+      "title": "2021 Toyota Supra 3.0 Premium Coupe 2D",
+      "year": 2021,
+      "make": "Toyota",
+      "model": "Supra 3.0 Premium Coupe 2D",
+      "chassis": "A90",
+      "trim": "",
+      "price": 49999,
+      "mileage": 12881,
+      "transmission": "Automatic, 8-Spd",
+      "engine": "3.0L Gas I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "",
+      "location": "West Sacramento, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/407292811914?_skw=Toyota+Supra&hash=item5ed48b1a8a:g:g~IAAeSwhPJqiIEg",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-20T11:40:47.408Z",
+      "listed_at": "2026-10-15T17:09:00.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-15T17:09:00.000Z",
+      "last_seen": "2026-10-20T11:41:31.989Z",
+      "price_history": [
+        {
+          "t": "2026-10-15T21:25:07.173Z",
+          "p": 49999
+        }
+      ],
+      "departed_at": "2026-10-20T17:10:36.649Z"
+    },
+    {
+      "title": "1996 Nissan 240SX",
+      "year": 1996,
+      "make": "Nissan",
+      "model": "240SX",
+      "chassis": "S14",
+      "trim": "",
+      "price": 29212,
+      "mileage": 49069,
+      "transmission": "5-Speed Manual",
+      "engine": "2.4L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Blue",
+      "location": "Cary, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/168794591325?_skw=Nissan+240SX&hash=item274cf1105d:g:dzkAAeSw8tFpwmse",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-20T11:40:47.408Z",
+      "listed_at": "2026-10-15T13:32:39.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-15T13:32:39.000Z",
+      "last_seen": "2026-10-20T11:41:31.989Z",
+      "price_history": [
+        {
+          "t": "2026-10-15T17:03:29.709Z",
+          "p": 29212
+        }
+      ],
+      "departed_at": "2026-10-20T17:10:36.649Z"
+    },
+    {
+      "title": "2026 Toyota Land Cruiser Base",
+      "year": 2026,
+      "make": "Toyota",
+      "model": "Land Cruiser Base",
+      "chassis": "J300",
+      "trim": "",
+      "price": 73995,
+      "mileage": 3,
+      "transmission": "8-Speed Automatic w/OD",
+      "engine": "2.4L Electric and Gas Hybrid I4",
+      "drivetrain": "Rear Wheel Drive w/4x4",
+      "color": "",
+      "location": "Norwalk, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/820241553430?_skw=Toyota+Land+Cruiser&hash=itembefa34d816:g:IngAAeSwkwdqJSBQ",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-20T11:40:47.408Z",
+      "listed_at": "2026-10-15T12:20:50.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-15T12:20:50.000Z",
+      "last_seen": "2026-10-20T11:41:31.989Z",
+      "price_history": [
+        {
+          "t": "2026-10-15T17:03:29.709Z",
+          "p": 73995
+        }
+      ],
+      "departed_at": "2026-10-20T17:10:36.649Z"
+    },
+    {
+      "title": "2024 Acura Integra w/A-Spec Technology Package",
+      "year": 2024,
+      "make": "Acura",
+      "model": "Integra w/A-Spec Technology Package",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 28700,
+      "mileage": 13315,
+      "transmission": "CVT Transmission",
+      "engine": "1.5L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Platinum White Pearl",
+      "location": "Brooklyn, New York",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/237122317073?_skw=Acura+Integra&hash=item3735976b11:g:k-EAAeSwahRqzlq8",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-20T11:40:47.408Z",
+      "listed_at": "2026-10-13T16:22:37.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-13T16:22:37.000Z",
+      "last_seen": "2026-10-20T11:41:31.989Z",
+      "price_history": [
+        {
+          "t": "2026-10-13T22:47:30.485Z",
+          "p": 28700
+        }
+      ],
+      "departed_at": "2026-10-20T17:10:36.649Z"
+    },
+    {
+      "title": "1988 Mazda RX-7 Base",
+      "year": 1988,
+      "make": "Mazda",
+      "model": "RX-7 Base",
+      "chassis": "FC3S",
+      "trim": "",
+      "price": 16900,
+      "mileage": 84503,
+      "transmission": "5-Speed Manual",
+      "engine": "1.3L Gas",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Sapphire Blue Metallic (5A)",
+      "location": "Scottsdale, Arizona",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/267812736588?_skw=Mazda+RX-7&hash=item3e5ae20e4c:g:UxgAAeSw5ZZqFYyV",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-20T11:40:47.408Z",
+      "listed_at": "2026-10-13T16:16:11.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-13T16:16:11.000Z",
+      "last_seen": "2026-10-20T11:41:31.989Z",
+      "price_history": [
+        {
+          "t": "2026-10-13T22:47:30.485Z",
+          "p": 16900
+        }
+      ],
+      "departed_at": "2026-10-20T17:10:36.649Z"
+    },
+    {
+      "title": "2024 Nissan GT-R T-spec",
+      "year": 2024,
+      "make": "Nissan",
+      "model": "GT-R T-spec",
+      "chassis": "R35",
+      "trim": "",
+      "price": 238990,
+      "mileage": 10700,
+      "transmission": "6-Speed Automatic",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Pearl White",
+      "location": "New Albany, Indiana",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287645658756?_skw=Nissan+GT-R&hash=item42f9046e84:g:d0YAAeSwFY1qwAch",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-20T11:40:47.408Z",
+      "listed_at": "2026-10-13T13:10:04.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-13T13:10:04.000Z",
+      "last_seen": "2026-10-20T11:41:31.989Z",
+      "price_history": [
+        {
+          "t": "2026-10-13T14:15:09.268Z",
+          "p": 245990
+        },
+        {
+          "t": "2026-10-14T21:43:33.667Z",
+          "p": 238990
+        }
+      ],
+      "departed_at": "2026-10-20T17:10:36.649Z"
+    },
+    {
+      "title": "2025 Acura Integra Type S",
+      "year": 2025,
+      "make": "Acura",
+      "model": "Integra Type S",
+      "chassis": "DE4",
+      "trim": "",
+      "price": 45335,
+      "mileage": 25594,
+      "transmission": "Manual",
+      "engine": "2.0L I4 DOHC 16V",
+      "drivetrain": "FWD",
+      "color": "Other Color",
+      "location": "Kernersville, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/366731336475?_skw=Acura+Integra&hash=item5562e41b1b:g:FlAAAeSwawdqeJYx",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-20T11:40:47.408Z",
+      "listed_at": "2026-10-13T13:01:13.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-13T13:01:13.000Z",
+      "last_seen": "2026-10-20T11:41:31.989Z",
+      "price_history": [
+        {
+          "t": "2026-10-13T14:15:09.268Z",
+          "p": 45835
+        },
+        {
+          "t": "2026-10-14T04:57:25.027Z",
+          "p": 45335
+        }
+      ],
+      "departed_at": "2026-10-20T17:10:36.649Z"
+    },
+    {
+      "title": "2021 Toyota Supra 2.0 DINON Performance Exhuast, Carbon Fiber Spoiler",
+      "year": 2021,
+      "make": "Toyota",
+      "model": "Supra 2.0 DINON Performance Exhuast",
+      "chassis": "A90",
+      "trim": "",
+      "price": 42990,
+      "mileage": 40687,
+      "transmission": "8-speed automatic",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Yellow",
+      "location": "Sterling, Virginia",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/117464412455?_skw=Toyota+Supra&hash=item1b596cb127:g:MykAAeSwZydqn~3f",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-20T11:40:47.408Z",
+      "listed_at": "2026-10-13T12:23:17.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-13T12:23:17.000Z",
+      "last_seen": "2026-10-20T11:41:31.989Z",
+      "price_history": [
+        {
+          "t": "2026-10-13T14:15:09.268Z",
+          "p": 42990
+        }
+      ],
+      "departed_at": "2026-10-20T17:10:36.649Z"
+    },
     {
       "title": "2024 Toyota Supra 45th Anniversary Edition",
       "year": 2024,
@@ -101239,262 +101503,6 @@
         {
           "t": "2026-09-17T11:45:46.475Z",
           "p": 21995
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "1996 Nissan 240SX",
-      "year": 1996,
-      "make": "Nissan",
-      "model": "240SX",
-      "chassis": "S14",
-      "trim": "",
-      "price": 29212,
-      "mileage": 49069,
-      "transmission": "5-Speed Manual",
-      "engine": "2.4L Gas I4",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Blue",
-      "location": "Cary, Illinois",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/168690686148?_skw=Nissan+240SX&hash=item2746bf98c4:g:dzkAAeSw8tFpwmse",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-15T13:25:11.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-15T13:25:11.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 29212
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "2024 Nissan GT-R T-spec",
-      "year": 2024,
-      "make": "Nissan",
-      "model": "GT-R T-spec",
-      "chassis": "R35",
-      "trim": "",
-      "price": 249990,
-      "mileage": 10700,
-      "transmission": "6-Speed Automatic",
-      "engine": "3.8L Gas V6",
-      "drivetrain": "All Wheel Drive",
-      "color": "Pearl White",
-      "location": "New Albany, Indiana",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/287588156385?_skw=Nissan+GT-R&hash=item42f59703e1:g:k8gAAeSwjU9qhZmF",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-15T13:06:09.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-15T13:06:09.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 249990
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "2021 Toyota Supra 2.0 DINON Performance Exhuast, Carbon Fiber Spoiler",
-      "year": 2021,
-      "make": "Toyota",
-      "model": "Supra 2.0 DINON Performance Exhuast",
-      "chassis": "A90",
-      "trim": "",
-      "price": 43790,
-      "mileage": 40687,
-      "transmission": "8-speed automatic",
-      "engine": "2.0L Gas I4",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Yellow",
-      "location": "Sterling, Virginia",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/117413620081?_skw=Toyota+Supra&hash=item1b5665a971:g:MykAAeSwZydqn~3f",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-15T12:22:06.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-15T12:22:06.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 43790
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "2017 Subaru WRX STi",
-      "year": 2017,
-      "make": "Subaru",
-      "model": "WRX STi",
-      "chassis": "VAB",
-      "trim": "",
-      "price": 22585,
-      "mileage": 72527,
-      "transmission": "Manual",
-      "engine": "2.5L DOHC Intercooled High-Boost DAVCS",
-      "drivetrain": "AWD",
-      "color": "Other Color",
-      "location": "Kernersville, North Carolina",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/366670464253?_skw=Subaru+WRX+STI&hash=item555f4344fd:g:m5oAAeSwId5qqTRF",
-      "ends_at": "2026-09-22T12:04:35.000Z",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-15T12:04:35.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-15T12:04:35.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 22585
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "2026 Toyota Land Cruiser Base",
-      "year": 2026,
-      "make": "Toyota",
-      "model": "Land Cruiser Base",
-      "chassis": "J300",
-      "trim": "",
-      "price": 73995,
-      "mileage": 3,
-      "transmission": "8-Speed Automatic w/OD",
-      "engine": "2.4L Electric and Gas Hybrid I4",
-      "drivetrain": "Rear Wheel Drive w/4x4",
-      "color": "",
-      "location": "Norwalk, California",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/820129711967?_skw=Toyota+Land+Cruiser&hash=itembef38a475f:g:IngAAeSwkwdqJSBQ",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-15T10:55:04.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-15T10:55:04.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 73995
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "2017 Subaru WRX STI",
-      "year": 2017,
-      "make": "Subaru",
-      "model": "WRX STI",
-      "chassis": "VAB",
-      "trim": "",
-      "price": 24995,
-      "mileage": 87847,
-      "transmission": "Manual",
-      "engine": "2.5L Gas H4",
-      "drivetrain": "All Wheel Drive",
-      "color": "Crystal White Pearl",
-      "location": "Rancho Cordova, California",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/198643009390?_skw=Subaru+WRX+STI&hash=item2e400bc76e:g:f-IAAeSwR7pqjWEY",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-15T09:38:14.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-15T09:38:14.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 24995
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "2002 Acura NSX Base 2dr Coupe",
-      "year": 2002,
-      "make": "Acura",
-      "model": "NSX Base 2dr Coupe",
-      "chassis": "NA2",
-      "trim": "",
-      "price": 209991,
-      "mileage": 21920,
-      "transmission": "Manual 6-Speed",
-      "engine": "3.2L Gas V6",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Gray",
-      "location": "Destin, Florida",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/287587596694?_skw=Acura+NSX&hash=item42f58e7996:g:5GMAAeSwrmVqEVXk",
-      "ends_at": "2026-09-20T07:31:45.000Z",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-15T07:31:45.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-15T07:31:45.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 209991
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "1980 Mazda RX-7",
-      "year": 1980,
-      "make": "Mazda",
-      "model": "RX-7",
-      "chassis": "SA22C",
-      "trim": "",
-      "price": 14980,
-      "mileage": 175984,
-      "transmission": "5-Speed Manual",
-      "engine": "1.1000000000000001",
-      "drivetrain": "",
-      "color": "GOLD",
-      "location": "Sheridan, Indiana",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/336794459107?_skw=Mazda+RX-7&hash=item4e6a839be3:g:YnIAAeSwrBFqlSyK",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-15T07:25:23.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-15T07:25:23.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 14980
         }
       ],
       "departed_at": "2026-09-18T04:46:28.438Z"
