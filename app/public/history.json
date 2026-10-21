@@ -1,6 +1,166 @@
 {
-  "updated": "2026-10-21T11:52:42.118Z",
+  "updated": "2026-10-21T17:14:40.421Z",
   "listings": [
+    {
+      "title": "2006 Toyota Land Cruiser 146k OME Lifted 3rd Row CARFAX WE SHIP!",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser 146k OME Lifted 3rd Row CARFAX WE SHIP!",
+      "chassis": "UZJ100",
+      "trim": "",
+      "price": 27950,
+      "mileage": 146994,
+      "transmission": "Automatic",
+      "engine": "4.7L V8 F DOHC 32V",
+      "drivetrain": "4WD",
+      "color": "Black",
+      "location": "Feasterville-Trevose, Pennsylvania",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/198732158955?_skw=Toyota+Land+Cruiser&hash=item2e455c17eb:g:zkUAAeSwsupq2BvZ",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-21T11:52:23.091Z",
+      "listed_at": "2026-10-21T01:55:38.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-21T01:55:38.000Z",
+      "last_seen": "2026-10-21T11:52:42.118Z",
+      "price_history": [
+        {
+          "t": "2026-10-21T04:52:11.371Z",
+          "p": 27950
+        }
+      ],
+      "departed_at": "2026-10-21T17:14:40.421Z"
+    },
+    {
+      "title": "1991 Honda Prelude Si 2dr Coupe",
+      "year": 1991,
+      "make": "Honda",
+      "model": "Prelude Si 2dr Coupe",
+      "chassis": "",
+      "trim": "",
+      "price": 13999,
+      "mileage": 178792,
+      "transmission": "Manual 5-Speed",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Blue",
+      "location": "San Diego, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/257801461699?_skw=Honda+Prelude&hash=item3c062a1fc3:g:pH0AAeSwjH9qyJPh",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-21T11:52:23.091Z",
+      "listed_at": "2026-10-16T16:20:33.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-16T16:20:33.000Z",
+      "last_seen": "2026-10-21T11:52:42.118Z",
+      "price_history": [
+        {
+          "t": "2026-10-16T16:41:34.836Z",
+          "p": 13999
+        }
+      ],
+      "departed_at": "2026-10-21T17:14:40.421Z"
+    },
+    {
+      "title": "1982 Mazda RX-7",
+      "year": 1982,
+      "make": "Mazda",
+      "model": "RX-7",
+      "chassis": "SA22C",
+      "trim": "",
+      "price": 24950,
+      "mileage": 31337,
+      "transmission": "Manual 5-Speed",
+      "engine": "1.2L Gas",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Gold",
+      "location": "Sarasota, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/206628130248?_skw=Mazda+RX-7&hash=item301bff0dc8:g:leYAAeSw7RNqk9jn",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-21T11:52:23.091Z",
+      "listed_at": "2026-10-15T07:14:52.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-15T07:14:52.000Z",
+      "last_seen": "2026-10-21T11:52:42.118Z",
+      "price_history": [
+        {
+          "t": "2026-10-15T11:33:10.599Z",
+          "p": 24950
+        }
+      ],
+      "departed_at": "2026-10-21T17:14:40.421Z"
+    },
+    {
+      "title": "1999 Mazda MX-5 Miata",
+      "year": 1999,
+      "make": "Mazda",
+      "model": "MX-5 Miata",
+      "chassis": "NB",
+      "trim": "",
+      "price": 6500,
+      "mileage": 138000,
+      "transmission": "Automatic",
+      "engine": "1.8L Gas I4",
+      "drivetrain": "RWD",
+      "color": "Red",
+      "location": "Lake Zurich, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/336839772339?_skw=Mazda+Miata&hash=item4e6d3708b3:g:XfgAAeSwoKtqvoAE",
+      "ends_at": "2026-10-21T16:17:18.000Z",
+      "live": true,
+      "scraped_date": "2026-10-21T11:52:23.091Z",
+      "listed_at": "2026-10-11T16:17:18.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-11T16:17:18.000Z",
+      "last_seen": "2026-10-21T11:52:42.118Z",
+      "price_history": [
+        {
+          "t": "2026-10-12T15:30:35.745Z",
+          "p": 6500
+        }
+      ],
+      "departed_at": "2026-10-21T17:14:40.421Z"
+    },
+    {
+      "title": "1987 Toyota Supra",
+      "year": 1987,
+      "make": "Toyota",
+      "model": "Supra",
+      "chassis": "MA70",
+      "trim": "",
+      "price": 19995,
+      "mileage": 123568,
+      "transmission": "Manual",
+      "engine": "2.5L Gas I6",
+      "drivetrain": "RWD",
+      "color": "Red",
+      "location": "Pompano Beach, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/257756943049?_skw=Toyota+Supra&hash=item3c0382d2c9:g:VcMAAeSwgm9qVlHh",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-10-21T11:52:23.091Z",
+      "listed_at": "2026-09-21T17:03:25.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-09-21T17:03:25.000Z",
+      "last_seen": "2026-10-21T11:52:42.118Z",
+      "price_history": [
+        {
+          "t": "2026-10-12T15:30:35.745Z",
+          "p": 19995
+        }
+      ],
+      "departed_at": "2026-10-21T17:14:40.421Z"
+    },
     {
       "title": "2004 Honda S2000",
       "year": 2004,
@@ -101786,166 +101946,6 @@
         {
           "t": "2026-09-17T11:45:46.475Z",
           "p": 13900
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "2017 Nissan GT-R Premium",
-      "year": 2017,
-      "make": "Nissan",
-      "model": "GT-R Premium",
-      "chassis": "R35",
-      "trim": "",
-      "price": 144990,
-      "mileage": 21500,
-      "transmission": "6-Speed Automatic",
-      "engine": "3.8L Gas V6",
-      "drivetrain": "All Wheel Drive",
-      "color": "Jet Black Pearl",
-      "location": "Orlando, Florida",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/168694328469?_skw=Nissan+GT-R&hash=item2746f72c95:g:Y9EAAeSwyTVqkOVe",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-17T01:38:00.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-17T01:38:00.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 144990
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "1994 Mazda MX-5 Miata",
-      "year": 1994,
-      "make": "Mazda",
-      "model": "MX-5 Miata",
-      "chassis": "NA",
-      "trim": "",
-      "price": 11900,
-      "mileage": 108720,
-      "transmission": "5-Speed Manual",
-      "engine": "1.8L Gas I4",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Black",
-      "location": "Walled Lake, Michigan",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/147578593382?_skw=Mazda+Miata&hash=item225c5ea066:g:PKkAAeSwo-lqqxQs",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-17T01:26:11.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-17T01:26:11.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 11900
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "1986 Nissan 300ZX",
-      "year": 1986,
-      "make": "Nissan",
-      "model": "300ZX",
-      "chassis": "Z31",
-      "trim": "",
-      "price": 24900,
-      "mileage": 61324,
-      "transmission": "5-Speed Manual",
-      "engine": "3.0L Gas I6",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Medium Blue Metallic",
-      "location": "Plainfield, Indiana",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/147578593291?_skw=Nissan+300ZX&hash=item225c5ea00b:g:e~wAAeSwYllqqxN8",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-17T01:26:02.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-17T01:26:02.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 24900
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "2000 Toyota MR2 Spyder",
-      "year": 2000,
-      "make": "Toyota",
-      "model": "MR2 Spyder",
-      "chassis": "ZZW30",
-      "trim": "",
-      "price": 12900,
-      "mileage": 82822,
-      "transmission": "5-Speed Manual",
-      "engine": "1.8L Gas I4",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Black",
-      "location": "Plainfield, Indiana",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/147578593300?_skw=Toyota+MR2&hash=item225c5ea014:g:L84AAeSwKcBqqxNv",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-17T01:26:02.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-17T01:26:02.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 12900
-        }
-      ],
-      "departed_at": "2026-09-18T04:46:28.438Z"
-    },
-    {
-      "title": "2007 Nissan 350Z Enthusiast Convertible",
-      "year": 2007,
-      "make": "Nissan",
-      "model": "350Z Enthusiast Convertible",
-      "chassis": "Z33",
-      "trim": "",
-      "price": 13995,
-      "mileage": 124163,
-      "transmission": "5 Speed Automatic",
-      "engine": "3.5L Gas V6",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Platinum Graphite",
-      "location": "La Vergne, Tennessee",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/287591123260?_skw=Nissan+350Z&hash=item42f5c4493c:g:6ukAAeSwVKVp~bVD",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-17T21:24:15.965Z",
-      "listed_at": "2026-09-17T01:25:57.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-17T01:25:57.000Z",
-      "last_seen": "2026-09-17T21:24:37.029Z",
-      "price_history": [
-        {
-          "t": "2026-09-17T11:45:46.475Z",
-          "p": 13995
         }
       ],
       "departed_at": "2026-09-18T04:46:28.438Z"
