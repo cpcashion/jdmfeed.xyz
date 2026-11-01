@@ -1,6 +1,110 @@
 {
-  "updated": "2026-11-01T06:10:32.927Z",
+  "updated": "2026-11-01T13:28:24.620Z",
   "listings": [
+    {
+      "title": "2024 Nissan GT-R T-spec",
+      "year": 2024,
+      "make": "Nissan",
+      "model": "GT-R T-spec",
+      "chassis": "R35",
+      "trim": "",
+      "price": 274995,
+      "mileage": 336,
+      "transmission": "6-Speed Automatic",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Midnight",
+      "location": "Orlando, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/168819729644?_skw=Nissan+GT-R&hash=item274e70a4ec:g:IA4AAeSwrdxqvwpc",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-11-01T06:09:49.769Z",
+      "listed_at": "2026-10-27T11:38:26.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-27T11:38:26.000Z",
+      "last_seen": "2026-11-01T06:10:32.927Z",
+      "price_history": [
+        {
+          "t": "2026-10-27T12:15:48.755Z",
+          "p": 279995
+        },
+        {
+          "t": "2026-10-28T05:45:24.637Z",
+          "p": 274995
+        }
+      ],
+      "departed_at": "2026-11-01T13:28:24.620Z"
+    },
+    {
+      "title": "2021 Honda Civic Touring",
+      "year": 2021,
+      "make": "Honda",
+      "model": "Civic Touring",
+      "chassis": "",
+      "trim": "",
+      "price": 41123,
+      "mileage": 41175,
+      "transmission": "Manual",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Front Wheel Drive",
+      "color": "Boost Blue Pearl",
+      "location": "Rancho Cordova, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/198744082522?_skw=Honda+Civic+Type+R&hash=item2e4612085a:g:VRMAAeSwlYhqbw1l",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-11-01T06:09:49.769Z",
+      "listed_at": "2026-10-25T09:35:00.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-25T09:35:00.000Z",
+      "last_seen": "2026-11-01T06:10:32.927Z",
+      "price_history": [
+        {
+          "t": "2026-10-25T11:34:36.291Z",
+          "p": 41123
+        }
+      ],
+      "departed_at": "2026-11-01T13:28:24.620Z"
+    },
+    {
+      "title": "1993 Mazda RX-7 R1",
+      "year": 1993,
+      "make": "Mazda",
+      "model": "RX-7 R1",
+      "chassis": "FD3S",
+      "trim": "",
+      "price": 100399,
+      "mileage": 5899,
+      "transmission": "5 Speed Manual",
+      "engine": "1.3L Gas",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Vintage Red",
+      "location": "Charlotte, North Carolina",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800836040929?_skw=Mazda+RX-7&hash=itemba758c38e1:g:ACYAAeSww49qsaBW",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-11-01T06:09:49.769Z",
+      "listed_at": "2026-10-25T08:20:26.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-25T08:20:26.000Z",
+      "last_seen": "2026-11-01T06:10:32.927Z",
+      "price_history": [
+        {
+          "t": "2026-10-25T11:34:36.291Z",
+          "p": 99900
+        },
+        {
+          "t": "2026-10-29T13:05:24.594Z",
+          "p": 100399
+        }
+      ],
+      "departed_at": "2026-11-01T13:28:24.620Z"
+    },
     {
       "title": "2003 Nissan 350Z Touring",
       "year": 2003,
@@ -104083,101 +104187,6 @@
         }
       ],
       "departed_at": "2026-09-23T21:32:09.322Z"
-    },
-    {
-      "title": "2014 Nissan GT-R Track Edition With Many Upgrades",
-      "year": 2014,
-      "make": "Nissan",
-      "model": "GT-R Track Edition With Many Upgrades",
-      "chassis": "R35",
-      "trim": "",
-      "price": 109991,
-      "mileage": 43417,
-      "transmission": "Automatic",
-      "engine": "Engine: 3.8L DOHC Twin Turbo V6",
-      "drivetrain": "All Wheel Drive",
-      "color": "Black",
-      "location": "Carrollton, Texas",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/298621470454?_skw=Nissan+GT-R&hash=item45873a06f6:g:dF8AAeSwicVqkGZk",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-23T17:03:08.692Z",
-      "listed_at": "2026-08-27T16:28:27.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-27T16:28:27.000Z",
-      "last_seen": "2026-09-23T17:03:31.580Z",
-      "price_history": [
-        {
-          "t": "2026-09-23T11:40:56.683Z",
-          "p": 109991
-        }
-      ],
-      "departed_at": "2026-09-23T21:32:09.322Z"
-    },
-    {
-      "title": "2001 Nissan GT-R RB26 4WD Okubo Factory GTR Conversion #04",
-      "year": 2001,
-      "make": "Nissan",
-      "model": "GT-R RB26 4WD Okubo Factory GTR Conversion #04",
-      "chassis": "",
-      "trim": "",
-      "price": 127000,
-      "mileage": 78000,
-      "transmission": "Manual",
-      "engine": "",
-      "drivetrain": "4WD",
-      "color": "Bayside Blue",
-      "location": "Fort Lauderdale, Florida",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/327324372939?_skw=Nissan+Skyline&hash=item4c360d8fcb:g:yDYAAeSw1nRqjIcL",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-23T17:03:08.692Z",
-      "listed_at": "2026-08-24T18:12:22.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-08-24T18:12:22.000Z",
-      "last_seen": "2026-09-23T17:03:31.580Z",
-      "price_history": [
-        {
-          "t": "2026-09-23T11:40:56.683Z",
-          "p": 127000
-        }
-      ],
-      "departed_at": "2026-09-23T21:32:09.322Z"
-    },
-    {
-      "title": "2000 Toyota Celica Super Strut",
-      "year": 2000,
-      "make": "Toyota",
-      "model": "Celica Super Strut",
-      "chassis": "",
-      "trim": "",
-      "price": 16000,
-      "mileage": 44000,
-      "transmission": "manual",
-      "engine": "1.8L 2ZZ",
-      "drivetrain": "",
-      "color": "silver",
-      "location": "San Antonio, Texas",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/206572725324?_skw=Toyota+Celica&hash=item3018b1a44c:g:XDUAAeSwFNNqsZmk",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-23T11:40:22.147Z",
-      "listed_at": "2026-09-21T21:04:35.000Z",
-      "enriched": 3,
-      "first_seen": "2026-09-21T21:04:35.000Z",
-      "last_seen": "2026-09-23T11:40:56.683Z",
-      "price_history": [
-        {
-          "t": "2026-09-23T11:40:56.683Z",
-          "p": 16000
-        }
-      ],
-      "departed_at": "2026-09-23T17:03:31.580Z"
     }
   ]
 }
