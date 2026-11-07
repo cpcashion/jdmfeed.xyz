@@ -1,6 +1,298 @@
 {
-  "updated": "2026-11-07T06:01:36.608Z",
+  "updated": "2026-11-07T13:05:44.752Z",
   "listings": [
+    {
+      "title": "2007 Subaru Impreza 4dr H4 Turbo WRX STI w/Slver Wheels",
+      "year": 2007,
+      "make": "Subaru",
+      "model": "Impreza 4dr H4 Turbo WRX STI w/Slver Wheels",
+      "chassis": "GDB",
+      "trim": "",
+      "price": 28723,
+      "mileage": 72951,
+      "transmission": "Manual",
+      "engine": "2.5L Gas H4",
+      "drivetrain": "All Wheel Drive",
+      "color": "SILVER",
+      "location": "Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/147667315128?_skw=Subaru+WRX+STI&hash=item2261a869b8:g:YZsAAeSwA49q6t~S",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-11-07T06:01:16.615Z",
+      "listed_at": "2026-11-05T07:15:50.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-11-05T07:15:50.000Z",
+      "last_seen": "2026-11-07T06:01:36.608Z",
+      "price_history": [
+        {
+          "t": "2026-11-05T19:59:00.958Z",
+          "p": 28723
+        }
+      ],
+      "departed_at": "2026-11-07T13:05:44.752Z"
+    },
+    {
+      "title": "2014 Nissan GT-R Black Edition",
+      "year": 2014,
+      "make": "Nissan",
+      "model": "GT-R Black Edition",
+      "chassis": "R35",
+      "trim": "",
+      "price": 139995,
+      "mileage": 17180,
+      "transmission": "Automatic",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Jet Black Pearl",
+      "location": "Costa Mesa, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/137894781954?_skw=Nissan+GT-R&hash=item201b2b6402:g:hoYAAeSwueVqx1w1",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-11-07T06:01:16.615Z",
+      "listed_at": "2026-11-02T10:13:33.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-11-02T10:13:33.000Z",
+      "last_seen": "2026-11-07T06:01:36.608Z",
+      "price_history": [
+        {
+          "t": "2026-11-02T15:58:57.537Z",
+          "p": 139995
+        }
+      ],
+      "departed_at": "2026-11-07T13:05:44.752Z"
+    },
+    {
+      "title": "2024 Nissan GT-R Premium AWD 2dr Coupe",
+      "year": 2024,
+      "make": "Nissan",
+      "model": "GT-R Premium AWD 2dr Coupe",
+      "chassis": "R35",
+      "trim": "",
+      "price": 179900,
+      "mileage": 23734,
+      "transmission": "Automatic 6-Speed",
+      "engine": "3.8L Gas V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Bayside Blue Quadcoat",
+      "location": "Marietta, Georgia",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/267830825321?_skw=Nissan+GT-R&hash=item3e5bf61169:g:TUUAAeSwKRpqwKr3",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-11-07T06:01:16.615Z",
+      "listed_at": "2026-11-02T08:18:05.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-11-02T08:18:05.000Z",
+      "last_seen": "2026-11-07T06:01:36.608Z",
+      "price_history": [
+        {
+          "t": "2026-11-02T15:58:57.537Z",
+          "p": 179900
+        }
+      ],
+      "departed_at": "2026-11-07T13:05:44.752Z"
+    },
+    {
+      "title": "2022 Toyota Supra 3",
+      "year": 2022,
+      "make": "Toyota",
+      "model": "Supra 3",
+      "chassis": "A90",
+      "trim": "",
+      "price": 54490,
+      "mileage": 60600,
+      "transmission": "8-Speed Automatic",
+      "engine": "3.0L Gas Turbocharged I6",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Absolute Zero",
+      "location": "Orlando, Florida",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/168832189426?_skw=Toyota+Supra&hash=item274f2ec3f2:g:R58AAeSwvr5qhQhW",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-11-07T06:01:16.615Z",
+      "listed_at": "2026-11-02T07:00:11.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-11-02T07:00:11.000Z",
+      "last_seen": "2026-11-07T06:01:36.608Z",
+      "price_history": [
+        {
+          "t": "2026-11-02T15:58:57.537Z",
+          "p": 55990
+        },
+        {
+          "t": "2026-11-05T06:50:48.432Z",
+          "p": 54490
+        }
+      ],
+      "departed_at": "2026-11-07T13:05:44.752Z"
+    },
+    {
+      "title": "2020 Nissan GT-R Premium",
+      "year": 2020,
+      "make": "Nissan",
+      "model": "GT-R Premium",
+      "chassis": "R35",
+      "trim": "",
+      "price": 165990,
+      "mileage": 19057,
+      "transmission": "6-Speed Automatic",
+      "engine": "3.8L Gas Turbocharged V6",
+      "drivetrain": "All Wheel Drive",
+      "color": "Super Silver",
+      "location": "New Albany, Indiana",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/287694185951?_skw=Nissan+GT-R&hash=item42fbe8e5df:g:eaIAAeSwfdpq5dEI",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-11-07T06:01:16.615Z",
+      "listed_at": "2026-10-31T11:32:16.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-31T11:32:16.000Z",
+      "last_seen": "2026-11-07T06:01:36.608Z",
+      "price_history": [
+        {
+          "t": "2026-10-31T12:35:48.926Z",
+          "p": 165990
+        }
+      ],
+      "departed_at": "2026-11-07T13:05:44.752Z"
+    },
+    {
+      "title": "2010 Mazda MX-5 Miata Touring",
+      "year": 2010,
+      "make": "Mazda",
+      "model": "MX-5 Miata Touring",
+      "chassis": "NC",
+      "trim": "",
+      "price": 15900,
+      "mileage": 83170,
+      "transmission": "Manual",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Stormy Blue Mica",
+      "location": "Costa Mesa, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800858844207?_skw=Mazda+Miata&hash=itemba76e82c2f:g:gHkAAeSwMOlq5bTz",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-11-07T06:01:16.615Z",
+      "listed_at": "2026-10-31T09:29:59.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-31T09:29:59.000Z",
+      "last_seen": "2026-11-07T06:01:36.608Z",
+      "price_history": [
+        {
+          "t": "2026-10-31T12:35:48.926Z",
+          "p": 15900
+        }
+      ],
+      "departed_at": "2026-11-07T13:05:44.752Z"
+    },
+    {
+      "title": "2019 Mazda MX-5 Miata Club",
+      "year": 2019,
+      "make": "Mazda",
+      "model": "MX-5 Miata Club",
+      "chassis": "ND",
+      "trim": "",
+      "price": 23970,
+      "mileage": 49598,
+      "transmission": "Manual",
+      "engine": "2.0L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Soul Red Crystal Metallic",
+      "location": "Costa Mesa, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/800858844209?_skw=Mazda+Miata&hash=itemba76e82c31:g:vikAAeSwr4Rq1JDI",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-11-07T06:01:16.615Z",
+      "listed_at": "2026-10-31T09:29:59.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-31T09:29:59.000Z",
+      "last_seen": "2026-11-07T06:01:36.608Z",
+      "price_history": [
+        {
+          "t": "2026-10-31T12:35:48.926Z",
+          "p": 23970
+        }
+      ],
+      "departed_at": "2026-11-07T13:05:44.752Z"
+    },
+    {
+      "title": "2003 Mazda MX-5 Miata 2dr Conv Shinsen 5-Spd Manual",
+      "year": 2003,
+      "make": "Mazda",
+      "model": "MX-5 Miata 2dr Conv Shinsen 5-Spd Manual",
+      "chassis": "NB",
+      "trim": "",
+      "price": 18731,
+      "mileage": 49186,
+      "transmission": "Manual",
+      "engine": "1.8L Gas I4",
+      "drivetrain": "Rear Wheel Drive",
+      "color": "Gray",
+      "location": "Chicago, Illinois",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/147659144888?_skw=Mazda+Miata&hash=item22612bbeb8:g:snYAAeSwAQFq6t~C",
+      "ends_at": "",
+      "live": true,
+      "scraped_date": "2026-11-07T06:01:16.615Z",
+      "listed_at": "2026-10-31T06:32:45.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-31T06:32:45.000Z",
+      "last_seen": "2026-11-07T06:01:36.608Z",
+      "price_history": [
+        {
+          "t": "2026-11-04T19:47:18.405Z",
+          "p": 18731
+        }
+      ],
+      "departed_at": "2026-11-07T13:05:44.752Z"
+    },
+    {
+      "title": "2013 Subaru WRX",
+      "year": 2013,
+      "make": "Subaru",
+      "model": "WRX",
+      "chassis": "GRB",
+      "trim": "",
+      "price": 9000,
+      "mileage": 131000,
+      "transmission": "Manual",
+      "engine": "",
+      "drivetrain": "AWD",
+      "color": "Blue",
+      "location": "Santa Clara, California",
+      "source": "eBay Motors",
+      "source_url": "https://www.ebay.com/itm/137888875709?_skw=Subaru+WRX+STI&hash=item201ad144bd:g:eZwAAeSw-bJq5Xkh",
+      "ends_at": "2026-11-07T06:11:46.000Z",
+      "live": true,
+      "scraped_date": "2026-11-07T06:01:16.615Z",
+      "listed_at": "2026-10-31T05:11:46.000Z",
+      "rhd": false,
+      "enriched": 3,
+      "first_seen": "2026-10-31T05:11:46.000Z",
+      "last_seen": "2026-11-07T06:01:36.608Z",
+      "price_history": [
+        {
+          "t": "2026-10-31T05:45:39.783Z",
+          "p": 9000
+        }
+      ],
+      "departed_at": "2026-11-07T13:05:44.752Z"
+    },
     {
       "title": "2019 Subaru WRX STI",
       "year": 2019,
@@ -104333,294 +104625,6 @@
         }
       ],
       "departed_at": "2026-09-29T12:56:26.374Z"
-    },
-    {
-      "title": "1992 Subaru SVX LS AWD 2dr Coupe",
-      "year": 1992,
-      "make": "Subaru",
-      "model": "SVX LS AWD 2dr Coupe",
-      "chassis": "CXW",
-      "trim": "",
-      "price": 8269,
-      "mileage": 132000,
-      "transmission": "Automatic 4-Speed",
-      "engine": "3.3L Gas H6",
-      "drivetrain": "All Wheel Drive",
-      "color": "Teal",
-      "location": "Chicago, Illinois",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/366688692336?_skw=Subaru+SVX&hash=item5560596870:g:EXEAAeSwJxVqTon6",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-29T05:46:47.970Z",
-      "listed_at": "2026-09-24T07:35:14.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-24T07:35:14.000Z",
-      "last_seen": "2026-09-29T05:47:09.588Z",
-      "price_history": [
-        {
-          "t": "2026-09-24T11:49:18.830Z",
-          "p": 8269
-        }
-      ],
-      "departed_at": "2026-09-29T12:56:26.374Z"
-    },
-    {
-      "title": "2010 Nissan GT-R 2dr Cpe Premium",
-      "year": 2010,
-      "make": "Nissan",
-      "model": "GT-R 2dr Cpe Premium",
-      "chassis": "R35",
-      "trim": "",
-      "price": 94800,
-      "mileage": 57065,
-      "transmission": "Automatic",
-      "engine": "3.8L Gas V6",
-      "drivetrain": "All Wheel Drive",
-      "color": "White",
-      "location": "Gilberts, Illinois",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/198663482200?_skw=Nissan+GT-R&hash=item2e41442b58:g:c78AAeSwrLtqS05m",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-29T05:46:47.970Z",
-      "listed_at": "2026-09-24T07:11:49.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-24T07:11:49.000Z",
-      "last_seen": "2026-09-29T05:47:09.588Z",
-      "price_history": [
-        {
-          "t": "2026-09-24T11:49:18.830Z",
-          "p": 94800
-        }
-      ],
-      "departed_at": "2026-09-29T12:56:26.374Z"
-    },
-    {
-      "title": "2025 Acura Integra A-SPEC",
-      "year": 2025,
-      "make": "Acura",
-      "model": "Integra A-SPEC",
-      "chassis": "DE4",
-      "trim": "",
-      "price": 21000,
-      "mileage": 15963,
-      "transmission": "Automatic",
-      "engine": "1.5L Gas I4",
-      "drivetrain": "Front Wheel Drive",
-      "color": "Black",
-      "location": "Paterson, New Jersey",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/820165300776?_skw=Acura+Integra&hash=itembef5a95228:g:oX4AAeSwiTNqhp5v",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-29T05:46:47.970Z",
-      "listed_at": "2026-09-24T06:33:48.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-24T06:33:48.000Z",
-      "last_seen": "2026-09-29T05:47:09.588Z",
-      "price_history": [
-        {
-          "t": "2026-09-24T11:49:18.830Z",
-          "p": 21000
-        }
-      ],
-      "departed_at": "2026-09-29T12:56:26.374Z"
-    },
-    {
-      "title": "2003 Mazda MX-5 Miata 2dr Conv Shinsen 5-Spd Manual",
-      "year": 2003,
-      "make": "Mazda",
-      "model": "MX-5 Miata 2dr Conv Shinsen 5-Spd Manual",
-      "chassis": "NB",
-      "trim": "",
-      "price": 19599,
-      "mileage": 49186,
-      "transmission": "Manual",
-      "engine": "1.8L Gas I4",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Gray",
-      "location": "Chicago, Illinois",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/147595511946?_skw=Mazda+Miata&hash=item225d60c88a:g:KAkAAeSwjh5qmmKV",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-29T05:46:47.970Z",
-      "listed_at": "2026-09-24T06:25:32.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-24T06:25:32.000Z",
-      "last_seen": "2026-09-29T05:47:09.588Z",
-      "price_history": [
-        {
-          "t": "2026-09-24T11:49:18.830Z",
-          "p": 19599
-        }
-      ],
-      "departed_at": "2026-09-29T12:56:26.374Z"
-    },
-    {
-      "title": "2021 Toyota Supra 2.0 DINON Performance Exhuast, Carbon Fiber Spoiler",
-      "year": 2021,
-      "make": "Toyota",
-      "model": "Supra 2.0 DINON Performance Exhuast",
-      "chassis": "A90",
-      "trim": "",
-      "price": 43790,
-      "mileage": 40687,
-      "transmission": "8-speed automatic",
-      "engine": "2.0L Gas I4",
-      "drivetrain": "Rear Wheel Drive",
-      "color": "Yellow",
-      "location": "Sterling, Virginia",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/128092776531?_skw=Toyota+Supra&hash=item1dd2eca853:g:MykAAeSwZydqn~3f",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-29T05:46:47.970Z",
-      "listed_at": "2026-09-22T12:22:19.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-22T12:22:19.000Z",
-      "last_seen": "2026-09-29T05:47:09.588Z",
-      "price_history": [
-        {
-          "t": "2026-09-23T11:40:56.683Z",
-          "p": 43790
-        }
-      ],
-      "departed_at": "2026-09-29T12:56:26.374Z"
-    },
-    {
-      "title": "1980 Mazda RX-7",
-      "year": 1980,
-      "make": "Mazda",
-      "model": "RX-7",
-      "chassis": "SA22C",
-      "trim": "",
-      "price": 13980,
-      "mileage": 175984,
-      "transmission": "5-Speed Manual",
-      "engine": "1.1000000000000001",
-      "drivetrain": "",
-      "color": "GOLD",
-      "location": "Sheridan, Indiana",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/336806767741?_skw=Mazda+RX-7&hash=item4e6b3f6c7d:g:YnIAAeSwrBFqlSyK",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-29T05:46:47.970Z",
-      "listed_at": "2026-09-22T07:26:10.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-22T07:26:10.000Z",
-      "last_seen": "2026-09-29T05:47:09.588Z",
-      "price_history": [
-        {
-          "t": "2026-09-23T11:40:56.683Z",
-          "p": 13980
-        }
-      ],
-      "departed_at": "2026-09-29T12:56:26.374Z"
-    },
-    {
-      "title": "2009 Mazda RX-7",
-      "year": 2009,
-      "make": "Mazda",
-      "model": "RX-7",
-      "chassis": "",
-      "trim": "",
-      "price": 14900,
-      "mileage": 54829,
-      "transmission": "Manual",
-      "engine": "1.3L 2 Rotor",
-      "drivetrain": "RWD",
-      "color": "Sunset Red",
-      "location": "Traverse City, Michigan",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/147590629677?_skw=Mazda+RX-7&hash=item225d16492d:g:UR0AAeSwBGxqXsmn",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-29T05:46:47.970Z",
-      "listed_at": "2026-09-22T06:48:25.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-22T06:48:25.000Z",
-      "last_seen": "2026-09-29T05:47:09.588Z",
-      "price_history": [
-        {
-          "t": "2026-09-23T11:40:56.683Z",
-          "p": 14900
-        }
-      ],
-      "departed_at": "2026-09-29T12:56:26.374Z"
-    },
-    {
-      "title": "2016 Nissan GT-R Black Edition with Many Upgrades",
-      "year": 2016,
-      "make": "Nissan",
-      "model": "GT-R Black Edition with Many Upgrades",
-      "chassis": "R35",
-      "trim": "",
-      "price": 116991,
-      "mileage": 47198,
-      "transmission": "Automatic",
-      "engine": "3.8L Gas V6",
-      "drivetrain": "All Wheel Drive",
-      "color": "White",
-      "location": "Dallas, Texas",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/227533556353?_skw=Nissan+GT-R&hash=item34fa0e8a81:g:4P0AAeSweKZqpH5a",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-29T05:46:47.970Z",
-      "listed_at": "2026-09-22T06:08:51.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-22T06:08:51.000Z",
-      "last_seen": "2026-09-29T05:47:09.588Z",
-      "price_history": [
-        {
-          "t": "2026-09-23T11:40:56.683Z",
-          "p": 116991
-        }
-      ],
-      "departed_at": "2026-09-29T12:56:26.374Z"
-    },
-    {
-      "title": "2020 Nissan GT-R NISMO-FULL BOOST LOGIC BOLT ONS-FULL PPF!",
-      "year": 2020,
-      "make": "Nissan",
-      "model": "GT-R NISMO-FULL BOOST LOGIC BOLT ONS-FULL PPF!",
-      "chassis": "R35",
-      "trim": "",
-      "price": 304995,
-      "mileage": 16008,
-      "transmission": "6-Speed Double Clutc",
-      "engine": "3.8L Twin Turbo V6 600hp 481ft. lbs.",
-      "drivetrain": "AWD",
-      "color": "Pearl White Tricoat",
-      "location": "Joliet, Illinois",
-      "source": "eBay Motors",
-      "source_url": "https://www.ebay.com/itm/327377709682?_skw=Nissan+GT-R&hash=item4c393b6a72:g:jmMAAeSwur5qBUC4",
-      "ends_at": "",
-      "live": true,
-      "scraped_date": "2026-09-28T23:18:08.627Z",
-      "listed_at": "2026-09-28T03:41:07.000Z",
-      "rhd": false,
-      "enriched": 3,
-      "first_seen": "2026-09-28T03:41:07.000Z",
-      "last_seen": "2026-09-28T23:18:32.057Z",
-      "price_history": [
-        {
-          "t": "2026-09-28T05:27:51.374Z",
-          "p": 304995
-        }
-      ],
-      "departed_at": "2026-09-29T05:47:09.588Z"
     }
   ]
 }
